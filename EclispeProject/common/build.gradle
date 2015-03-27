@@ -1,0 +1,6 @@
+
+	dependencies {
+		compile 'org.eclipse.persistence:javax.persistence:2.+'
+		compile 'org.eclipse.persistence:eclipselink:2.+'
+		testCompile "junit:junit:4.+"
+	}
