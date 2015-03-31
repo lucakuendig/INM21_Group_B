@@ -1,4 +1,9 @@
+apply plugin: 'jetty'
+
 dependencies {
+	compile project(':common')
 	compile 'mysql:mysql-connector-java:5.+'
-	testCompile "junit:junit:4.+"
+	compile 'org.jboss.resteasy:resteasy-jackson-provider:2.+'
+	providedCompile 'javax.servlet:javax.servlet-api:3.+'
 }
+jettyRun.webAppSourceDirectory = file("src/main/resources")

@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 import ch.hslu.mmanager.common.dao.DAO;
 import ch.hslu.mmanger.common.JpaUtil;
 
+
 public class Controller<T, Id extends Serializable> implements DAO<T, Id> {
 
 	private EntityManager em = null;
@@ -33,8 +34,7 @@ public class Controller<T, Id extends Serializable> implements DAO<T, Id> {
 
 	public List<T> getAll() {
 		em = JpaUtil.createEntityManager();
-		TypedQuery<T> query = em.createQuery("Select t FROM "
-				+ clazz.getSimpleName() + " t", clazz);
+		TypedQuery<T> query = em.createQuery("SELECT t FROM " + clazz.getSimpleName() + " t", clazz);
 		return (List<T>) query.getResultList();
 	}
 
@@ -49,7 +49,7 @@ public class Controller<T, Id extends Serializable> implements DAO<T, Id> {
 	public void delete(T t) {
 		em = JpaUtil.createEntityManager();
 		em.getTransaction().begin();
-		em.detach(t);
+		em.remove(em.merge(t));
 		em.getTransaction().commit();
 		em.close();
 	}
