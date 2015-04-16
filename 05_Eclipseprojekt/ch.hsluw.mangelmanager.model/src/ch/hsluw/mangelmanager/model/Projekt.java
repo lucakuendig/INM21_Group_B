@@ -32,7 +32,7 @@ public class Projekt implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	
 	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Adresse fkAdresse;
@@ -84,10 +84,10 @@ public class Projekt implements Serializable {
 
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Adresse getFkAdresse() {
