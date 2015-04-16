@@ -2,7 +2,6 @@
     <wb-module deploy-name="ch.hsluw.mangelmanager.webservice">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test"/>
         <property name="context-root" value="ch.hsluw.mangelmanager.webservice"/>
         <property name="java-output-path" value="/ch.hsluw.mangelmanager.webservice/build/classes"/>
     </wb-module>
