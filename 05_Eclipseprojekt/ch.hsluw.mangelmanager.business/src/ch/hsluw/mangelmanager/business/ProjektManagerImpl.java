@@ -61,6 +61,41 @@ public class ProjektManagerImpl implements ProjektManager {
 	public List<Projekt> findAll() {
 		return projektDAO.findAllProjekt();
 	}
+	
+	@Override
+	public List<Projekt> findByBezeichnung(String bezeichnung) {
+		return projektDAO.findProjektByBezeichnung(bezeichnung);
+	}
+	
+	@Override
+	public List<Projekt> findByProjektstatus(String projektstatus) {
+		return projektDAO.findProjektByProjektstatus(projektstatus);
+	}
+	
+	@Override
+	public List<Projekt> findByOrt(String ort) {
+		return projektDAO.findProjektByOrt(ort);
+	}
+	
+	@Override
+	public List<Projekt> findByPlz(String plz) {
+		return projektDAO.findProjektByPlz(plz);
+	}
+	
+	@Override
+	public List<Projekt> findByBauherr(String bauherr) {
+		return projektDAO.findProjektByBauherr(bauherr);
+	}
+	
+	@Override
+	public List<Projekt> findByObjekttyp(String objekttyp) {
+		return projektDAO.findProjektByObjekttyp(objekttyp);
+	}
+	
+	@Override
+	public List<Projekt> findByArbeitstyp(String arbeitstyp) {
+		return projektDAO.findProjektByObjekttyp(arbeitstyp);
+	}
 
 
 

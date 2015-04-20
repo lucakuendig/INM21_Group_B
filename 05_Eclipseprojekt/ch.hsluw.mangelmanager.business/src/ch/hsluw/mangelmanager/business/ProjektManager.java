@@ -64,4 +64,68 @@ public interface ProjektManager {
 	 * @return
 	 */
 	List<Projekt> findAll();
+	
+	/**
+	 * Liefert die Liste mit Projekten für die übergebene Bezeichnung zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param bezeichnung
+	 * @return
+	 */
+	List<Projekt> findByBezeichnung(String bezeichnung);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Projektstatus zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param projektstatus
+	 * @return
+	 */
+	List<Projekt> findByProjektstatus(String projektstatus);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Ort zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param ort
+	 * @return
+	 */
+	List<Projekt> findByOrt(String ort);
+	
+	/**
+	 * Liefert die Liste mit Projekten für die übergebene Plz zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param plz
+	 * @return
+	 */
+	List<Projekt> findByPlz(String plz);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Bauherren zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param bauherr
+	 * @return
+	 */
+	List<Projekt> findByBauherr(String bauherr);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Objekttyp zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param objekttyp
+	 * @return
+	 */
+	List<Projekt> findByObjekttyp(String objekttyp);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Arbeitstyp zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param arbeitstyp
+	 * @return
+	 */
+	List<Projekt> findByArbeitstyp(String arbeitstyp);
 }
+

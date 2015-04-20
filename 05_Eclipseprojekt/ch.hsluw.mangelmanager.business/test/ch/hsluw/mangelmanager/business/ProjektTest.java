@@ -1,8 +1,6 @@
 package ch.hsluw.mangelmanager.business;
 
 
-
-
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -35,13 +33,11 @@ public class ProjektTest {
 		Objekttyp ot = new Objekttyp("Block");
 		
 		List<Bauherr> bauherren = new ArrayList<Bauherr>();
-		List<Objekttyp> objekttypen = new ArrayList<Objekttyp>();
 		
 		bauherren.add(b);
-		objekttypen.add(ot);
 		
 		Projekt projekt2 = new Projekt(a, "Neubau Haus Romantica", bauherren, new GregorianCalendar(2015, 4, 16),  
-				new GregorianCalendar(2015, 4, 20),objekttypen, at,  new GregorianCalendar(2015, 4, 20), ps);
+				new GregorianCalendar(2015, 4, 20),ot, at,  new GregorianCalendar(2015, 4, 20), ps);
 		
 		ProjektManager pm = new ProjektManagerImpl();
 		
