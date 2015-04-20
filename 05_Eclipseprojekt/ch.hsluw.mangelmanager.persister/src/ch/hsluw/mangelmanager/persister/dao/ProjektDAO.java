@@ -60,4 +60,67 @@ public interface ProjektDAO {
 	 * @return
 	 */
 	List<Projekt> findAllProjekt();
+	
+	/**
+	 * Liefert die Liste mit Projekten für die übergebene Bezeichnung zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param bezeichnung
+	 * @return
+	 */
+	public List<Projekt> findProjektByBezeichnung(String bezeichnung);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Projektstatus zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param projektstatus
+	 * @return
+	 */
+	public List<Projekt> findProjektByProjektstatus(String projektstatus);
+	
+	/**
+	 * Liefert die Liste mit Projekten für dem übergebenen Ort zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param ort
+	 * @return
+	 */
+	public List<Projekt> findProjektByOrt(String ort);
+	
+	/**
+	 * Liefert die Liste mit Projekten für dem übergebenen Plz zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param plz
+	 * @return
+	 */
+	public List<Projekt> findProjektByPlz(String plz);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Bauherren zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param bauherr
+	 * @return
+	 */
+	public List<Projekt> findProjektByBauherr(String bauherr);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Objekttyp zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param objekttyp
+	 * @return
+	 */
+	public List<Projekt> findProjektByObjekttyp(String objekttyp);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Arbeitstyp zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param arbeitstyp
+	 * @return
+	 */
+	public List<Projekt> findProjektByArbeitstyp(String arbeitstyp);
 }

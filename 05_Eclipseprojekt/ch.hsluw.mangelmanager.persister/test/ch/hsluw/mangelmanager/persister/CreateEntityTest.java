@@ -37,22 +37,14 @@ public class CreateEntityTest {
 		List<Bauherr> bauherren = new ArrayList<Bauherr>();
 		bauherren.add(bauherr1);
 		
-		List<Objekttyp> objekttypen = new ArrayList<Objekttyp>();
-		objekttypen.add(new Objekttyp("Alphütte"));
-		
 		Arbeitstyp arbeitstyp1 = new Arbeitstyp("Umbau");
 		Projektstatus projektstatus1 = new Projektstatus("abgeschlossen");
 		
 		Projekt projekt1 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				objekttypen, arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
+				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
 				
 		
 		em.getTransaction().begin();
-		em.persist(plz1);
-		em.persist(adresse1);
-		em.persist(bauherr1);
-		em.persist(arbeitstyp1);
-		em.persist(projektstatus1);
 		em.persist(projekt1);
 		em.getTransaction().commit();
 	}
