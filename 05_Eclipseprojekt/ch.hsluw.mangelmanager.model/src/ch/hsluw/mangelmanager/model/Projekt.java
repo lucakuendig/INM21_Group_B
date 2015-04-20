@@ -9,11 +9,16 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,6 +31,15 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Projekt.findByBezeichnung", query = "SELECT p FROM Projekt p WHERE p.bezeichnung=:bezeichnung"),
+	@NamedQuery(name = "Projekt.findByBauherr", query = "SELECT p FROM Projekt p join p.fkBauherr b where b.nachname in (:bauherr)"),
+	@NamedQuery(name = "Projekt.findByPlz", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz=:plz"),
+	@NamedQuery(name = "Projekt.findByOrt", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.ort=:ort"),
+	@NamedQuery(name = "Projekt.findByObjekttyp", query = "SELECT p FROM Projekt p WHERE p.fkObjekttyp.bezeichnung=:objekttyp"),
+	@NamedQuery(name = "Projekt.findByArbeittyp", query = "SELECT p FROM Projekt p WHERE p.fkArbeitstyp.bezeichnung=:arbeitstyp"),
+	@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung=:projektstatus")
+	 })
 public class Projekt implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
@@ -38,7 +52,7 @@ public class Projekt implements Serializable {
 	private Adresse fkAdresse;
 	private String bezeichnung;
 	
-	@ManyToMany (cascade = CascadeType.PERSIST)
+	@ManyToMany (cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Bauherr> fkBauherr;
 	
 	@Temporal(TemporalType.DATE)
@@ -46,10 +60,10 @@ public class Projekt implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar endDatum;
 	
-	@ManyToMany (cascade = CascadeType.PERSIST)
-	private List<Objekttyp> fkObjekttyp;
-	
 	@ManyToOne (cascade = CascadeType.PERSIST)
+	private Objekttyp fkObjekttyp;
+	
+	@ManyToOne  (cascade = CascadeType.PERSIST)
 	private Arbeitstyp fkArbeitstyp;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
@@ -67,7 +81,7 @@ public class Projekt implements Serializable {
 	
 	public Projekt(Adresse fkAdresse, String bezeichnung,
 			List<Bauherr> fkBauherr, GregorianCalendar startDatum,
-			GregorianCalendar endDatum, List<Objekttyp> fkObjekttyp,
+			GregorianCalendar endDatum, Objekttyp fkObjekttyp,
 			Arbeitstyp fkArbeitstyp, GregorianCalendar faelligkeitsDatum,
 			Projektstatus fkProjektstatus) {
 		super();
@@ -109,10 +123,10 @@ public class Projekt implements Serializable {
 	public void setFkBauherr(List<Bauherr> fkBauherr) {
 		this.fkBauherr = fkBauherr;
 	}
-	public List<Objekttyp> getFkObjekttyp() {
+	public Objekttyp getFkObjekttyp() {
 		return fkObjekttyp;
 	}
-	public void setFkObjekttyp(List<Objekttyp> fkObjekttyp) {
+	public void setFkObjekttyp(Objekttyp fkObjekttyp) {
 		this.fkObjekttyp = fkObjekttyp;
 	}
 	public GregorianCalendar getStartDatum() {

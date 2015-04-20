@@ -7,6 +7,8 @@ package ch.hsluw.mangelmanager.model;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,7 +31,7 @@ public class Adresse implements Serializable {
 	@GeneratedValue
 	private int id;
 	private String strasse;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Plz plz;
 
 

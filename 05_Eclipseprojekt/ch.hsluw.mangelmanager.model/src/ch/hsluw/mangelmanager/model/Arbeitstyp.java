@@ -6,6 +6,7 @@ package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Arbeitstyp implements Serializable {
 	private static final long serialVersionUID = 6294667886934890151L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue	
 	private int id;
 	private String bezeichnung;
 	
