@@ -29,7 +29,7 @@ public class SuMitarbeiter extends Person implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	@OneToMany (cascade = CascadeType.PERSIST)
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne (cascade = CascadeType.PERSIST)
@@ -49,7 +49,7 @@ public class SuMitarbeiter extends Person implements Serializable {
 	 * 
 	 */
 	
-	public SuMitarbeiter(int id, String nachname, String vorname, String telefon, Subunternehmen fkSubunternehmen, Login fkLogin){
+	public SuMitarbeiter(Integer id, String nachname, String vorname, String telefon, Subunternehmen fkSubunternehmen, Login fkLogin){
 		super(nachname, vorname, telefon);
 		this.id = id;
 		this.fkSubunternehmen = fkSubunternehmen;
@@ -59,14 +59,14 @@ public class SuMitarbeiter extends Person implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

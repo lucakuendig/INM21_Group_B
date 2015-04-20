@@ -29,10 +29,10 @@ public class ProjektSuMitarbeiter implements Serializable {
 	
 	@Id
 	@ManyToOne (cascade = CascadeType.PERSIST)
-	private int idProjekt;
+	private Projekt fkProjekt;
 	@Id
 	@ManyToOne (cascade = CascadeType.PERSIST)
-	private int idSuMitarbeiter;
+	private SuMitarbeiter fkSuMitarbeiter;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar startDatum;
 	@Temporal(TemporalType.DATE)
@@ -50,10 +50,10 @@ public class ProjektSuMitarbeiter implements Serializable {
 	 * 
 	 */
 	
-	public ProjektSuMitarbeiter(int idProjekt, int idSuMitarbeiter, GregorianCalendar startDatum, GregorianCalendar endDatum){
+	public ProjektSuMitarbeiter(Projekt fkProjekt, SuMitarbeiter fkSuMitarbeiter, GregorianCalendar startDatum, GregorianCalendar endDatum){
 		super();
-		this.idProjekt = idProjekt;
-		this.idSuMitarbeiter = idSuMitarbeiter;
+		this.fkProjekt = fkProjekt;
+		this.fkSuMitarbeiter = fkSuMitarbeiter;
 		this.startDatum = startDatum;
 		this.endDatum = endDatum;
 	}
@@ -61,29 +61,29 @@ public class ProjektSuMitarbeiter implements Serializable {
 	/**
 	 * @return the idProjekt
 	 */
-	public int getIdProjekt() {
-		return idProjekt;
+	public Projekt getFkProjekt() {
+		return fkProjekt;
 	}
 
 	/**
 	 * @param idProjekt the idProjekt to set
 	 */
-	public void setIdProjekt(int idProjekt) {
-		this.idProjekt = idProjekt;
+	public void setFkProjekt(Projekt fkProjekt) {
+		this.fkProjekt = fkProjekt;
 	}
 
 	/**
 	 * @return the idSuMitarbeiter
 	 */
-	public int getIdSuMitarbeiter() {
-		return idSuMitarbeiter;
+	public SuMitarbeiter getFkSuMitarbeiter() {
+		return fkSuMitarbeiter;
 	}
 
 	/**
 	 * @param idSuMitarbeiter the idSuMitarbeiter to set
 	 */
-	public void setIdSuMitarbeiter(int idSuMitarbeiter) {
-		this.idSuMitarbeiter = idSuMitarbeiter;
+	public void setFkSuMitarbeiter(SuMitarbeiter fkSuMitarbeiter) {
+		this.fkSuMitarbeiter = fkSuMitarbeiter;
 	}
 
 	/**

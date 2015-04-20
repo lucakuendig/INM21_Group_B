@@ -28,7 +28,7 @@ public class Subunternehmen implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	@OneToOne (cascade = CascadeType.PERSIST)
 	private Adresse fkAdresse;
 	private String name;
@@ -45,7 +45,7 @@ public class Subunternehmen implements Serializable {
 	 * @param telefon
 	 * 
 	 */
-	public Subunternehmen(int id, Adresse fkAdresse, String name, String telefon){
+	public Subunternehmen(Integer id, Adresse fkAdresse, String name, String telefon){
 		super();
 		this.id = id;
 		this.fkAdresse = fkAdresse;
@@ -56,14 +56,14 @@ public class Subunternehmen implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

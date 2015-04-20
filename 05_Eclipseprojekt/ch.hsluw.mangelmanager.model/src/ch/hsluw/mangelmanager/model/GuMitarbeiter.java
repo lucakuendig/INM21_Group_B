@@ -28,7 +28,7 @@ public class GuMitarbeiter extends Person implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Login fkLogin;
 	
@@ -45,7 +45,7 @@ public class GuMitarbeiter extends Person implements Serializable {
 	 * 
 	 */
 	
-	public GuMitarbeiter(int id, String nachname, String vorname, String telefon, Login fkLogin){
+	public GuMitarbeiter(Integer id, String nachname, String vorname, String telefon, Login fkLogin){
 		super(nachname, vorname, telefon);
 		this.id = id;
 		this.fkLogin = fkLogin;
@@ -54,14 +54,14 @@ public class GuMitarbeiter extends Person implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

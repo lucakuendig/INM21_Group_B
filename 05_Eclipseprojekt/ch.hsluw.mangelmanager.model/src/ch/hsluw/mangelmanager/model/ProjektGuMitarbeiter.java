@@ -29,10 +29,10 @@ public class ProjektGuMitarbeiter implements Serializable {
 	
 	@Id
 	@ManyToOne (cascade = CascadeType.PERSIST)
-	private int idProjekt;
+	private Projekt fkProjekt;
 	@Id
 	@ManyToOne (cascade = CascadeType.PERSIST)
-	private int idGuMitarbeiter;
+	private GuMitarbeiter fkGuMitarbeiter;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar startDatum;
 	@Temporal(TemporalType.DATE)
@@ -43,17 +43,17 @@ public class ProjektGuMitarbeiter implements Serializable {
 	}
 	
 	/**
-	 * @param idProjekt
-	 * @param idSuMItarbeiter
+	 * @param fkProjekt
+	 * @param fkuMItarbeiter
 	 * @param startDatum
 	 * @param endDatum
 	 * 
 	 */
 	
-	public ProjektGuMitarbeiter(int idProjekt, int idGuMitarbeiter, GregorianCalendar startDatum, GregorianCalendar endDatum){
+	public ProjektGuMitarbeiter(Projekt fkProjekt, GuMitarbeiter fkGuMitarbeiter, GregorianCalendar startDatum, GregorianCalendar endDatum){
 		super();
-		this.idProjekt = idProjekt;
-		this.idGuMitarbeiter = idGuMitarbeiter;
+		this.fkProjekt = fkProjekt;
+		this.fkGuMitarbeiter = fkGuMitarbeiter;
 		this.startDatum = startDatum;
 		this.endDatum = endDatum;
 	}
@@ -61,29 +61,29 @@ public class ProjektGuMitarbeiter implements Serializable {
 	/**
 	 * @return the idProjekt
 	 */
-	public int getIdProjekt() {
-		return idProjekt;
+	public Projekt getFkProjekt() {
+		return fkProjekt;
 	}
 
 	/**
 	 * @param idProjekt the idProjekt to set
 	 */
-	public void setIdProjekt(int idProjekt) {
-		this.idProjekt = idProjekt;
+	public void setFkProjekt(Projekt fkProjekt) {
+		this.fkProjekt = fkProjekt;
 	}
 
 	/**
 	 * @return the idGuMitarbeiter
 	 */
-	public int getIdGuMitarbeiter() {
-		return idGuMitarbeiter;
+	public GuMitarbeiter getFkGuMitarbeiter() {
+		return fkGuMitarbeiter;
 	}
 
 	/**
 	 * @param idGuMitarbeiter the idGuMitarbeiter to set
 	 */
-	public void setIdGuMitarbeiter(int idGuMitarbeiter) {
-		this.idGuMitarbeiter = idGuMitarbeiter;
+	public void setFkGuMitarbeiter(GuMitarbeiter fkGuMitarbeiter) {
+		this.fkGuMitarbeiter = fkGuMitarbeiter;
 	}
 
 	/**

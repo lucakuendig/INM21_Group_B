@@ -5,6 +5,7 @@
 package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ abstract class Person implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String nachname;
 	private String vorname;
 	private String telefon;
@@ -44,11 +45,11 @@ abstract class Person implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
