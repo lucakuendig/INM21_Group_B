@@ -4,6 +4,7 @@
  */
 
 package ch.hsluw.mangelmanager.business;
+import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -95,6 +96,11 @@ public class ProjektManagerImpl implements ProjektManager {
 	@Override
 	public List<Projekt> findByArbeitstyp(String arbeitstyp) {
 		return projektDAO.findProjektByObjekttyp(arbeitstyp);
+	}
+	
+	@Override
+	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum) {
+		return projektDAO.findProjektByDatumFromTillEnd(fromDatum, endDatum);
 	}
 
 

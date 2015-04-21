@@ -33,6 +33,7 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "Projekt.findByBezeichnung", query = "SELECT p FROM Projekt p WHERE p.bezeichnung=:bezeichnung"),
+	@NamedQuery(name = "Projekt.findByDatumFromTillEnd", query = "SELECT p FROM Projekt p WHERE p.startdatum >=:startdatum and p.enddatum <= :enddatum"),
 	@NamedQuery(name = "Projekt.findByBauherr", query = "SELECT p FROM Projekt p join p.fkBauherr b where b.nachname in (:bauherr)"),
 	@NamedQuery(name = "Projekt.findByPlz", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz=:plz"),
 	@NamedQuery(name = "Projekt.findByOrt", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.ort=:ort"),

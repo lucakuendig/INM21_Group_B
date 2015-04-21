@@ -8,6 +8,7 @@ package ch.hsluw.mangelmanager.rmi.projekt;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.business.ProjektManager;
@@ -89,7 +90,13 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 	@Override
 	public List<Projekt> findByArbeitstyp(String arbeitstyp)
 			throws RemoteException {
-		return projektManager.findByObjekttyp(arbeitstyp);
+		return projektManager.findByArbeitstyp(arbeitstyp);
+	}
+	
+	@Override
+	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum)
+			throws RemoteException {
+		return projektManager.findByDatumFromTillEnd(fromDatum,endDatum);
 	}
 
 }

@@ -5,6 +5,7 @@
 
 package ch.hsluw.mangelmanager.business;
 
+import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -127,5 +128,15 @@ public interface ProjektManager {
 	 * @return
 	 */
 	List<Projekt> findByArbeitstyp(String arbeitstyp);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Zeitrahmen zurück, falls
+	 * welche gefunden, sonst eine leere Liste.
+	 * 
+	 * @param fromDatum
+	 * @param endDatum
+	 * @return
+	 */
+	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum);
 }
 

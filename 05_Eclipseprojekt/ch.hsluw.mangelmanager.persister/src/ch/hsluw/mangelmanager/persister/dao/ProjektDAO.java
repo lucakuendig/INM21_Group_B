@@ -6,6 +6,7 @@ package ch.hsluw.mangelmanager.persister.dao;
 
 
 
+import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -123,4 +124,13 @@ public interface ProjektDAO {
 	 * @return
 	 */
 	public List<Projekt> findProjektByArbeitstyp(String arbeitstyp);
+	
+	/**
+	 * Liefert die Liste mit Projekten für den übergebenen Zeitrahmen.
+	 * 
+	 * @param fromDatum
+	 * @param endDatum
+	 * @return
+	 */
+	public List<Projekt> findProjektByDatumFromTillEnd(Date fromDatum, Date endDatum);
 }
