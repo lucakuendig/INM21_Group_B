@@ -43,13 +43,14 @@ public interface ProjektManager {
 	 * @throws Exception
 	 */
 	void delete(Projekt entity) throws Exception;
-
+	
 	/**
-	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * Löscht die Entity mit übergebener Id.
 	 * 
 	 * @param id
-	 * @return
+	 * @throws Exception
 	 */
+	void deleteById(Integer id) throws Exception;
 	
 	/**
 	 * Liefert die Entity für den übergebenen Id-Wert zurück.
@@ -138,5 +139,7 @@ public interface ProjektManager {
 	 * @return
 	 */
 	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum);
+
+	
 }
 

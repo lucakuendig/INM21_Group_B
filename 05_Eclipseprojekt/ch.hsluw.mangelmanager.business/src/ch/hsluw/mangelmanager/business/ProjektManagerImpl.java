@@ -54,6 +54,12 @@ public class ProjektManagerImpl implements ProjektManager {
 	}
 	
 	@Override
+	public void deleteById(Integer id) throws Exception {
+		projektDAO.deleteProjektById(id);
+		
+	}
+	
+	@Override
 	public Projekt findById(Integer id) {
 		return projektDAO.findProjektById(id);
 	}
@@ -102,6 +108,8 @@ public class ProjektManagerImpl implements ProjektManager {
 	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum) {
 		return projektDAO.findProjektByDatumFromTillEnd(fromDatum, endDatum);
 	}
+
+
 
 
 
