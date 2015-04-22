@@ -25,20 +25,19 @@ import javax.persistence.OneToMany;
 public class SuMitarbeiter extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1751601309829678863L;
-	
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@OneToMany (cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Subunternehmen fkSubunternehmen;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
-	
-	public SuMitarbeiter(){
+
+	public SuMitarbeiter() {
 		super();
 	}
-	
+
 	/**
 	 * @param id
 	 * @param nachname
@@ -48,8 +47,9 @@ public class SuMitarbeiter extends Person implements Serializable {
 	 * @param fkLogin
 	 * 
 	 */
-	
-	public SuMitarbeiter(Integer id, String nachname, String vorname, String telefon, Subunternehmen fkSubunternehmen, Login fkLogin){
+
+	public SuMitarbeiter(Integer id, String nachname, String vorname,
+			String telefon, Subunternehmen fkSubunternehmen, Login fkLogin) {
 		super(nachname, vorname, telefon);
 		this.id = id;
 		this.fkSubunternehmen = fkSubunternehmen;
@@ -64,7 +64,8 @@ public class SuMitarbeiter extends Person implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -78,7 +79,8 @@ public class SuMitarbeiter extends Person implements Serializable {
 	}
 
 	/**
-	 * @param fkSubunternehmen the fkSubunternehmen to set
+	 * @param fkSubunternehmen
+	 *            the fkSubunternehmen to set
 	 */
 	public void setFkSubunternehmen(Subunternehmen fkSubunternehmen) {
 		this.fkSubunternehmen = fkSubunternehmen;
@@ -92,11 +94,11 @@ public class SuMitarbeiter extends Person implements Serializable {
 	}
 
 	/**
-	 * @param fkLogin the fkLogin to set
+	 * @param fkLogin
+	 *            the fkLogin to set
 	 */
 	public void setFkLogin(Login fkLogin) {
 		this.fkLogin = fkLogin;
 	}
-	
-	
+
 }

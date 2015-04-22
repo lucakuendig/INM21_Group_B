@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-
 /**
  * Diese Klasse zeigt den Status eines Mangels auf.
  * 
@@ -28,10 +27,8 @@ abstract class Mangelstatus implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	private String bezeichnung;
-	
-	
+
 	public Mangelstatus(Integer id, String bezeichnung) {
-		super();
 		this.id = id;
 		this.bezeichnung = bezeichnung;
 	}
@@ -44,14 +41,8 @@ abstract class Mangelstatus implements Serializable {
 		return id;
 	}
 
-
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
-	
-	
-
-	
-
 
 }

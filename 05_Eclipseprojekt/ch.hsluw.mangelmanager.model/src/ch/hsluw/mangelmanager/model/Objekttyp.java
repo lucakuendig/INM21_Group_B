@@ -25,7 +25,7 @@ public class Objekttyp implements Serializable {
 	private static final long serialVersionUID = 6294667886934890151L;
 
 	@Id
-	@GeneratedValue	
+	@GeneratedValue
 	private int id;
 	private String bezeichnung;
 

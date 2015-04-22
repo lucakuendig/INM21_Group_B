@@ -30,7 +30,7 @@ public class Login implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	
 	private String benutzername;
 	private String passwort;
@@ -42,11 +42,11 @@ public class Login implements Serializable {
 
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

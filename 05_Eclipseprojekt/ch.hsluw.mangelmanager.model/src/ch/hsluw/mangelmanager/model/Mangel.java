@@ -34,8 +34,6 @@ import javax.persistence.NamedQueries;
 		@NamedQuery(name = "Mangel.findByMangelstatus", query = "SELECT p FROM Mangel p WHERE p.fkMangelstatus=:mangelstatus"),
 		@NamedQuery(name = "Mangel.findByBezeichnung", query = "SELECT p FROM Mangel p WHERE p.bezeichnung=:bezeichnung"),
 		@NamedQuery(name = "Mangel.findByAbschlussZeit", query = "SELECT p FROM Mangel p WHERE p.abschlussZeit <= abschlussZeit"), })
-
-
 abstract class Mangel implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
@@ -54,17 +52,19 @@ abstract class Mangel implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Integer fkMangelstatus;
+	private Mangelstatus fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
-	
 
+	public Mangel() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * Constructor
 	 */
 	public Mangel(Integer id, Projekt fkProjekt, String name,
 			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
-			GregorianCalendar faelligkeitsDatum, Integer fkMangelstatus,
+			GregorianCalendar faelligkeitsDatum, Mangelstatus fkMangelstatus,
 			Login fkLogin, String beschreibung) {
 		super();
 		this.id = id;
@@ -78,8 +78,7 @@ abstract class Mangel implements Serializable {
 		this.beschreibung = beschreibung;
 	}
 
-	
-	//Getters and Setters
+	// Getters and Setters
 	/**
 	 * @return the id
 	 */
@@ -173,7 +172,7 @@ abstract class Mangel implements Serializable {
 	/**
 	 * @return the fkMangelstatus
 	 */
-	public Integer getFkMangelstatus() {
+	public Mangelstatus getFkMangelstatus() {
 		return fkMangelstatus;
 	}
 
@@ -181,7 +180,7 @@ abstract class Mangel implements Serializable {
 	 * @param fkMangelstatus
 	 *            the fkMangelstatus to set
 	 */
-	public void setFkMangelstatus(Integer fkMangelstatus) {
+	public void setFkMangelstatus(Mangelstatus fkMangelstatus) {
 		this.fkMangelstatus = fkMangelstatus;
 	}
 
@@ -201,18 +200,18 @@ abstract class Mangel implements Serializable {
 	}
 
 	/**
-	 * @return the bezeichnung
+	 * @return the beschreibung
 	 */
 	public String getBezeichnung() {
 		return beschreibung;
 	}
 
 	/**
-	 * @param bezeichnung
-	 *            the bezeichnung to set
+	 * @param beschreibung
+	 *            the beschreibung to set
 	 */
-	public void setBezeichnung(String bezeichnung) {
-		this.beschreibung = bezeichnung;
+	public void setBezeichnung(String beschreibung) {
+		this.beschreibung = beschreibung;
 	}
 
 }

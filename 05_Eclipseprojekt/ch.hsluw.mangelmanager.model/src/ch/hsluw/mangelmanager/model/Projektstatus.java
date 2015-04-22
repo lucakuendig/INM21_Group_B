@@ -26,7 +26,7 @@ public class Projektstatus implements Serializable {
 
 	@Id
 	@GeneratedValue	
-	private int id;
+	private Integer id;
 	private String bezeichnung;
 	
 	public Projektstatus() {
@@ -37,10 +37,10 @@ public class Projektstatus implements Serializable {
 		this.bezeichnung = bezeichnung;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	

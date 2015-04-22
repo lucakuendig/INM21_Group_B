@@ -29,7 +29,7 @@ public class Adresse implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String strasse;
 	@ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Plz plz;
@@ -46,18 +46,17 @@ public class Adresse implements Serializable {
 	 * 
 	 */
 	public Adresse(String strasse, Plz plz) {
-		super();
 		this.strasse = strasse;
 		this.plz = plz;
 	}
 
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

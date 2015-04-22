@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Meldung implements Serializable {
-	
+
 	/**
 	 * 
 	 */
@@ -19,23 +20,17 @@ public class Meldung implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private Mangel fkMangel;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Meldungstyp fkMeldungstyp;
 
-	private Integer fkMangel;
-	private Integer fkMeldungsTyp;
-	
-	@ManyToOne (cascade = CascadeType.PERSIST)
 	private String text;
-	
 	private boolean quittiert;
-	private Integer fkLogin;
+	private Login fkLogin;
 
-	
-	
-	
-	
 	public Meldung() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Integer getId() {
@@ -46,20 +41,20 @@ public class Meldung implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getFkMangel() {
+	public Mangel getFkMangel() {
 		return fkMangel;
 	}
 
-	public void setFkMangel(Integer fkMangel) {
+	public void setFkMangel(Mangel fkMangel) {
 		this.fkMangel = fkMangel;
 	}
 
-	public Integer getFkMeldungsTyp() {
-		return fkMeldungsTyp;
+	public Meldungstyp getFkMeldungstyp() {
+		return fkMeldungstyp;
 	}
 
-	public void setFkMeldungsTyp(Integer fkMeldungsTyp) {
-		this.fkMeldungsTyp = fkMeldungsTyp;
+	public void setFkMeldungstyp(Meldungstyp fkMeldungstyp) {
+		this.fkMeldungstyp = fkMeldungstyp;
 	}
 
 	public String getText() {
@@ -78,13 +73,12 @@ public class Meldung implements Serializable {
 		this.quittiert = quittiert;
 	}
 
-	public Integer getFkLogin() {
+	public Login getFkLogin() {
 		return fkLogin;
 	}
 
-	public void setFkLogin(Integer fkLogin) {
+	public void setFkLogin(Login fkLogin) {
 		this.fkLogin = fkLogin;
 	}
-	
-	
+
 }

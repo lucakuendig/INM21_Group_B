@@ -51,7 +51,6 @@ public class ProjektSuMitarbeiter implements Serializable {
 	 */
 	
 	public ProjektSuMitarbeiter(Projekt fkProjekt, SuMitarbeiter fkSuMitarbeiter, GregorianCalendar startDatum, GregorianCalendar endDatum){
-		super();
 		this.fkProjekt = fkProjekt;
 		this.fkSuMitarbeiter = fkSuMitarbeiter;
 		this.startDatum = startDatum;

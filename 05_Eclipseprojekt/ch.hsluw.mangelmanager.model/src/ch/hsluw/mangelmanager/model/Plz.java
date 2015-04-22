@@ -24,9 +24,8 @@ public class Plz implements Serializable {
 	private static final long serialVersionUID = 6294667886934890151L;
 
 	@Id
-	private int plz;
+	private Integer plz;
 	private String ort;
-
 
 	public Plz() {
 
@@ -37,17 +36,16 @@ public class Plz implements Serializable {
 	 * @param ort
 	 * 
 	 */
-	public Plz(int plz, String ort) {
+	public Plz(Integer plz, String ort) {
 		this.plz = plz;
 		this.ort = ort;
 	}
-	
 
-	public int getPlz() {
+	public Integer getPlz() {
 		return plz;
 	}
 
-	public void setPlz(int plz) {
+	public void setPlz(Integer plz) {
 		this.plz = plz;
 	}
 

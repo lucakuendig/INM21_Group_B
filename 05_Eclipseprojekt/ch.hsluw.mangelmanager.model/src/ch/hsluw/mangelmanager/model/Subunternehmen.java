@@ -22,22 +22,21 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Subunternehmen implements Serializable {
-	
 
 	private static final long serialVersionUID = -2526718021212938075L;
-	
+
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@OneToOne (cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	private Adresse fkAdresse;
 	private String name;
 	private String telefon;
-	
+
 	public Subunternehmen() {
-		
+
 	}
-	
+
 	/**
 	 * @param id
 	 * @param adresse
@@ -45,7 +44,8 @@ public class Subunternehmen implements Serializable {
 	 * @param telefon
 	 * 
 	 */
-	public Subunternehmen(Integer id, Adresse fkAdresse, String name, String telefon){
+	public Subunternehmen(Integer id, Adresse fkAdresse, String name,
+			String telefon) {
 		super();
 		this.id = id;
 		this.fkAdresse = fkAdresse;
@@ -61,7 +61,8 @@ public class Subunternehmen implements Serializable {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		this.id = id;
@@ -75,7 +76,8 @@ public class Subunternehmen implements Serializable {
 	}
 
 	/**
-	 * @param fkAdresse the fkAdresse to set
+	 * @param fkAdresse
+	 *            the fkAdresse to set
 	 */
 	public void setFkAdresse(Adresse fkAdresse) {
 		this.fkAdresse = fkAdresse;
@@ -89,7 +91,8 @@ public class Subunternehmen implements Serializable {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -103,12 +106,11 @@ public class Subunternehmen implements Serializable {
 	}
 
 	/**
-	 * @param telefon the telefon to set
+	 * @param telefon
+	 *            the telefon to set
 	 */
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
-	
-	
-	
+
 }
