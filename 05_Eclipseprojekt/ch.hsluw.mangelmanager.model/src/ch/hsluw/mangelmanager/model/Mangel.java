@@ -44,8 +44,9 @@ abstract class Mangel implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Integer fkProjekt;
+	private Projekt fkProjekt;
 	private String name;
+	private String beschreibung;
 	@Temporal(TemporalType.TIMESTAMP)
 	private GregorianCalendar erfassungsZeit;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -55,16 +56,16 @@ abstract class Mangel implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Integer fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Integer fkLogin;
-	private String bezeichnung;
+	private Login fkLogin;
+	
 
 	/**
 	 * Constructor
 	 */
-	public Mangel(Integer id, Integer fkProjekt, String name,
+	public Mangel(Integer id, Projekt fkProjekt, String name,
 			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
 			GregorianCalendar faelligkeitsDatum, Integer fkMangelstatus,
-			Integer fkLogin, String bezeichnung) {
+			Login fkLogin, String beschreibung) {
 		super();
 		this.id = id;
 		this.fkProjekt = fkProjekt;
@@ -74,7 +75,7 @@ abstract class Mangel implements Serializable {
 		this.faelligkeitsDatum = faelligkeitsDatum;
 		this.fkMangelstatus = fkMangelstatus;
 		this.fkLogin = fkLogin;
-		this.bezeichnung = bezeichnung;
+		this.beschreibung = beschreibung;
 	}
 
 	
@@ -97,7 +98,7 @@ abstract class Mangel implements Serializable {
 	/**
 	 * @return the fkProjekt
 	 */
-	public Integer getFkProjekt() {
+	public Projekt getFkProjekt() {
 		return fkProjekt;
 	}
 
@@ -105,7 +106,7 @@ abstract class Mangel implements Serializable {
 	 * @param fkProjekt
 	 *            the fkProjekt to set
 	 */
-	public void setFkProjekt(Integer fkProjekt) {
+	public void setFkProjekt(Projekt fkProjekt) {
 		this.fkProjekt = fkProjekt;
 	}
 
@@ -187,7 +188,7 @@ abstract class Mangel implements Serializable {
 	/**
 	 * @return the fkLogin
 	 */
-	public Integer getFkLogin() {
+	public Login getFkLogin() {
 		return fkLogin;
 	}
 
@@ -195,7 +196,7 @@ abstract class Mangel implements Serializable {
 	 * @param fkLogin
 	 *            the fkLogin to set
 	 */
-	public void setFkLogin(Integer fkLogin) {
+	public void setFkLogin(Login fkLogin) {
 		this.fkLogin = fkLogin;
 	}
 
@@ -203,7 +204,7 @@ abstract class Mangel implements Serializable {
 	 * @return the bezeichnung
 	 */
 	public String getBezeichnung() {
-		return bezeichnung;
+		return beschreibung;
 	}
 
 	/**
@@ -211,7 +212,7 @@ abstract class Mangel implements Serializable {
 	 *            the bezeichnung to set
 	 */
 	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+		this.beschreibung = bezeichnung;
 	}
 
 }

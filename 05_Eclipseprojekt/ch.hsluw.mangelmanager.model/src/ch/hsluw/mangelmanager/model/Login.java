@@ -36,7 +36,7 @@ public class Login implements Serializable {
 	private String passwort;
 	private String email;
 	@OneToMany (cascade = CascadeType.PERSIST)
-	private int fkrolle;
+	private Rolle fkrolle;
 
 	public Login() {
 
@@ -74,11 +74,11 @@ public class Login implements Serializable {
 		this.email = email;
 	}
 
-	public int getFkrolle() {
+	public Rolle getFkrolle() {
 		return fkrolle;
 	}
 
-	public void setFkrolle(int fkrolle) {
+	public void setFkrolle(Rolle fkrolle) {
 		this.fkrolle = fkrolle;
 	}
 	
