@@ -5,10 +5,17 @@
 package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 
-import javax.persistence.*; //ändern
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.NamedQueries;
 
 /**
  * Diese Klasse bildet einen Mangel ab.
@@ -40,9 +47,9 @@ abstract class Mangel implements Serializable {
 	private Integer fkProjekt;
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp erfassungsZeit;
+	private GregorianCalendar erfassungsZeit;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Timestamp abschlussZeit;
+	private GregorianCalendar abschlussZeit;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -55,7 +62,7 @@ abstract class Mangel implements Serializable {
 	 * Constructor
 	 */
 	public Mangel(Integer id, Integer fkProjekt, String name,
-			Timestamp erfassungsZeit, Timestamp abschlussZeit,
+			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
 			GregorianCalendar faelligkeitsDatum, Integer fkMangelstatus,
 			Integer fkLogin, String bezeichnung) {
 		super();
@@ -120,7 +127,7 @@ abstract class Mangel implements Serializable {
 	/**
 	 * @return the erfassungsZeit
 	 */
-	public Timestamp getErfassungsZeit() {
+	public GregorianCalendar getErfassungsZeit() {
 		return erfassungsZeit;
 	}
 
@@ -128,14 +135,14 @@ abstract class Mangel implements Serializable {
 	 * @param erfassungsZeit
 	 *            the erfassungsZeit to set
 	 */
-	public void setErfassungsZeit(Timestamp erfassungsZeit) {
+	public void setErfassungsZeit(GregorianCalendar erfassungsZeit) {
 		this.erfassungsZeit = erfassungsZeit;
 	}
 
 	/**
 	 * @return the abschlussZeit
 	 */
-	public Timestamp getAbschlussZeit() {
+	public GregorianCalendar getAbschlussZeit() {
 		return abschlussZeit;
 	}
 
@@ -143,7 +150,7 @@ abstract class Mangel implements Serializable {
 	 * @param abschlussZeit
 	 *            the abschlussZeit to set
 	 */
-	public void setAbschlussZeit(Timestamp abschlussZeit) {
+	public void setAbschlussZeit(GregorianCalendar abschlussZeit) {
 		this.abschlussZeit = abschlussZeit;
 	}
 
