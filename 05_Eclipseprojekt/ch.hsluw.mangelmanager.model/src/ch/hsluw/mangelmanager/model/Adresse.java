@@ -31,15 +31,13 @@ public class Adresse implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	private String strasse;
-	@ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Plz plz;
-
 
 	public Adresse() {
 
 	}
 
-	
 	/**
 	 * @param strasse
 	 * @param plz
@@ -50,38 +48,48 @@ public class Adresse implements Serializable {
 		this.plz = plz;
 	}
 
-
+	/**
+	 * @return the id
+	 */
 	public Integer getId() {
 		return id;
 	}
 
-
+	/**
+	 * @param id
+	 *            the id to set
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
+	/**
+	 * @return the strasse
+	 */
 	public String getStrasse() {
 		return strasse;
 	}
 
-
+	/**
+	 * @param strasse
+	 *            the strasse to set
+	 */
 	public void setStrasse(String strasse) {
 		this.strasse = strasse;
 	}
 
-
+	/**
+	 * @return the plz
+	 */
 	public Plz getPlz() {
 		return plz;
 	}
 
-
+	/**
+	 * @param plz
+	 *            the plz to set
+	 */
 	public void setPlz(Plz plz) {
 		this.plz = plz;
 	}
-
-	
-
-	
-
 }

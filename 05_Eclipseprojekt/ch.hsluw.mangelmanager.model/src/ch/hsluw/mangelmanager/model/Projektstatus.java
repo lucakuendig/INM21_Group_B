@@ -32,25 +32,44 @@ public class Projektstatus implements Serializable {
 	public Projektstatus() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	/**
+	 * @param bezeichnung
+	 */
 	public Projektstatus(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
-	
+
+	/**
+	 * @return the id
+	 */
 	public Integer getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
+	/**
+	 * @return the bezeichnung
+	 */
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
-	
+
+	/**
+	 * @param bezeichnung the bezeichnung to set
+	 */
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
+	
+	
+
 	
 	
 

@@ -75,6 +75,17 @@ public class Projekt implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param fkAdresse
+	 * @param bezeichnung
+	 * @param fkBauherr
+	 * @param startDatum
+	 * @param endDatum
+	 * @param fkObjekttyp
+	 * @param fkArbeitstyp
+	 * @param faelligkeitsDatum
+	 * @param fkProjektstatus
+	 */
 	public Projekt(Adresse fkAdresse, String bezeichnung,
 			List<Bauherr> fkBauherr, GregorianCalendar startDatum,
 			GregorianCalendar endDatum, Objekttyp fkObjekttyp,
@@ -92,84 +103,147 @@ public class Projekt implements Serializable {
 		this.fkProjektstatus = fkProjektstatus;
 	}
 
+	/**
+	 * @return the id
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the fkAdresse
+	 */
 	public Adresse getFkAdresse() {
 		return fkAdresse;
 	}
 
+	/**
+	 * @param fkAdresse the fkAdresse to set
+	 */
 	public void setFkAdresse(Adresse fkAdresse) {
 		this.fkAdresse = fkAdresse;
 	}
 
+	/**
+	 * @return the bezeichnung
+	 */
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
 
+	/**
+	 * @param bezeichnung the bezeichnung to set
+	 */
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
 
+	/**
+	 * @return the fkBauherr
+	 */
 	public List<Bauherr> getFkBauherr() {
 		return fkBauherr;
 	}
 
+	/**
+	 * @param fkBauherr the fkBauherr to set
+	 */
 	public void setFkBauherr(List<Bauherr> fkBauherr) {
 		this.fkBauherr = fkBauherr;
 	}
 
-	public Objekttyp getFkObjekttyp() {
-		return fkObjekttyp;
-	}
-
-	public void setFkObjekttyp(Objekttyp fkObjekttyp) {
-		this.fkObjekttyp = fkObjekttyp;
-	}
-
+	/**
+	 * @return the startDatum
+	 */
 	public GregorianCalendar getStartDatum() {
 		return startDatum;
 	}
 
+	/**
+	 * @param startDatum the startDatum to set
+	 */
 	public void setStartDatum(GregorianCalendar startDatum) {
 		this.startDatum = startDatum;
 	}
 
+	/**
+	 * @return the endDatum
+	 */
 	public GregorianCalendar getEndDatum() {
 		return endDatum;
 	}
 
+	/**
+	 * @param endDatum the endDatum to set
+	 */
 	public void setEndDatum(GregorianCalendar endDatum) {
 		this.endDatum = endDatum;
 	}
 
+	/**
+	 * @return the fkObjekttyp
+	 */
+	public Objekttyp getFkObjekttyp() {
+		return fkObjekttyp;
+	}
+
+	/**
+	 * @param fkObjekttyp the fkObjekttyp to set
+	 */
+	public void setFkObjekttyp(Objekttyp fkObjekttyp) {
+		this.fkObjekttyp = fkObjekttyp;
+	}
+
+	/**
+	 * @return the fkArbeitstyp
+	 */
 	public Arbeitstyp getFkArbeitstyp() {
 		return fkArbeitstyp;
 	}
 
+	/**
+	 * @param fkArbeitstyp the fkArbeitstyp to set
+	 */
 	public void setFkArbeitstyp(Arbeitstyp fkArbeitstyp) {
 		this.fkArbeitstyp = fkArbeitstyp;
 	}
 
+	/**
+	 * @return the faelligkeitsDatum
+	 */
 	public GregorianCalendar getFaelligkeitsDatum() {
 		return faelligkeitsDatum;
 	}
 
+	/**
+	 * @param faelligkeitsDatum the faelligkeitsDatum to set
+	 */
 	public void setFaelligkeitsDatum(GregorianCalendar faelligkeitsDatum) {
 		this.faelligkeitsDatum = faelligkeitsDatum;
 	}
 
+	/**
+	 * @return the fkProjektstatus
+	 */
 	public Projektstatus getFkProjektstatus() {
 		return fkProjektstatus;
 	}
 
+	/**
+	 * @param fkProjektstatus the fkProjektstatus to set
+	 */
 	public void setFkProjektstatus(Projektstatus fkProjektstatus) {
 		this.fkProjektstatus = fkProjektstatus;
 	}
+
+
+	
 
 }

@@ -33,24 +33,43 @@ public class Objekttyp implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	/**
+	 * @param bezeichnung
+	 */
 	public Objekttyp(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
 
+
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the bezeichnung
+	 */
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
 
+	/**
+	 * @param bezeichnung the bezeichnung to set
+	 */
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
+
+	
 
 }

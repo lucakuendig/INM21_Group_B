@@ -41,18 +41,32 @@ public class Plz implements Serializable {
 		this.ort = ort;
 	}
 
+	/**
+	 * @return the plz
+	 */
 	public Integer getPlz() {
 		return plz;
 	}
 
+	/**
+	 * @param plz
+	 *            the plz to set
+	 */
 	public void setPlz(Integer plz) {
 		this.plz = plz;
 	}
 
+	/**
+	 * @return the ort
+	 */
 	public String getOrt() {
 		return ort;
 	}
 
+	/**
+	 * @param ort
+	 *            the ort to set
+	 */
 	public void setOrt(String ort) {
 		this.ort = ort;
 	}
