@@ -42,6 +42,11 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 	}
 
 	@Override
+	public void deleteById(Integer id) throws Exception {
+		projektManager.deleteById(id);	
+	}
+	
+	@Override
 	public Projekt findById(Integer id) throws RemoteException {
 		return projektManager.findById(id);
 	}
@@ -98,5 +103,7 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 			throws RemoteException {
 		return projektManager.findByDatumFromTillEnd(fromDatum,endDatum);
 	}
+
+	
 
 }
