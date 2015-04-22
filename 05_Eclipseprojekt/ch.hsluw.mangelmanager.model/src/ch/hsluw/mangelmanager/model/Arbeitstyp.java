@@ -10,6 +10,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Diese Klasse bildet ein Arbeitstyp ab.
@@ -20,20 +22,21 @@ import javax.persistence.Id;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Arbeitstyp.findByBezeichnung", query = "SELECT a FROM Arbeitstyp a WHERE a.bezeichnung=:bezeichnung")})
 public class Arbeitstyp implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Integer id;
 	private String bezeichnung;
 
 	public Arbeitstyp() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	/**
 	 * @param bezeichnung
 	 */
@@ -41,11 +44,10 @@ public class Arbeitstyp implements Serializable {
 		this.bezeichnung = bezeichnung;
 	}
 
-
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -53,7 +55,7 @@ public class Arbeitstyp implements Serializable {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
