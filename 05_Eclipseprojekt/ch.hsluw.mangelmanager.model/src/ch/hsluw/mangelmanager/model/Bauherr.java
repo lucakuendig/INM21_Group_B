@@ -37,26 +37,47 @@ public class Bauherr extends Person implements Serializable {
 		super();
 	}
 
+	/**
+	 * 
+	 * @param nachname
+	 * @param vorname
+	 * @param telefon
+	 * @param fkAdresse
+	 */
 	public Bauherr(String nachname, String vorname, String telefon,
 			Adresse fkAdresse) {
 		super(nachname, vorname, telefon);
 		this.fkAdresse = fkAdresse;
 	}
 
+	/**
+	 * @return the id
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the fkAdresse
+	 */
 	public Adresse getFkAdresse() {
 		return fkAdresse;
 	}
 
+	/**
+	 * @param fkAdresse the fkAdresse to set
+	 */
 	public void setFkAdresse(Adresse fkAdresse) {
 		this.fkAdresse = fkAdresse;
 	}
+
+
 
 }
