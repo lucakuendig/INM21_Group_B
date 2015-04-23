@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.dao.SuMitarbeiterDAO;
 import ch.hsluw.mangelmanager.persister.dao.SuMitarbeiterDAOImpl;
 
@@ -51,5 +52,21 @@ public class SuMitarbeiterManagerImpl implements SuMitarbeiterManager {
 	@Override
 	public void delete(SuMitarbeiter entity) throws Exception {
 		suMitarbeiterDAO.delete(entity);
+	}
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		suMitarbeiterDAO.deleteSuMitarbeiterById(id);
+		
+	}
+	
+	@Override
+	public SuMitarbeiter findById(Integer id) {
+		return suMitarbeiterDAO.findSuMitarbeiterById(id);
+	}
+
+	@Override
+	public List<SuMitarbeiter> findAll() {
+		return suMitarbeiterDAO.findAllSuMitarbeiter();
 	}
 }

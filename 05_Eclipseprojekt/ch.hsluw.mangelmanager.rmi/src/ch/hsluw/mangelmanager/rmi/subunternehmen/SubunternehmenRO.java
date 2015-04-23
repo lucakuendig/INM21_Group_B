@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 
 
@@ -54,4 +55,29 @@ public interface SubunternehmenRO extends Remote {
 	 * @throws Exception
 	 */
 	void delete(Subunternehmen entity) throws RemoteException, Exception;
+	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
+	Subunternehmen findById(Integer id) throws RemoteException;
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	List<Subunternehmen> findAll() throws RemoteException;
 }

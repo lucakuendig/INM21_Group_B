@@ -14,6 +14,7 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.SubunternehmenManager;
 import ch.hsluw.mangelmanager.business.SubunternehmenManagerImpl;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class SubunternehmenROImpl extends UnicastRemoteObject implements SubunternehmenRO {
 
@@ -40,5 +41,20 @@ public class SubunternehmenROImpl extends UnicastRemoteObject implements Subunte
 	public void delete(Subunternehmen entity) throws RemoteException, Exception {
 		subunternehmenManager.delete(entity);
 	}
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		subunternehmenManager.deleteById(id);	
+	}
+	
+	@Override
+	public Subunternehmen findById(Integer id) throws RemoteException {
+		return subunternehmenManager.findById(id);
+	}
+
+	@Override
+	public List<Subunternehmen> findAll() throws RemoteException {
+		return subunternehmenManager.findAll();
+	}	
 
 }

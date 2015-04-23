@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.dao.ProjektSuMitarbeiterDAO;
 import ch.hsluw.mangelmanager.persister.dao.ProjektSuMitarbeiterDAOImpl;
@@ -51,5 +52,21 @@ public class ProjektSuMitarbeiterManagerImpl implements ProjektSuMitarbeiterMana
 	@Override
 	public void delete(ProjektSuMitarbeiter entity) throws Exception {
 		projektSuMitarbeiterDAO.delete(entity);
+	}
+	
+	@Override
+	public void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception {
+		projektSuMitarbeiterDAO.deleteProjektSuMitarbeiterById(idProjekt, idMitarbeiter);
+		
+	}
+	
+	@Override
+	public ProjektSuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) {
+		return projektSuMitarbeiterDAO.findProjektSuMitarbeiterById(idProjekt, idMitarbeiter);
+	}
+
+	@Override
+	public List<ProjektSuMitarbeiter> findAll() {
+		return projektSuMitarbeiterDAO.findAllProjektSuMitarbeiter();
 	}
 }

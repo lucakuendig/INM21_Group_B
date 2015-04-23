@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -38,5 +39,19 @@ public class SubunternehmenDAOImpl implements SubunternehmenDAO {
 	@Override
 	public void delete(Subunternehmen entity) throws Exception {
 		new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).delete(entity);
+	}
+	@Override
+	public void deleteSubunternehmenById(Integer id) throws Exception {
+		new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).deleteById(id);
+	}
+
+	@Override
+	public Subunternehmen findSubunternehmenById(Integer id) {
+		return new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).findById(id);
+	}
+
+	@Override
+	public List<Subunternehmen> findAllSubunternehmen() {
+		return new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).findAll();
 	}
 }

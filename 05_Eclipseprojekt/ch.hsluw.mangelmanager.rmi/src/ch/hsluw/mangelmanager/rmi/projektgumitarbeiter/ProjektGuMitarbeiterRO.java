@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 
 
@@ -54,4 +55,29 @@ public interface ProjektGuMitarbeiterRO extends Remote {
 	 * @throws Exception
 	 */
 	void delete(ProjektGuMitarbeiter entity) throws RemoteException, Exception;
+	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
+	
+	/**
+	 * Liefert die Entity für die übergebenen Werte zurück.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
+	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws RemoteException;
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	List<ProjektGuMitarbeiter> findAll() throws RemoteException;
 }

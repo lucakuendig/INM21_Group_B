@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 
 /**
  * Interface fuer ProjektSuMitarbeiter Entity
@@ -43,4 +44,21 @@ public interface ProjektSuMitarbeiterManager {
 	 * @throws Exception
 	 */
 	void delete(ProjektSuMitarbeiter entity) throws Exception;
+	
+void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
+	
+	/**
+	 * Liefert die Entity für die übergebenen Werte zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	ProjektSuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<ProjektSuMitarbeiter> findAll();
 }

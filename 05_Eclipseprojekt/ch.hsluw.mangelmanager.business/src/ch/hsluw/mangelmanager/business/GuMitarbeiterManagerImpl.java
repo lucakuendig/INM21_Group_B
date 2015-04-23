@@ -52,4 +52,20 @@ public class GuMitarbeiterManagerImpl implements GuMitarbeiterManager {
 	public void delete(GuMitarbeiter entity) throws Exception {
 		guMitarbeiterDAO.delete(entity);
 	}
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		guMitarbeiterDAO.deleteGuMitarbeiterById(id);
+		
+	}
+	
+	@Override
+	public GuMitarbeiter findById(Integer id) {
+		return guMitarbeiterDAO.findGuMitarbeiterById(id);
+	}
+
+	@Override
+	public List<GuMitarbeiter> findAll() {
+		return guMitarbeiterDAO.findAllGuMitarbeiter();
+	}
 }

@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 
 /**
  * Interface fuer Subunternehmen Mitarbeiter Entity
@@ -44,4 +45,21 @@ public interface SuMitarbeiterDAO {
 	 * @throws Exception
 	 */
 	void delete(SuMitarbeiter entity) throws Exception;
+	
+	void deleteSuMitarbeiterById(Integer id) throws Exception;
+
+	/**
+	 * Liefert die SuMitarbeiter-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	SuMitarbeiter findSuMitarbeiterById(Integer id);
+
+	/**
+	 * Liefert alle SuMitarbeiter-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<SuMitarbeiter> findAllSuMitarbeiter();
 }

@@ -44,4 +44,22 @@ public interface GuMitarbeiterDAO {
 	 * @throws Exception
 	 */
 	void delete(GuMitarbeiter entity) throws Exception;
+	
+	void deleteGuMitarbeiterById(Integer id) throws Exception;
+
+	/**
+	 * Liefert die GuMitarbeiter-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	GuMitarbeiter findGuMitarbeiterById(Integer id);
+
+	/**
+	 * Liefert alle GuMitarbeiter-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<GuMitarbeiter> findAllGuMitarbeiter();
+	
 }

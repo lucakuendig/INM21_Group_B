@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * Interface fuer Subunternehmen Entity
@@ -44,4 +45,21 @@ public interface SubunternehmenDAO {
 	 * @throws Exception
 	 */
 	void delete(Subunternehmen entity) throws Exception;
+	
+	void deleteSubunternehmenById(Integer id) throws Exception;
+
+	/**
+	 * Liefert die Subunternehmen-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Subunternehmen findSubunternehmenById(Integer id);
+
+	/**
+	 * Liefert alle Subunternehmen-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Subunternehmen> findAllSubunternehmen();
 }

@@ -43,4 +43,22 @@ public interface SuMitarbeiterManager {
 	 * @throws Exception
 	 */
 	void delete(SuMitarbeiter entity) throws Exception;
+	
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	SuMitarbeiter findById(Integer id);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<SuMitarbeiter> findAll();
+	
 }

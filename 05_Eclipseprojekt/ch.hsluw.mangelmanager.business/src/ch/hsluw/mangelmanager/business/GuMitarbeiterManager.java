@@ -43,4 +43,21 @@ public interface GuMitarbeiterManager {
 	 * @throws Exception
 	 */
 	void delete(GuMitarbeiter entity) throws Exception;
+	
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	GuMitarbeiter findById(Integer id);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<GuMitarbeiter> findAll();
 }

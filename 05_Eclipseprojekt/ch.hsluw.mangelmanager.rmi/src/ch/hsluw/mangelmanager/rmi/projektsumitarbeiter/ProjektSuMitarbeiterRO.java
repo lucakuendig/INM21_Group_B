@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 
 
 
@@ -54,4 +55,29 @@ public interface ProjektSuMitarbeiterRO extends Remote {
 	 * @throws Exception
 	 */
 	void delete(ProjektSuMitarbeiter entity) throws RemoteException, Exception;
+	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
+	
+	/**
+	 * Liefert die Entity für die übergebenen Werte zurück.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
+	ProjektSuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws RemoteException;
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	List<ProjektSuMitarbeiter> findAll() throws RemoteException;
 }

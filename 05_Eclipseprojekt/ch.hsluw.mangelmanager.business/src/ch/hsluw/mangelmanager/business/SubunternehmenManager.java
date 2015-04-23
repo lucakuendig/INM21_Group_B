@@ -43,4 +43,21 @@ public interface SubunternehmenManager {
 	 * @throws Exception
 	 */
 	void delete(Subunternehmen entity) throws Exception;
+	
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Subunternehmen findById(Integer id);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Subunternehmen> findAll();
 }

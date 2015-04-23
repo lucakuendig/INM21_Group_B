@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -38,5 +39,20 @@ public class ProjektSuMitarbeiterDAOImpl implements ProjektSuMitarbeiterDAO {
 	@Override
 	public void delete(ProjektSuMitarbeiter entity) throws Exception {
 		new GenericPersisterImpl<ProjektSuMitarbeiter>(ProjektSuMitarbeiter.class).delete(entity);
+	}
+	
+	@Override
+	public void deleteProjektSuMitarbeiterById(Integer idProjekt, Integer idMitarbeiter) throws Exception {
+		new GenericPersisterImpl<ProjektSuMitarbeiter>(ProjektSuMitarbeiter.class).deleteById(idProjekt, idMitarbeiter);
+	}
+
+	@Override
+	public ProjektSuMitarbeiter findProjektSuMitarbeiterById(Integer idProjekt, Integer idMitarbeiter) {
+		return new GenericPersisterImpl<ProjektSuMitarbeiter>(ProjektSuMitarbeiter.class).findById(idProjekt, idMitarbeiter);
+	}
+
+	@Override
+	public List<ProjektSuMitarbeiter> findAllProjektSuMitarbeiter() {
+		return new GenericPersisterImpl<ProjektSuMitarbeiter>(ProjektSuMitarbeiter.class).findAll();
 	}
 }

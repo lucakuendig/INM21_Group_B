@@ -14,6 +14,7 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.SuMitarbeiterManager;
 import ch.hsluw.mangelmanager.business.SuMitarbeiterManagerImpl;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 
 public class SuMitarbeiterROImpl extends UnicastRemoteObject implements SuMitarbeiterRO {
 
@@ -41,4 +42,19 @@ public class SuMitarbeiterROImpl extends UnicastRemoteObject implements SuMitarb
 		suMitarbeiterManager.delete(entity);
 	}
 
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		suMitarbeiterManager.deleteById(id);	
+	}
+	
+	@Override
+	public SuMitarbeiter findById(Integer id) throws RemoteException {
+		return suMitarbeiterManager.findById(id);
+	}
+
+	@Override
+	public List<SuMitarbeiter> findAll() throws RemoteException {
+		return suMitarbeiterManager.findAll();
+	}
 }

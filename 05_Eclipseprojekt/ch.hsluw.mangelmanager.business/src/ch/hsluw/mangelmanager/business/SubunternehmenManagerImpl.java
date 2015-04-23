@@ -52,4 +52,20 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	public void delete(Subunternehmen entity) throws Exception {
 		subunternehmenDAO.delete(entity);
 	}
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		subunternehmenDAO.deleteSubunternehmenById(id);
+		
+	}
+	
+	@Override
+	public Subunternehmen findById(Integer id) {
+		return subunternehmenDAO.findSubunternehmenById(id);
+	}
+
+	@Override
+	public List<Subunternehmen> findAll() {
+		return subunternehmenDAO.findAllSubunternehmen();
+	}
 }

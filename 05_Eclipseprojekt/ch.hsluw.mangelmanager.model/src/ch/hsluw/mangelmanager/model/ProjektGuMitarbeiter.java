@@ -32,7 +32,7 @@ public class ProjektGuMitarbeiter implements Serializable {
 	private Projekt fkProjekt;
 	@Id
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	private GuMitarbeiter fkGuMitarbeiter;
+	private GuMitarbeiter fkMitarbeiter;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar startDatum;
 	@Temporal(TemporalType.DATE)
@@ -51,11 +51,11 @@ public class ProjektGuMitarbeiter implements Serializable {
 	 */
 
 	public ProjektGuMitarbeiter(Projekt fkProjekt,
-			GuMitarbeiter fkGuMitarbeiter, GregorianCalendar startDatum,
+			GuMitarbeiter fkMitarbeiter, GregorianCalendar startDatum,
 			GregorianCalendar endDatum) {
 		super();
 		this.fkProjekt = fkProjekt;
-		this.fkGuMitarbeiter = fkGuMitarbeiter;
+		this.fkMitarbeiter = fkMitarbeiter;
 		this.startDatum = startDatum;
 		this.endDatum = endDatum;
 	}
@@ -79,15 +79,15 @@ public class ProjektGuMitarbeiter implements Serializable {
 	 * @return the idGuMitarbeiter
 	 */
 	public GuMitarbeiter getFkGuMitarbeiter() {
-		return fkGuMitarbeiter;
+		return fkMitarbeiter;
 	}
 
 	/**
 	 * @param idGuMitarbeiter
 	 *            the idGuMitarbeiter to set
 	 */
-	public void setFkGuMitarbeiter(GuMitarbeiter fkGuMitarbeiter) {
-		this.fkGuMitarbeiter = fkGuMitarbeiter;
+	public void setFkGuMitarbeiter(GuMitarbeiter fkMitarbeiter) {
+		this.fkMitarbeiter = fkMitarbeiter;
 	}
 
 	/**
