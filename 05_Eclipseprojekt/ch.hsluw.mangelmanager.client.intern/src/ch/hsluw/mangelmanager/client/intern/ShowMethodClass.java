@@ -30,12 +30,12 @@ public class ShowMethodClass extends Application {
 	public void test() {
 		// showLogin();
 		// showMangel();
-		 showInnerMangel();
+		// showInnerMangel();
 		// showMeldung();
 		// showInnerMeldung();
 		//showPerson();
 		// showInnerPerson();
-		// showProjekt();
+		 showProjekt();
 		// showInnerProjekt();
 		// showUnternehmen();
 		// showInnerUnternehmen();
