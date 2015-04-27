@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.AdresseManager;
-import ch.hsluw.mangelmanager.business.AdresseManagerImpl;
+import ch.hsluw.mangelmanager.business.adresse.AdresseManager;
+import ch.hsluw.mangelmanager.business.adresse.AdresseManagerImpl;
 import ch.hsluw.mangelmanager.model.Adresse;
 
 public class AdresseROImpl extends UnicastRemoteObject implements AdresseRO {

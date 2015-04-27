@@ -1,0 +1,68 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is behind 'origin/master' by 4 commits, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+# Changes to be committed:
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ArbeitstypManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ArbeitstypManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/BauherrManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/BauherrManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/GuMitarbeiterManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/GuMitarbeiterManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/LoginManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/LoginManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelstatusManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelstatusManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungstypManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungstypManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ObjekttypManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ObjekttypManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/PlzManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/PlzManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektGuMitarbeiterManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektGuMitarbeiterManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektSuMitarbeiterManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektSuMitarbeiterManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektstatusManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektstatusManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/RolleManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/RolleManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SuMitarbeiterManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SuMitarbeiterManagerImpl.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SubunternehmenManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SubunternehmenManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/AdresseManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/adresse/AdresseManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/AdresseManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/adresse/AdresseManagerImpl.java
+#	modified:   05_Eclipseprojekt/ch.hsluw.mangelmanager.business/test/ch/hsluw/mangelmanager/business/ProjektTest.java
+#	modified:   05_Eclipseprojekt/ch.hsluw.mangelmanager.rmi/src/ch/hsluw/mangelmanager/rmi/adresse/AdresseROImpl.java
+#
+# Untracked files:
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/arbeitstyp/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/bauherr/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/gumitarbeiter/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/login/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangel/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangelstatus/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldung/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldungstyp/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/objekttyp/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/plz/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projekt/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektgumitarbeiter/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektstatus/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektsumitarbeiter/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/rolle/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/subunternehmen/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/sumitarbeiter/
+#	05_Eclipseprojekt/ch.hsluw.mangelmanager.rmi/src/ch/hsluw/mangelmanager/rmi/meldung/
+#
+

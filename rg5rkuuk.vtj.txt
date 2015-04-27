@@ -1,0 +1,52 @@
+﻿#added business packages
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektSuMitarbeiterManager.java
+#	deleted:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektSuMitarbeiterManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/AdresseManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/adresse/AdresseManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/AdresseManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/adresse/AdresseManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ArbeitstypManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/arbeitstyp/ArbeitstypManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ArbeitstypManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/arbeitstyp/ArbeitstypManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/BauherrManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/bauherr/BauherrManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/BauherrManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/bauherr/BauherrManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/GuMitarbeiterManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/gumitarbeiter/GuMitarbeiterManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/GuMitarbeiterManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/gumitarbeiter/GuMitarbeiterManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/LoginManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/login/LoginManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/LoginManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/login/LoginManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangel/MangelManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangel/MangelManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelstatusManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangelstatus/MangelstatusManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MangelstatusManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/mangelstatus/MangelstatusManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldung/MeldungManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldung/MeldungManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungstypManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldungstyp/MeldungstypManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/MeldungstypManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/meldungstyp/MeldungstypManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ObjekttypManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/objekttyp/ObjekttypManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ObjekttypManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/objekttyp/ObjekttypManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/PlzManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/plz/PlzManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/PlzManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/plz/PlzManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projekt/ProjektManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projekt/ProjektManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektGuMitarbeiterManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektgumitarbeiter/ProjektGuMitarbeiterManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektGuMitarbeiterManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektgumitarbeiter/ProjektGuMitarbeiterManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektstatusManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektstatus/ProjektstatusManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/ProjektstatusManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektstatus/ProjektstatusManagerImpl.java
+#	new file:   05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektsumitarbeiter/ProjektstatusManager.java
+#	new file:   05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/projektsumitarbeiter/ProjektstatusManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/RolleManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/rolle/RolleManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/RolleManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/rolle/RolleManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SubunternehmenManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/subunternehmen/SubunternehmenManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SubunternehmenManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/subunternehmen/SubunternehmenManagerImpl.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SuMitarbeiterManager.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/sumitarbeiter/SuMitarbeiterManager.java
+#	renamed:    05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/SuMitarbeiterManagerImpl.java -> 05_Eclipseprojekt/ch.hsluw.mangelmanager.business/src/ch/hsluw/mangelmanager/business/sumitarbeiter/SuMitarbeiterManagerImpl.java
+#	modified:   05_Eclipseprojekt/ch.hsluw.mangelmanager.business/test/ch/hsluw/mangelmanager/business/ProjektTest.java
+#	modified:   05_Eclipseprojekt/ch.hsluw.mangelmanager.rmi/src/ch/hsluw/mangelmanager/rmi/adresse/AdresseROImpl.java
+#
+# Untracked files:
+#	vip02p3x.fbw.txt
+#
+

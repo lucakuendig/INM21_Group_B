@@ -3,22 +3,22 @@
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft
  */
 
-package ch.hsluw.mangelmanager.business;
+package ch.hsluw.mangelmanager.business.projektgumitarbeiter;
 
 import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+
 
 /**
- * Interface fuer ProjektSuMitarbeiter Entity
+ * Interface fuer ProjektGuMitarbeiterGuMitarbeiter Entity
  * 
  * @version 1.0
  * @author lkuendig
  * 
  */
-public interface ProjektSuMitarbeiterManager {
+public interface ProjektGuMitarbeiterManager {
 	/**
 	 * Speichert die übergebene Entity.
 	 * 
@@ -26,7 +26,7 @@ public interface ProjektSuMitarbeiterManager {
 	 * @return
 	 * @throws Exception
 	 */
-	ProjektSuMitarbeiter add(ProjektSuMitarbeiter entity) throws Exception;
+	ProjektGuMitarbeiter add(ProjektGuMitarbeiter entity) throws Exception;
 
 	/**
 	 * Updatet die übergebene Entity.
@@ -35,7 +35,7 @@ public interface ProjektSuMitarbeiterManager {
 	 * @return
 	 * @throws Exception
 	 */
-	ProjektSuMitarbeiter update(ProjektSuMitarbeiter entity) throws Exception;
+	ProjektGuMitarbeiter update(ProjektGuMitarbeiter entity) throws Exception;
 
 	/**
 	 * Löscht die übergebene Entity.
@@ -43,9 +43,9 @@ public interface ProjektSuMitarbeiterManager {
 	 * @param entity
 	 * @throws Exception
 	 */
-	void delete(ProjektSuMitarbeiter entity) throws Exception;
+	void delete(ProjektGuMitarbeiter entity) throws Exception;
 	
-void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
+	void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
 	
 	/**
 	 * Liefert die Entity für die übergebenen Werte zurück.
@@ -53,12 +53,12 @@ void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
 	 * @param id
 	 * @return
 	 */
-	ProjektSuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
+	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
 
 	/**
 	 * Liefert alle Entity-Objekte zurück.
 	 * 
 	 * @return
 	 */
-	List<ProjektSuMitarbeiter> findAll();
+	List<ProjektGuMitarbeiter> findAll();
 }

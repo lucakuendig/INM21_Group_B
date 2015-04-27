@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import ch.hsluw.mangelmanager.business.projekt.ProjektManager;
+import ch.hsluw.mangelmanager.business.projekt.ProjektManagerImpl;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -14,6 +16,7 @@ import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
+
 
 /**
  * Interface fuer Projekt Entity
