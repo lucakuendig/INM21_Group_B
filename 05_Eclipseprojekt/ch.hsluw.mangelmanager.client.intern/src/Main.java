@@ -1,3 +1,5 @@
+
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -34,7 +36,7 @@ public class Main extends Application {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/root/Root.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/intern/root/Root.fxml"));
 			rootLayout = (BorderPane) loader.load();
 
 			// Show the scene containing the root layout.
@@ -54,7 +56,7 @@ public class Main extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/person/outer/AusserePerson.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/intern/person/outer/AusserePerson.fxml"));
 			AnchorPane Personen = (AnchorPane) loader.load();
 			rootLayout.setCenter(Personen);
 
@@ -68,7 +70,7 @@ public class Main extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/unternehmen/outer/AusseresUnternehmen.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/intern/unternehmen/outer/AusseresUnternehmen.fxml"));
 			AnchorPane Personen = (AnchorPane) loader.load();
 			rootLayout.setCenter(Personen);
 
@@ -82,7 +84,7 @@ public class Main extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/person/inner/InnerePerson.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/intern/person/inner/InnerePerson.fxml"));
 			AnchorPane Personen = (AnchorPane) loader.load();
 			rootLayout.setCenter(Personen);
 
@@ -96,7 +98,7 @@ public class Main extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/meldung/inner/InnereMeldung.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/intern/meldung/inner/InnereMeldung.fxml"));
 			AnchorPane Personen = (AnchorPane) loader.load();
 			rootLayout.setCenter(Personen);
 
@@ -110,7 +112,7 @@ public class Main extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("issuemanager/gui/meldung/inner/InnereMangel.fxml"));
+					.getResource("ch/hsluw/mangelmanager/client/inner/InnereMangel.fxml"));
 			AnchorPane Personen = (AnchorPane) loader.load();
 			rootLayout.setCenter(Personen);
 
