@@ -1,10 +1,9 @@
 package ch.hsluw.mangelmanager.persister.dao;
+
 /*
  * ZWECK: Mangelmanager
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft
  */
-
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,7 +38,7 @@ public class MangelDAOImpl implements MangelDAO {
 	public void delete(Mangel entity) throws Exception {
 		new GenericPersisterImpl<Mangel>(Mangel.class).delete(entity);
 	}
-	
+
 	@Override
 	public void deleteMangelById(Integer id) throws Exception {
 		new GenericPersisterImpl<Mangel>(Mangel.class).deleteById(id);
@@ -54,14 +53,14 @@ public class MangelDAOImpl implements MangelDAO {
 	public List<Mangel> findAllMangel() {
 		return new GenericPersisterImpl<Mangel>(Mangel.class).findAll();
 	}
-	
+
 	@Override
 	public List<Mangel> findMangelByBezeichnung(String bezeichnung) {
 
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByBezeichnung",
-				Mangel.class);
+		TypedQuery<Mangel> tQuery = em.createNamedQuery(
+				"Mangel.findByBezeichnung", Mangel.class);
 
 		tQuery.setParameter("bezeichnung", bezeichnung);
 
@@ -71,14 +70,14 @@ public class MangelDAOImpl implements MangelDAO {
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
 	}
-	
+
 	@Override
 	public List<Mangel> findMangelByMangelstatus(String Mangelstatus) {
 
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByMangelstatus",
-				Mangel.class);
+		TypedQuery<Mangel> tQuery = em.createNamedQuery(
+				"Mangel.findByMangelstatus", Mangel.class);
 
 		tQuery.setParameter("Mangelstatus", Mangelstatus);
 
@@ -88,7 +87,7 @@ public class MangelDAOImpl implements MangelDAO {
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
 	}
-	
+
 	@Override
 	public List<Mangel> findMangelByName(String name) {
 
@@ -105,14 +104,14 @@ public class MangelDAOImpl implements MangelDAO {
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
 	}
-	
+
 	@Override
 	public List<Mangel> findMangelByErfassungszeit(Date erfassungsZeit) {
 
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByErfassungszeit",
-				Mangel.class);
+		TypedQuery<Mangel> tQuery = em.createNamedQuery(
+				"Mangel.findByErfassungszeit", Mangel.class);
 
 		tQuery.setParameter("erfassungsZeit", erfassungsZeit);
 
@@ -122,14 +121,14 @@ public class MangelDAOImpl implements MangelDAO {
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
 	}
-	
+
 	@Override
 	public List<Mangel> findMangelByFaelligkeitsDatum(Date faelligkeitsDatum) {
 
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByFaelligkeitsDatum",
-				Mangel.class);
+		TypedQuery<Mangel> tQuery = em.createNamedQuery(
+				"Mangel.findByFaelligkeitsDatum", Mangel.class);
 
 		tQuery.setParameter("faelligkeitsDatum", faelligkeitsDatum);
 
@@ -139,14 +138,14 @@ public class MangelDAOImpl implements MangelDAO {
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
 	}
-	
+
 	@Override
-	public List<Mangel> findMangelByAbschlussZeit(String abschlussZeit) {
+	public List<Mangel> findMangelByAbschlussZeit(Date abschlussZeit) {
 
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByabschlussZeit",
-				Mangel.class);
+		TypedQuery<Mangel> tQuery = em.createNamedQuery(
+				"Mangel.findByabschlussZeit", Mangel.class);
 
 		tQuery.setParameter("abschlussZeit", abschlussZeit);
 

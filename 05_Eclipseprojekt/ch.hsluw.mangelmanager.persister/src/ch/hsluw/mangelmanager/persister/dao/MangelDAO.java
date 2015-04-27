@@ -113,7 +113,7 @@ public interface MangelDAO {
 	 * @param abschlussZeit
 	 * @return
 	 */
-	public List<Mangel> findMangelByAbschlussZeit(String abschlussZeit);
+	public List<Mangel> findMangelByAbschlussZeit(Date abschlussZeit);
 
 	/**
 	 * Liefert die Liste mit Mängeln für den übergebenen Arbeitstyp zurück,

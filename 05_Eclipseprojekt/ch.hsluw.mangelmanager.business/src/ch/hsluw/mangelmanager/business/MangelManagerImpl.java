@@ -12,8 +12,6 @@ import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.persister.dao.MangelDAO;
 import ch.hsluw.mangelmanager.persister.dao.MangelDAOImpl;
 
-
-
 /**
  * Diese Klasse stellt die Implementierung von Methoden der Schnittstelle
  * MangelManager zur Verfügung.
@@ -57,7 +55,7 @@ public class MangelManagerImpl implements MangelManager {
 	@Override
 	public void deleteById(Integer id) throws Exception {
 		mangelDAO.deleteMangelById(id);
-		
+
 	}
 
 	@Override
@@ -67,37 +65,36 @@ public class MangelManagerImpl implements MangelManager {
 
 	@Override
 	public List<Mangel> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findAllMangel();
 	}
 
 	@Override
 	public List<Mangel> findByBezeichnung(String bezeichnung) {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findMangelByBezeichnung(bezeichnung);
 	}
 
 	@Override
 	public List<Mangel> findByMangelstatus(String mangelstatus) {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findMangelByMangelstatus(mangelstatus);
 	}
 
 	@Override
 	public List<Mangel> findByErfassungsZeit(Date erfassungsZeit) {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findMangelByErfassungszeit(erfassungsZeit);
 	}
 
 	@Override
 	public List<Mangel> findByFaelligkeitsDatum(Date faelligkeitsDatum) {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findMangelByFaelligkeitsDatum(faelligkeitsDatum);
 	}
 
 	@Override
 	public List<Mangel> findByAbschlussZeit(Date abschlussZeit) {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelDAO.findMangelByAbschlussZeit(abschlussZeit);
+	}
+
+	@Override
+	public List<Mangel> findByName(String name) {
+		return mangelDAO.findMangelByName(name);
 	}
 }

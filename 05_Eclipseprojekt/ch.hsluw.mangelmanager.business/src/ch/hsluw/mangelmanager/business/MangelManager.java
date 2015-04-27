@@ -112,4 +112,11 @@ public interface MangelManager {
 	 */
 	List<Mangel> findByAbschlussZeit(Date abschlussZeit);
 
+	/** Liefer die Liste mit Mängeln für den übergebenen Namen zurück,
+	 * falls welche gefunden, sonst eine leere Liste.
+	 * @param name
+	 * @return
+	 */
+	List<Mangel> findByName(String name);
+
 }
