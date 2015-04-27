@@ -34,7 +34,7 @@ public class Meldung implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Mangel fkMangel;
 
 	@Temporal(TemporalType.DATE)

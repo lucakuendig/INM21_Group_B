@@ -23,7 +23,7 @@ import javax.persistence.OneToMany;
  *
  */
 
-
+@Entity
 public class Login implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
@@ -35,7 +35,7 @@ public class Login implements Serializable {
 	private String benutzername;
 	private String passwort;
 	private String email;
-	@OneToMany (cascade = CascadeType.PERSIST)
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Rolle fkrolle;
 
 	public Login() {

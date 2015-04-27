@@ -24,6 +24,7 @@ import javax.persistence.NamedQuery;
  *
  */
 
+@Entity
 public class Rolle implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;

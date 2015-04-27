@@ -29,7 +29,7 @@ public class SuMitarbeiter extends Person implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
