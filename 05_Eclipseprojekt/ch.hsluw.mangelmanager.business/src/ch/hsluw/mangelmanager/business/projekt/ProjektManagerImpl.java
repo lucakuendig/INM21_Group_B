@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.persister.dao.ProjektDAO;
-import ch.hsluw.mangelmanager.persister.dao.ProjektDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAO;
+import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAOImpl;
 
 
 

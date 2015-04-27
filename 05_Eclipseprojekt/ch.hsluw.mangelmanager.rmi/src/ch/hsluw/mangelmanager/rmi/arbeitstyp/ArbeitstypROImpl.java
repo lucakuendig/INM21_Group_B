@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.ArbeitstypManager;
-import ch.hsluw.mangelmanager.business.ArbeitstypManagerImpl;
+import ch.hsluw.mangelmanager.business.arbeitstyp.ArbeitstypManager;
+import ch.hsluw.mangelmanager.business.arbeitstyp.ArbeitstypManagerImpl;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 
 public class ArbeitstypROImpl extends UnicastRemoteObject implements ArbeitstypRO {

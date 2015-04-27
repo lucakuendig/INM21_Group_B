@@ -10,7 +10,6 @@ package ch.hsluw.mangelmanager.rmi.mangelstatus;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 
 

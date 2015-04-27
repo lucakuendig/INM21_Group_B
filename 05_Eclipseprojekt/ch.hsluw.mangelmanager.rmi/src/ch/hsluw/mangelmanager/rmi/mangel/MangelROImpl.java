@@ -10,8 +10,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.MangelManager;
-import ch.hsluw.mangelmanager.business.MangelManagerImpl;
+import ch.hsluw.mangelmanager.business.mangel.MangelManager;
+import ch.hsluw.mangelmanager.business.mangel.MangelManagerImpl;
 import ch.hsluw.mangelmanager.model.Mangel;
 
 public class MangelROImpl extends UnicastRemoteObject implements MangelRO {

@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.BauherrManager;
-import ch.hsluw.mangelmanager.business.BauherrManagerImpl;
+import ch.hsluw.mangelmanager.business.bauherr.BauherrManager;
+import ch.hsluw.mangelmanager.business.bauherr.BauherrManagerImpl;
 import ch.hsluw.mangelmanager.model.Bauherr;
 
 public class BauherrROImpl extends UnicastRemoteObject implements BauherrRO {

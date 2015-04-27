@@ -4,13 +4,11 @@
  */
 
 package ch.hsluw.mangelmanager.business.projektgumitarbeiter;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
-import ch.hsluw.mangelmanager.persister.dao.ProjektGuMitarbeiterDAO;
-import ch.hsluw.mangelmanager.persister.dao.ProjektGuMitarbeiterDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAO;
+import ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAOImpl;
 
 
 

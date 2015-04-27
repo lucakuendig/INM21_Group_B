@@ -5,11 +5,9 @@
 
 package ch.hsluw.mangelmanager.business.login;
 
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Login;
-import ch.hsluw.mangelmanager.model.Projekt;
 
 /**
  * Interface fuer Login Entity

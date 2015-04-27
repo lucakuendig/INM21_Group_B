@@ -4,13 +4,11 @@
  */
 
 package ch.hsluw.mangelmanager.business.rolle;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
-import ch.hsluw.mangelmanager.persister.dao.RolleDAO;
-import ch.hsluw.mangelmanager.persister.dao.RolleDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.rolle.RolleDAO;
+import ch.hsluw.mangelmanager.persister.dao.rolle.RolleDAOImpl;
 
 
 

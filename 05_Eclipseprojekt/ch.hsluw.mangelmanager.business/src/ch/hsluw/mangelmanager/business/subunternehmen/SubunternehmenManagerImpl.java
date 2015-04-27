@@ -4,12 +4,11 @@
  */
 
 package ch.hsluw.mangelmanager.business.subunternehmen;
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Subunternehmen;
-import ch.hsluw.mangelmanager.persister.dao.SubunternehmenDAO;
-import ch.hsluw.mangelmanager.persister.dao.SubunternehmenDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAO;
+import ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAOImpl;
 
 
 

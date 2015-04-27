@@ -7,8 +7,8 @@ package ch.hsluw.mangelmanager.business.projektstatus;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projektstatus;
-import ch.hsluw.mangelmanager.persister.dao.ProjektstatusDAO;
-import ch.hsluw.mangelmanager.persister.dao.ProjektstatusDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.projektstatus.ProjektstatusDAO;
+import ch.hsluw.mangelmanager.persister.dao.projektstatus.ProjektstatusDAOImpl;
 
 
 

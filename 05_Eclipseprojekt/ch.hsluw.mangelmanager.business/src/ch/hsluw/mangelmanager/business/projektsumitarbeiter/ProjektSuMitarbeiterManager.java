@@ -3,21 +3,21 @@
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft
  */
 
-package ch.hsluw.mangelmanager.business.projektgumitarbeiter;
+package ch.hsluw.mangelmanager.business.projektsumitarbeiter;
 
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 
 
 /**
- * Interface fuer ProjektGuMitarbeiterGuMitarbeiter Entity
+ * Interface fuer ProjektSuMitarbeiterSuMitarbeiter Entity
  * 
  * @version 1.0
  * @author lkuendig
  * 
  */
-public interface ProjektGuMitarbeiterManager {
+public interface ProjektSuMitarbeiterManager {
 	/**
 	 * Speichert die übergebene Entity.
 	 * 
@@ -25,7 +25,7 @@ public interface ProjektGuMitarbeiterManager {
 	 * @return
 	 * @throws Exception
 	 */
-	ProjektGuMitarbeiter add(ProjektGuMitarbeiter entity) throws Exception;
+	ProjektSuMitarbeiter add(ProjektSuMitarbeiter entity) throws Exception;
 
 	/**
 	 * Updatet die übergebene Entity.
@@ -34,7 +34,7 @@ public interface ProjektGuMitarbeiterManager {
 	 * @return
 	 * @throws Exception
 	 */
-	ProjektGuMitarbeiter update(ProjektGuMitarbeiter entity) throws Exception;
+	ProjektSuMitarbeiter update(ProjektSuMitarbeiter entity) throws Exception;
 
 	/**
 	 * Löscht die übergebene Entity.
@@ -42,7 +42,7 @@ public interface ProjektGuMitarbeiterManager {
 	 * @param entity
 	 * @throws Exception
 	 */
-	void delete(ProjektGuMitarbeiter entity) throws Exception;
+	void delete(ProjektSuMitarbeiter entity) throws Exception;
 	
 	void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
 	
@@ -52,12 +52,12 @@ public interface ProjektGuMitarbeiterManager {
 	 * @param id
 	 * @return
 	 */
-	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
+	ProjektSuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
 
 	/**
 	 * Liefert alle Entity-Objekte zurück.
 	 * 
 	 * @return
 	 */
-	List<ProjektGuMitarbeiter> findAll();
+	List<ProjektSuMitarbeiter> findAll();
 }

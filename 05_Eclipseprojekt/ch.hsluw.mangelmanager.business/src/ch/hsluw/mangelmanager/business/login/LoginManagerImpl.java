@@ -4,11 +4,9 @@
  */
 
 package ch.hsluw.mangelmanager.business.login;
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Login;
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.persister.dao.login.LoginDAO;
 import ch.hsluw.mangelmanager.persister.dao.login.LoginDAOImpl;
 

@@ -8,7 +8,6 @@ package ch.hsluw.mangelmanager.business.meldung;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Meldung;
 
 
 

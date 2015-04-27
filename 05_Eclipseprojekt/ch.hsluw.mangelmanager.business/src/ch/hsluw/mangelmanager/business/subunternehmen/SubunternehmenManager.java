@@ -5,7 +5,6 @@
 
 package ch.hsluw.mangelmanager.business.subunternehmen;
 
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Subunternehmen;

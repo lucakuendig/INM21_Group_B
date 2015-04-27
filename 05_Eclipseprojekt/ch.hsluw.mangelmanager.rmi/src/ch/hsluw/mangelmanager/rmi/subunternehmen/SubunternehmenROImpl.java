@@ -8,12 +8,10 @@ package ch.hsluw.mangelmanager.rmi.subunternehmen;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.SubunternehmenManager;
-import ch.hsluw.mangelmanager.business.SubunternehmenManagerImpl;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManager;
+import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManagerImpl;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class SubunternehmenROImpl extends UnicastRemoteObject implements SubunternehmenRO {

@@ -9,10 +9,8 @@ package ch.hsluw.mangelmanager.rmi.rolle;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 

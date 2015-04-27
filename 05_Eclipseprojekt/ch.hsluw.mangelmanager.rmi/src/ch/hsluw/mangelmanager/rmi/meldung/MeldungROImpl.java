@@ -9,8 +9,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.MeldungManager;
-import ch.hsluw.mangelmanager.business.MeldungManagerImpl;
+import ch.hsluw.mangelmanager.business.meldung.MeldungManager;
+import ch.hsluw.mangelmanager.business.meldung.MeldungManagerImpl;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 

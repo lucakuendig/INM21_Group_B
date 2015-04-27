@@ -9,8 +9,8 @@ package ch.hsluw.mangelmanager.rmi.mangelstatus;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-import ch.hsluw.mangelmanager.business.MangelstatusManager;
-import ch.hsluw.mangelmanager.business.MangelstatusManagerImpl;
+import ch.hsluw.mangelmanager.business.mangelstatus.MangelstatusManager;
+import ch.hsluw.mangelmanager.business.mangelstatus.MangelstatusManagerImpl;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 
 

@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.ObjekttypManager;
-import ch.hsluw.mangelmanager.business.ObjekttypManagerImpl;
+import ch.hsluw.mangelmanager.business.objekttyp.ObjekttypManager;
+import ch.hsluw.mangelmanager.business.objekttyp.ObjekttypManagerImpl;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 
 public class ObjekttypROImpl extends UnicastRemoteObject implements ObjekttypRO {

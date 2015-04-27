@@ -4,7 +4,6 @@
  */
 
 package ch.hsluw.mangelmanager.business.objekttyp;
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Objekttyp;

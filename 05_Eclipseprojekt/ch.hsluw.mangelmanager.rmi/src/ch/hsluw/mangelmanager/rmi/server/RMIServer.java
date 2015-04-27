@@ -1,11 +1,8 @@
 package ch.hsluw.mangelmanager.rmi.server;
 
 import java.net.InetAddress;
-import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.Naming;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
+import java.rmi.registry.Registry;
 
 import javax.swing.JOptionPane;
 

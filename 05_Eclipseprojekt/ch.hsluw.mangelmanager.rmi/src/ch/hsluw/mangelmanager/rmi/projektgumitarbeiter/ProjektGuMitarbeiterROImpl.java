@@ -8,12 +8,10 @@ package ch.hsluw.mangelmanager.rmi.projektgumitarbeiter;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.ProjektGuMitarbeiterManager;
-import ch.hsluw.mangelmanager.business.ProjektGuMitarbeiterManagerImpl;
-import ch.hsluw.mangelmanager.model.GuMitarbeiter;
+import ch.hsluw.mangelmanager.business.projektgumitarbeiter.ProjektGuMitarbeiterManager;
+import ch.hsluw.mangelmanager.business.projektgumitarbeiter.ProjektGuMitarbeiterManagerImpl;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 
 public class ProjektGuMitarbeiterROImpl extends UnicastRemoteObject implements ProjektGuMitarbeiterRO {

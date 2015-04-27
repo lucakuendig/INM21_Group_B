@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.PlzManager;
-import ch.hsluw.mangelmanager.business.PlzManagerImpl;
+import ch.hsluw.mangelmanager.business.plz.PlzManager;
+import ch.hsluw.mangelmanager.business.plz.PlzManagerImpl;
 import ch.hsluw.mangelmanager.model.Plz;
 
 public class PlzROImpl extends UnicastRemoteObject implements PlzRO {

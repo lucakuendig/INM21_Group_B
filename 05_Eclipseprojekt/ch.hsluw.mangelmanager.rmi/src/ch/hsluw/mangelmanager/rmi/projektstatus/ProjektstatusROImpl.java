@@ -10,8 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.ProjektstatusManager;
-import ch.hsluw.mangelmanager.business.ProjektstatusManagerImpl;
+import ch.hsluw.mangelmanager.business.projektstatus.ProjektstatusManager;
+import ch.hsluw.mangelmanager.business.projektstatus.ProjektstatusManagerImpl;
 import ch.hsluw.mangelmanager.model.Projektstatus;
 
 public class ProjektstatusROImpl extends UnicastRemoteObject implements ProjektstatusRO {

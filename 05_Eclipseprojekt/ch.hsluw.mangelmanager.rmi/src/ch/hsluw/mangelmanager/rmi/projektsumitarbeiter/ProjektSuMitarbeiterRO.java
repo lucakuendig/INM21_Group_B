@@ -8,10 +8,8 @@ package ch.hsluw.mangelmanager.rmi.projektsumitarbeiter;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 
 

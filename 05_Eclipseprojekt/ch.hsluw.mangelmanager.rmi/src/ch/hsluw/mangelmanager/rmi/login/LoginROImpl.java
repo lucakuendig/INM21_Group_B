@@ -8,13 +8,11 @@ package ch.hsluw.mangelmanager.rmi.login;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.LoginManager;
-import ch.hsluw.mangelmanager.business.LoginManagerImpl;
+import ch.hsluw.mangelmanager.business.login.LoginManager;
+import ch.hsluw.mangelmanager.business.login.LoginManagerImpl;
 import ch.hsluw.mangelmanager.model.Login;
-import ch.hsluw.mangelmanager.model.Projekt;
 
 public class LoginROImpl extends UnicastRemoteObject implements LoginRO {
 

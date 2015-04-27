@@ -8,12 +8,10 @@ package ch.hsluw.mangelmanager.rmi.rolle;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.business.RolleManager;
-import ch.hsluw.mangelmanager.business.RolleManagerImpl;
-import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.business.rolle.RolleManager;
+import ch.hsluw.mangelmanager.business.rolle.RolleManagerImpl;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 public class RolleROImpl extends UnicastRemoteObject implements RolleRO {

@@ -4,13 +4,11 @@
  */
 
 package ch.hsluw.mangelmanager.business.sumitarbeiter;
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
-import ch.hsluw.mangelmanager.persister.dao.SuMitarbeiterDAO;
-import ch.hsluw.mangelmanager.persister.dao.SuMitarbeiterDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.sumitarbeiter.SuMitarbeiterDAO;
+import ch.hsluw.mangelmanager.persister.dao.sumitarbeiter.SuMitarbeiterDAOImpl;
 
 
 

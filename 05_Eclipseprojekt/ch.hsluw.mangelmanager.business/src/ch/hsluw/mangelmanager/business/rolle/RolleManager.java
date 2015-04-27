@@ -5,10 +5,8 @@
 
 package ch.hsluw.mangelmanager.business.rolle;
 
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 /**
