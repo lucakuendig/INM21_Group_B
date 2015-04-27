@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-	            <PasswordField layoutX="301.0" layoutY="192.0" />
-            <TextField layoutX="127.0" layoutY="192.0" />
-            <Text layoutX="151.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benutzername">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="344.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Text>
-            <Text layoutX="104.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen im Mängelmanager">
-               <font>
-                  <Font size="27.0" />
-               </font>
-            </Text>
-            <Button layoutX="142.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Einloggen" />
-            <Button layoutX="315.0" layoutY="238.0" mnemonicParsing="false" text="Passwort vergessen" />
-</AnchorPane>
-
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="399.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.Main">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.0" minWidth="10.0" prefWidth="70.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="209.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.0" minWidth="10.0" prefWidth="48.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="178.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="92.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="224.0" minHeight="10.0" prefHeight="224.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="179.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="165.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <TextField fx:id="txtBenutzer" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Button mnemonicParsing="false" onAction="#login" text="Einloggen" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Button mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <PasswordField fx:id="pwPassword" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <Label fx:id="lblLoginError" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

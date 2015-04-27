@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -16,14 +17,14 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private Stage loginStage;
-	private BorderPane loginLayout;
+	private GridPane loginLayout;
 	
 	@FXML
 	private Label lblLoginError;
 	@FXML
 	private TextField txtBenutzer;
 	@FXML
-	private TextField txtPasswort;
+	private PasswordField pwPasswort;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -42,8 +43,8 @@ public class Main extends Application {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
-					.getResource("view/root/Login.fxml"));
-			loginLayout = (BorderPane) loader.load();
+					.getResource("view/login/Login.fxml"));
+			loginLayout = (GridPane) loader.load();
 
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(loginLayout);
@@ -58,11 +59,11 @@ public class Main extends Application {
 	public void login() throws IOException {
 
 		if ((txtBenutzer.getText().equals("demo"))
-				&& (txtPasswort.getText().equals("demo"))) {
+				&& (pwPasswort.getText().equals("demo"))) {
 			lblLoginError.setText("Login erfolgreich!");
 			Stage stage = new Stage();
 			Parent root = FXMLLoader.load(getClass().getResource(
-					"ch/hsluw/mangelmanager/client/intern/login/Login.fxml"));
+					"view/root/Root.fxml"));
 
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
