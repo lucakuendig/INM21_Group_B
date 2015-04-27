@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
+	<!-- TODO Add Nodes -->
+	            <PasswordField layoutX="301.0" layoutY="192.0" />
+            <TextField layoutX="127.0" layoutY="192.0" />
+            <Text layoutX="151.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Benutzername">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="344.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passwort">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="104.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Willkommen im Mängelmanager">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Text>
+            <Button layoutX="142.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Einloggen" />
+            <Button layoutX="315.0" layoutY="238.0" mnemonicParsing="false" text="Passwort vergessen" />
+</AnchorPane>
+
