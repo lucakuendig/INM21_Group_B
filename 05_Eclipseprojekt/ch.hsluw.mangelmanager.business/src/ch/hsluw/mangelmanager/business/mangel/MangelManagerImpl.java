@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.persister.dao.MangelDAO;
-import ch.hsluw.mangelmanager.persister.dao.MangelDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAO;
+import ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAOImpl;
 
 /**
  * Diese Klasse stellt die Implementierung von Methoden der Schnittstelle

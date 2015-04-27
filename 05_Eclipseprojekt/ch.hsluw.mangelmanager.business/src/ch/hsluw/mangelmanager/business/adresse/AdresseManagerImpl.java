@@ -7,8 +7,8 @@ package ch.hsluw.mangelmanager.business.adresse;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Adresse;
-import ch.hsluw.mangelmanager.persister.dao.AdresseDAO;
-import ch.hsluw.mangelmanager.persister.dao.AdresseDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAO;
+import ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAOImpl;
 
 
 

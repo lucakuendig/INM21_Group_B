@@ -8,10 +8,10 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Plz;
-import ch.hsluw.mangelmanager.persister.dao.AdresseDAO;
-import ch.hsluw.mangelmanager.persister.dao.AdresseDAOImpl;
-import ch.hsluw.mangelmanager.persister.dao.PlzDAO;
-import ch.hsluw.mangelmanager.persister.dao.PlzDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAO;
+import ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.plz.PlzDAO;
+import ch.hsluw.mangelmanager.persister.dao.plz.PlzDAOImpl;
 
 
 
