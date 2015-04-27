@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.persister.dao.LoginDAO;
 import ch.hsluw.mangelmanager.persister.dao.LoginDAOImpl;
 
@@ -53,4 +54,19 @@ public class LoginManagerImpl implements LoginManager {
 		loginDAO.delete(entity);
 	}
 
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		loginDAO.deleteLoginById(id);
+		
+	}
+	
+	@Override
+	public Login findById(Integer id) {
+		return loginDAO.findLoginById(id);
+	}
+
+	@Override
+	public List<Login> findAll() {
+		return loginDAO.findAllLogin();
+	}
 }

@@ -9,6 +9,7 @@ package ch.hsluw.mangelmanager.persister.dao;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 /**
@@ -44,5 +45,22 @@ public interface RolleDAO {
 	 * @throws Exception
 	 */
 	void delete(Rolle entity) throws Exception;
+	
+	void deleteRolleById(Integer id) throws Exception;
+
+	/**
+	 * Liefert die Rolle-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Rolle findRolleById(Integer id);
+
+	/**
+	 * Liefert alle Rolle-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Rolle> findAllRolle();
 
 }

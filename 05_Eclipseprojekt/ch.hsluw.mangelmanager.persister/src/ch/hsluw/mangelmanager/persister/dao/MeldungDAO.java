@@ -1,10 +1,13 @@
-package ch.hsluw.mangelmanager.persister.dao;
-
 /*
  * ZWECK: Mangelmanager
- * MODUL: Softwarekompomenten, HSLU-Wirtschaft
+ * MODUL: Softwarekomponenten, HSLU-Wirtschaft
  */
 
+package ch.hsluw.mangelmanager.persister.dao;
+
+import java.util.List;
+
+import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 
@@ -43,5 +46,27 @@ public interface MeldungDAO {
 	 */
 	void delete(Meldung entity) throws Exception;
 	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteMeldungById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Meldung-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Meldung findMeldungById(Integer id);
+
+	/**
+	 * Liefert alle Meldung-Meldung zurück.
+	 * 
+	 * @return
+	 */
+	List<Meldung> findAllMeldung();
 	
 }

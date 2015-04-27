@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Projekt;
 
 /**
  * Interface fuer Login Entity
@@ -44,5 +45,27 @@ public interface LoginManager {
 	 */
 	void delete(Login entity) throws Exception;
 
+	/**
+	 * Löscht die Entity mit übergebener Id.
+	 * 
+	 * @param id
+	 * @throws Exception
+	 */
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Login findById(Integer id);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Login> findAll();
 }
 

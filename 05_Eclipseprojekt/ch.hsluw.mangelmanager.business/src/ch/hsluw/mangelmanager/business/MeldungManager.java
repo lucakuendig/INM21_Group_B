@@ -1,15 +1,19 @@
 /*
  * ZWECK: Mangelmanager
- * MODUL: Softwarekompomenten, HSLU-Wirtschaft
+ * MODUL: Softwarekomponenten, HSLU-Wirtschaft
  */
 
 package ch.hsluw.mangelmanager.business;
 
+import java.util.List;
+
+import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 
+
 /**
- * Interface fuer Projekt Entity
+ * Interface fuer Meldung Entity
  * 
  * @version 1.0
  * @author cdemir
@@ -41,4 +45,28 @@ public interface MeldungManager {
 	 * @throws Exception
 	 */
 	void delete(Meldung entity) throws Exception;
+	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param id
+	 * @throws Exception
+	 */
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Meldung findById(Integer id);
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Meldung> findAll();
+	
 }

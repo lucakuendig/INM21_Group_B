@@ -51,6 +51,7 @@ public interface GenericPersister<T> {
 	 * @throws Exception
 	 */
 	void deleteById(Integer id) throws Exception;
+	void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
 
 	/**
 	 * Liefert die Entity für den übergebenen Id-Wert zurück.
@@ -59,6 +60,8 @@ public interface GenericPersister<T> {
 	 * @return
 	 */
 	T findById(Integer id);
+	
+	T findById(Integer idProjekt, Integer idMitarbeiter);
 
 	/**
 	 * Liefert alle Entity-Objekte zurück.

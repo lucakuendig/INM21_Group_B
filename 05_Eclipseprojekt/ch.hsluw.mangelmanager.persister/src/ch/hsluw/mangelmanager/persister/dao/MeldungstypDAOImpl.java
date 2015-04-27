@@ -1,8 +1,11 @@
-package ch.hsluw.mangelmanager.persister.dao;
 /*
  * ZWECK: Mangelmanager
- * MODUL: Softwarekompomenten, HSLU-Wirtschaft
+ * MODUL: Softwarekomponenten, HSLU-Wirtschaft
  */
+
+package ch.hsluw.mangelmanager.persister.dao;
+
+import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
@@ -10,7 +13,8 @@ import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 
 
 /**
- * Interface fuer Meldungstyp Entity
+ * Diese Klasse stellt die Implementierung von Methoden der Schnittstelle
+ * MeldungstypManager zur Verfügung.
  * 
  * @version 1.0
  * @author cdemir
@@ -30,5 +34,23 @@ public class MeldungstypDAOImpl implements MeldungstypDAO {
 	@Override
 	public void delete(Meldungstyp entity) throws Exception {
 		new GenericPersisterImpl<Meldungstyp>(Meldungstyp.class).delete(entity);
+	}
+
+	@Override
+	public void deleteMeldungstypById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Meldungstyp findMeldungstypById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Meldungstyp> findAllMeldungstyp() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -5,12 +5,15 @@ package ch.hsluw.mangelmanager.persister.dao;
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft
  */
 
+import java.util.List;
+
+import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Meldungstyp;
 
 
 
 /**
- * Interface fuer Meldungstyp Entity
+ * Implementierung fuer MeldungstypDAO
  * 
  * @version 1.0
  * @author cdemir
@@ -43,5 +46,26 @@ public interface MeldungstypDAO {
 	 */
 	void delete(Meldungstyp entity) throws Exception;
 	
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteMeldungstypById(Integer id) throws Exception;
 	
+	/**
+	 * Liefert die Meldungstyp-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Meldungstyp findMeldungstypById(Integer id);
+
+	/**
+	 * Liefert alle Meldungstyp-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Meldungstyp> findAllMeldungstyp();
 }

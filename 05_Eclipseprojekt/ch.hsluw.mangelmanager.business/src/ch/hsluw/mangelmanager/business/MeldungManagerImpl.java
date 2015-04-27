@@ -1,9 +1,11 @@
 /*
  * ZWECK: Mangelmanager
- * MODUL: Softwarekompomenten, HSLU-Wirtschaft
+ * MODUL: Softwarekomponenten, HSLU-Wirtschaft
  */
 
 package ch.hsluw.mangelmanager.business;
+
+import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.persister.dao.MeldungDAO;
@@ -21,13 +23,13 @@ import ch.hsluw.mangelmanager.persister.dao.MeldungDAOImpl;
  */
 public class MeldungManagerImpl implements MeldungManager {
 
-	private MeldungDAO MeldungDAO = new MeldungDAOImpl();
+	private MeldungDAO meldungDAO = new MeldungDAOImpl();
 
 	@Override
 	public Meldung add(Meldung entity) throws Exception {
 
 		if (entity.getId() == null) {
-			MeldungDAO.save(entity);
+			meldungDAO.save(entity);
 			return entity;
 		} else {
 			throw new Exception(
@@ -42,12 +44,30 @@ public class MeldungManagerImpl implements MeldungManager {
 		if (entity.getId() == null) {
 			return add(entity);
 		} else {
-			return MeldungDAO.update(entity);
+			return meldungDAO.update(entity);
 		}
 	}
 
 	@Override
 	public void delete(Meldung entity) throws Exception {
-		MeldungDAO.delete(entity);
+		meldungDAO.delete(entity);
+	}
+
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Meldung findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Meldung> findAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

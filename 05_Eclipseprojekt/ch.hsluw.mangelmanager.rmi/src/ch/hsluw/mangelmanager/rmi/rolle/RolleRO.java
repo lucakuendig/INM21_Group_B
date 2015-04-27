@@ -12,6 +12,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 
@@ -56,4 +57,28 @@ public interface RolleRO extends Remote {
 	 */
 	void delete(Rolle entity) throws RemoteException, Exception;
 
+	/**
+	 * Löscht die Entity mit der übergebenen Id.
+	 * 
+	 * @param entity
+	 * @throws Exception
+	 */
+	void deleteById(Integer id) throws Exception;
+	
+	/**
+	 * Liefert die Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 * @throws RemoteException
+	 */
+	Rolle findById(Integer id) throws RemoteException;
+
+	/**
+	 * Liefert alle Entity-Objekte zurück.
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	List<Rolle> findAll() throws RemoteException;
 }

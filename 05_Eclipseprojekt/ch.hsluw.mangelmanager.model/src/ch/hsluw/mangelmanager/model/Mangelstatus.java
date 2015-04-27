@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * Diese Klasse zeigt den Status eines Mangels auf.
+ * Diese Klasse bildet einen Mangelstatus ab.
  * 
  * @version 1.0
  * @author mmont
@@ -19,7 +19,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-abstract class Mangelstatus implements Serializable {
+public class Mangelstatus implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
 
@@ -37,12 +37,17 @@ abstract class Mangelstatus implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @return the id
+	 */
 	public Integer getId() {
 		return id;
 	}
 
+	/**
+	 * @return the bezeichnung
+	 */
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
-
 }

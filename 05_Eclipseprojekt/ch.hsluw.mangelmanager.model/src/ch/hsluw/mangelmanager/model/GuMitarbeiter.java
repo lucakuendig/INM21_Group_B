@@ -37,7 +37,6 @@ public class GuMitarbeiter extends Person implements Serializable {
 	}
 	
 	/**
-	 * @param id
 	 * @param nachname
 	 * @param vorname
 	 * @param telefon
@@ -45,9 +44,8 @@ public class GuMitarbeiter extends Person implements Serializable {
 	 * 
 	 */
 	
-	public GuMitarbeiter(Integer id, String nachname, String vorname, String telefon, Login fkLogin){
+	public GuMitarbeiter(String nachname, String vorname, String telefon, Login fkLogin){
 		super(nachname, vorname, telefon);
-		this.id = id;
 		this.fkLogin = fkLogin;
 	}
 

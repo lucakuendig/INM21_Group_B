@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -40,5 +41,19 @@ public class LoginDAOImpl implements LoginDAO {
 		new GenericPersisterImpl<Login>(Login.class).delete(entity);
 	}
 	
+	@Override
+	public void deleteLoginById(Integer id) throws Exception {
+		new GenericPersisterImpl<Login>(Login.class).deleteById(id);
+	}
+
+	@Override
+	public Login findLoginById(Integer id) {
+		return new GenericPersisterImpl<Login>(Login.class).findById(id);
+	}
+
+	@Override
+	public List<Login> findAllLogin() {
+		return new GenericPersisterImpl<Login>(Login.class).findAll();
+	}
 	
 }

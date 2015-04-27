@@ -38,16 +38,14 @@ public class Subunternehmen implements Serializable {
 	}
 
 	/**
-	 * @param id
 	 * @param adresse
 	 * @param name
 	 * @param telefon
 	 * 
 	 */
-	public Subunternehmen(Integer id, Adresse fkAdresse, String name,
+	public Subunternehmen(Adresse fkAdresse, String name,
 			String telefon) {
 		super();
-		this.id = id;
 		this.fkAdresse = fkAdresse;
 		this.name = name;
 		this.telefon = telefon;

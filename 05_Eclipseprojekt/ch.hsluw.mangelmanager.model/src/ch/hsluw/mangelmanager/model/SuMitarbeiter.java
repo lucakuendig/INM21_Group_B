@@ -39,7 +39,6 @@ public class SuMitarbeiter extends Person implements Serializable {
 	}
 
 	/**
-	 * @param id
 	 * @param nachname
 	 * @param vorname
 	 * @param telefon
@@ -48,10 +47,9 @@ public class SuMitarbeiter extends Person implements Serializable {
 	 * 
 	 */
 
-	public SuMitarbeiter(Integer id, String nachname, String vorname,
+	public SuMitarbeiter(String nachname, String vorname,
 			String telefon, Subunternehmen fkSubunternehmen, Login fkLogin) {
 		super(nachname, vorname, telefon);
-		this.id = id;
 		this.fkSubunternehmen = fkSubunternehmen;
 		this.fkLogin = fkLogin;
 	}

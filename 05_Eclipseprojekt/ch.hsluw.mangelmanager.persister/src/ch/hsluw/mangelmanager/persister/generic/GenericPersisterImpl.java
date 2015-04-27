@@ -155,7 +155,56 @@ public class GenericPersisterImpl<T> implements GenericPersister<T> {
 			em.close();
 		}
 	}
+	
+	
+	@Override
+	public void deleteById(Integer idProjekt, Integer idMitarbeiter) throws Exception {
 
+		EntityManager em = JpaUtil.createEntityManager();
+		String strQuery = "DELETE FROM " + classType.getSimpleName()
+				+ " entity WHERE entity.fkprojekt = :idProjekt AND entity.fkMitarbeiter = :idMitarbeiter";
+
+		Query query = em.createQuery(strQuery);
+		query.setParameter("idProjket", idProjekt);
+		query.setParameter("idMitarbeiter", idMitarbeiter);
+		
+		try {
+			em.getTransaction().begin();
+
+			query.executeUpdate();
+
+			logger.info("Entity vom Typ " + classType.getSimpleName()
+					+ " mit Projekt id = " + idProjekt + " und Mitarbeiter id = "+ idMitarbeiter + " wird gelöscht");
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			if (em.getTransaction().isActive()) {
+				em.getTransaction().rollback();
+			}
+			logger.error("Fehler beim Löschen der Entity vom Typ \'"
+					+ classType.getName() + "\': [ Projekt id = " + idProjekt + " und Mitarbeiter id = "+ idMitarbeiter + "]", e);
+			throw e;
+
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public T findById(Integer idProjekt, Integer idMitarbeiter) {
+		
+		EntityManager em = JpaUtil.createEntityManager();
+		String strQuery = "SELECT FROM " + classType.getSimpleName()
+				+ " entity WHERE entity.fkprojekt = :idProjekt AND entity.fkMitarbeiter = :idMitarbeiter";
+
+		Query query = em.createQuery(strQuery);
+		query.setParameter("idProjket", idProjekt);
+		query.setParameter("idMitarbeiter", idMitarbeiter);
+		
+		TypedQuery<T> q = JpaUtil.createEntityManager().createQuery(strQuery, classType);
+		return q.getSingleResult();
+	}
+	
 	@Override
 	public T findById(Integer id) {
 		return JpaUtil.createEntityManager().find(classType, id);
