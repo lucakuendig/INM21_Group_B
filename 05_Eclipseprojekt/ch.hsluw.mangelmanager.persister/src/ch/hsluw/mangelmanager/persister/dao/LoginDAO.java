@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Projekt;
 
 /**
  * Interface fuer Login Entity
@@ -44,5 +45,22 @@ public interface LoginDAO {
 	 * @throws Exception
 	 */
 	void delete(Login entity) throws Exception;
+	
+	void deleteLoginById(Integer id) throws Exception;
+
+	/**
+	 * Liefert die Login-Entity für den übergebenen Id-Wert zurück.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Login findLoginById(Integer id);
+
+	/**
+	 * Liefert alle Login-Objekte zurück.
+	 * 
+	 * @return
+	 */
+	List<Login> findAllLogin();
 
 }

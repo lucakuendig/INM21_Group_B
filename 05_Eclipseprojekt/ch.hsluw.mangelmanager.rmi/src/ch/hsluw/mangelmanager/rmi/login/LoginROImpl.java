@@ -14,6 +14,7 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.LoginManager;
 import ch.hsluw.mangelmanager.business.LoginManagerImpl;
 import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Projekt;
 
 public class LoginROImpl extends UnicastRemoteObject implements LoginRO {
 
@@ -39,6 +40,21 @@ public class LoginROImpl extends UnicastRemoteObject implements LoginRO {
 	@Override
 	public void delete(Login entity) throws RemoteException, Exception {
 		loginManager.delete(entity);
+	}
+	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		loginManager.deleteById(id);	
+	}
+	
+	@Override
+	public Login findById(Integer id) throws RemoteException {
+		return loginManager.findById(id);
+	}
+
+	@Override
+	public List<Login> findAll() throws RemoteException {
+		return loginManager.findAll();
 	}
 
 }

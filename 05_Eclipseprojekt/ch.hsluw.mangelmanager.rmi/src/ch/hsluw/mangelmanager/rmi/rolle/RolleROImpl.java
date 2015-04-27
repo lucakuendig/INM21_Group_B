@@ -13,6 +13,7 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.business.RolleManager;
 import ch.hsluw.mangelmanager.business.RolleManagerImpl;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 
 public class RolleROImpl extends UnicastRemoteObject implements RolleRO {
@@ -41,4 +42,18 @@ public class RolleROImpl extends UnicastRemoteObject implements RolleRO {
 		rolleManager.delete(entity);
 	}
 
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		rolleManager.deleteById(id);	
+	}
+	
+	@Override
+	public Rolle findById(Integer id) throws RemoteException {
+		return rolleManager.findById(id);
+	}
+
+	@Override
+	public List<Rolle> findAll() throws RemoteException {
+		return rolleManager.findAll();
+	}
 }

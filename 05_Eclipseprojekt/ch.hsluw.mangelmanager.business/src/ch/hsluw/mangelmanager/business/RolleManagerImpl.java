@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Rolle;
 import ch.hsluw.mangelmanager.persister.dao.RolleDAO;
 import ch.hsluw.mangelmanager.persister.dao.RolleDAOImpl;
@@ -53,4 +54,18 @@ public class RolleManagerImpl implements RolleManager {
 		rolleDAO.delete(entity);
 	}
 	
+	@Override
+	public void deleteById(Integer id) throws Exception {
+		rolleDAO.deleteRolleById(id);
+	}
+	
+	@Override
+	public Rolle findById(Integer id) {
+		return rolleDAO.findRolleById(id);
+	}
+
+	@Override
+	public List<Rolle> findAll() {
+		return rolleDAO.findAllRolle();
+	}
 }
