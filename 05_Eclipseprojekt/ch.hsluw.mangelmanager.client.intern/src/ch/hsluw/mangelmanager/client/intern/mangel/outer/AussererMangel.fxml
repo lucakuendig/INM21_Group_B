@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView prefHeight="375.0" prefWidth="480.0">
+        <columns>
+          <TableColumn prefWidth="50.0" text="ID" />
+          <TableColumn prefWidth="107.0" text="Projekt" />
+            <TableColumn prefWidth="52.0" text="Datum" />
+            <TableColumn prefWidth="58.0" text="Art" />
+            <TableColumn prefWidth="144.0" text="Beschreibung" />
+            <TableColumn prefWidth="68.0" text="Behoben" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
