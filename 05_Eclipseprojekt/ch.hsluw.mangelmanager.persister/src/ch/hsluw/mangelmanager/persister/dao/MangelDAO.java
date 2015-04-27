@@ -115,12 +115,5 @@ public interface MangelDAO {
 	 */
 	public List<Mangel> findMangelByAbschlussZeit(Date abschlussZeit);
 
-	/**
-	 * Liefert die Liste mit Mängeln für den übergebenen Arbeitstyp zurück,
-	 * falls welche gefunden, sonst eine leere Liste.
-	 * 
-	 * @param arbeitstyp
-	 * @return
-	 */
 
 }

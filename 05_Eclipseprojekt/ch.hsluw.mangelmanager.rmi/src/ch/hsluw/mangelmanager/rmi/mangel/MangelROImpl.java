@@ -1,4 +1,3 @@
-
 /*
  * ZWECK: mangelManager
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft
@@ -17,9 +16,8 @@ import ch.hsluw.mangelmanager.model.Mangel;
 
 public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 
-
 	private static final long serialVersionUID = -4116064628937156721L;
-	
+
 	private MangelManager mangelManager;
 
 	public MangelROImpl() throws RemoteException {
@@ -44,28 +42,26 @@ public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 	@Override
 	public List<Mangel> findByErfassungsZeit(Date erfassungsZeit)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelManager.findByErfassungsZeit(erfassungsZeit);
 	}
 
 	@Override
 	public List<Mangel> findByFaelligkeitsDatum(Date faelligkeitsDatum)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelManager.findByFaelligkeitsDatum(faelligkeitsDatum);
+
 	}
 
 	@Override
-	public List<Mangel> findByAbschlussZeit(String abschlussZeit)
+	public List<Mangel> findByAbschlussZeit(Date abschlussZeit)
 			throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
+		return mangelManager.findByAbschlussZeit(abschlussZeit);
 	}
 
 	@Override
 	public void deleteById(Integer id) throws Exception {
-		// TODO Auto-generated method stub
-		
+		mangelManager.deleteById(id);	
+
 	}
 
 	@Override
@@ -94,8 +90,5 @@ public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 	public List<Mangel> findByName(String name) throws RemoteException {
 		return mangelManager.findByName(name);
 	}
-
-
-	
 
 }

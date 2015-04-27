@@ -138,7 +138,7 @@ public interface MangelRO extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	List<Mangel> findByAbschlussZeit(String abschlussZeit)
+	List<Mangel> findByAbschlussZeit(Date abschlussZeit)
 			throws RemoteException;
 
 }
