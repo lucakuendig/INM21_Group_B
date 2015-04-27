@@ -7,8 +7,8 @@ package ch.hsluw.mangelmanager.business.bauherr;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Bauherr;
-import ch.hsluw.mangelmanager.persister.dao.BauherrDAO;
-import ch.hsluw.mangelmanager.persister.dao.BauherrDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.bauherr.BauherrDAO;
+import ch.hsluw.mangelmanager.persister.dao.bauherr.BauherrDAOImpl;
 
 
 

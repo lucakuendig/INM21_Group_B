@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
-import ch.hsluw.mangelmanager.persister.dao.ArbeitstypDAO;
-import ch.hsluw.mangelmanager.persister.dao.ArbeitstypDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.arbeitstyp.ArbeitstypDAO;
+import ch.hsluw.mangelmanager.persister.dao.arbeitstyp.ArbeitstypDAOImpl;
 
 
 

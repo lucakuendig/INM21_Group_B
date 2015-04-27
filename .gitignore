@@ -35,3 +35,5 @@ proguard/
 .gradle/
 build/
 bin/
+05_Eclipseprojekt/Login.java/.settings/org.eclipse.jdt.core.prefs
+05_Eclipseprojekt/ch.hsluw.mangelmanager.client.intern/src/ch/hsluw/mangelmanager/client/intern/MikeItenClient.java

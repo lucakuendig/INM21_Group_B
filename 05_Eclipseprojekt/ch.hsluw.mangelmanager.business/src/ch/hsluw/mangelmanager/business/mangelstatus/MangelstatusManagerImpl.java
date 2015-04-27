@@ -6,8 +6,8 @@
 package ch.hsluw.mangelmanager.business.mangelstatus;
 
 import ch.hsluw.mangelmanager.model.Mangelstatus;
-import ch.hsluw.mangelmanager.persister.dao.MangelstatusDAO;
-import ch.hsluw.mangelmanager.persister.dao.MangelstatusDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAO;
+import ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAOImpl;
 
 
 

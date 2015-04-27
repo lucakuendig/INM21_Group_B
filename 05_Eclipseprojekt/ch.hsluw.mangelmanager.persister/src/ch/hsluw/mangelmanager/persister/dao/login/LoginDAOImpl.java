@@ -1,4 +1,4 @@
-package ch.hsluw.mangelmanager.persister.dao;
+package ch.hsluw.mangelmanager.persister.dao.login;
 /*
  * ZWECK: Mangelmanager
  * MODUL: Softwarekompomenten, HSLU-Wirtschaft

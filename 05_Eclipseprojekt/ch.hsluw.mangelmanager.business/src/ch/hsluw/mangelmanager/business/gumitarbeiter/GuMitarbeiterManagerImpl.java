@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.GuMitarbeiter;
-import ch.hsluw.mangelmanager.persister.dao.GuMitarbeiterDAO;
-import ch.hsluw.mangelmanager.persister.dao.GuMitarbeiterDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.gumitarbeiter.GuMitarbeiterDAO;
+import ch.hsluw.mangelmanager.persister.dao.gumitarbeiter.GuMitarbeiterDAOImpl;
 
 
 

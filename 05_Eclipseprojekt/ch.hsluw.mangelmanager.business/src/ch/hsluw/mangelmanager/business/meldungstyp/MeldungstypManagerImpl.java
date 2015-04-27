@@ -8,8 +8,8 @@ package ch.hsluw.mangelmanager.business.meldungstyp;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Meldungstyp;
-import ch.hsluw.mangelmanager.persister.dao.MeldungstypDAO;
-import ch.hsluw.mangelmanager.persister.dao.MeldungstypDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.meldungstyp.MeldungstypDAO;
+import ch.hsluw.mangelmanager.persister.dao.meldungstyp.MeldungstypDAOImpl;
 
 
 

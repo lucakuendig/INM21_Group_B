@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Objekttyp;
-import ch.hsluw.mangelmanager.persister.dao.ObjekttypDAO;
-import ch.hsluw.mangelmanager.persister.dao.ObjekttypDAOImpl;
+import ch.hsluw.mangelmanager.persister.dao.objekttyp.ObjekttypDAO;
+import ch.hsluw.mangelmanager.persister.dao.objekttyp.ObjekttypDAOImpl;
 
 
 

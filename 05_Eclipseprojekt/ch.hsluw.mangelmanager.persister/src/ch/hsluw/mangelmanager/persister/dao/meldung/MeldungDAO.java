@@ -3,7 +3,7 @@
  * MODUL: Softwarekomponenten, HSLU-Wirtschaft
  */
 
-package ch.hsluw.mangelmanager.persister.dao;
+package ch.hsluw.mangelmanager.persister.dao.meldung;
 
 import java.util.List;
 
