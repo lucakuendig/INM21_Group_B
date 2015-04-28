@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektController">
+   <children>
+      <TableView fx:id="tblProjekt" prefHeight="375.0" prefWidth="480.0">
+        <columns>
+          <TableColumn fx:id="colProjektId" prefWidth="47.0" text="ID" />
+            <TableColumn fx:id="colProjektBezeichnung" prefWidth="75.0" text="Bezeichnung" />
+          <TableColumn fx:id="colProjektBauherr" prefWidth="65.0" text="Bauherr" />
+            <TableColumn fx:id="colProjektAdresse" prefWidth="68.0" text="Adresse" />
+            <TableColumn fx:id="colProjektOffeneMaengel" prefWidth="73.0" text="Mängel" />
+            <TableColumn fx:id="colProjektOffeneMeldungen" prefWidth="34.0" text="Meldungen" />
+            <TableColumn fx:id="colProjektAbgeschlossen" prefWidth="117.0" text="Abgeschlossen" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

@@ -7,11 +7,13 @@
 package ch.hsluw.mangelmanager.client.intern;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+
 
 
 import ch.hsluw.mangelmanager.model.Adresse;
@@ -34,6 +36,8 @@ import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
  *
  */
 public class ClientRMI {
+	
+	List<Projekt> alleProjekte;
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
 	ProjektRO projektRO;
@@ -61,47 +65,25 @@ public class ClientRMI {
 	 */
 	public ClientRMI() throws Exception {
 
+
 		// init rmi connection
 		String url = "rmi://localhost:1099/";
 		String projektROName = "projektRO";
 
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 
-		Adresse a1 = new Adresse("Furkastrasse", new Plz(3984, "Fieschertal"));
-		Adresse a = new Adresse("Haus 12", new Plz(3984, "Fieschertal"));
-		Bauherr b = new Bauherr("Schmid", "Hans", "027 971 40 24", a);
-		Projektstatus ps = new Projektstatus("offen");
-		Arbeitstyp at = new Arbeitstyp("Neubau");
-		Objekttyp ot = new Objekttyp("Block");
 		
-		List<Bauherr> bauherren = new ArrayList<Bauherr>();		
-		bauherren.add(b);
-	
-		
-		Projekt projekt2 = new Projekt(a, "Neubau Haus Romantica 2", bauherren, new GregorianCalendar(2015, 4, 16),  
-				new GregorianCalendar(2015, 4, 20),ot, at,  new GregorianCalendar(2015, 4, 20), ps);
-		
-		
-		
-		
+	}
+
+	public List<Projekt> getAllProjekt() {
+		// TODO Auto-generated method stub
 		try {
-			projektRO.add(projekt2);
-		} catch (Exception e) {
+			alleProjekte = projektRO.findAll();
+		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		List<Projekt> romatikaProjekt = projektRO.findByBezeichnung("Neubau Haus Romantica 2");
-		System.out.println(romatikaProjekt.get(0).getFkProjektstatus().getBezeichnung());
-		
-		List<Projekt> offeneProjekte = projektRO.findByProjektstatus("offen");
-		System.out.println(offeneProjekte.get(0).getBezeichnung());
-		
-		List<Projekt> projekteInFiesch = projektRO.findByOrt("Fieschertal");
-		System.out.println(projekteInFiesch.get(0).getBezeichnung());
-		
-		List<Projekt> projektByBauherr = projektRO.findByBauherr("Schmid");
-		System.out.println(projektByBauherr.get(0).getFkBauherr().get(0).getNachname());
+		return alleProjekte;
 		
 	}
 	

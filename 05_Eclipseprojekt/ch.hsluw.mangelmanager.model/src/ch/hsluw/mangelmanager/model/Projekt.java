@@ -19,6 +19,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -51,6 +52,7 @@ public class Projekt implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Adresse fkAdresse;
 	private String bezeichnung;
+	private String beschreibung;
 
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Bauherr> fkBauherr;
@@ -71,6 +73,9 @@ public class Projekt implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Projektstatus fkProjektstatus;
 
+	@OneToMany (cascade = CascadeType.PERSIST, mappedBy="fkProjekt", fetch = FetchType.EAGER)
+	private List<Mangel> fkMaengel;
+	
 	public Projekt() {
 		// TODO Auto-generated constructor stub
 	}
@@ -242,6 +247,36 @@ public class Projekt implements Serializable {
 	public void setFkProjektstatus(Projektstatus fkProjektstatus) {
 		this.fkProjektstatus = fkProjektstatus;
 	}
+
+	/**
+	 * @return the beschreibung
+	 */
+	public String getBeschreibung() {
+		return beschreibung;
+	}
+
+	/**
+	 * @param beschreibung the beschreibung to set
+	 */
+	public void setBeschreibung(String beschreibung) {
+		this.beschreibung = beschreibung;
+	}
+
+	/**
+	 * @return the fkMaengel
+	 */
+	public List<Mangel> getFkMaengel() {
+		return fkMaengel;
+	}
+
+	/**
+	 * @param fkMaengel the fkMaengel to set
+	 */
+	public void setFkMaengel(List<Mangel> fkMaengel) {
+		this.fkMaengel = fkMaengel;
+	}
+	
+	
 
 
 	
