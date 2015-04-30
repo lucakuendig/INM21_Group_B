@@ -20,6 +20,7 @@ import org.apache.log4j.Logger;
 
 
 
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -44,6 +45,19 @@ import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
  *
  */
 public class ClientRMI {
+	private static ClientRMI instance;
+	 
+	public static ClientRMI getInstance () {
+	    if (ClientRMI.instance == null) {
+	    	try {
+				ClientRMI.instance = new ClientRMI();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
+	    return ClientRMI.instance;
+	  }
 	
 	List<Projekt> projekte;
 	List<Subunternehmen> subunternehmen;
@@ -60,9 +74,6 @@ public class ClientRMI {
 			// Init Application over RMI
 			ClientRMI rmicon = new ClientRMI();
 			System.out.println("Verbindung zu RMI Server hergestellt");
-			
-			
-			
 		} catch (Exception e) {
 			logger.error("RMI Fehler: ", e);
 			e.printStackTrace();
@@ -114,7 +125,7 @@ public class ClientRMI {
 		return subunternehmen;
 	}
 	
-	public List<Mangel> getAllMangel() {
+	public List<Mangel> getAllMaengel() {
 		// TODO Auto-generated method stub
 		try {
 			maengel = mangelRO.findAll();

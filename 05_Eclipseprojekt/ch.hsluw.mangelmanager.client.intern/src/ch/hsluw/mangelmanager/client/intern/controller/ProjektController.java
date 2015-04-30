@@ -115,7 +115,7 @@ public class ProjektController implements Initializable {
 		
 		//Client interaction
 		try {
-			client = new ClientRMI();
+			client = ClientRMI.getInstance();
 			data = FXCollections.observableArrayList(client.getAllProjekt());
 		} catch (Exception e) {
 			e.printStackTrace();
