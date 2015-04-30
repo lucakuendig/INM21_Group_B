@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MangelController">
+<AnchorPane fx:id="tblMangel" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MangelController">
    <children>
-      <TableView prefHeight="375.0" prefWidth="480.0">
-        <columns>
-          <TableColumn prefWidth="50.0" text="ID" />
-          <TableColumn prefWidth="107.0" text="Projekt" />
-            <TableColumn prefWidth="52.0" text="Datum" />
-            <TableColumn prefWidth="58.0" text="Art" />
-            <TableColumn prefWidth="144.0" text="Beschreibung" />
-            <TableColumn prefWidth="68.0" text="Behoben" />
-        </columns>
-      </TableView>
+      <Button layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" />
+     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+       <children>
+         <TableView prefHeight="375.0" prefWidth="480.0">
+          <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+           <columns>
+             <TableColumn fx:id="colMangelId" prefWidth="50.0" text="ID" />
+             <TableColumn fx:id="colMangelProjekt" prefWidth="107.0" text="Projekt" />
+               <TableColumn fx:id="colMangelBezeichnung" prefWidth="52.0" text="Bezeichnung" />
+               <TableColumn fx:id="colMangelFaeeligkeitsdatum" prefWidth="58.0" text="Faelligkeitsdatum" />
+               <TableColumn fx:id="colMangelMangelstatus" prefWidth="144.0" text="Mangelstatus" />
+                  <TableColumn fx:id="colMangelAbschlusszeit" prefWidth="75.0" text="Abschlusszeit" />
+           </columns>
+         </TableView>
+      </children>
+      </StackPane>
+      <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" />
+      <TextField layoutX="577.0" layoutY="8.0" />
    </children>
 </AnchorPane>

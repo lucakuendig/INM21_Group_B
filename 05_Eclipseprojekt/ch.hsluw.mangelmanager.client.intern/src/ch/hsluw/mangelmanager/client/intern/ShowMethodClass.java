@@ -29,13 +29,13 @@ public class ShowMethodClass extends Application {
 
 	public void test() {
 		// showLogin();
-		// showMangel();
+		 showMangel();
 		// showInnerMangel();
 		// showMeldung();
 		// showInnerMeldung();
 		//showPerson();
 		// showInnerPerson();
-		 showProjekt();
+		// showProjekt();
 		// showInnerProjekt();
 		// showUnternehmen();
 		// showInnerUnternehmen();
@@ -81,7 +81,7 @@ public class ShowMethodClass extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ShowMethodClass.class
-					.getResource("view/mangel/outer/AussererMangel.fxml"));
+					.getResource("view/mangel/AussererMangel.fxml"));
 			AnchorPane Mangel = (AnchorPane) loader.load();
 			rootLayout.setCenter(Mangel);
 
