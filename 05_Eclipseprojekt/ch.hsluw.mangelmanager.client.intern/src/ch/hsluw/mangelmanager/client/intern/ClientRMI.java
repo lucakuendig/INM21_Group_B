@@ -16,6 +16,8 @@ import org.apache.log4j.Logger;
 
 
 
+
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -23,7 +25,9 @@ import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
+import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
 
 
@@ -37,10 +41,12 @@ import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
  */
 public class ClientRMI {
 	
-	List<Projekt> alleProjekte;
+	List<Projekt> projekte;
+	List<Subunternehmen> subunternehmen;
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
 	ProjektRO projektRO;
+	SubunternehmenRO subunternehmenRO;
 
 
 	public static void main(String[] args) {
@@ -78,13 +84,24 @@ public class ClientRMI {
 	public List<Projekt> getAllProjekt() {
 		// TODO Auto-generated method stub
 		try {
-			alleProjekte = projektRO.findAll();
+			projekte = projektRO.findAll();
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return alleProjekte;
+		return projekte;
 		
+	}
+	
+	public List<Subunternehmen> getAllSubunternehmen() {
+		
+		try {
+			subunternehmen = subunternehmenRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return subunternehmen;
 	}
 	
 	
