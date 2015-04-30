@@ -27,20 +27,20 @@ public class ProjektGuMitarbeiterManagerImpl implements ProjektGuMitarbeiterMana
 	@Override
 	public ProjektGuMitarbeiter add(ProjektGuMitarbeiter entity) throws Exception {
 
-		if (entity.getFkGuMitarbeiter() == null && entity.getFkProjekt() == null) {
+		if (entity.getFkMitarbeiter() == null && entity.getFkProjekt() == null) {
 			projektGuMitarbeiterDAO.save(entity);
 			return entity;
 		} else {
 			throw new Exception(
 					"Entity im Datenbestand bereits vorhanden (GuMitarbeiter = "
-							+ entity.getFkGuMitarbeiter().getNachname()+" Projekt= " + entity.getFkProjekt().getBezeichnung() + ")");
+							+ entity.getFkMitarbeiter().getNachname()+" Projekt= " + entity.getFkProjekt().getBezeichnung() + ")");
 		}
 	}
 
 	@Override
 	public ProjektGuMitarbeiter update(ProjektGuMitarbeiter entity) throws Exception {
 
-		if (entity.getFkGuMitarbeiter() == null && entity.getFkProjekt() == null) {
+		if (entity.getFkMitarbeiter() == null && entity.getFkProjekt() == null) {
 			return add(entity);
 		} else {
 			return projektGuMitarbeiterDAO.update(entity);

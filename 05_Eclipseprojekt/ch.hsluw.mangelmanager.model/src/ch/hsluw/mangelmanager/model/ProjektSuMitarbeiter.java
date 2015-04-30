@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -28,9 +29,10 @@ public class ProjektSuMitarbeiter implements Serializable {
 	private static final long serialVersionUID = 8347794435492517717L;
 	
 	@Id
+	@GeneratedValue
+	private int id;
 	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Projekt fkProjekt;
-	@Id
 	@ManyToOne (cascade = CascadeType.PERSIST)
 	private SuMitarbeiter fkMitarbeiter;
 	@Temporal(TemporalType.DATE)
@@ -58,30 +60,44 @@ public class ProjektSuMitarbeiter implements Serializable {
 	}
 
 	/**
-	 * @return the idProjekt
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the fkProjekt
 	 */
 	public Projekt getFkProjekt() {
 		return fkProjekt;
 	}
 
 	/**
-	 * @param idProjekt the idProjekt to set
+	 * @param fkProjekt the fkProjekt to set
 	 */
 	public void setFkProjekt(Projekt fkProjekt) {
 		this.fkProjekt = fkProjekt;
 	}
 
 	/**
-	 * @return the idSuMitarbeiter
+	 * @return the fkMitarbeiter
 	 */
-	public SuMitarbeiter getFkSuMitarbeiter() {
+	public SuMitarbeiter getFkMitarbeiter() {
 		return fkMitarbeiter;
 	}
 
 	/**
-	 * @param idSuMitarbeiter the idSuMitarbeiter to set
+	 * @param fkMitarbeiter the fkMitarbeiter to set
 	 */
-	public void setFkSuMitarbeiter(SuMitarbeiter fkMitarbeiter) {
+	public void setFkMitarbeiter(SuMitarbeiter fkMitarbeiter) {
 		this.fkMitarbeiter = fkMitarbeiter;
 	}
 
@@ -112,6 +128,6 @@ public class ProjektSuMitarbeiter implements Serializable {
 	public void setEndDatum(GregorianCalendar endDatum) {
 		this.endDatum = endDatum;
 	}
-	
+
 	
 }
