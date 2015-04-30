@@ -202,7 +202,7 @@ public class Mangel implements Serializable {
 	/**
 	 * @return the beschreibung
 	 */
-	public String getBezeichnung() {
+	public String getBeschreibung() {
 		return beschreibung;
 	}
 
@@ -210,7 +210,7 @@ public class Mangel implements Serializable {
 	 * @param beschreibung
 	 *            the beschreibung to set
 	 */
-	public void setBezeichnung(String beschreibung) {
+	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
 
