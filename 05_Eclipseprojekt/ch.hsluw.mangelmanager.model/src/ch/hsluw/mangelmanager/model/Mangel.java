@@ -6,13 +6,16 @@ package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.NamedQueries;
@@ -55,6 +58,9 @@ public class Mangel implements Serializable {
 	private Mangelstatus fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
+	
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="fkMangel", fetch = FetchType.EAGER)
+	private List<Meldung> fkMeldung;
 
 	public Mangel() {
 		// TODO Auto-generated constructor stub
@@ -213,5 +219,19 @@ public class Mangel implements Serializable {
 	public void setBezeichnung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
+	/**
+	 * @return the fkMeldung
+	 */
+	public List<Meldung> getFkMeldung() {
+		return fkMeldung;
+	}
+	/**
+	 * @param fkMeldung the fkMeldung to set
+	 */
+	public void setFkMeldung(List<Meldung> fkMeldung) {
+		this.fkMeldung = fkMeldung;
+	}
+	
+	
 
 }

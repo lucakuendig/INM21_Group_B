@@ -134,7 +134,7 @@ public class Meldung implements Serializable {
 	/**
 	 * @return the quittiert
 	 */
-	public boolean isQuittiert() {
+	public boolean getQuittiert() {
 		return quittiert;
 	}
 
