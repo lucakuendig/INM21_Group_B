@@ -99,7 +99,7 @@ public class SubUnternehmenController implements Initializable {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
 		        return new SimpleStringProperty(String.valueOf(p.getValue().getFkSuMitarbeiter().size()));
 		    	}
-		    });	
+		});	
 		
 		//Client interaction
 		try {

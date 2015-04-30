@@ -6,8 +6,12 @@ import java.rmi.registry.Registry;
 
 import javax.swing.JOptionPane;
 
+import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
+import ch.hsluw.mangelmanager.rmi.mangel.MangelROImpl;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektROImpl;
+import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
+import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenROImpl;
 
 
 public class RMIServer {
@@ -40,8 +44,12 @@ public class RMIServer {
 
 				// Entfernte Objekte erstellen
 				ProjektRO projektRO = new ProjektROImpl();
+				SubunternehmenRO subunternehmenRO = new SubunternehmenROImpl();
+				MangelRO mangelRO = new MangelROImpl();
 
 				registry.rebind("projektRO", projektRO);
+				registry.rebind("subunternehmenRO", subunternehmenRO);
+				registry.bind("mangelRO", mangelRO);
 
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
 						+ "Server herunterfahren?";
