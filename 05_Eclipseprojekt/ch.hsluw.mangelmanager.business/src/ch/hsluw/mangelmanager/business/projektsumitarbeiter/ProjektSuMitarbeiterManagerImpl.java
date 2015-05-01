@@ -17,7 +17,7 @@ import ch.hsluw.mangelmanager.persister.dao.projektsumitarbeiter.ProjektSuMitarb
  * ProjektSuMitarbeiterManager zur Verfüsung.
  * 
  * @version 1.0
- * @author sritz
+ * @author lkuendig
  * 
  */
 public class ProjektSuMitarbeiterManagerImpl implements ProjektSuMitarbeiterManager {
@@ -27,20 +27,20 @@ public class ProjektSuMitarbeiterManagerImpl implements ProjektSuMitarbeiterMana
 	@Override
 	public ProjektSuMitarbeiter add(ProjektSuMitarbeiter entity) throws Exception {
 
-		if (entity.getFkSuMitarbeiter() == null && entity.getFkProjekt() == null) {
+		if (entity.getFkMitarbeiter() == null && entity.getFkProjekt() == null) {
 			projektSuMitarbeiterDAO.save(entity);
 			return entity;
 		} else {
 			throw new Exception(
 					"Entity im Datenbestand bereits vorhanden (SuMitarbeiter = "
-							+ entity.getFkSuMitarbeiter().getNachname()+" Projekt= " + entity.getFkProjekt().getBezeichnung() + ")");
+							+ entity.getFkMitarbeiter().getNachname()+" Projekt= " + entity.getFkProjekt().getBezeichnung() + ")");
 		}
 	}
 
 	@Override
 	public ProjektSuMitarbeiter update(ProjektSuMitarbeiter entity) throws Exception {
 
-		if (entity.getFkSuMitarbeiter() == null && entity.getFkProjekt() == null) {
+		if (entity.getFkMitarbeiter() == null && entity.getFkProjekt() == null) {
 			return add(entity);
 		} else {
 			return projektSuMitarbeiterDAO.update(entity);

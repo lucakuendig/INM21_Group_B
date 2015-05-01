@@ -96,8 +96,9 @@ public class ClientRMI {
 		String mangelROName = "mangelRO";
 
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
-		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
+		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
+		
 
 		
 	}

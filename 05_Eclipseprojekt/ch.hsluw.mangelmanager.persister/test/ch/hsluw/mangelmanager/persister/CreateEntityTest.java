@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import javax.persistence.EntityManager;
 
 
+
 import org.junit.Test;
 
 import ch.hsluw.mangelmanager.model.Adresse;
@@ -16,6 +17,7 @@ import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
 public class CreateEntityTest {
@@ -54,6 +56,8 @@ public class CreateEntityTest {
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
 		Projekt projekt7 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
+		Subunternehmen su1 = new Subunternehmen(adresse2, "ddduuud", "daahahah");
+		Subunternehmen su2 = new Subunternehmen(adresse2, "ddduussssssud", "ddddddaahahah");
 		
 				
 		
@@ -66,6 +70,8 @@ public class CreateEntityTest {
 		em.persist(projekt5);
 		em.persist(projekt6);
 		em.persist(projekt7);
+		em.persist(su1);
+		em.persist(su2);
 
 		em.getTransaction().commit();
 	}

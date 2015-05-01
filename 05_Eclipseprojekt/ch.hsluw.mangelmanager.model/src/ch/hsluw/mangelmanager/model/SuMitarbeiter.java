@@ -5,9 +5,11 @@
 package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -33,6 +35,8 @@ public class SuMitarbeiter extends Person implements Serializable {
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
+	@OneToMany (cascade = CascadeType.PERSIST, mappedBy = "fkMitarbeiter", fetch = FetchType.EAGER)
+	private List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter;
 
 	public SuMitarbeiter() {
 		super();
@@ -98,5 +102,21 @@ public class SuMitarbeiter extends Person implements Serializable {
 	public void setFkLogin(Login fkLogin) {
 		this.fkLogin = fkLogin;
 	}
+
+	/**
+	 * @return the fkProjektSuMitarbeiter
+	 */
+	public List<ProjektSuMitarbeiter> getFkProjektSuMitarbeiter() {
+		return fkProjektSuMitarbeiter;
+	}
+
+	/**
+	 * @param fkProjektSuMitarbeiter the fkProjektSuMitarbeiter to set
+	 */
+	public void setFkProjektSuMitarbeiter(
+			List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter) {
+		this.fkProjektSuMitarbeiter = fkProjektSuMitarbeiter;
+	}
+
 
 }
