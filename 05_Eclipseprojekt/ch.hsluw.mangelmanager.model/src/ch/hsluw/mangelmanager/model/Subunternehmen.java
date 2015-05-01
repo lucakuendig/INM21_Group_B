@@ -5,11 +5,15 @@
 package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -32,6 +36,8 @@ public class Subunternehmen implements Serializable {
 	private Adresse fkAdresse;
 	private String name;
 	private String telefon;
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy ="fkSubunternehmen", fetch = FetchType.EAGER)
+	private List<SuMitarbeiter> fkSuMitarbeiter;
 
 	public Subunternehmen() {
 
@@ -110,5 +116,20 @@ public class Subunternehmen implements Serializable {
 	public void setTelefon(String telefon) {
 		this.telefon = telefon;
 	}
+
+	/**
+	 * @return the fkSuMitarbeiter
+	 */
+	public List<SuMitarbeiter> getFkSuMitarbeiter() {
+		return fkSuMitarbeiter;
+	}
+
+	/**
+	 * @param fkSuMitarbeiter the fkSuMitarbeiter to set
+	 */
+	public void setFkSuMitarbeiter(List<SuMitarbeiter> fkSuMitarbeiter) {
+		this.fkSuMitarbeiter = fkSuMitarbeiter;
+	}
+
 
 }

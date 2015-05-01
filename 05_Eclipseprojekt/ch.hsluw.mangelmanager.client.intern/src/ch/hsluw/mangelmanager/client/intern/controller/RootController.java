@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public class RootController implements Initializable {
 		try {
 			// Load Unternehmen overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ShowMethodClass.class
+			loader.setLocation(Main.class
 					.getResource("view/unternehmen/AusseresUnternehmen.fxml"));
 			AnchorPane unternehmen = (AnchorPane) loader.load();
 			rootLayout.setCenter(unternehmen);

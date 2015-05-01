@@ -1,5 +1,92 @@
 package ch.hsluw.mangelmanager.client.intern.controller;
 
-public class MeldungController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Projekt;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.util.Callback;
+
+/**
+ * The MeldungController handles all interaction with meldungen * 
+ * 
+ * @author lkuendig
+ * @version 1.0
+ *
+ */
+
+public class MeldungController implements Initializable {
+
+	//RMI Client to interact
+		ClientRMI client = null;
+		
+		//Define overviewtable with columns
+		@FXML
+		private TableView<Meldung> tblMeldung;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungId;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungProjekt;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungMangel;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungTyp;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungErfasst;
+		@FXML
+		private TableColumn<Meldung, String> colMeldungQuittiert;
+		
+		//Datalist for Tableview
+		ObservableList<Meldung> data;
+	
+		//SetCellValueFactory from overviewtable
+		@Override
+		public void initialize(URL location, ResourceBundle resources) {
+			colMeldungId.setCellValueFactory(new PropertyValueFactory<Meldung, String>("id"));
+			colMeldungProjekt.setCellValueFactory(new Callback<CellDataFeatures<Meldung, String>, ObservableValue<String>>() {
+			    public ObservableValue<String> call(CellDataFeatures<Meldung, String> p) {
+			        return new SimpleStringProperty(p.getValue().getFkMangel().getFkProjekt().getBezeichnung());
+			    }
+			});
+			colMeldungMangel.setCellValueFactory(new Callback<CellDataFeatures<Meldung, String>, ObservableValue<String>>() {
+			    public ObservableValue<String> call(CellDataFeatures<Meldung, String> p) {
+			        return new SimpleStringProperty(String.valueOf(p.getValue().getFkMangel().getId()));
+			    }
+			});
+			colMeldungTyp.setCellValueFactory(new Callback<CellDataFeatures<Meldung, String>, ObservableValue<String>>() {
+			    public ObservableValue<String> call(CellDataFeatures<Meldung, String> p) {
+			        return new SimpleStringProperty(p.getValue().getFkMeldungstyp().getBezeichnung());
+			    }
+			});
+			colMeldungErfasst.setCellValueFactory(new PropertyValueFactory<Meldung, String>("zeitpunkt"));
+			colMeldungQuittiert.setCellValueFactory(new PropertyValueFactory<Meldung, String>("quittiert"));
+		
+			//Client interaction
+			try {
+				client = new ClientRMI();
+				data = FXCollections.observableArrayList(client.getAllMeldung());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
+			//Set data to tableview
+			tblMeldung.setItems(data);
+		
+		}
+		
 }

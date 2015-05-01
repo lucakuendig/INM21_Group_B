@@ -6,13 +6,16 @@ package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.NamedQueries;
@@ -43,7 +46,7 @@ public class Mangel implements Serializable {
 	private Integer id;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Projekt fkProjekt;
-	private String name;
+	private String bezeichnung;
 	private String beschreibung;
 	@Temporal(TemporalType.TIMESTAMP)
 	private GregorianCalendar erfassungsZeit;
@@ -55,6 +58,9 @@ public class Mangel implements Serializable {
 	private Mangelstatus fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
+	
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="fkMangel", fetch = FetchType.EAGER)
+	private List<Meldung> fkMeldung;
 
 	public Mangel() {
 		// TODO Auto-generated constructor stub
@@ -62,14 +68,13 @@ public class Mangel implements Serializable {
 	/**
 	 * Constructor
 	 */
-	public Mangel(Integer id, Projekt fkProjekt, String name,
+	public Mangel(Projekt fkProjekt, String bezeichnung,
 			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
 			GregorianCalendar faelligkeitsDatum, Mangelstatus fkMangelstatus,
 			Login fkLogin, String beschreibung) {
 		super();
-		this.id = id;
 		this.fkProjekt = fkProjekt;
-		this.name = name;
+		this.bezeichnung = bezeichnung;
 		this.erfassungsZeit = erfassungsZeit;
 		this.abschlussZeit = abschlussZeit;
 		this.faelligkeitsDatum = faelligkeitsDatum;
@@ -110,18 +115,18 @@ public class Mangel implements Serializable {
 	}
 
 	/**
-	 * @return the name
+	 * @return the bezeichnung
 	 */
-	public String getName() {
-		return name;
+	public String getBezeichnung() {
+		return bezeichnung;
 	}
 
 	/**
-	 * @param name
-	 *            the name to set
+	 * @param bezeichnung
+	 *            the bezeichnung to set
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setBezeichnung(String bezeichnung) {
+		this.bezeichnung = bezeichnung;
 	}
 
 	/**
@@ -213,5 +218,20 @@ public class Mangel implements Serializable {
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
+	/**
+	 * @return the fkMeldung
+	 */
+	public List<Meldung> getFkMeldung() {
+		return fkMeldung;
+	}
+	/**
+	 * @param fkMeldung the fkMeldung to set
+	 */
+	public void setFkMeldung(List<Meldung> fkMeldung) {
+		this.fkMeldung = fkMeldung;
+	}
+	
+	
+	
 
 }

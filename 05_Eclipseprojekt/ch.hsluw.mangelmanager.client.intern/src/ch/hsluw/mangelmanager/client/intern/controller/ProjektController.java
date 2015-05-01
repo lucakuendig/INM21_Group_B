@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -15,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -47,6 +47,8 @@ public class ProjektController implements Initializable {
 	@FXML
 	private TableColumn<Projekt, String> colProjektOffeneMaengel;
 	@FXML
+	private TableColumn<Projekt, String> colProjektOffeneMeldungen;
+	@FXML
 	private TableColumn<Projekt, String> colProjektAbgeschlossen;
 	
 	//Datalist for Tableview
@@ -60,20 +62,20 @@ public class ProjektController implements Initializable {
 		colProjektId.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
 		colProjektBezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
 
-		colProjektBauherr.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Projekt, String> p) {
+		colProjektBauherr.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkBauherr().get(0).getNachname() + " " + p.getValue().getFkBauherr().get(0).getVorname());
 		    }
 		});
 		
-		colProjektAdresse.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Projekt, String> p) {
+		colProjektAdresse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse() + " " +p.getValue().getFkAdresse().getPlz().getPlz() + " " + p.getValue().getFkAdresse().getPlz().getOrt());
 		    }
 		});
 		
-		colProjektOffeneMaengel.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Projekt, String> p) {
+		colProjektOffeneMaengel.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
 		    	int anzMaengel = p.getValue().getFkMaengel().size();
 		    	int anzOffeneMaengel = 0;
 		    	for (int i = 0; i < anzMaengel; i++) {
@@ -86,8 +88,25 @@ public class ProjektController implements Initializable {
 		    }
 		});
 		
-		colProjektAbgeschlossen.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Projekt, String> p) {
+		colProjektOffeneMeldungen.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
+		    	int anzMaengel = p.getValue().getFkMaengel().size();
+		    	int anzMeldungen = 0;
+		    	int anzOffeneMeldungen = 0;
+		    	for (int i = 0; i < anzMaengel; i++) {
+		    		anzMeldungen = p.getValue().getFkMaengel().get(i).getFkMeldung().size();
+		    		for (int j = 0; j < anzMeldungen; j++) {
+		    			if(p.getValue().getFkMaengel().get(i).getFkMeldung().get(j).getQuittiert()){
+		    				anzOffeneMeldungen++;
+		    			}
+					}
+				}
+		        return new SimpleStringProperty(String.valueOf(anzOffeneMeldungen));     	
+		    }
+		});
+		
+		colProjektAbgeschlossen.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());
 		    }
 		});
@@ -96,7 +115,7 @@ public class ProjektController implements Initializable {
 		
 		//Client interaction
 		try {
-			client = new ClientRMI();
+			client = ClientRMI.getInstance();
 			data = FXCollections.observableArrayList(client.getAllProjekt());
 		} catch (Exception e) {
 			e.printStackTrace();

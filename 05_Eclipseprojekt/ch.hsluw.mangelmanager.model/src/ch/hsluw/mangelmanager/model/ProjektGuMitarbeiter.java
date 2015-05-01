@@ -9,6 +9,7 @@ import java.util.GregorianCalendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
@@ -28,9 +29,10 @@ public class ProjektGuMitarbeiter implements Serializable {
 	private static final long serialVersionUID = 5806477597388591398L;
 
 	@Id
+	@GeneratedValue
+	private int id;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Projekt fkProjekt;
-	@Id
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private GuMitarbeiter fkMitarbeiter;
 	@Temporal(TemporalType.DATE)
@@ -50,8 +52,7 @@ public class ProjektGuMitarbeiter implements Serializable {
 	 * 
 	 */
 
-	public ProjektGuMitarbeiter(Projekt fkProjekt,
-			GuMitarbeiter fkMitarbeiter, GregorianCalendar startDatum,
+	public ProjektGuMitarbeiter(Projekt fkProjekt,GuMitarbeiter fkMitarbeiter, GregorianCalendar startDatum,
 			GregorianCalendar endDatum) {
 		super();
 		this.fkProjekt = fkProjekt;
@@ -61,32 +62,44 @@ public class ProjektGuMitarbeiter implements Serializable {
 	}
 
 	/**
-	 * @return the idProjekt
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the fkProjekt
 	 */
 	public Projekt getFkProjekt() {
 		return fkProjekt;
 	}
 
 	/**
-	 * @param idProjekt
-	 *            the idProjekt to set
+	 * @param fkProjekt the fkProjekt to set
 	 */
 	public void setFkProjekt(Projekt fkProjekt) {
 		this.fkProjekt = fkProjekt;
 	}
 
 	/**
-	 * @return the idGuMitarbeiter
+	 * @return the fkMitarbeiter
 	 */
-	public GuMitarbeiter getFkGuMitarbeiter() {
+	public GuMitarbeiter getFkMitarbeiter() {
 		return fkMitarbeiter;
 	}
 
 	/**
-	 * @param idGuMitarbeiter
-	 *            the idGuMitarbeiter to set
+	 * @param fkMitarbeiter the fkMitarbeiter to set
 	 */
-	public void setFkGuMitarbeiter(GuMitarbeiter fkMitarbeiter) {
+	public void setFkMitarbeiter(GuMitarbeiter fkMitarbeiter) {
 		this.fkMitarbeiter = fkMitarbeiter;
 	}
 
@@ -98,8 +111,7 @@ public class ProjektGuMitarbeiter implements Serializable {
 	}
 
 	/**
-	 * @param startDatum
-	 *            the startDatum to set
+	 * @param startDatum the startDatum to set
 	 */
 	public void setStartDatum(GregorianCalendar startDatum) {
 		this.startDatum = startDatum;
@@ -113,11 +125,11 @@ public class ProjektGuMitarbeiter implements Serializable {
 	}
 
 	/**
-	 * @param endDatum
-	 *            the endDatum to set
+	 * @param endDatum the endDatum to set
 	 */
 	public void setEndDatum(GregorianCalendar endDatum) {
 		this.endDatum = endDatum;
 	}
 
+	
 }
