@@ -14,13 +14,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-
-
-
-
-
-
-
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;

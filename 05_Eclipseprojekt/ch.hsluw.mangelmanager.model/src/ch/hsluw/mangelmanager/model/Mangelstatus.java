@@ -28,8 +28,7 @@ public class Mangelstatus implements Serializable {
 	private Integer id;
 	private String bezeichnung;
 
-	public Mangelstatus(Integer id, String bezeichnung) {
-		this.id = id;
+	public Mangelstatus(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
 

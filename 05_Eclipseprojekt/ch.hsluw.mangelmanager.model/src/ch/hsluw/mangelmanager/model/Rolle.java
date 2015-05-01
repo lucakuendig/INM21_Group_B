@@ -37,6 +37,17 @@ public class Rolle implements Serializable {
 	public Rolle() {
 
 	}
+	
+	
+
+	/**
+	 * @param name
+	 */
+	public Rolle(String name) {
+		this.name = name;
+	}
+
+
 
 	/**
 	 * @return the id

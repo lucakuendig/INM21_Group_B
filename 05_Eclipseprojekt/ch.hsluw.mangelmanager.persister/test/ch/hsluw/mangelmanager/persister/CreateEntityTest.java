@@ -1,22 +1,39 @@
 package ch.hsluw.mangelmanager.persister;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.GregorianCalendar;
+
+import javafx.scene.control.Tab;
 
 import javax.persistence.EntityManager;
 
 
 
+
+
+
+
+
+
+
+
 import org.junit.Test;
 
+import ch.hsluw.mangelmanager.helper.TemporalDateTyp;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
+import ch.hsluw.mangelmanager.model.Login;
+import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.Rolle;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -58,7 +75,11 @@ public class CreateEntityTest {
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
 		Subunternehmen su1 = new Subunternehmen(adresse2, "ddduuud", "daahahah");
 		Subunternehmen su2 = new Subunternehmen(adresse2, "ddduussssssud", "ddddddaahahah");
+		Login login = new Login("sandro", "1234", "sandroritz@ewcom.ch", new Rolle("admin"));
 		
+		Mangel mangel1 = new Mangel(projekt1, "Mangel 1", new GregorianCalendar(2015,8,06), new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015,6,06), new Mangelstatus("offen"), login, "Es liegt ein Mangel vor");
+
+	
 				
 		
 		em.getTransaction().begin();
@@ -72,6 +93,7 @@ public class CreateEntityTest {
 		em.persist(projekt7);
 		em.persist(su1);
 		em.persist(su2);
+		em.persist(mangel1);
 
 		em.getTransaction().commit();
 	}

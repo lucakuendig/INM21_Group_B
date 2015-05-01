@@ -2,6 +2,8 @@ package ch.hsluw.mangelmanager.client.intern.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
@@ -44,7 +46,7 @@ public class MangelController implements Initializable {
 	@FXML
 	private TableColumn<Mangel, String> colMangelProjekt;
 	@FXML
-	private TableColumn<Mangel, String> colMangelFaehlligkeitsdatum;
+	private TableColumn<Mangel, String> colMangelFaelligkeitsdatum;
 	@FXML
 	private TableColumn<Mangel, String> colMangelAbschlusszeit;
 	@FXML
@@ -53,10 +55,14 @@ public class MangelController implements Initializable {
 	// Datalist for Tableview
 	ObservableList<Mangel> data;
 
+	
 	// SetCellValueFactory from overviewtable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		 DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
+		 DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+		 
 		colMangelId.setCellValueFactory(new PropertyValueFactory<Mangel, String>("id"));
 		colMangelBezeichnung.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 					public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
@@ -68,8 +74,19 @@ public class MangelController implements Initializable {
 						return new SimpleStringProperty(p.getValue().getFkProjekt().getBezeichnung());
 					}
 				});
-		colMangelFaehlligkeitsdatum.setCellValueFactory(new PropertyValueFactory<Mangel, String>("faelligkeitsDatum"));
-		colMangelAbschlusszeit.setCellValueFactory(new PropertyValueFactory<Mangel, String>("abschlussZeit"));
+		
+		colMangelFaelligkeitsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
+				return new SimpleStringProperty(formatDatum.format(p.getValue().getFaelligkeitsDatum().getTime()));
+			}
+		});
+		
+		colMangelAbschlusszeit.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
+				return new SimpleStringProperty(formatZeit.format(p.getValue().getAbschlussZeit().getTime()));
+			}
+		});
+		
 		colMangelMangelstatus.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
 				return new SimpleStringProperty(p.getValue().getFkMangelstatus().getBezeichnung());
