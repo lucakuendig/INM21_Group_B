@@ -22,8 +22,8 @@
             <TableColumn prefWidth="56.0" text="Behoben" />
         </columns>
       </TableView>
-   </children>
    </StackPane>
+   </children>
    <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
    <TextField layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
 </AnchorPane>
