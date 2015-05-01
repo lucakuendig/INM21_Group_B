@@ -15,8 +15,10 @@
 		<StackPane fx:id="stackPane" layoutY="39.0"
 			AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0"
 			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
-			<children>
-				<TableView fx:id="tblMangel" fx:constant="CONSTRAINED_RESIZE_POLICY" />
+			<children>  
+				<TableView fx:id="tblMangel" prefHeight="375.0" prefWidth="480.0">
+				<columnResizePolicy>
+				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 			</columnResizePolicy>
 				<columns>
 					<TableColumn fx:id="colMangelId" prefWidth="50.0" text="ID" />
