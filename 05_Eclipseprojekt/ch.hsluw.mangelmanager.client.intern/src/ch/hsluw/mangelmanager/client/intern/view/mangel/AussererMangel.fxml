@@ -8,12 +8,12 @@
 
 <AnchorPane fx:id="tblMangel" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MangelController">
    <children>
-      <Button layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" />
-     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
-       <children>
-         <TableView prefHeight="375.0" prefWidth="480.0">
-          <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+	<Button layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+	<StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+	<children>
+	<TableView prefHeight="375.0" prefWidth="480.0">
+		<columnResizePolicy>
+	<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
            <columns>
              <TableColumn fx:id="colMangelId" prefWidth="50.0" text="ID" />
@@ -26,7 +26,7 @@
          </TableView>
       </children>
       </StackPane>
-      <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" />
-      <TextField layoutX="577.0" layoutY="8.0" />
+      <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
+      <TextField layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
    </children>
 </AnchorPane>
