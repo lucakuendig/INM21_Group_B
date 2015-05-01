@@ -57,7 +57,7 @@ public class SubunternehmenROImpl extends UnicastRemoteObject implements Subunte
 	}
 
 	@Override
-	public String findAllProjekte(int subunternehmen) {
+	public String findAllProjekte(int subunternehmen) throws RemoteException {
 		return subunternehmenManager.findAllProjekte(subunternehmen);
 	}	
 

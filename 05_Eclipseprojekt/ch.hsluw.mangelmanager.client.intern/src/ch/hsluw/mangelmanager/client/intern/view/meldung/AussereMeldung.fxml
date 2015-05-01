@@ -17,10 +17,10 @@
         <columns>
           <TableColumn fx:id="colMeldungId" prefWidth="50.0" text="ID" />
           <TableColumn fx:id="colMeldungProjekt" prefWidth="107.0" text="Projekt" />
-            <TableColumn fx:id="colMeldungFaelligkeitsdatum" prefWidth="102.0" text="Faelligkeitsdatum" />
-            <TableColumn fx:id="colMeldungBezeichnung" prefWidth="87.0" text="Bezeichnung" />
-            <TableColumn fx:id="colMeldungPrioritaet" prefWidth="77.0" text="Prioritaet" />
-            <TableColumn fx:id="colMeldungBehoben" prefWidth="56.0" text="Behoben" />
+            <TableColumn fx:id="colMeldungMangel" prefWidth="102.0" text="Mangel Nr" />
+            <TableColumn fx:id="colMeldungTyp" prefWidth="87.0" text="MeldungsTyp" />
+            <TableColumn fx:id="colMeldungErfasst" prefWidth="77.0" text="Erfasst am" />
+            <TableColumn fx:id="colMeldungQuittiert" prefWidth="56.0" text="Quittiert" />
         </columns>
       </TableView>
       </children>

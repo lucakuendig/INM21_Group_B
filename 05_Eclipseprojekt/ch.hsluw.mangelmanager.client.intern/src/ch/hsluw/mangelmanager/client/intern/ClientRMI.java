@@ -133,7 +133,12 @@ public class ClientRMI {
 	}
 	
 	public String getProjektproSubunternehmen(int subunternehmen){
-		anzProjekte = subunternehmenRO.findAllProjekte(subunternehmen);
+		try {
+			anzProjekte = subunternehmenRO.findAllProjekte(subunternehmen);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return anzProjekte;
 		
 	}
