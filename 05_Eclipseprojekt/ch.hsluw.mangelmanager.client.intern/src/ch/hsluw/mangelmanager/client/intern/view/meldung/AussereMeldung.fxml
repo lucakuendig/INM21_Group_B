@@ -7,14 +7,14 @@
 
 <AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungController">
    <children>
-      <TableView prefHeight="375.0" prefWidth="480.0">
+      <TableView fx:id="tblMeldung" prefHeight="375.0" prefWidth="480.0">
         <columns>
-          <TableColumn prefWidth="50.0" text="ID" />
-          <TableColumn prefWidth="107.0" text="Projekt" />
-            <TableColumn prefWidth="102.0" text="Fälligkeitsdatum" />
-            <TableColumn prefWidth="87.0" text="Bezeichnung" />
-            <TableColumn prefWidth="77.0" text="Priorität" />
-            <TableColumn prefWidth="56.0" text="Behoben" />
+          <TableColumn fx:id="colMeldungId" prefWidth="50.0" text="ID" />
+          <TableColumn fx:id="colMeldungProjekt" prefWidth="107.0" text="Projekt" />
+            <TableColumn fx:id="colMeldungMangel" prefWidth="102.0" text="Mangel Nr." />
+            <TableColumn fx:id="colMeldungTyp" prefWidth="71.0" text="Meldungstyp" />
+            <TableColumn fx:id="colMeldungErfasst" minWidth="0.0" prefWidth="93.0" text="Erfasst am" />
+            <TableColumn fx:id="colMeldungQuittiert" prefWidth="56.0" text="Quittiert" />
         </columns>
       </TableView>
    </children>
