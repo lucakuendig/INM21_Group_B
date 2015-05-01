@@ -8,15 +8,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-<<<<<<< HEAD
 
-=======
 
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -54,11 +52,8 @@ public class ClientRMI {
 	List<Projekt> projekte;
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
-<<<<<<< HEAD
-=======
 	List<Meldung> meldung;
 	String anzProjekte;
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
 	ProjektRO projektRO;
@@ -123,9 +118,6 @@ public class ClientRMI {
 		return subunternehmen;
 	}
 	
-<<<<<<< HEAD
-	public List<Mangel> getAllMaengel() {
-=======
 	public String getProjektproSubunternehmen(){
 		anzProjekte = subunternehmenRO.findAllProjekte();
 		return anzProjekte;
@@ -134,7 +126,7 @@ public class ClientRMI {
 	
 	
 	public List<Mangel> getAllMangel() {
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
+
 		// TODO Auto-generated method stub
 		try {
 			maengel = mangelRO.findAll();
