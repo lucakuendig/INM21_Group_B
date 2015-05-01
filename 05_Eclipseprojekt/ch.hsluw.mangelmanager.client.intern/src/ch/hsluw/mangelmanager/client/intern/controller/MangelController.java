@@ -81,7 +81,7 @@ public class MangelController implements Initializable {
 		// Client interaction
 		try {
 			client = ClientRMI.getInstance();
-			data = FXCollections.observableArrayList(client.getAllMaengel());
+			data = FXCollections.observableArrayList(client.getAllMangel());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
