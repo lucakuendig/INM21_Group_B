@@ -10,6 +10,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -21,6 +22,7 @@ import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
+import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -59,6 +61,7 @@ public class ClientRMI {
 	ProjektRO projektRO;
 	SubunternehmenRO subunternehmenRO;
 	MangelRO mangelRO;
+	MeldungRO meldungRO;
 
 
 	public static void main(String[] args) {
@@ -139,7 +142,15 @@ public class ClientRMI {
 	}
 	
 	
-	
+	public List<Meldung> getAllMeldung(){
+		try {
+			meldung = meldungRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return meldung;
+	}
 
 
 }
