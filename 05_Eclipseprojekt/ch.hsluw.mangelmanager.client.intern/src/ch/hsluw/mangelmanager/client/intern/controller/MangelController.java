@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 package ch.hsluw.mangelmanager.client.intern.controller;
 
 import java.io.IOException;
 import java.net.URL;
-<<<<<<< HEAD
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-=======
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
@@ -53,11 +46,7 @@ public class MangelController implements Initializable {
 	@FXML
 	private TableColumn<Mangel, String> colMangelProjekt;
 	@FXML
-<<<<<<< HEAD
 	private TableColumn<Mangel, String> colMangelFaelligkeitsdatum;
-=======
-	private TableColumn<Mangel, String> colMangelFaehlligkeitsdatum;
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 	@FXML
 	private TableColumn<Mangel, String> colMangelAbschlusszeit;
 	@FXML
@@ -66,20 +55,13 @@ public class MangelController implements Initializable {
 	// Datalist for Tableview
 	ObservableList<Mangel> data;
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 	// SetCellValueFactory from overviewtable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-<<<<<<< HEAD
 		 DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		 DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 		 
-=======
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 		colMangelId.setCellValueFactory(new PropertyValueFactory<Mangel, String>("id"));
 		colMangelBezeichnung.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 					public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
@@ -91,7 +73,6 @@ public class MangelController implements Initializable {
 						return new SimpleStringProperty(p.getValue().getFkProjekt().getBezeichnung());
 					}
 				});
-<<<<<<< HEAD
 		
 		colMangelFaelligkeitsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
@@ -105,10 +86,6 @@ public class MangelController implements Initializable {
 			}
 		});
 		
-=======
-		colMangelFaehlligkeitsdatum.setCellValueFactory(new PropertyValueFactory<Mangel, String>("faelligkeitsDatum"));
-		colMangelAbschlusszeit.setCellValueFactory(new PropertyValueFactory<Mangel, String>("abschlussZeit"));
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 		colMangelMangelstatus.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
 				return new SimpleStringProperty(p.getValue().getFkMangelstatus().getBezeichnung());
@@ -120,11 +97,7 @@ public class MangelController implements Initializable {
 		// Client interaction
 		try {
 			client = ClientRMI.getInstance();
-<<<<<<< HEAD
-			data = FXCollections.observableArrayList(client.getAllMaengel());
-=======
 			data = FXCollections.observableArrayList(client.getAllMangel());
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -134,7 +107,4 @@ public class MangelController implements Initializable {
 	}
 
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 8e796e074643e2136c6747c0a56e4ed19c958b18
