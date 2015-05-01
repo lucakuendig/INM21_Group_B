@@ -56,7 +56,7 @@ public class MeldungROImpl extends UnicastRemoteObject implements MeldungRO {
 	@Override
 	public List<Meldung> findAll() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return meldungManager.findAll();
 	}
 	
 }

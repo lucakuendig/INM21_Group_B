@@ -68,6 +68,6 @@ public class MeldungManagerImpl implements MeldungManager {
 	@Override
 	public List<Meldung> findAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return meldungDAO.findAllMeldung();
 	}
 }

@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	private Stage loginStage;
-	private GridPane loginLayout;
+	private AnchorPane loginLayout;
 	
 	@FXML
 	private Label lblLoginError;
@@ -44,7 +44,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
 					.getResource("view/login/Login.fxml"));
-			loginLayout = (GridPane) loader.load();
+			loginLayout = (AnchorPane) loader.load();
 
 			// Show the scene containing the root layout.
 			Scene scene = new Scene(loginLayout);

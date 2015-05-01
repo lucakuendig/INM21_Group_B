@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.RootController">
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.RootController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="94.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" onAction="#showPersonen" prefHeight="30.0" prefWidth="101.0" text="Personen" />
-            <Button layoutY="31.0" mnemonicParsing="false" onAction="#showUnternehmen" prefHeight="30.0" prefWidth="101.0" text="Unternehmen" />
-            <Button fx:id="rootProjekt" layoutY="62.0" mnemonicParsing="false" onAction="#showProjekte" prefHeight="30.0" prefWidth="101.0" text="Projekte" />
-            <Button layoutY="93.0" mnemonicParsing="false" onAction="#showMaengel" prefHeight="30.0" prefWidth="101.0" text="Mängel" />
-            <Button layoutY="124.0" mnemonicParsing="false" onAction="#showMeldungen" prefHeight="30.0" prefWidth="101.0" text="Meldungen" />
-            <Separator layoutX="101.0" layoutY="-23.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="0.0" />
+            <Button fx:id="rootPersonen" layoutY="7.0" mnemonicParsing="false" onAction="#showPersonen" prefHeight="42.0" prefWidth="101.0" text="Personen" AnchorPane.topAnchor="39.0" />
+            <Button fx:id="rootUnternehmen" layoutY="61.0" mnemonicParsing="false" onAction="#showUnternehmen" prefHeight="42.0" prefWidth="101.0" text="Unternehmen" AnchorPane.topAnchor="83.0" />
+            <Button fx:id="rootProjekt" layoutY="179.0" mnemonicParsing="false" onAction="#showProjekte" prefHeight="42.0" prefWidth="101.0" text="Projekte" AnchorPane.topAnchor="170.0" />
+            <Button fx:id="rootMaengel" layoutY="246.0" mnemonicParsing="false" onAction="#showMaengel" prefHeight="42.0" prefWidth="101.0" text="Mängel" AnchorPane.topAnchor="213.0" />
+            <Button fx:id="rootMeldungen" layoutY="115.0" mnemonicParsing="false" onAction="#showMeldungen" prefHeight="42.0" prefWidth="101.0" text="Meldungen" AnchorPane.topAnchor="126.0" />
          </children>
       </AnchorPane>
    </left>

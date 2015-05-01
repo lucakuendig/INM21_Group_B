@@ -8,6 +8,7 @@ package ch.hsluw.mangelmanager.persister.dao.meldung;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 
 
@@ -51,6 +52,6 @@ public class MeldungDAOImpl implements MeldungDAO {
 	@Override
 	public List<Meldung> findAllMeldung() {
 		// TODO Auto-generated method stub
-		return null;
+		return new GenericPersisterImpl<Meldung>(Meldung.class).findAll();
 	}
 }

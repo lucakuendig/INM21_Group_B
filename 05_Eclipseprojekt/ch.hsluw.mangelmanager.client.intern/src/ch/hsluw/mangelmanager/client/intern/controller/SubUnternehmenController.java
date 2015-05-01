@@ -25,7 +25,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
 /**
- * The SubunternehmenController handles all interaction with projects * 
+ * The SubunternehmenController handles all interaction with subunternehmen * 
  * 
  * @author lkuendig
  * @version 1.0
@@ -78,13 +78,17 @@ public class SubUnternehmenController implements Initializable {
 		    	for (int i = 0; i < p.getValue().getFkSuMitarbeiter().size() ; i++) {
 			    	projekte = p.getValue().getFkSuMitarbeiter().get(i).getFkProjektSuMitarbeiter();
 			    	for (ProjektSuMitarbeiter projektSuMitarbeiter : projekte) {
+			    			System.out.println("For 1: " + projektSuMitarbeiter.getFkProjekt().getId());
 			    		for (ProjektSuMitarbeiter projektSuMitarbeiter2 : projekte) {
+			    			System.out.println("For 2:" +projektSuMitarbeiter.getFkProjekt().getId());
+			    			System.out.println("Compared to:" + projektSuMitarbeiter2.getFkProjekt().getId());
+			    			System.out.println(projektSuMitarbeiter.getFkProjekt().getId() == projektSuMitarbeiter2.getFkProjekt().getId());
 							if(projektSuMitarbeiter.getFkProjekt().getId() == projektSuMitarbeiter2.getFkProjekt().getId() && projektSuMitarbeiter.getId() != projektSuMitarbeiter2.getId()){
 								projekte.remove(projektSuMitarbeiter2);
 							}
 								
 						}
-			    		if(projektSuMitarbeiter.getFkProjekt().getFkProjektstatus().getBezeichnung()=="Abgeschlossen"){
+			    		if(projektSuMitarbeiter.getFkProjekt().getFkProjektstatus().getBezeichnung()=="abgeschlossen"){
 			    			projekte.remove(projektSuMitarbeiter);
 			    		}
 					}

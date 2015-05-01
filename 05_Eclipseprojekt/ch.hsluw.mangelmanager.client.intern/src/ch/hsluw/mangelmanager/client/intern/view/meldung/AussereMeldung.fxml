@@ -7,7 +7,12 @@
 
 <AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungController">
    <children>
-      <TableView prefHeight="375.0" prefWidth="480.0">
+     <Button layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+        <TableView prefHeight="375.0" prefWidth="480.0">
+          <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
         <columns>
           <TableColumn prefWidth="50.0" text="ID" />
           <TableColumn prefWidth="107.0" text="Projekt" />
@@ -17,5 +22,8 @@
             <TableColumn prefWidth="56.0" text="Behoben" />
         </columns>
       </TableView>
+   </StackPane>
    </children>
+   <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
+   <TextField layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
 </AnchorPane>
