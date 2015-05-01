@@ -59,4 +59,6 @@ public interface SubunternehmenManager {
 	 * @return
 	 */
 	List<Subunternehmen> findAll();
+
+	String findAllProjekte();
 }

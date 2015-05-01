@@ -62,4 +62,6 @@ public interface SubunternehmenDAO {
 	 * @return
 	 */
 	List<Subunternehmen> findAllSubunternehmen();
+
+	String findAllProjekte();
 }

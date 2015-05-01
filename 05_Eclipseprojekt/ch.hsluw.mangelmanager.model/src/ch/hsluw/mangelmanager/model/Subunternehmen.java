@@ -13,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -25,6 +27,9 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Subunternehmen.findAllProjekt", query = "select count(distinct ps.fkprojekt_id) from projektsumitarbeiter as ps join sumitarbeiter as s on s.id = ps.fkmitarbeiter_id where s.fksubunternehmen_id =:subunternehmenid")
+})
 public class Subunternehmen implements Serializable {
 
 	private static final long serialVersionUID = -2526718021212938075L;
