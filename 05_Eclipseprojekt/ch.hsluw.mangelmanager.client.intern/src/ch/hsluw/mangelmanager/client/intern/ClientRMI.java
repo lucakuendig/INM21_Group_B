@@ -1,9 +1,4 @@
-/*
- * ZWECK: Referenzprojekt
- * MODUL: Softwarekompomenten, HSLU-Wirtschaft
- * 
- * Copyright (c) Tim Burkhard - April 2015
- */
+
 package ch.hsluw.mangelmanager.client.intern;
 
 import java.rmi.Naming;
@@ -14,17 +9,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> cb0ddea9e5295532d6dfe446578f5b7e8a703ebd
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -69,6 +53,7 @@ public class ClientRMI {
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
 	List<Meldung> meldung;
+	String anzProjekte;
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
 	ProjektRO projektRO;
@@ -136,12 +121,14 @@ public class ClientRMI {
 		return subunternehmen;
 	}
 	
-<<<<<<< HEAD
+	public String getProjektproSubunternehmen(){
+		anzProjekte = subunternehmenRO.findAllProjekte();
+		return anzProjekte;
+		
+	}
+	
 	
 	public List<Mangel> getAllMangel() {
-=======
-	public List<Mangel> getAllMaengel() {
->>>>>>> cb0ddea9e5295532d6dfe446578f5b7e8a703ebd
 		// TODO Auto-generated method stub
 		try {
 			maengel = mangelRO.findAll();
