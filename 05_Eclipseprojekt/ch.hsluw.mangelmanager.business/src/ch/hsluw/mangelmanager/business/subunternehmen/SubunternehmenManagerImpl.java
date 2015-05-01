@@ -67,4 +67,9 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	public List<Subunternehmen> findAll() {
 		return subunternehmenDAO.findAllSubunternehmen();
 	}
+
+	@Override
+	public String findAllProjekte() {
+		return subunternehmenDAO.findAllProjekte();
+	}
 }

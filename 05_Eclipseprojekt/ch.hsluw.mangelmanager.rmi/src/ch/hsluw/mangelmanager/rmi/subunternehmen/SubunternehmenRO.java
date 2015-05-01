@@ -78,4 +78,6 @@ public interface SubunternehmenRO extends Remote {
 	 * @throws RemoteException
 	 */
 	List<Subunternehmen> findAll() throws RemoteException;
+
+	String findAllProjekte();
 }
