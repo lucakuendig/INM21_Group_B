@@ -72,29 +72,7 @@ public class SubUnternehmenController implements Initializable {
 		
 		colSubunternehmenOffeneProjekte.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subunternehmen, String>, ObservableValue<String>>() {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
-		    	List<ProjektSuMitarbeiter> projekte;
-		    	int anzahl = 0;
-		    	
-		    	for (int i = 0; i < p.getValue().getFkSuMitarbeiter().size() ; i++) {
-			    	projekte = p.getValue().getFkSuMitarbeiter().get(i).getFkProjektSuMitarbeiter();
-			    	for (ProjektSuMitarbeiter projektSuMitarbeiter : projekte) {
-			    			System.out.println("For 1: " + projektSuMitarbeiter.getFkProjekt().getId());
-			    		for (ProjektSuMitarbeiter projektSuMitarbeiter2 : projekte) {
-			    			System.out.println("For 2:" +projektSuMitarbeiter.getFkProjekt().getId());
-			    			System.out.println("Compared to:" + projektSuMitarbeiter2.getFkProjekt().getId());
-			    			System.out.println(projektSuMitarbeiter.getFkProjekt().getId() == projektSuMitarbeiter2.getFkProjekt().getId());
-							if(projektSuMitarbeiter.getFkProjekt().getId() == projektSuMitarbeiter2.getFkProjekt().getId() && projektSuMitarbeiter.getId() != projektSuMitarbeiter2.getId()){
-								projekte.remove(projektSuMitarbeiter2);
-							}
-								
-						}
-			    		if(projektSuMitarbeiter.getFkProjekt().getFkProjektstatus().getBezeichnung()=="abgeschlossen"){
-			    			projekte.remove(projektSuMitarbeiter);
-			    		}
-					}
-			    	anzahl += projekte.size();
-		    	}
-		    	return new SimpleStringProperty(String.valueOf(anzahl));
+		    	return new SimpleStringProperty(client.getProjektproSubunternehmen(p.getValue().getId()));
 		    }
 		});
 		
@@ -118,6 +96,6 @@ public class SubUnternehmenController implements Initializable {
 		tblSubunternehmen.setItems(data);
 	}
 	
-	
-
 }
+
+

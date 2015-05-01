@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.subunternehmen;
 
 import java.util.List;
 
+import javafx.beans.value.ObservableValue;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
@@ -60,5 +61,6 @@ public interface SubunternehmenManager {
 	 */
 	List<Subunternehmen> findAll();
 
-	String findAllProjekte();
+
+	String findAllProjekte(int subunternehmen);
 }

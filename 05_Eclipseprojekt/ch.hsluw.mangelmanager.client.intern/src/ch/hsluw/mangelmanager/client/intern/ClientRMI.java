@@ -6,8 +6,17 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Observable;
+
+import javafx.beans.value.ObservableValue;
 
 import org.apache.log4j.Logger;
+
+
+
+
+
+
 
 
 
@@ -89,9 +98,11 @@ public class ClientRMI {
 		String projektROName = "projektRO";
 		String subunternehmenROName = "subunternehmenRO";
 		String mangelROName = "mangelRO";
+		String meldungROName ="meldungRO";
 
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
+		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
 		
 
@@ -121,8 +132,8 @@ public class ClientRMI {
 		return subunternehmen;
 	}
 	
-	public String getProjektproSubunternehmen(){
-		anzProjekte = subunternehmenRO.findAllProjekte();
+	public String getProjektproSubunternehmen(int subunternehmen){
+		anzProjekte = subunternehmenRO.findAllProjekte(subunternehmen);
 		return anzProjekte;
 		
 	}

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javafx.beans.value.ObservableValue;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -57,19 +59,19 @@ public class SubunternehmenDAOImpl implements SubunternehmenDAO {
 	}
 
 	@Override
-	public String findAllProjekte() {
+	public String findAllProjekte(int subunternehmen) {
 		EntityManager em = JpaUtil.createEntityManager();
 
-		TypedQuery<Subunternehmen> tQuery = em.createNamedQuery("Subunternehmen.findAllProjekte",
-				Subunternehmen.class);
+		TypedQuery<String> tQuery = em.createNamedQuery("Subunternehmen.findAllProjekte",
+				String.class);
 
 		tQuery.setParameter("subunternehmenid", subunternehmen);
 
-		String anzProjekte = tQuery.getResultList();
+		String anzProjekte = tQuery.getSingleResult();
 
 		em.close();
 
-		return anzProjekte
+		return anzProjekte;
 		
 	}
 }

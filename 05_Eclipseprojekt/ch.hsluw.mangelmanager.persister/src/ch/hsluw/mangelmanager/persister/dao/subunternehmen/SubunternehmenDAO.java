@@ -9,6 +9,7 @@ package ch.hsluw.mangelmanager.persister.dao.subunternehmen;
 import java.util.Date;
 import java.util.List;
 
+import javafx.beans.value.ObservableValue;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
@@ -63,5 +64,6 @@ public interface SubunternehmenDAO {
 	 */
 	List<Subunternehmen> findAllSubunternehmen();
 
-	String findAllProjekte();
+
+	String findAllProjekte(int subunternehmen);
 }

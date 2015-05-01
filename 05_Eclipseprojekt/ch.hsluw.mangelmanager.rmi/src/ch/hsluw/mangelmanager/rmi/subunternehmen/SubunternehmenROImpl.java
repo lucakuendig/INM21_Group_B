@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import javafx.beans.value.ObservableValue;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManager;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManagerImpl;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
@@ -56,8 +57,8 @@ public class SubunternehmenROImpl extends UnicastRemoteObject implements Subunte
 	}
 
 	@Override
-	public String findAllProjekte() {
-		return subunternehmenManager.findAllProjekte();
+	public String findAllProjekte(int subunternehmen) {
+		return subunternehmenManager.findAllProjekte(subunternehmen);
 	}	
 
 }
