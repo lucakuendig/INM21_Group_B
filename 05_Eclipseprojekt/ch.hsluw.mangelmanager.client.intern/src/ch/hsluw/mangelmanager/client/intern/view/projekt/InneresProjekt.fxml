@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -7,93 +9,102 @@
 
 <AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
    <children>
-      <Accordion layoutX="240.0" layoutY="8.0">
-        <panes>
-          <TitledPane animated="false" text="Bauleiter">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="2.0" prefHeight="173.0" prefWidth="202.0">
-                           <columns>
-                              <TableColumn prefWidth="66.0" text="Name" />
-                              <TableColumn prefWidth="71.0" text="Vorname" />
-                              <TableColumn prefWidth="64.0" text="Datum" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-          <TitledPane animated="false" text="Zuständige Unternehmen">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="181.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="199.0" text="Unternehmen" />
-                          </columns>
-                        </TableView>
-                     </children></AnchorPane>
-            </content>
-          </TitledPane>
-            <TitledPane animated="false" text="Fälligkeit">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutY="6.0" prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="59.0" text="Beginn" />
-                            <TableColumn prefWidth="76.0" text="Fälligkeit" />
-                              <TableColumn prefWidth="64.0" text="Ende" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-        </panes>
-      </Accordion>
-      <Button layoutX="258.0" layoutY="314.0" mnemonicParsing="false" text="Speichern" />
-      <Button layoutX="353.0" layoutY="314.0" mnemonicParsing="false" text="Abbrechen" />
-      <TextField fx:id="txtProjektId" layoutX="76.0" layoutY="13.0" />
-      <Label layoutX="24.0" layoutY="16.0" text="ID" />
-      <Label layoutX="21.0" layoutY="53.0" text="Bauherr" />
-      <TextField layoutX="76.0" layoutY="50.0" />
-      <Label layoutX="12.0" layoutY="89.0" text="Objekttyp" />
-      <Label layoutX="13.0" layoutY="121.0" text="Arbeitstyp" />
-      <TextField layoutX="76.0" layoutY="84.0" />
-      <TextField layoutX="76.0" layoutY="118.0" />
-      <Accordion layoutX="12.0" layoutY="150.0">
-        <panes>
-          <TitledPane animated="false" text="Mängel">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutY="7.0" prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="Offene" />
-                            <TableColumn prefWidth="124.0" text="Abgeschlossen" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-          <TitledPane animated="false" text="Meldungen">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="200.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="90.0" text="Offen" />
-                            <TableColumn prefWidth="107.0" text="Abgeschlossen" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
-        </panes>
-      </Accordion>
+      <Pane layoutX="12.0" layoutY="8.0" AnchorPane.topAnchor="39.0">
+         <children>
+            <Button layoutX="246.0" layoutY="306.0" mnemonicParsing="false" text="Speichern" />
+            <TextField fx:id="txtProjektId" layoutX="64.0" layoutY="5.0" />
+            <Label layoutX="9.0" layoutY="45.0" text="Bauherr" />
+            <Label layoutY="81.0" text="Objekttyp" />
+            <Accordion layoutY="142.0" prefHeight="223.0" prefWidth="238.0">
+              <panes>
+                <TitledPane animated="false" prefHeight="198.0" prefWidth="221.0" text="Mängel">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutY="7.0" prefHeight="164.0" prefWidth="238.0">
+                                <columns>
+                                  <TableColumn prefWidth="162.0" text="Offene">
+                                       <columns>
+                                          <TableColumn prefWidth="30.0" text="ID" />
+                                          <TableColumn prefWidth="85.0" text="Bezeichnung" />
+                                       </columns></TableColumn>
+                                  <TableColumn prefWidth="122.0" text="Abgeschlossen" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Meldungen">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="182.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="90.0" text="Offen" />
+                                  <TableColumn prefWidth="107.0" text="Abgeschlossen" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <Button layoutX="341.0" layoutY="306.0" mnemonicParsing="false" text="Abbrechen" />
+            <Label layoutX="12.0" layoutY="8.0" text="ID" />
+            <Label layoutX="1.0" layoutY="113.0" text="Arbeitstyp" />
+            <Accordion layoutX="228.0">
+              <panes>
+                <TitledPane animated="false" text="Bauleiter">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutX="2.0" prefHeight="173.0" prefWidth="202.0">
+                                 <columns>
+                                    <TableColumn prefWidth="66.0" text="Name" />
+                                    <TableColumn prefWidth="71.0" text="Vorname" />
+                                    <TableColumn prefWidth="64.0" text="Datum" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Zuständige Unternehmen">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="181.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="199.0" text="Unternehmen" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                  <TitledPane animated="false" text="Fälligkeit">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView layoutY="6.0" prefHeight="200.0" prefWidth="200.0">
+                                <columns>
+                                  <TableColumn prefWidth="59.0" text="Beginn" />
+                                  <TableColumn prefWidth="76.0" text="Fälligkeit" />
+                                    <TableColumn prefWidth="64.0" text="Ende" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+              </panes>
+            </Accordion>
+            <ChoiceBox layoutX="63.0" layoutY="41.0" prefWidth="150.0" />
+            <ChoiceBox layoutX="63.0" layoutY="77.0" prefWidth="150.0" />
+            <ChoiceBox layoutX="63.0" layoutY="109.0" prefWidth="150.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
