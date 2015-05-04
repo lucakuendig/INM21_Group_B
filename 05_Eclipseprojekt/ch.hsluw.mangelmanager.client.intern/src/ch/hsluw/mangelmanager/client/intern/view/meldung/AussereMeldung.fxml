@@ -5,27 +5,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungController">
-   <children>
-     <Button layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
-     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
-        <children>
-     	<TableView fx:id="tblMeldung" prefHeight="375.0" prefWidth="480.0">
-          <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-        <columns>
-          <TableColumn fx:id="colMeldungId" prefWidth="50.0" text="ID" />
-          <TableColumn fx:id="colMeldungProjekt" prefWidth="107.0" text="Projekt" />
-            <TableColumn fx:id="colMeldungMangel" prefWidth="102.0" text="Mangel Nr" />
-            <TableColumn fx:id="colMeldungTyp" prefWidth="87.0" text="MeldungsTyp" />
-            <TableColumn fx:id="colMeldungErfasst" prefWidth="77.0" text="Erfasst am" />
-            <TableColumn fx:id="colMeldungQuittiert" prefWidth="56.0" text="Quittiert" />
-        </columns>
-      </TableView>
-      </children>
-   </StackPane>
-   <ChoiceBox layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
-   <TextField layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
-</children>
-   	</AnchorPane>
+<AnchorPane fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungController"
+	prefHeight="375"
+	prefWidth="480.0"
+	xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+		<Button fx:id= "AusMeldungSearch" layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0"
+			AnchorPane.topAnchor="8.0" />
+		<StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+			<children>
+				<TableView fx:id="tblMeldung" prefHeight="375.0" prefWidth="480.0">
+					<columnResizePolicy>
+						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+					</columnResizePolicy>
+					<columns>
+						<TableColumn fx:id="colMeldungId" prefWidth="50.0" text="ID" />
+						<TableColumn fx:id="colMeldungProjekt" prefWidth="107.0" text="Projekt" />
+						<TableColumn fx:id="colMeldungMangel" prefWidth="102.0" text="Mangel Nr" />
+						<TableColumn fx:id="colMeldungTyp" prefWidth="87.0" text="MeldungsTyp" />
+						<TableColumn fx:id="colMeldungErfasst" prefWidth="77.0" text="Erfasst am" />
+						<TableColumn fx:id="colMeldungQuittiert" prefWidth="56.0" text="Quittiert" />
+					</columns>
+				</TableView>
+			</children>
+		</StackPane>
+		<ChoiceBox fx:id= "AusMeldungChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0"
+			AnchorPane.topAnchor="8.0" />
+		<TextField fx:id= "AusMeldungSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0"
+			/>
+	</children>
+</AnchorPane>
