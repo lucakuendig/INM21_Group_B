@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -17,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -32,6 +34,9 @@ import javafx.util.Callback;
 public class ProjektController implements Initializable {
 	//RMI Client to interact
 	ClientRMI client = null;
+	
+	@FXML
+	public BorderPane rootLayout;
 	
 	//Define overviewtable with columns
 	@FXML
@@ -55,10 +60,13 @@ public class ProjektController implements Initializable {
 	ObservableList<Projekt> data;
 	
 	
-	//SetCellValueFactory from overviewtable
+
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		//SetCellValueFactory from overviewtable
 		colProjektId.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
 		colProjektBezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
 
@@ -124,7 +132,36 @@ public class ProjektController implements Initializable {
 
 		//Set data to tableview
 		tblProjekt.setItems(data);
+		
+    	
+	
 	}
+	
+	@FXML
+	public void showProjektDetail(MouseEvent t) throws IOException{
+		if(t.getClickCount() == 2){
+			System.out.println(tblProjekt.getSelectionModel().getSelectedItem().getId());
+			
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/projekt/InneresProjekt.fxml"));
+				AnchorPane inneresProjekt = (AnchorPane) loader.load();
+				ProjektDetailController detailProjekt = new ProjektDetailController();
+				detailProjekt.loadDetailData(tblProjekt.getSelectionModel().getSelectedItem().getId());
+				rootLayout.setCenter(inneresProjekt);
+				
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		
+	}
+	
+
 	
 	
 
