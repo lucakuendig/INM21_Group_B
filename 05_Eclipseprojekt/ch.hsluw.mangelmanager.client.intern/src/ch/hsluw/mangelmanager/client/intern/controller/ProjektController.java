@@ -143,13 +143,14 @@ public class ProjektController implements Initializable {
 			System.out.println(tblProjekt.getSelectionModel().getSelectedItem().getId());
 			
 			try {
-				// Load Unternehmen overview.
+				// Load ProjektDetail View.
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(Main.class
 						.getResource("view/projekt/InneresProjekt.fxml"));
 				AnchorPane inneresProjekt = (AnchorPane) loader.load();
-				ProjektDetailController detailProjekt = new ProjektDetailController();
-				detailProjekt.loadDetailData(tblProjekt.getSelectionModel().getSelectedItem().getId());
+				ProjektDetailController detailProjekt = loader.getController();
+						
+				detailProjekt.init(tblProjekt.getSelectionModel().getSelectedItem().getId());
 				rootLayout.setCenter(inneresProjekt);
 				
 
