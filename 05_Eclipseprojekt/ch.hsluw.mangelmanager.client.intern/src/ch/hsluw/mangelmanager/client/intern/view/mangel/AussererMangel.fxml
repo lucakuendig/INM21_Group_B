@@ -15,11 +15,12 @@
 				<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 			</columnResizePolicy>
 				<columns>
-					<TableColumn fx:id="colMangelId" prefWidth="50.0" text="ID" />
+					<TableColumn fx:id="colMangelId" maxWidth="1500.0" prefWidth="1500.0" text="ID" />
 					<TableColumn fx:id="colMangelProjekt" prefWidth="107.0" text="Projekt" />
 					<TableColumn fx:id="colMangelBezeichnung" prefWidth="52.0" text="Bezeichnung" />
-					<TableColumn fx:id="colMangelFaelligkeitsdatum" prefWidth="58.0" text="Faelligkeitsdatum" />
-					<TableColumn fx:id="colMangelMangelstatus" prefWidth="144.0" text="Mangelstatus" />
+                  <TableColumn fx:id="colMangelErfassungsdatum" prefWidth="75.0" text="Erfassungsdatum" />
+					<TableColumn fx:id="colMangelFaelligkeitsdatum" prefWidth="111.0" text="Faelligkeitsdatum" />
+					<TableColumn fx:id="colMangelMangelstatus" prefWidth="94.0" text="Mangelstatus" />
 					<TableColumn fx:id="colMangelAbschlusszeit" prefWidth="75.0" text="Abschlusszeit" />
 				</columns>
 			</TableView>
