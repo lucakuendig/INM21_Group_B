@@ -19,6 +19,8 @@ import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
+import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -48,6 +50,13 @@ public class CreateEntityTest {
 		List<Bauherr> bauherren = new ArrayList<Bauherr>();
 		bauherren.add(bauherr1);
 		
+		Bauherr bauherr2 = new Bauherr("Cihan", "Demir", "0800888888" ,new Adresse("Entenstrasse",new Plz(6207, "Nottwil")));
+		List<Bauherr> bauherren2 = new ArrayList<Bauherr>();
+		bauherren2.add(bauherr2);
+		
+		Bauherr bauherr3 = new Bauherr("Mike", "Iten", null, new Adresse("Entenstrasse 2", null));
+		bauherren2.add(bauherr3);
+		
 		Arbeitstyp arbeitstyp1 = new Arbeitstyp("Umbau");
 		Projektstatus projektstatus1 = new Projektstatus("abgeschlossen");
 		
@@ -55,9 +64,9 @@ public class CreateEntityTest {
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
 		Projekt projekt2 = new Projekt(adresse1, "Umbau Hütte auf Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Projekt projekt3 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
+		Projekt projekt3 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp mit bauherren2", bauherren2,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 11, 10), projektstatus1);
-		Projekt projekt4 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 8, 06),
+		Projekt projekt4 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp mit bauherren2", bauherren2,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 8, 06),
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
 		Projekt projekt5 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
 				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 10, 10), projektstatus1);
@@ -84,6 +93,19 @@ public class CreateEntityTest {
 		ProjektSuMitarbeiter psm4 = new ProjektSuMitarbeiter(projekt3, sm1, null, null);
 		ProjektSuMitarbeiter psm5 = new ProjektSuMitarbeiter(projekt2, sm3, null, null);
 		
+		Mangelstatus mangelstatus1 = new Mangelstatus("Mangel behoben");
+		Mangelstatus mangelstatus2 = new Mangelstatus("Mangel offen");
+		
+		Mangel mangel2 = new Mangel(projekt1, "Mangel 2", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015, 6, 19), new GregorianCalendar(2015,6,06), mangelstatus1, login, "Schlampige Arbeit");
+		//Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), null, new GregorianCalendar(2015,6,06), mangelstatus2, null, null);
+		
+		Meldungstyp meldungstyp1 = new Meldungstyp("TestMeldung");
+		
+		Meldung meldung1 = new Meldung(mangel2, meldungstyp1, "meldungtext", new GregorianCalendar(2015,5,13), true, login);
+		Meldung meldung2 = new Meldung();
+		
+
+		
 		em.getTransaction().begin();
 	
 		em.persist(projekt1);
@@ -108,7 +130,15 @@ public class CreateEntityTest {
 		em.persist(psm3);
 		em.persist(psm4);
 		em.persist(psm5);
-
+		
+		em.persist(mangelstatus1);
+		em.persist(mangelstatus2);
+		em.persist(meldungstyp1);
+		em.persist(mangel2);
+		//em.persist(mangel3);
+		em.persist(meldung1);
+		em.persist(meldung2);
+		
 		em.getTransaction().commit();
 	}
 

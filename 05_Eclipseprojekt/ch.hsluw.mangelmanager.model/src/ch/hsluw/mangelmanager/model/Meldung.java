@@ -37,12 +37,13 @@ public class Meldung implements Serializable {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Mangel fkMangel;
 
-	@Temporal(TemporalType.DATE)
-	private GregorianCalendar zeitpunkt;
-
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Meldungstyp fkMeldungstyp;
 	private String text;
+	
+	@Temporal(TemporalType.DATE)
+	private GregorianCalendar zeitpunkt;
+
 	private boolean quittiert;
 	private Login fkLogin;
 
@@ -53,20 +54,19 @@ public class Meldung implements Serializable {
 
 	/**
 	 * @param fkMangel
-	 * @param zeitpunkt
 	 * @param fkMeldungstyp
 	 * @param text
+	 * @param zeitpunkt
 	 * @param quittiert
 	 * @param fkLogin
 	 */
-	public Meldung(Mangel fkMangel, GregorianCalendar zeitpunkt,
-			Meldungstyp fkMeldungstyp, String text, boolean quittiert,
+	public Meldung(Mangel fkMangel, Meldungstyp fkMeldungstyp, String text, GregorianCalendar zeitpunkt, boolean quittiert,
 			Login fkLogin) {
 		super();
 		this.fkMangel = fkMangel;
-		this.zeitpunkt = zeitpunkt;
 		this.fkMeldungstyp = fkMeldungstyp;
 		this.text = text;
+		this.zeitpunkt = zeitpunkt;
 		this.quittiert = quittiert;
 		this.fkLogin = fkLogin;
 	}
