@@ -23,7 +23,8 @@ import javafx.stage.Stage;
  *
  */
 public class RootController implements Initializable {
-
+	
+	
 	@FXML
 	public BorderPane rootLayout;
 
@@ -42,6 +43,10 @@ public class RootController implements Initializable {
 			loader.setLocation(ShowMethodClass.class
 					.getResource("view/person/AusserePerson.fxml"));
 			AnchorPane personen = (AnchorPane) loader.load();
+			
+			PersonController personController = loader.<PersonController>getController();
+			personController.setRootController(this);
+			
 			rootLayout.setCenter(personen);
 
 		} catch (IOException e) {
@@ -57,6 +62,10 @@ public class RootController implements Initializable {
 			loader.setLocation(Main.class
 					.getResource("view/unternehmen/AusseresUnternehmen.fxml"));
 			AnchorPane unternehmen = (AnchorPane) loader.load();
+			
+			SubUnternehmenController subunternehmenController = loader.<SubUnternehmenController>getController();
+			subunternehmenController.setRootController(this);
+			
 			rootLayout.setCenter(unternehmen);
 
 		} catch (IOException e) {
@@ -72,6 +81,10 @@ public class RootController implements Initializable {
 			loader.setLocation(ShowMethodClass.class
 					.getResource("view/projekt/AusseresProjekt.fxml"));
 			AnchorPane projekte = (AnchorPane) loader.load();
+			
+			ProjektController projektController = loader.<ProjektController>getController();
+			projektController.setRootController(this);
+			
 			rootLayout.setCenter(projekte);
 
 		} catch (IOException e) {
@@ -87,6 +100,10 @@ public class RootController implements Initializable {
 			loader.setLocation(ShowMethodClass.class
 					.getResource("view/mangel/AussererMangel.fxml"));
 			AnchorPane maengel = (AnchorPane) loader.load();
+			
+			MangelController mangelController = loader.<MangelController>getController();
+			mangelController.setRootController(this);
+			
 			rootLayout.setCenter(maengel);
 
 		} catch (IOException e) {
@@ -102,6 +119,10 @@ public class RootController implements Initializable {
 			loader.setLocation(ShowMethodClass.class
 					.getResource("view/meldung/AussereMeldung.fxml"));
 			AnchorPane meldungen = (AnchorPane) loader.load();
+			
+			MeldungController meldungController = loader.<MeldungController>getController();
+			meldungController.setRootController(this);
+			
 			rootLayout.setCenter(meldungen);
 
 		} catch (IOException e) {

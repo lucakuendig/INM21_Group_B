@@ -35,6 +35,12 @@ import javafx.util.Callback;
 public class SubUnternehmenController implements Initializable {
 	//RMI Client to interact
 	ClientRMI client = null;
+	RootController rootController = null;
+	
+	public void setRootController(RootController rootController) {
+		// TODO Auto-generated method stub
+		this.rootController = rootController;
+	}
 	
 	//Define overviewtable with columns
 	@FXML

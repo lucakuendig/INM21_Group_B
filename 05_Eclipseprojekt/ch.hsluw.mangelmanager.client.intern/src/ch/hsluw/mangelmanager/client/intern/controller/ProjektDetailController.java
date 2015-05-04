@@ -35,10 +35,15 @@ import javafx.util.Callback;
 public class ProjektDetailController implements Initializable {
 	//RMI Client to interact
 	ClientRMI client = null;
+	RootController rootController = null;
+	
+	public void setRootController(RootController rootController) {
+		// TODO Auto-generated method stub
+		this.rootController = rootController;
+	}
+	
 	Projekt projekt = null;
 	
-	@FXML
-	public BorderPane rootLayout;
 	
 	@FXML
 	public TextField txtProjektId;
@@ -52,11 +57,13 @@ public class ProjektDetailController implements Initializable {
 
 
 	public void init(int projektId) {
-		// TODO Auto-generated method stub
-		System.out.println("in Init: Projekt ID: " + projektId);
-		projekt = client.getProjektById(projektId);
-		//txtProjektId.setText(projekt.getId().toString());
-		
+			try {
+			client = ClientRMI.getInstance();
+			projekt = client.getProjektById(projektId);
+			txtProjektId.setText(projekt.getId().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

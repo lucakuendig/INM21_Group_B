@@ -34,9 +34,12 @@ import javafx.util.Callback;
 public class ProjektController implements Initializable {
 	//RMI Client to interact
 	ClientRMI client = null;
+	RootController rootController = null;
 	
-	@FXML
-	public BorderPane rootLayout;
+	public void setRootController(RootController rootController) {
+		// TODO Auto-generated method stub
+		this.rootController = rootController;
+	}
 	
 	//Define overviewtable with columns
 	@FXML
@@ -148,10 +151,12 @@ public class ProjektController implements Initializable {
 				loader.setLocation(Main.class
 						.getResource("view/projekt/InneresProjekt.fxml"));
 				AnchorPane inneresProjekt = (AnchorPane) loader.load();
-				ProjektDetailController detailProjekt = loader.getController();
-						
-				detailProjekt.init(tblProjekt.getSelectionModel().getSelectedItem().getId());
-				rootLayout.setCenter(inneresProjekt);
+				
+				ProjektDetailController detailProjektController = loader.<ProjektDetailController>getController();
+				detailProjektController.setRootController(rootController);
+				
+				detailProjektController.init(tblProjekt.getSelectionModel().getSelectedItem().getId());
+				rootController.rootLayout.setCenter(inneresProjekt);
 				
 
 			} catch (IOException e) {
@@ -161,6 +166,8 @@ public class ProjektController implements Initializable {
 			
 		
 	}
+
+
 	
 
 	
