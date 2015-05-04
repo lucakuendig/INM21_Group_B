@@ -2,9 +2,12 @@ package ch.hsluw.mangelmanager.client.intern.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
@@ -64,6 +67,9 @@ public class MeldungController implements Initializable {
 		//SetCellValueFactory from overviewtable
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
+			
+			DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
+			
 			colMeldungId.setCellValueFactory(new PropertyValueFactory<Meldung, String>("id"));
 			colMeldungProjekt.setCellValueFactory(new Callback<CellDataFeatures<Meldung, String>, ObservableValue<String>>() {
 			    public ObservableValue<String> call(CellDataFeatures<Meldung, String> p) {
@@ -80,7 +86,15 @@ public class MeldungController implements Initializable {
 			        return new SimpleStringProperty(p.getValue().getFkMeldungstyp().getBezeichnung());
 			    }
 			});
-			colMeldungErfasst.setCellValueFactory(new PropertyValueFactory<Meldung, String>("zeitpunkt"));
+			colMeldungErfasst.setCellValueFactory(new Callback<CellDataFeatures<Meldung, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(CellDataFeatures<Meldung, String> p) {
+					if (p.getValue().getZeitpunkt() == null){
+						return new SimpleStringProperty(" ");
+					}else{
+						return new SimpleStringProperty(formatDatum.format(p.getValue().getZeitpunkt().getTime()));
+					}
+				}
+			});
 			colMeldungQuittiert.setCellValueFactory(new PropertyValueFactory<Meldung, String>("quittiert"));
 		
 			//Client interaction

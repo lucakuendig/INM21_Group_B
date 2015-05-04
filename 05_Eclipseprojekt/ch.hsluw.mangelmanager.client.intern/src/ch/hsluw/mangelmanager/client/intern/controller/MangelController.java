@@ -53,6 +53,8 @@ public class MangelController implements Initializable {
 	@FXML
 	private TableColumn<Mangel, String> colMangelProjekt;
 	@FXML
+	private TableColumn<Mangel, String> colMangelErfassungsdatum;
+	@FXML
 	private TableColumn<Mangel, String> colMangelFaelligkeitsdatum;
 	@FXML
 	private TableColumn<Mangel, String> colMangelAbschlusszeit;
@@ -81,15 +83,33 @@ public class MangelController implements Initializable {
 					}
 				});
 		
+		colMangelErfassungsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
+				if (p.getValue().getErfassungsZeit() == null){
+					return new SimpleStringProperty(" ");
+				}else{
+					return new SimpleStringProperty(formatZeit.format(p.getValue().getErfassungsZeit().getTime()));
+				}
+			}
+		});
+		
 		colMangelFaelligkeitsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-				return new SimpleStringProperty(formatDatum.format(p.getValue().getFaelligkeitsDatum().getTime()));
+				if (p.getValue().getFaelligkeitsDatum() == null){
+					return new SimpleStringProperty(" ");
+				}else{
+					return new SimpleStringProperty(formatDatum.format(p.getValue().getFaelligkeitsDatum().getTime()));
+				}
 			}
 		});
 		
 		colMangelAbschlusszeit.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
 			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
+				if (p.getValue().getAbschlussZeit() == null){
+					return new SimpleStringProperty(" ");
+				}else{
 				return new SimpleStringProperty(formatZeit.format(p.getValue().getAbschlussZeit().getTime()));
+				}
 			}
 		});
 		

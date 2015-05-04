@@ -54,7 +54,7 @@ public class CreateEntityTest {
 		List<Bauherr> bauherren2 = new ArrayList<Bauherr>();
 		bauherren2.add(bauherr2);
 		
-		Bauherr bauherr3 = new Bauherr("Mike", "Iten", null, new Adresse("Entenstrasse 2", null));
+		Bauherr bauherr3 = new Bauherr("Mike", "Iten", "9393939393", new Adresse("Entenstrasse 2", new Plz(6203, "Schwubidu")));
 		bauherren2.add(bauherr3);
 		
 		Arbeitstyp arbeitstyp1 = new Arbeitstyp("Umbau");
@@ -97,12 +97,11 @@ public class CreateEntityTest {
 		Mangelstatus mangelstatus2 = new Mangelstatus("Mangel offen");
 		
 		Mangel mangel2 = new Mangel(projekt1, "Mangel 2", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015, 6, 19), new GregorianCalendar(2015,6,06), mangelstatus1, login, "Schlampige Arbeit");
-		//Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), null, new GregorianCalendar(2015,6,06), mangelstatus2, null, null);
-		
+		Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), new GregorianCalendar(2015,6,06), mangelstatus2, login, "suber");
 		Meldungstyp meldungstyp1 = new Meldungstyp("TestMeldung");
 		
 		Meldung meldung1 = new Meldung(mangel2, meldungstyp1, "meldungtext", new GregorianCalendar(2015,5,13), true, login);
-		Meldung meldung2 = new Meldung();
+		Meldung meldung2 = new Meldung(mangel3, meldungstyp1, "nid so guet", new GregorianCalendar(2015,5,13),true, login);
 		
 
 		
@@ -135,7 +134,7 @@ public class CreateEntityTest {
 		em.persist(mangelstatus2);
 		em.persist(meldungstyp1);
 		em.persist(mangel2);
-		//em.persist(mangel3);
+		em.persist(mangel3);
 		em.persist(meldung1);
 		em.persist(meldung2);
 		

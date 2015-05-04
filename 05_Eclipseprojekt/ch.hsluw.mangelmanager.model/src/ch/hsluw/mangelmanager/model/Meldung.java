@@ -161,4 +161,20 @@ public class Meldung implements Serializable {
 		this.fkLogin = fkLogin;
 	}
 
+	/**
+	 * @return the zeitpunkt
+	 */
+	public GregorianCalendar getZeitpunkt() {
+		return zeitpunkt;
+	}
+
+	/**
+	 * @param zeitpunkt the zeitpunkt to set
+	 */
+	public void setZeitpunkt(GregorianCalendar zeitpunkt) {
+		this.zeitpunkt = zeitpunkt;
+	}
+
+	
+	
 }
