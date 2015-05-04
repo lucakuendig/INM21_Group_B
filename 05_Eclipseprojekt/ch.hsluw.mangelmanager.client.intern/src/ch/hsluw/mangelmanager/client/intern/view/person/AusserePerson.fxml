@@ -15,16 +15,21 @@
                </columnResizePolicy>
         <columns>
           <TableColumn fx:id="colPersonId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="colPersonVorname" prefWidth="75.0" text="Vorname" />
             <TableColumn fx:id="colPersonName" prefWidth="75.0" text="Name" />
-            <TableColumn fx:id="colPersonAdresse" prefWidth="75.0" text="Adresse" />
+          <TableColumn fx:id="colPersonVorname" prefWidth="75.0" text="Vorname" />
+                  <TableColumn fx:id="colPersonTyp" prefWidth="75.0" text="Personentyp" />
             <TableColumn fx:id="colPersonUnternehmen" prefWidth="95.0" text="Unternehmen" />
             <TableColumn fx:id="colPersonTelefon" prefWidth="64.0" text="Telefon" />
+                  <TableColumn fx:id="colPersonBenutzername" prefWidth="75.0" text="Benutzername" />
+                  <TableColumn fx:id="colPersonEmail" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="colPersonRolle" prefWidth="75.0" text="Rolle" />
         </columns>
       </TableView>
    </children>
    </StackPane>
    <ChoiceBox fx:id="AusPersonChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 	<TextField fx:id="AusPersonSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#addPerson" text="+" />
+      <Button layoutX="46.0" layoutY="8.0" mnemonicParsing="false" onAction="#deletePerson" text="-" />
 	 </children>
 </AnchorPane>

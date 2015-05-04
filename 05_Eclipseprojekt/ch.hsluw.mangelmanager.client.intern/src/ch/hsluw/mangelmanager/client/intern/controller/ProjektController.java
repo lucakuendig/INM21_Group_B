@@ -69,6 +69,26 @@ public class ProjektController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		setCellValueFactoryTblProjekt();
+		
+
+		//Client interaction
+		try {
+			client = ClientRMI.getInstance();
+			data = FXCollections.observableArrayList(client.getAllProjekt());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+		//Set data to tableview
+		tblProjekt.setItems(data);
+		
+    	
+	
+	}
+
+	private void setCellValueFactoryTblProjekt() {
 		//SetCellValueFactory from overviewtable
 		colProjektId.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
 		colProjektBezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
@@ -121,23 +141,6 @@ public class ProjektController implements Initializable {
 		        return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());
 		    }
 		});
-		
-		
-		
-		//Client interaction
-		try {
-			client = ClientRMI.getInstance();
-			data = FXCollections.observableArrayList(client.getAllProjekt());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-
-		//Set data to tableview
-		tblProjekt.setItems(data);
-		
-    	
-	
 	}
 	
 	@FXML
@@ -167,10 +170,5 @@ public class ProjektController implements Initializable {
 		
 	}
 
-
-	
-
-	
-	
 
 }

@@ -9,8 +9,12 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.beans.value.ObservableValue;
+import javafx.util.Callback;
 
 import org.apache.log4j.Logger;
+
+
+
 
 
 
@@ -26,12 +30,14 @@ import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
+import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -60,6 +66,7 @@ public class ClientRMI {
 	    return ClientRMI.instance;
 	  }
 	
+	List<Person> person;
 	List<Projekt> projekte;
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
@@ -71,6 +78,7 @@ public class ClientRMI {
 	
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
+	PersonRO personRO;
 	ProjektRO projektRO;
 	SubunternehmenRO subunternehmenRO;
 	MangelRO mangelRO;
@@ -99,11 +107,13 @@ public class ClientRMI {
 
 		// init rmi connection
 		String url = "rmi://localhost:1099/";
+		String personROName = "personRO";
 		String projektROName = "projektRO";
 		String subunternehmenROName = "subunternehmenRO";
 		String mangelROName = "mangelRO";
 		String meldungROName ="meldungRO";
-
+		
+		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
@@ -181,6 +191,17 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		return projekt;
+	}
+
+	public List<Person> getAllPerson() {
+		// TODO Auto-generated method stub
+		try {
+			person = personRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return person;
 	}
 
 
