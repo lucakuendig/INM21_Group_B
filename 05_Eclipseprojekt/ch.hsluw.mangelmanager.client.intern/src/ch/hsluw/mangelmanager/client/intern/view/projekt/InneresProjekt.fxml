@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektController">
+<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
    <children>
       <Accordion layoutX="240.0" layoutY="8.0">
         <panes>
@@ -55,7 +55,7 @@
       </Accordion>
       <Button layoutX="258.0" layoutY="314.0" mnemonicParsing="false" text="Speichern" />
       <Button layoutX="353.0" layoutY="314.0" mnemonicParsing="false" text="Abbrechen" />
-      <TextField layoutX="76.0" layoutY="13.0" />
+      <TextField fx:id="txtProjektId" layoutX="76.0" layoutY="13.0" />
       <Label layoutX="24.0" layoutY="16.0" text="ID" />
       <Label layoutX="21.0" layoutY="53.0" text="Bauherr" />
       <TextField layoutX="76.0" layoutY="50.0" />

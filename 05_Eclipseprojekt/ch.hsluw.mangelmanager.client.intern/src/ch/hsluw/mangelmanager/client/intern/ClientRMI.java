@@ -65,6 +65,10 @@ public class ClientRMI {
 	List<Mangel> maengel;
 	List<Meldung> meldung;
 	String anzProjekte;
+	Projekt projekt;
+	
+	
+	
 
 	private static Logger logger = Logger.getLogger(ClientRMI.class);
 	ProjektRO projektRO;
@@ -166,6 +170,17 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		return meldung;
+	}
+
+	public Projekt getProjektById(int projektId) {
+		// TODO Auto-generated method stub
+		try {
+			projekt = projektRO.findById(projektId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekt;
 	}
 
 

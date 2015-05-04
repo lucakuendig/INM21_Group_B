@@ -7,9 +7,16 @@
 
 <AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektController">
    <children>
+<<<<<<< HEAD
      <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
        <children>          
       <TableView fx:id="tblProjekt" prefHeight="375.0" prefWidth="480.0">
+=======
+	<Button fx:id="AusProjektSearch" layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
+     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+       <children>          
+      <TableView fx:id="tblProjekt" onMouseClicked="#showProjektDetail" prefHeight="375.0" prefWidth="480.0">
+>>>>>>> 529243691323371cfd9441bafc6304209505a84b
       	<columnResizePolicy>
 		<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 		</columnResizePolicy>
@@ -25,7 +32,12 @@
       </TableView>
       </children>
 	</StackPane>
+<<<<<<< HEAD
 	<ChoiceBox fx:id="AusProjektChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 	<TextField fx:id="AusProjektSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+=======
+	<ChoiceBox fx:id="AusProjektChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
+	<TextField fx:id="AusProjektSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
+>>>>>>> 529243691323371cfd9441bafc6304209505a84b
    </children>
 </AnchorPane>
