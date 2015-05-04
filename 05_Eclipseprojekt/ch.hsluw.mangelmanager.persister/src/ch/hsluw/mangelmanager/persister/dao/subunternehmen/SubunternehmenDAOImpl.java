@@ -13,6 +13,7 @@ import java.util.List;
 import javafx.beans.value.ObservableValue;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -61,15 +62,19 @@ public class SubunternehmenDAOImpl implements SubunternehmenDAO {
 	@Override
 	public String findAllProjekte(int subunternehmen) {
 		EntityManager em = JpaUtil.createEntityManager();
+		String anzProjekte = "";
+		
 
-		TypedQuery<String> tQuery = em.createNamedQuery("Subunternehmen.findAllProjekte",
-				String.class);
+		Query tQuery = em.createNativeQuery("select count(distinct ps.fkprojekt_id) from projektsumitarbeiter as ps "
+				+ "join sumitarbeiter as s on s.id = ps.fkmitarbeiter_id "
+				+ "join projekt as p on p.id = ps.fkprojekt_id "
+				+ "join projektstatus pst on pst.id = p.fkprojektstatus_id "
+				+ "where s.fksubunternehmen_id = "+ subunternehmen +" and pst.bezeichnung != 'abgeschlossen'");
 
-		tQuery.setParameter("subunternehmenid", subunternehmen);
-
-		String anzProjekte = tQuery.getSingleResult();
+		Object resProjekte = tQuery.getSingleResult();
 
 		em.close();
+		anzProjekte = resProjekte.toString();
 
 		return anzProjekte;
 		
