@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 /**
  * The RootController is used to load different content 
@@ -26,6 +27,11 @@ public class RootController implements Initializable {
 	@FXML
 	public BorderPane rootLayout;
 
+	@FXML private void logout() {
+		Main.initRootLayout();
+		Stage stageToClose = (Stage) rootLayout.getScene().getWindow();
+		stageToClose.close();
+	}
 	@FXML
 	private void showPersonen() {
 		try {

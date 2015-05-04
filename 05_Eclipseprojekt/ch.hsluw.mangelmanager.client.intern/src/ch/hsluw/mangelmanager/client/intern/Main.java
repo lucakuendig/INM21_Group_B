@@ -16,8 +16,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-	private Stage loginStage;
-	private AnchorPane loginLayout;
+	private static Stage loginStage;
+	private static AnchorPane loginLayout;
 	
 	@FXML
 	private Label lblLoginError;
@@ -38,7 +38,7 @@ public class Main extends Application {
 	/**
 	 * Initializes the root layout.
 	 */
-	public void initRootLayout() {
+	public static void initRootLayout() {
 		try {
 			// Load root layout from fxml file.
 			FXMLLoader loader = new FXMLLoader();
