@@ -27,7 +27,9 @@ public class RootController implements Initializable {
 	@FXML
 	public BorderPane rootLayout;
 
-	@FXML private void logout() {
+	@FXML 
+	private void logout() {
+		// Load Login and close current Stage
 		Main.initRootLayout();
 		Stage stageToClose = (Stage) rootLayout.getScene().getWindow();
 		stageToClose.close();

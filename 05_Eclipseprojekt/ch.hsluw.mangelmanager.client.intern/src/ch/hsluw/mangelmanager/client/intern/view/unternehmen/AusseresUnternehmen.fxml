@@ -7,7 +7,6 @@
 
 <AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.SubUnternehmenController">
    <children>
-      <Button fx:id= "AusUnternehmenSearch" layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
      <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
        <children>  
    	<TableView fx:id="tblSubunternehmen" prefHeight="375.0" prefWidth="573.0">
@@ -25,7 +24,7 @@
       </TableView>
       </children>
      </StackPane>
-   <ChoiceBox fx:id= "AusUnternehmenChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
-	<TextField fx:id= "AusUnternehmenSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="74.0" AnchorPane.topAnchor="8.0" />
+   <ChoiceBox fx:id="AusUnternehmenChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
+	<TextField fx:id="AusUnternehmenSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
 	 </children>
 </AnchorPane>

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MangelController">
+<AnchorPane prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 <children>
 		<Button fx:id="InMangelSearch" layoutX="737.0" layoutY="8.0" mnemonicParsing="false" text="Suchen" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
 		<ChoiceBox fx:id="InMangelChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="250.0" AnchorPane.topAnchor="8.0" />
