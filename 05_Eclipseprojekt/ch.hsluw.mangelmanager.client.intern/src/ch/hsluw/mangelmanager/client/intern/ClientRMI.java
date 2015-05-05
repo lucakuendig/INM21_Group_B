@@ -194,29 +194,26 @@ public class ClientRMI {
 		return projekt;
 	}
 
-<<<<<<< HEAD
 	public Subunternehmen getSubunternehmenById(int subunternehmenId) {
 		try {
 			subunternehmennr = subunternehmenRO.findById(subunternehmenId);
-=======
-	public List<Person> getAllPerson() {
-		// TODO Auto-generated method stub
-		try {
-			person = personRO.findAll();
->>>>>>> eaf302fb0d1aa4b1798cbaeb630638c95a24222a
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
 		return subunternehmennr;
 	}
-	
-=======
+public List<Person> getAllPerson() {
+	// TODO Auto-generated method stub
+	try {
+		person = personRO.findAll();
+	} catch (RemoteException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 		return person;
 	}
 
->>>>>>> eaf302fb0d1aa4b1798cbaeb630638c95a24222a
 
 }
 

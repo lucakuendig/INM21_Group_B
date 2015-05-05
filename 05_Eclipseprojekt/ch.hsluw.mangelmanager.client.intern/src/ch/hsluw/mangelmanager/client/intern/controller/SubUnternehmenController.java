@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
@@ -20,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -100,6 +102,33 @@ public class SubUnternehmenController implements Initializable {
 
 		//Set data to tableview
 		tblSubunternehmen.setItems(data);
+	}
+	
+	@FXML
+	public void showSubunternehmenDetail(MouseEvent t) throws IOException{
+		if(t.getClickCount() == 2){
+			System.out.println(tblSubunternehmen.getSelectionModel().getSelectedItem().getId());
+			
+			try {
+				// Load SubunternehmenDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/unternehmen/InneresUnternehmen.fxml"));
+				AnchorPane inneresUnternehmen = (AnchorPane) loader.load();
+				
+				SubUnternehmenDetailController detailSubunternehmenController = loader.<SubUnternehmenDetailController>getController();
+				detailSubunternehmenController.setRootController(rootController);
+				
+				detailSubunternehmenController.init(tblSubunternehmen.getSelectionModel().getSelectedItem().getId());
+				rootController.rootLayout.setCenter(inneresUnternehmen);
+				
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+			
+		
 	}
 	
 }
