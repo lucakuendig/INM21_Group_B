@@ -36,8 +36,8 @@ public class SubunternehmenDAOImpl implements SubunternehmenDAO {
 	}
 
 	@Override
-	public Subunternehmen update(Subunternehmen entity) throws Exception {
-		return new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).update(entity);
+	public void update(Subunternehmen entity) throws Exception {
+		 new GenericPersisterImpl<Subunternehmen>(Subunternehmen.class).update(entity);
 	}
 
 	@Override

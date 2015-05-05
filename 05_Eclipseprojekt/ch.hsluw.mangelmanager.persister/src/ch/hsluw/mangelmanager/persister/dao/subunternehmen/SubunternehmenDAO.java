@@ -37,7 +37,7 @@ public interface SubunternehmenDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	Subunternehmen update(Subunternehmen entity) throws Exception;
+	void update(Subunternehmen entity) throws Exception;
 
 	/**
 	 * Löscht die übergebene Entity.

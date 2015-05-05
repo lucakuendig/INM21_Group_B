@@ -44,7 +44,7 @@ public interface SubunternehmenRO extends Remote {
 	 * @throws RemoteException
 	 * @throws Exception
 	 */
-	Subunternehmen update(Subunternehmen entity) throws RemoteException, Exception;
+	void update(Subunternehmen entity) throws RemoteException, Exception;
 
 	/**
 	 * Löscht die übergebene Entity.
@@ -82,5 +82,4 @@ public interface SubunternehmenRO extends Remote {
 
 	String findAllProjekte(int subunternehmen) throws RemoteException;
 
-	void save(Subunternehmen subunternehmen) throws RemoteException;
 }

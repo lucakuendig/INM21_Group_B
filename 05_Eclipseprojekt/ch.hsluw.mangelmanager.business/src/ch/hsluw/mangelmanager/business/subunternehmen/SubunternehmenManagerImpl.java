@@ -39,12 +39,12 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	}
 
 	@Override
-	public Subunternehmen update(Subunternehmen entity) throws Exception {
+	public void update(Subunternehmen entity) throws Exception {
 
 		if (entity.getId() == null) {
-			return add(entity);
+			add(entity);
 		} else {
-			return subunternehmenDAO.update(entity);
+			subunternehmenDAO.update(entity);
 		}
 	}
 

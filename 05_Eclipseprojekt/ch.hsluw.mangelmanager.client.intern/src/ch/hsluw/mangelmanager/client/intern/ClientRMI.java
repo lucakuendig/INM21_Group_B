@@ -24,6 +24,7 @@ import org.apache.log4j.Logger;
 
 
 
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -214,13 +215,18 @@ public class ClientRMI {
 			return person;
 	}
 
-	public void save (Subunternehmen subunternehmen){
-		try {
-			subunternehmenRO.save(subunternehmen);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+	public void update(Subunternehmen subunternehmen) {
+			try {
+				subunternehmenRO.update(subunternehmen);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 
 
