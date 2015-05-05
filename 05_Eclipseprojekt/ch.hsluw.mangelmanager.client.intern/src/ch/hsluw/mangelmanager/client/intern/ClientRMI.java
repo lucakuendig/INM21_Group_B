@@ -66,6 +66,7 @@ public class ClientRMI {
 	List<Meldung> meldung;
 	String anzProjekte;
 	Projekt projekt;
+	Subunternehmen subunternehmennr;
 	
 	
 	
@@ -183,6 +184,16 @@ public class ClientRMI {
 		return projekt;
 	}
 
+	public Subunternehmen getSubunternehmenById(int subunternehmenId) {
+		try {
+			subunternehmennr = subunternehmenRO.findById(subunternehmenId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return subunternehmennr;
+	}
+	
 
 }
 
