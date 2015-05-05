@@ -29,12 +29,12 @@ public class ShowMethodClass extends Application {
 
 	public void test() {
 		// showLogin();
-		 showMangel();
-		// showInnerMangel();
+		// showMangel();
+		//showInnerMangel();
 		// showMeldung();
 		// showInnerMeldung();
 		//showPerson();
-		// showInnerPerson();
+			showInnerPerson();
 		// showProjekt();
 		// showInnerProjekt();
 		// showUnternehmen();
@@ -95,7 +95,7 @@ public class ShowMethodClass extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ShowMethodClass.class
-					.getResource("view/mangel/inner/InnererMangel.fxml"));
+					.getResource("view/mangel/InnererMangel.fxml"));
 			AnchorPane InnerMangel = (AnchorPane) loader.load();
 			rootLayout.setCenter(InnerMangel);
 
@@ -109,7 +109,7 @@ public class ShowMethodClass extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ShowMethodClass.class
-					.getResource("view/meldung/outer/AussereMeldung.fxml"));
+					.getResource("view/meldung/AussereMeldung.fxml"));
 			AnchorPane Meldung = (AnchorPane) loader.load();
 			rootLayout.setCenter(Meldung);
 
@@ -123,7 +123,7 @@ public class ShowMethodClass extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ShowMethodClass.class
-					.getResource("view/meldung/inner/InnereMeldung.fxml"));
+					.getResource("view/meldung/InnereMeldung.fxml"));
 			AnchorPane InnerMeldung = (AnchorPane) loader.load();
 			rootLayout.setCenter(InnerMeldung);
 
@@ -151,7 +151,7 @@ public class ShowMethodClass extends Application {
 			// Load person overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(ShowMethodClass.class
-					.getResource("view/person/inner/InnerePerson.fxml"));
+					.getResource("view/person/InnerePerson.fxml"));
 			AnchorPane InnerPerson = (AnchorPane) loader.load();
 			rootLayout.setCenter(InnerPerson);
 
