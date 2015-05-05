@@ -75,6 +75,7 @@ public class ClientRMI {
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
+	Meldung meldungnr;
 	
 	
 	
@@ -204,6 +205,17 @@ public class ClientRMI {
 		}
 		return subunternehmennr;
 	}
+	
+	public Meldung getMeldungById(int meldungId) {
+		try {
+			meldungnr = meldungRO.findById(meldungId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return meldungnr;
+	}
+	
 	public List<Person> getAllPerson() {
 		// TODO Auto-generated method stub
 		try {

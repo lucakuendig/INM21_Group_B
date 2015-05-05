@@ -9,7 +9,7 @@
 	<children>
 		<StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
 			<children>
-				<TableView fx:id="tblMeldung" prefHeight="375.0" prefWidth="480.0">
+				<TableView fx:id="tblMeldung" onMouseClicked="#showMeldungDetail" prefHeight="375.0" prefWidth="480.0">
 					<columnResizePolicy>
 						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 					</columnResizePolicy>

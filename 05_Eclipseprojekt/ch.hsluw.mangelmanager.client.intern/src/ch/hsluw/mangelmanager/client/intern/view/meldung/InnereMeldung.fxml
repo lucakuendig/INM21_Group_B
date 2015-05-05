@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600" minWidth="700" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungDetailController">
 <children>
 		<ChoiceBox fx:id="InMeldungChoice" layoutX="875.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 		<TextField fx:id="InMeldungSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
@@ -31,8 +31,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="textMeldungId" maxWidth="-Infinity" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="1" />
-            <TextField fx:id="textMeldungProjekt" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtMeldungProjekt" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Projekt" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" />
@@ -43,13 +42,13 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextField fx:id="textMeldungDatum" maxWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtMeldungDatum" maxWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Art" GridPane.rowIndex="4">
                <padding>
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextArea fx:id="textMeldungBeschreibung" prefHeight="235.0" prefWidth="596.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="txtMeldungBeschreibung" prefHeight="235.0" prefWidth="596.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Beschreibung" GridPane.rowIndex="5">
                <padding>
                   <Insets left="20.0" />
@@ -68,13 +67,14 @@
                   <Button fx:id="btnMeldungSpeichern" mnemonicParsing="false" text="Speichern" />
                </children>
             </GridPane>
-            <TextField fx:id="textMeldungArt" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtMeldungArt" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Mangel" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="textMeldungMangel" maxWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtMeldungMangel" maxWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblMeldungId" GridPane.columnIndex="1" />
          </children>
       </GridPane>
 	</children>

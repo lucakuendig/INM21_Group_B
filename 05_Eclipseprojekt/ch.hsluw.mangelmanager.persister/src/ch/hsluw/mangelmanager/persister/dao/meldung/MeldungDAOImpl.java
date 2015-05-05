@@ -46,7 +46,7 @@ public class MeldungDAOImpl implements MeldungDAO {
 	@Override
 	public Meldung findMeldungById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return new GenericPersisterImpl<Meldung>(Meldung.class).findById(id);
 	}
 
 	@Override

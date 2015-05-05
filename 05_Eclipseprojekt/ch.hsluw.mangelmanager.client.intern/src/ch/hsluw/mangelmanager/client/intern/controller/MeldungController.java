@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Projekt;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -110,4 +112,29 @@ public class MeldungController implements Initializable {
 		
 		}
 		
+		@FXML
+		public void showMeldungDetail(MouseEvent t) throws IOException{
+			if(t.getClickCount() == 2){
+				System.out.println(tblMeldung.getSelectionModel().getSelectedItem().getId());
+				
+				try {
+					// Load MeldungDetail View.
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(Main.class
+							.getResource("view/meldung/InnereMeldung.fxml"));
+					AnchorPane inneresMeldung = (AnchorPane) loader.load();
+					
+					MeldungDetailController detailMeldungController = loader.<MeldungDetailController>getController();
+					detailMeldungController.setRootController(rootController);
+					
+					detailMeldungController.init(tblMeldung.getSelectionModel().getSelectedItem().getId());
+					rootController.rootLayout.setCenter(inneresMeldung);
+					
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		
+		}
 }

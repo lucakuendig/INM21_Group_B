@@ -62,7 +62,7 @@ public class MeldungManagerImpl implements MeldungManager {
 	@Override
 	public Meldung findById(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return meldungDAO.findMeldungById(id);
 	}
 
 	@Override
