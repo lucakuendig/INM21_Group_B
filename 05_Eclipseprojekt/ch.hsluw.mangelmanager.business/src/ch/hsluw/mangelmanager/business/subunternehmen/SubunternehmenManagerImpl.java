@@ -18,7 +18,7 @@ import ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAOImpl
  * SubunternehmenManager zur Verfügung.
  * 
  * @version 1.0
- * @author sritz
+ * @author lkuendig
  * 
  */
 public class SubunternehmenManagerImpl implements SubunternehmenManager {
@@ -72,5 +72,16 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	@Override
 	public String findAllProjekte(int subunternehmen) {
 		return subunternehmenDAO.findAllProjekte(subunternehmen);
+	}
+
+	@Override
+	public void save(Subunternehmen subunternehmen) {
+		try {
+			subunternehmenDAO.save(subunternehmen);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

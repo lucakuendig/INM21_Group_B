@@ -81,4 +81,6 @@ public interface SubunternehmenRO extends Remote {
 	List<Subunternehmen> findAll() throws RemoteException;
 
 	String findAllProjekte(int subunternehmen) throws RemoteException;
+
+	void save(Subunternehmen subunternehmen) throws RemoteException;
 }

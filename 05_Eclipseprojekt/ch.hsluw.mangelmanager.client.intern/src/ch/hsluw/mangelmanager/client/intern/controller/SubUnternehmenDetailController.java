@@ -59,6 +59,13 @@ public class SubUnternehmenDetailController implements Initializable {
 			}
 			
 		}
+		
+		@FXML
+		private void saveSubunternehmen() {
+			subunternehmen.setName(txtSubunternehmenName.getText());
+			subunternehmen.setTelefon(txtSubunternehmenTelefon.getText());
+			
+		}
 
 	
 }

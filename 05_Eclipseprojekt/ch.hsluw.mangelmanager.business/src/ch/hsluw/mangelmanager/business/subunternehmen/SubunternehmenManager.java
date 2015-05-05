@@ -63,4 +63,6 @@ public interface SubunternehmenManager {
 
 
 	String findAllProjekte(int subunternehmen);
+
+	void save(Subunternehmen subunternehmen);
 }

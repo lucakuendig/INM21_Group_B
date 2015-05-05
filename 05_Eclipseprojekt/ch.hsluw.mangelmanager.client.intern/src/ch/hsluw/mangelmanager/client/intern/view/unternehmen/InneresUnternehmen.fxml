@@ -52,7 +52,7 @@
             </TitledPane>
         </panes>
       </Accordion>
-      <Button layoutX="258.0" layoutY="314.0" mnemonicParsing="false" text="Speichern" />
+      <Button fx:id="btnSubunternehmenSave" layoutX="258.0" layoutY="314.0" mnemonicParsing="false" onAction="#saveSubunternehmen" text="Speichern" />
       <Button layoutX="353.0" layoutY="314.0" mnemonicParsing="false" text="Abbrechen" />
       <Label layoutX="12.0" layoutY="19.0" text="ID" />
       <Label layoutX="9.0" layoutY="53.0" text="Name" />

@@ -203,15 +203,24 @@ public class ClientRMI {
 		}
 		return subunternehmennr;
 	}
-public List<Person> getAllPerson() {
-	// TODO Auto-generated method stub
-	try {
-		person = personRO.findAll();
-	} catch (RemoteException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	public List<Person> getAllPerson() {
+		// TODO Auto-generated method stub
+		try {
+			person = personRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return person;
 	}
-		return person;
+
+	public void save (Subunternehmen subunternehmen){
+		try {
+			subunternehmenRO.save(subunternehmen);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 
