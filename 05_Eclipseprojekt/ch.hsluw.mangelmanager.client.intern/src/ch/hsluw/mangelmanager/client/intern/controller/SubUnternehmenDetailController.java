@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class SubUnternehmenDetailController implements Initializable {
@@ -23,7 +24,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		Subunternehmen subunternehmen = null;
 		
 		@FXML
-		public TextField txtSubunternehmenId;
+		public Label lblSubunternehmenId;
 		@FXML
 		public TextField txtSubunternehmenName;
 		@FXML
@@ -46,7 +47,7 @@ public class SubUnternehmenDetailController implements Initializable {
 				try {
 				client = ClientRMI.getInstance();
 				subunternehmen = client.getSubunternehmenById(subunternehmenId);
-				txtSubunternehmenId.setText(subunternehmen.getId().toString());
+				lblSubunternehmenId.setText(subunternehmen.getId().toString());
 				txtSubunternehmenName.setText(subunternehmen.getName());
 				txtSubunternehmenTelefon.setText(subunternehmen.getTelefon());
 				txtSubunternehmenAdresse.setText(subunternehmen.getFkAdresse().getStrasse());

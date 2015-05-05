@@ -54,7 +54,6 @@
       </Accordion>
       <Button layoutX="258.0" layoutY="314.0" mnemonicParsing="false" text="Speichern" />
       <Button layoutX="353.0" layoutY="314.0" mnemonicParsing="false" text="Abbrechen" />
-      <TextField fx:id="txtSubunternehmenId" layoutX="76.0" layoutY="13.0" />
       <Label layoutX="12.0" layoutY="19.0" text="ID" />
       <Label layoutX="9.0" layoutY="53.0" text="Name" />
       <TextField fx:id="txtSubunternehmenName" layoutX="76.0" layoutY="50.0" />
@@ -66,5 +65,6 @@
       <Label layoutX="9.0" layoutY="194.0" text="Ort" />
       <TextField fx:id="txtSubunternehmenPlz" layoutX="76.0" layoutY="153.0" />
       <TextField fx:id="txtSubunternehmenOrt" layoutX="76.0" layoutY="188.0" />
+      <Label fx:id="lblSubunternehmenId" layoutX="76.0" layoutY="19.0" prefHeight="27.0" prefWidth="26.0" />
    </children>
 </AnchorPane>
