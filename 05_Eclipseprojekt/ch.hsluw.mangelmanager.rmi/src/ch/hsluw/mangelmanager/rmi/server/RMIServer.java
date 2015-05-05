@@ -10,6 +10,8 @@ import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelROImpl;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungROImpl;
+import ch.hsluw.mangelmanager.rmi.person.PersonRO;
+import ch.hsluw.mangelmanager.rmi.person.PersonROImpl;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektROImpl;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
@@ -45,15 +47,17 @@ public class RMIServer {
 			if (registry != null) {
 
 				// Entfernte Objekte erstellen
+				PersonRO personRO = new PersonROImpl();
 				ProjektRO projektRO = new ProjektROImpl();
 				SubunternehmenRO subunternehmenRO = new SubunternehmenROImpl();
 				MangelRO mangelRO = new MangelROImpl();
 				MeldungRO meldungRO = new MeldungROImpl();
 
+				registry.rebind("personRO", personRO);
 				registry.rebind("projektRO", projektRO);
 				registry.rebind("subunternehmenRO", subunternehmenRO);
-				registry.bind("mangelRO", mangelRO);
-				registry.bind("meldungRO", meldungRO);
+				registry.rebind("mangelRO", mangelRO);
+				registry.rebind("meldungRO", meldungRO);
 
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
 						+ "Server herunterfahren?";
@@ -61,6 +65,7 @@ public class RMIServer {
 						+ hostIp + ":" + port + "]",
 						JOptionPane.QUESTION_MESSAGE);
 
+				registry.unbind("personRO");
 				registry.unbind("projektRO");
 				registry.unbind("subunternehmenRO");
 				registry.unbind("mangelRO");

@@ -22,6 +22,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+public
 abstract class Person implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
