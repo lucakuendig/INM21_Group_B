@@ -216,7 +216,7 @@ public class ClientRMI {
 	}
 
 
-	public void update(Subunternehmen subunternehmen) {
+	public void updateSubunternehmen(Subunternehmen subunternehmen) {
 			try {
 				subunternehmenRO.update(subunternehmen);
 			} catch (RemoteException e) {
@@ -229,6 +229,7 @@ public class ClientRMI {
 		
 	}
 
+	
 
 }
 

@@ -64,7 +64,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		private void saveSubunternehmen() {
 			subunternehmen.setName(txtSubunternehmenName.getText());
 			subunternehmen.setTelefon(txtSubunternehmenTelefon.getText());
-			client.update(subunternehmen);
+			client.updateSubunternehmen(subunternehmen);
 			
 		}
 
