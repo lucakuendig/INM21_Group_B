@@ -20,7 +20,8 @@
             <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="247.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="405.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="ID">
@@ -59,6 +60,19 @@
             <Label fx:id="lblMeldungMangel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label fx:id="lblMeldungProjekt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="lblMeldungArt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="6">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btnMeldungSpeichern" mnemonicParsing="false" text="Speichern" />
+                  <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
+               </children>
+            </GridPane>
          </children>
       </GridPane>
 	</children>
