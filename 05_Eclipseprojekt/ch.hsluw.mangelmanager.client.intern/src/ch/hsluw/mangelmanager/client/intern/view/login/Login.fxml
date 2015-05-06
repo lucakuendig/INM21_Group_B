@@ -24,7 +24,7 @@
       </Label>
       <PasswordField fx:id="pwPasswort" layoutX="436.0" layoutY="349.0" prefWidth="196.0" />
       
- <Label fx:id="lblLoginError" layoutX="310.0" layoutY="222.0" textFill="RED">
+ <Label fx:id="lblLoginError" alignment="CENTER" layoutX="181.0" layoutY="213.0" textAlignment="CENTER" textFill="RED">
          <font>
             <Font size="45.0" />
          </font></Label>
