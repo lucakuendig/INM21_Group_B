@@ -1,57 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.SubUnternehmenDetailController">
-   <children>
-      <Accordion layoutX="240.0" layoutY="8.0">
-        <panes>
-          <TitledPane animated="false" text="Projekte">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<children>
+      <GridPane layoutY="32.0" prefHeight="562.0" prefWidth="1080.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="10.0" prefWidth="436.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="667.0" minWidth="10.0" prefWidth="644.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <GridPane layoutY="33.0" prefHeight="561.0" prefWidth="486.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="33.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="114.0" prefWidth="114.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="701.0" minWidth="10.0" prefWidth="292.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="178.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="374.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="ID">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Name" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Telefon" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="95.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="143.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <TableView prefHeight="181.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="75.0" text="Projektid" />
-                            <TableColumn prefWidth="124.0" text="Projektname" />
-                          </columns>
-                        </TableView>
-                     </children></AnchorPane>
-            </content>
-          </TitledPane>
-            <TitledPane animated="false" text="Mitarbeiter">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="199.0" prefWidth="200.0">
-                          <columns>
-                            <TableColumn prefWidth="43.0" text="ID" />
-                            <TableColumn prefWidth="76.0" text="Name" />
-                              <TableColumn text="Vorname" />
-                          </columns>
-                        </TableView>
+                        <Button fx:id="btnUnternehmenAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnUnternehmenSpeichern" mnemonicParsing="false" text="Speichern" />
                      </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-        </panes>
-      </Accordion>
-      <Button fx:id="btnSubunternehmenSave" layoutX="258.0" layoutY="314.0" mnemonicParsing="false" onAction="#saveSubunternehmen" text="Speichern" />
-      <Button layoutX="353.0" layoutY="314.0" mnemonicParsing="false" text="Abbrechen" />
-      <Label layoutX="12.0" layoutY="19.0" text="ID" />
-      <Label layoutX="9.0" layoutY="53.0" text="Name" />
-      <TextField fx:id="txtSubunternehmenName" layoutX="76.0" layoutY="50.0" />
-      <Label layoutX="13.0" layoutY="89.0" text="Telefon" />
-      <TextField fx:id="txtSubunternehmenTelefon" layoutX="76.0" layoutY="86.0" />
-      <TextField fx:id="txtSubunternehmenAdresse" layoutX="77.0" layoutY="120.0" />
-      <Label layoutX="14.0" layoutY="123.0" text="Adresse" />
-      <Label layoutX="10.0" layoutY="159.0" text="Plz" />
-      <Label layoutX="9.0" layoutY="194.0" text="Ort" />
-      <TextField fx:id="txtSubunternehmenPlz" layoutX="76.0" layoutY="153.0" />
-      <TextField fx:id="txtSubunternehmenOrt" layoutX="76.0" layoutY="188.0" />
-      <Label fx:id="lblSubunternehmenId" layoutX="76.0" layoutY="19.0" prefHeight="27.0" prefWidth="26.0" text="label" />
-   </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </GridPane>
+                  <Label fx:id="lblUnternehmenId" text="Label" GridPane.columnIndex="1" />
+                  <Label text="Strasse" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="PLZ / Ort" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="lblUnternehmenStrasse" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cbUnternehmenPlz" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtUnternehmenOrt" editable="false" maxWidth="-Infinity" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="100.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label fx:id="lblUnternehmenName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lblUnternehmenTelefon" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0" GridPane.columnIndex="1">
+              <panes>
+                  <TitledPane animated="false" text="Projekte">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="468.0" prefWidth="644.0">
+                                <columns>
+                                  <TableColumn fx:id="colProjektUnternehmenId" maxWidth="2000.0" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="colUnternehmenProjektBezeichnung" prefWidth="75.0" text="Bezeichnung" />
+                                    <TableColumn fx:id="colUnternehmenProjektBauherr" prefWidth="75.0" text="Bauherr" />
+                                    <TableColumn fx:id="colUnternehmenProjektStrasse" prefWidth="75.0" text="Strasse" />
+                                    <TableColumn fx:id="colUnternehmenProjektPlz" maxWidth="3000.0" prefWidth="75.0" text="PLZ" />
+                                    <TableColumn fx:id="colUnternehmenProjektOrt" prefWidth="75.0" text="Ort" />
+                                    <TableColumn fx:id="colUnternehmenProjektStartdatum" maxWidth="4500.0" prefWidth="75.0" text="Start-Datum" />
+                                    <TableColumn fx:id="colUnternehmenProjektStatus" prefWidth="75.0" text="Status" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <Button fx:id="btnUnternehmenProjektAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                <TitledPane animated="false" text="Mitarbeiter">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView prefHeight="467.0" prefWidth="638.0">
+                              <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterId" prefWidth="43.0" text="ID" />
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterName" prefWidth="117.0" text="Name" />
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterVorname" prefWidth="71.0" text="Vorname" />
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterStartdatum" prefWidth="89.0" text="Start-Datum" />
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterEnddatum" prefWidth="65.0" text="End-Datum" />
+                                    <TableColumn fx:id="colUnternehmenMitarbeiterTelefon" prefWidth="75.0" text="Telefon" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnUnternehmenMitarbeiterAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </children>
+      </GridPane>
+	</children>
 </AnchorPane>
