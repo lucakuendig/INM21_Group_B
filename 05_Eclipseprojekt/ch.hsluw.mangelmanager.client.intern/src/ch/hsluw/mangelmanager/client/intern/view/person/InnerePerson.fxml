@@ -21,7 +21,6 @@
             <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -53,7 +52,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="95.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="143.0" />
@@ -73,19 +72,13 @@
                </GridPane.margin>
             </GridPane>
             <TextField fx:id="textPersonAdresse" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Login" GridPane.rowIndex="5">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </Label>
-            <Label text="Unternehmen" GridPane.rowIndex="6">
+            <Label text="Unternehmen" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="textPersonLogin" maxWidth="-Infinity" prefHeight="25.0" prefWidth="228.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField fx:id="textPersonTelefon" maxWidth="-Infinity" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <ChoiceBox fx:id="choicePersonUnternehmen" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <ChoiceBox fx:id="choicePersonUnternehmen" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0">

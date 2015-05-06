@@ -12,7 +12,6 @@
       <Pane layoutX="12.0" layoutY="8.0" AnchorPane.topAnchor="39.0">
          <children>
             <Button layoutX="246.0" layoutY="306.0" mnemonicParsing="false" text="Speichern" />
-            <TextField fx:id="txtProjektId" layoutX="64.0" layoutY="5.0" />
             <Label layoutX="9.0" layoutY="45.0" text="Bauherr" />
             <Label layoutY="81.0" text="Objekttyp" />
             <Accordion layoutY="142.0" prefHeight="223.0" prefWidth="238.0">
@@ -77,7 +76,8 @@
                            <children>
                               <TableView prefHeight="181.0" prefWidth="200.0">
                                 <columns>
-                                  <TableColumn prefWidth="199.0" text="Unternehmen" />
+                                  <TableColumn prefWidth="92.0" text="Unternehmen" />
+                                    <TableColumn prefWidth="105.0" text="Kontakt" />
                                 </columns>
                               </TableView>
                            </children>
@@ -104,6 +104,7 @@
             <ChoiceBox layoutX="63.0" layoutY="41.0" prefWidth="150.0" />
             <ChoiceBox layoutX="63.0" layoutY="77.0" prefWidth="150.0" />
             <ChoiceBox layoutX="63.0" layoutY="109.0" prefWidth="150.0" />
+            <Label fx:id="lblProjektId" layoutX="63.0" layoutY="8.0" text="id" />
          </children>
       </Pane>
    </children>

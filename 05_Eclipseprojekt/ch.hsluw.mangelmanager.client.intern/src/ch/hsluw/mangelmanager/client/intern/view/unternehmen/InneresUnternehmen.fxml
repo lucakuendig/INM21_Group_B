@@ -9,19 +9,6 @@
    <children>
       <Accordion layoutX="240.0" layoutY="8.0">
         <panes>
-          <TitledPane animated="false" text="Email">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="173.0" prefWidth="202.0">
-                          <columns>
-                            <TableColumn prefWidth="201.0" text="Emailadresse" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </TitledPane>
           <TitledPane animated="false" text="Projekte">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -65,6 +52,6 @@
       <Label layoutX="9.0" layoutY="194.0" text="Ort" />
       <TextField fx:id="txtSubunternehmenPlz" layoutX="76.0" layoutY="153.0" />
       <TextField fx:id="txtSubunternehmenOrt" layoutX="76.0" layoutY="188.0" />
-      <Label fx:id="lblSubunternehmenId" layoutX="76.0" layoutY="19.0" prefHeight="27.0" prefWidth="26.0" />
+      <Label fx:id="lblSubunternehmenId" layoutX="76.0" layoutY="19.0" prefHeight="27.0" prefWidth="26.0" text="label" />
    </children>
 </AnchorPane>
