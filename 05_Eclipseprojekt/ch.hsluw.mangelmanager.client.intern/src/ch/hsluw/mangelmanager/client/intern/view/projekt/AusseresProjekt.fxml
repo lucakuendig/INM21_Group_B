@@ -26,7 +26,7 @@
       </TableView>
       </children>
 	</StackPane>
-	<ChoiceBox fx:id="choiceProjektSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
+	<ChoiceBox fx:id="cbProjektSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 	<TextField fx:id="txtProjektSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
       <Button fx:id="btnProjektNew" layoutX="20.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
       <Button fx:id="btnProjektDelete" layoutX="90.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
