@@ -1,8 +1,11 @@
 package ch.hsluw.mangelmanager.client.intern.controller;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
@@ -17,6 +20,8 @@ public class MeldungDetailController implements Initializable {
 	//RMI Client to interact
 		ClientRMI client = null;
 		RootController rootController = null;
+		DateFormat formatZeit;
+	
 		
 		public void setRootController(RootController rootController) {
 			// TODO Auto-generated method stub
@@ -40,7 +45,7 @@ public class MeldungDetailController implements Initializable {
 		
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-
+			formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 			
 		}
 
@@ -52,7 +57,7 @@ public class MeldungDetailController implements Initializable {
 				lblMeldungId.setText(meldung.getId().toString());
 				txtMeldungProjekt.setText(meldung.getFkMangel().getFkProjekt().getBezeichnung());
 				txtMeldungMangel.setText(meldung.getFkMangel().getBezeichnung());
-				txtMeldungDatum.setText(meldung.getZeitpunkt().toString());
+				txtMeldungDatum.setText(formatZeit.format(meldung.getZeitpunkt().getTime()));
 				txtMeldungArt.setText(meldung.getFkMeldungstyp().getBezeichnung());
 				txtMeldungBeschreibung.appendText(meldung.getText());
 				
