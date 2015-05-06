@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.PersonController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.PersonController">
    <children>
      <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
        <children>
@@ -27,9 +27,9 @@
       </TableView>
    </children>
    </StackPane>
-   <ChoiceBox fx:id="AusPersonChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
-	<TextField fx:id="AusPersonSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
-      <Button layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#addPerson" text="+" />
-      <Button layoutX="46.0" layoutY="8.0" mnemonicParsing="false" onAction="#deletePerson" text="-" />
+   <ChoiceBox fx:id="choicePersonSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
+	<TextField fx:id="txtPersonSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnPersonNew" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#addPerson" prefWidth="70.0" text="Neu" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnPersonDelete" layoutX="46.0" layoutY="8.0" mnemonicParsing="false" onAction="#deletePerson" prefWidth="70.0" text="Löschen" AnchorPane.leftAnchor="122.0" AnchorPane.topAnchor="8.0" />
 	 </children>
 </AnchorPane>

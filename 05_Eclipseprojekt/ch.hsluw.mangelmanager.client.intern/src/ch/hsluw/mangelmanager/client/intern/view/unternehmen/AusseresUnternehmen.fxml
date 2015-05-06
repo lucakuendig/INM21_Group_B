@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="375" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.SubUnternehmenController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.SubUnternehmenController">
    <children>
      <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
        <children>  
@@ -24,7 +24,9 @@
       </TableView>
       </children>
      </StackPane>
-   <ChoiceBox fx:id="AusUnternehmenChoice" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
-	<TextField fx:id="AusUnternehmenSearchtext" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+   <ChoiceBox fx:id="choiceUnternehmenSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
+	<TextField fx:id="txtUnternehmenSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnUnternehmenNew" layoutX="26.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnUnternehmenDelete" layoutX="127.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
 	 </children>
 </AnchorPane>
