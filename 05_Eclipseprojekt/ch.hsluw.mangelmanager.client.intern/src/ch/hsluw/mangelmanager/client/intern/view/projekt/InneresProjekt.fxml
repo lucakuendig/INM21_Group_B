@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
 <children>
-      <GridPane layoutY="32.0" prefHeight="562.0" prefWidth="1080.0">
+      <GridPane layoutY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="527.0" minWidth="10.0" prefWidth="436.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="667.0" minWidth="10.0" prefWidth="644.0" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <GridPane layoutY="33.0" prefHeight="561.0" prefWidth="486.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="33.0">
+            <GridPane layoutY="33.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="33.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="114.0" prefWidth="114.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="701.0" minWidth="10.0" prefWidth="292.0" />
@@ -56,7 +56,7 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="9">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="95.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="143.0" />
@@ -65,12 +65,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnProjektAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#projektCancel" text="Abbrechen" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnProjektSpeichern" mnemonicParsing="false" text="Speichern" />
+                        <Button mnemonicParsing="false" onAction="#projektSave" text="Speichern" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -117,72 +117,52 @@
                   </TextField>
                </children>
             </GridPane>
-            <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0" GridPane.columnIndex="1">
+            <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="1">
               <panes>
-                <TitledPane animated="false" text="Mängel / Meldungen">
+                <TitledPane animated="false" text="Offene Mängel &amp; Meldungen">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane>
                            <children>
-                              <TabPane prefHeight="486.0" prefWidth="644.0" tabClosingPolicy="UNAVAILABLE">
-                                <tabs>
-                                  <Tab text="Mängel">
-                                    <content>
-                                      <AnchorPane fx:id="tpProjektMangel" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <TableView prefHeight="429.0" prefWidth="644.0">
-                                                  <columns>
-                                                    <TableColumn prefWidth="219.0" text="Offen">
-                                                         <columns>
-                                                            <TableColumn fx:id="colProjektMangelOffenId" maxWidth="2000.0" minWidth="-Infinity" prefWidth="2000.0" text="ID" />
-                                                            <TableColumn fx:id="colProjektMangelOffenBezeichnung" prefWidth="243.0" text="Bezeichnung" />
-                                                         </columns>
-                                                      </TableColumn>
-                                                    <TableColumn prefWidth="81.0" text="Abgeschlossen">
-                                                         <columns>
-                                                            <TableColumn fx:id="colProjektMangelAbgeschlossenId" maxWidth="2000.0" minWidth="-Infinity" prefWidth="2000.0" text="ID" />
-                                                            <TableColumn fx:id="colProjektMangelAbgeschlossenBezeichnung" prefWidth="75.0" text="Bezeichnung" />
-                                                         </columns>
-                                                      </TableColumn>
-                                                  </columns>
-                                                   <columnResizePolicy>
-                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                   </columnResizePolicy>
-                                                </TableView>
-                                                <Button fx:id="btnProjektMangelAdd" layoutX="541.0" layoutY="431.0" mnemonicParsing="false" text="Hinzufügen" />
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </Tab>
-                                  <Tab fx:id="tpProjektMeldungen" text="Meldungen">
-                                    <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                             <children>
-                                                <TableView prefHeight="430.0" prefWidth="644.0">
-                                                   <columnResizePolicy>
-                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                   </columnResizePolicy>
+                              <SplitPane dividerPositions="0.5001082485386448" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <items>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TableView fx:id="tblProjektMangel" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="tblProjektMangel" prefWidth="75.0" text="Offene Mängel">
                                                    <columns>
-                                                      <TableColumn prefWidth="219.0" text="Offen">
-                                                         <columns>
-                                                            <TableColumn fx:id="colProjektMeldungOffenId" maxWidth="2000.0" minWidth="-Infinity" prefWidth="2000.0" text="ID" />
-                                                            <TableColumn fx:id="colProjektMeldungOffenBezeichnung" prefWidth="243.0" text="Bezeichnung" />
-                                                         </columns>
-                                                      </TableColumn>
-                                                      <TableColumn prefWidth="81.0" text="Abgeschlossen">
-                                                         <columns>
-                                                            <TableColumn fx:id="colProjektMeldungAbgeschlossenId" maxWidth="2000.0" minWidth="-Infinity" prefWidth="2000.0" text="ID" />
-                                                            <TableColumn fx:id="colProjektMeldungAbgeschlossenBezeichnung" prefWidth="75.0" text="Bezeichnung" />
-                                                         </columns>
-                                                      </TableColumn>
+                                                    <TableColumn fx:id="colProjektMangelid" prefWidth="102.99999237060547" text="Mangel Nr." />
+                                                      <TableColumn fx:id="colProjektMangelbezeichnung" prefWidth="75.0" text="Bezeichnung" />
                                                    </columns>
-                                                </TableView>
-                                                <Button fx:id="btnProjektMeldungAdd" layoutX="543.0" layoutY="431.0" mnemonicParsing="false" text="Hinzufügen" />
-                                             </children>
-                                          </AnchorPane>
-                                    </content>
-                                  </Tab>
-                                </tabs>
-                              </TabPane>
+                                                </TableColumn>
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                          <Button layoutX="393.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMangel" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                       <children>
+                                          <TableView layoutX="6.0" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="tblProjektMeldungen" prefWidth="75.0" text="Offene Meldungen">
+                                                   <columns>
+                                                      <TableColumn fx:id="colProjektMeldungid" prefWidth="75.0" text="Meldung Nr." />
+                                                      <TableColumn fx:id="colProjektMeldungbezeichnung" prefWidth="75.0" text="Bezeichnung" />
+                                                   </columns>
+                                                </TableColumn>
+                                            </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                          <Button layoutX="359.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMeldung" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
+                                </items>
+                              </SplitPane>
                            </children>
                         </AnchorPane>
                   </content>
@@ -191,7 +171,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView prefHeight="444.0" prefWidth="644.0">
+                              <TableView AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="colProjektUnternehmenId" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="colProjektUnternehmenName" prefWidth="75.0" text="Name" />
@@ -205,16 +185,16 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnProjektUnternehmenAdd" layoutX="550.0" layoutY="447.0" mnemonicParsing="false" text="Hinzufügen" />
+                              <Button layoutX="550.0" layoutY="447.0" mnemonicParsing="false" onAction="#projektAddUnternehmen" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </content>
                   </TitledPane>
                 <TitledPane animated="false" text="Bauleiter">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane>
                            <children>
-                              <TableView prefHeight="457.0" prefWidth="638.0">
+                              <TableView AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
@@ -226,7 +206,7 @@
                                     <TableColumn fx:id="colProjektBauleiterEnddatum" prefWidth="65.0" text="End-Datum" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="btnProjektBauleiterAdd" layoutX="550.0" layoutY="460.0" mnemonicParsing="false" text="Hinzufügen" />
+                              <Button fx:id="btnProjektBauleiterAdd" layoutX="550.0" layoutY="460.0" mnemonicParsing="false" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                            </children>
                         </AnchorPane>
                   </content>
