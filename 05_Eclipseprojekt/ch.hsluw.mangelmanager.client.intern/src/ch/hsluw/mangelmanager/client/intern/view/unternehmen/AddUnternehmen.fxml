@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.AddUnternehmenController">
 <children>
       <GridPane layoutY="32.0" prefHeight="562.0" prefWidth="1080.0">
          <columnConstraints>
@@ -55,7 +55,7 @@
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnUnternehmenSpeichern" mnemonicParsing="false" text="Speichern" />
+                        <Button fx:id="btnUnternehmenSpeichern" mnemonicParsing="false" onAction="#unternehmenSave" text="Speichern" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -71,15 +71,15 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbUnternehmenPlz" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtUnternehmenOrt" editable="false" maxWidth="-Infinity" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </TextField>
+                  <ComboBox fx:id="cbUnternehmenPlz" onAction="#plzChange" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="txtUnternehmenName" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" />
                   <TextField fx:id="txtUnternehmenStrasse" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="txtUnternehmenTelefon" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="lblUnternehmenOrt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="100.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
             </GridPane>
             <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0" GridPane.columnIndex="1">

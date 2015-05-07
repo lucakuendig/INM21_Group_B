@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.util.Callback;
 
 import org.apache.log4j.Logger;
@@ -30,9 +31,12 @@ import org.apache.log4j.Logger;
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -44,9 +48,11 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
+import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -80,10 +86,13 @@ public class ClientRMI {
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
 	List<Meldung> meldung;
+	List<Plz> plz;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
+	Plz plznr;
+	Adresse addAdresse;
 	
 	
 	
@@ -94,6 +103,8 @@ public class ClientRMI {
 	SubunternehmenRO subunternehmenRO;
 	MangelRO mangelRO;
 	MeldungRO meldungRO;
+	PlzRO plzRO;
+	AdresseRO adresseRO;
 
 
 	public static void main(String[] args) {
@@ -123,12 +134,16 @@ public class ClientRMI {
 		String subunternehmenROName = "subunternehmenRO";
 		String mangelROName = "mangelRO";
 		String meldungROName ="meldungRO";
+		String plzROName ="plzRO";
+		String adresseROName = "adresseRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
+		this.plzRO = (PlzRO) Naming.lookup(url + plzROName);
+		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
 		
 
 		
@@ -249,6 +264,7 @@ public class ClientRMI {
 		
 	}
 
+<<<<<<< HEAD
 	public List<Projekt> getProjektByBezeichnung(String bezeichnung) {
 			// TODO Auto-generated method stub
 		try {
@@ -256,10 +272,16 @@ public class ClientRMI {
 			for (Projekt projekt : projekte) {
 				System.out.println(projekt.getBeschreibung());
 			}
+=======
+	public List<Plz> getAllPlz() {
+		try {
+			plz = plzRO.findAll();
+>>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		return projekte;
 		
 	}
@@ -299,10 +321,19 @@ public class ClientRMI {
 			for (Projekt projekt : projekte) {
 				System.out.println(projekt.getFkAdresse().getPlz().getOrt());
 			}
+=======
+			return plz;
+	}
+
+	public Plz getPlzById(int plzId) {
+		try {
+			plznr = plzRO.findById(plzId);
+>>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< HEAD
 		return projekte;
 	}
 
@@ -349,7 +380,31 @@ public class ClientRMI {
 	}
 
 	
+=======
+		return plznr;
+	}
 
-}
+	public void addAdresse(Adresse adresse) {
+		try {
+			adresseRO.add(adresse);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void addSubunternehmen(Subunternehmen addSubunternehmen) {
+		try {
+			subunternehmenRO.add(addSubunternehmen);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+		
+	}
+>>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
+
 
 

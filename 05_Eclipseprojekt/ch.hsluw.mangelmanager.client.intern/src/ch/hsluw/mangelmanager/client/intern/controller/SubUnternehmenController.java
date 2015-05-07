@@ -126,9 +126,27 @@ public class SubUnternehmenController implements Initializable {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+		}	
+	}
+	@FXML
+	private void addUnternehmen(){
+		try {
+			// Load ProjektDetail View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/unternehmen/AddUnternehmen.fxml"));
+			AnchorPane addUnternehmen = (AnchorPane) loader.load();
 			
-		
+			AddUnternehmenController addUnternehmenController = loader.<AddUnternehmenController>getController();
+			addUnternehmenController.setRootController(rootController);
+			
+			addUnternehmenController.init();
+			rootController.rootLayout.setCenter(addUnternehmen);
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
