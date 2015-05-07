@@ -14,6 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -46,7 +47,7 @@ public class ProjektDetailController implements Initializable {
 	
 	
 	@FXML
-	public TextField txtProjektId;
+	public Label lblPersonId;
 	
 	
 	@Override
@@ -60,7 +61,7 @@ public class ProjektDetailController implements Initializable {
 			try {
 			client = ClientRMI.getInstance();
 			projekt = client.getProjektById(projektId);
-			txtProjektId.setText(projekt.getId().toString());
+			lblPersonId.setText(projekt.getId().toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
