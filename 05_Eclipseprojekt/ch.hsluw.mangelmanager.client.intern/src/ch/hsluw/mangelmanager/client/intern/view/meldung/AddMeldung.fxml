@@ -50,7 +50,6 @@
                </GridPane.margin>
             </Label>
             <Label fx:id="lblMeldungDatum" text="Selbstausfüllend" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="lblMeldungMangel" text="Choicebox hier?" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="lblMeldungProjekt" text="Da wir Meldungen nur über Projekte erstellen selbst Ausfüllend?" GridPane.columnIndex="1" />
             <ChoiceBox fx:id="cbMeldungArt" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -66,6 +65,7 @@
                   <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
                </children>
             </GridPane>
+            <ChoiceBox fx:id="cbMeldungMangel" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
 	</children>

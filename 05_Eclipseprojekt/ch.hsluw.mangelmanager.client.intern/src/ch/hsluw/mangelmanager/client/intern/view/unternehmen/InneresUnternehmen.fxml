@@ -86,7 +86,7 @@
                      </GridPane.margin>
                   </TextField>
                   <Label fx:id="lblUnternehmenName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label fx:id="lblUnternehmenTelefon" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txtUnternehmenTelefon" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                </children>
             </GridPane>
             <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0" GridPane.columnIndex="1">
