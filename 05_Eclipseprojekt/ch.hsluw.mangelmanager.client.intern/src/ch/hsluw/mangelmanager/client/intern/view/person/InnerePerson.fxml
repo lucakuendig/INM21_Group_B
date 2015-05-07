@@ -76,14 +76,14 @@
                 <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
-                  <RowConstraints fillHeight="false" minHeight="40.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
               </rowConstraints>
                <children>
                   <Label text="ID">

@@ -28,7 +28,5 @@
 		</StackPane>
 		<ChoiceBox fx:id="cbMangelSearch" layoutX="311.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 		<TextField fx:id="txtMangelSearch" layoutX="488.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
-      <Button fx:id="btnMangelNew" layoutX="27.0" layoutY="2.0" mnemonicParsing="false" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
-      <Button fx:id="btnMangelDelete" layoutX="141.0" layoutY="15.0" mnemonicParsing="false" prefWidth="75.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
 	</children>
 </AnchorPane>
