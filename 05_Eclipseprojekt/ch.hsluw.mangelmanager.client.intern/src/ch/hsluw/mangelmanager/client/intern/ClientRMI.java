@@ -29,6 +29,8 @@ import org.apache.log4j.Logger;
 
 
 
+
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -40,6 +42,7 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
@@ -83,6 +86,7 @@ public class ClientRMI {
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
 	Plz plznr;
+	Adresse addAdresse;
 	
 	
 	
@@ -94,6 +98,7 @@ public class ClientRMI {
 	MangelRO mangelRO;
 	MeldungRO meldungRO;
 	PlzRO plzRO;
+	AdresseRO adresseRO;
 
 
 	public static void main(String[] args) {
@@ -124,6 +129,7 @@ public class ClientRMI {
 		String mangelROName = "mangelRO";
 		String meldungROName ="meldungRO";
 		String plzROName ="plzRO";
+		String adresseROName = "adresseRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -131,6 +137,7 @@ public class ClientRMI {
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
 		this.plzRO = (PlzRO) Naming.lookup(url + plzROName);
+		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
 		
 
 		
@@ -271,8 +278,26 @@ public class ClientRMI {
 		return plznr;
 	}
 
-	
+	public void addAdresse(Adresse adresse) {
+		try {
+			adresseRO.add(adresse);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
-}
+	public void addSubunternehmen(Subunternehmen addSubunternehmen) {
+		try {
+			subunternehmenRO.add(addSubunternehmen);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+		
+	}
+
 
 

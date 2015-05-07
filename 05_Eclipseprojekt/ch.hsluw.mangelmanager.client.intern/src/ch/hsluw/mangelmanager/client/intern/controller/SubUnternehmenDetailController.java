@@ -74,9 +74,13 @@ public class SubUnternehmenDetailController implements Initializable {
 		}
 		
 		@FXML
-		private void saveSubunternehmen() {
+		private void unternehmenSave() {
+			
 			subunternehmen.setName(txtUnternehmenName.getText());
 			subunternehmen.setTelefon(txtUnternehmenTelefon.getText());
+			subunternehmen.getFkAdresse().getPlz().setPlz((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem());
+			subunternehmen.getFkAdresse().getPlz().setOrt(lblUnternehmenOrt.getText());
+			subunternehmen.getFkAdresse().setStrasse(txtUnternehmenStrasse.getText());
 			client.updateSubunternehmen(subunternehmen);
 			
 		}
@@ -86,10 +90,12 @@ public class SubUnternehmenDetailController implements Initializable {
 			
 		}
 		@FXML
-		private void unternehmenSave(){
-			
+		private void plzChange(){
+			if (cbUnternehmenPlz.getSelectionModel().getSelectedItem() != null){
+				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
+			}else{	
+			}
 		}
-		
 
 	
 }

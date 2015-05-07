@@ -36,7 +36,7 @@ public class Main extends Application {
 	}
 
 	/**
-	 * Initializes the root layout.
+	 * Initializes the demo	 layout.
 	 */
 	public static void initRootLayout() {
 		try {

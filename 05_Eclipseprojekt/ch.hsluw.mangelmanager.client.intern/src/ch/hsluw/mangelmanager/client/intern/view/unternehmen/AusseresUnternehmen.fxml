@@ -26,7 +26,7 @@
      </StackPane>
    <ChoiceBox fx:id="cbUnternehmenSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 	<TextField fx:id="txtUnternehmenSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
-      <Button fx:id="btnUnternehmenNew" layoutX="26.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnUnternehmenNew" layoutX="26.0" layoutY="8.0" mnemonicParsing="false" onAction="#addUnternehmen" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
       <Button fx:id="btnUnternehmenDelete" layoutX="127.0" layoutY="8.0" mnemonicParsing="false" prefWidth="75.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
 	 </children>
 </AnchorPane>

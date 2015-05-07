@@ -87,7 +87,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ComboBox fx:id="cbUnternehmenPlz" prefWidth="150.0"/>
+                        <ComboBox fx:id="cbUnternehmenPlz" prefWidth="150.0" onAction="#plzChange" />
                         <Label fx:id="lblUnternehmenOrt" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>

@@ -34,7 +34,7 @@ public class Subunternehmen implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@OneToOne(cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Adresse fkAdresse;
 	private String name;
 	private String telefon;

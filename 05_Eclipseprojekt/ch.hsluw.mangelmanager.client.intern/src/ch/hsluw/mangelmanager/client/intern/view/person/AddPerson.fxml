@@ -94,6 +94,7 @@
                      <columnConstraints>
                         <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
                         <ColumnConstraints hgrow="NEVER" maxWidth="47.0" minWidth="15.0" prefWidth="47.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="47.0" minWidth="15.0" prefWidth="47.0" />
                         <ColumnConstraints hgrow="SOMETIMES" />
                      </columnConstraints>
                      <rowConstraints>
@@ -101,16 +102,12 @@
                      </rowConstraints>
                      <children>
                         <ComboBox fx:id="cbPersonPlz" prefWidth="100.0" />
-                        <TextField fx:id="txtPersonOrt" editable="false" GridPane.columnIndex="2">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </TextField>
+                        <Label text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                </children>
             </GridPane>
-            <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
+            <Accordion fx:id="lblPersonOrt" layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
               <panes>
                 <TitledPane animated="false" text="Login erstellen">
                   <content>
