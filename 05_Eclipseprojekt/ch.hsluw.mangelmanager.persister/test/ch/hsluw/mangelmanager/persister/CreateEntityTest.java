@@ -103,7 +103,7 @@ public class CreateEntityTest {
 		Meldung meldung1 = new Meldung(mangel2, meldungstyp1, "meldungtext", new GregorianCalendar(2015,5,13), true, login);
 		Meldung meldung2 = new Meldung(mangel3, meldungstyp1, "nid so guet", new GregorianCalendar(2015,5,13),true, login);
 		
-
+	
 		
 		em.getTransaction().begin();
 	
@@ -137,6 +137,8 @@ public class CreateEntityTest {
 		em.persist(mangel3);
 		em.persist(meldung1);
 		em.persist(meldung2);
+		
+		
 		
 		em.getTransaction().commit();
 	}

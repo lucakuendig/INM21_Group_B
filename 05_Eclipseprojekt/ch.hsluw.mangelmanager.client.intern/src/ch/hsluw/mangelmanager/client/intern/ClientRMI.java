@@ -25,6 +25,14 @@ import org.apache.log4j.Logger;
 
 
 
+
+
+
+
+
+
+
+
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -239,6 +247,105 @@ public class ClientRMI {
 				e.printStackTrace();
 			}
 		
+	}
+
+	public List<Projekt> getProjektByBezeichnung(String bezeichnung) {
+			// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByBezeichnung(bezeichnung);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getBeschreibung());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+		
+	}
+
+	public List<Projekt> getProjektByBauherr(String bauherr) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByBauherr(bauherr);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkBauherr().get(0).getNachname());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByPlz(String plz) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByPlz(plz);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkAdresse().getPlz().getPlz());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByOrt(String ort) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByOrt(ort);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkAdresse().getPlz().getOrt());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByObjekttyp(String objekttyp) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByObjekttyp(objekttyp);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkObjekttyp().getBezeichnung());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByArbeitstyp(String arbeitstyp) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByArbeitstyp(arbeitstyp);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkArbeitstyp().getBezeichnung());;
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByProjektstatus(String projektstatus) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByProjektstatus(projektstatus);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkProjektstatus().getBezeichnung());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
 	}
 
 	
