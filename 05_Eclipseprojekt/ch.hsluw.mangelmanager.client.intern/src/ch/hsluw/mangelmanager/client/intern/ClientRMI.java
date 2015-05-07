@@ -3,50 +3,16 @@ package ch.hsluw.mangelmanager.client.intern;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Observable;
-
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.util.Callback;
-
 import org.apache.log4j.Logger;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 import ch.hsluw.mangelmanager.model.Adresse;
-import ch.hsluw.mangelmanager.model.Arbeitstyp;
-import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
@@ -261,10 +227,9 @@ public class ClientRMI {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
 	}
 
-<<<<<<< HEAD
+
 	public List<Projekt> getProjektByBezeichnung(String bezeichnung) {
 			// TODO Auto-generated method stub
 		try {
@@ -272,17 +237,23 @@ public class ClientRMI {
 			for (Projekt projekt : projekte) {
 				System.out.println(projekt.getBeschreibung());
 			}
-=======
+		}
+		catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
 	public List<Plz> getAllPlz() {
 		try {
 			plz = plzRO.findAll();
->>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		return projekte;
+
+		return plz;
 		
 	}
 
@@ -321,20 +292,22 @@ public class ClientRMI {
 			for (Projekt projekt : projekte) {
 				System.out.println(projekt.getFkAdresse().getPlz().getOrt());
 			}
-=======
-			return plz;
+		}
+		catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
 	}
 
 	public Plz getPlzById(int plzId) {
 		try {
 			plznr = plzRO.findById(plzId);
->>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-<<<<<<< HEAD
-		return projekte;
+		return plznr;
 	}
 
 	public List<Projekt> getProjektByObjekttyp(String objekttyp) {
@@ -379,10 +352,6 @@ public class ClientRMI {
 		return projekte;
 	}
 
-	
-=======
-		return plznr;
-	}
 
 	public void addAdresse(Adresse adresse) {
 		try {
@@ -403,8 +372,7 @@ public class ClientRMI {
 		
 	}
 		
-	}
->>>>>>> b43334bfcf2b212537953291b120090aed3b6e72
+}
 
 
 
