@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.Observable;
 
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.util.Callback;
 
 import org.apache.log4j.Logger;
+
+
+
 
 
 
@@ -39,6 +43,7 @@ import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
+import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -72,10 +77,12 @@ public class ClientRMI {
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
 	List<Meldung> meldung;
+	List<Plz> plz;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
+	Plz plznr;
 	
 	
 	
@@ -86,6 +93,7 @@ public class ClientRMI {
 	SubunternehmenRO subunternehmenRO;
 	MangelRO mangelRO;
 	MeldungRO meldungRO;
+	PlzRO plzRO;
 
 
 	public static void main(String[] args) {
@@ -115,12 +123,14 @@ public class ClientRMI {
 		String subunternehmenROName = "subunternehmenRO";
 		String mangelROName = "mangelRO";
 		String meldungROName ="meldungRO";
+		String plzROName ="plzRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
+		this.plzRO = (PlzRO) Naming.lookup(url + plzROName);
 		
 
 		
@@ -239,6 +249,26 @@ public class ClientRMI {
 				e.printStackTrace();
 			}
 		
+	}
+
+	public List<Plz> getAllPlz() {
+		try {
+			plz = plzRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return plz;
+	}
+
+	public Plz getPlzById(int plzId) {
+		try {
+			plznr = plzRO.findById(plzId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return plznr;
 	}
 
 	

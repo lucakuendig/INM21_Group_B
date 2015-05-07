@@ -87,7 +87,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ComboBox fx:id="cbUnternehmenPlz" prefWidth="80.0" />
+                        <ComboBox fx:id="cbUnternehmenPlz" prefWidth="150.0"/>
                         <Label fx:id="lblUnternehmenOrt" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
@@ -117,7 +117,6 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button layoutX="550.0" layoutY="472.0" mnemonicParsing="false" onAction="#unternehmenAddProjekt" text="Hinzufügen" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -139,7 +138,6 @@
                                     <TableColumn fx:id="colUnternehmenMitarbeiterTelefon" prefWidth="75.0" text="Telefon" />
                                  </columns>
                               </TableView>
-                              <Button layoutX="550.0" layoutY="472.0" mnemonicParsing="false" onAction="#unternehmenAddMitarbeiter" text="Hinzufügen" />
                            </children>
                         </AnchorPane>
                   </content>
