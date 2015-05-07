@@ -9,11 +9,11 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 <children>
-      <GridPane layoutY="33.0">
+      <GridPane layoutY="33.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" />
             <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="667.0" minWidth="606.0" prefWidth="667.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -48,13 +48,13 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                                  <columns>
-                                    <TableColumn fx:id="colPersonProjektid" prefWidth="43.0" text="ID" />
-                                    <TableColumn fx:id="colPersonProjektbezeichnung" prefWidth="117.0" text="Bezeichnung" />
-                                    <TableColumn fx:id="colPersonProjektbauherr" prefWidth="71.0" text="Bauherr" />
-                                    <TableColumn fx:id="colPersonProjektadresse" prefWidth="89.0" text="Adresse" />
-                                    <TableColumn fx:id="colPersonProjektmaengel" prefWidth="65.0" text="Mängel" />
-                                    <TableColumn fx:id="colPersonProjektmeldungen" prefWidth="95.0" text="Meldungen" />
-                                    <TableColumn fx:id="colPersonProjektabgeschlossen" prefWidth="93.0" text="Abgeschlossen" />
+                                    <TableColumn fx:id="colPersonProjektid" minWidth="-1.0" prefWidth="-1.0" text="ID" />
+                                    <TableColumn fx:id="colPersonProjektbezeichnung" minWidth="-1.0" prefWidth="-1.0" text="Bezeichnung" />
+                                    <TableColumn fx:id="colPersonProjektbauherr" minWidth="-1.0" prefWidth="-1.0" text="Bauherr" />
+                                    <TableColumn fx:id="colPersonProjektadresse" minWidth="-1.0" prefWidth="-1.0" text="Adresse" />
+                                    <TableColumn fx:id="colPersonProjektmaengel" minWidth="-1.0" prefWidth="-1.0" text="Mängel" />
+                                    <TableColumn fx:id="colPersonProjektmeldungen" minWidth="-1.0" prefWidth="-1.0" text="Meldungen" />
+                                    <TableColumn fx:id="colPersonProjektabgeschlossen" minWidth="-1.0" prefWidth="-1.0" text="Abgeschlossen" />
                                  </columns>
                               </TableView>
                            </children>
@@ -67,17 +67,17 @@
               <columnConstraints>
                 <ColumnConstraints fillWidth="false" hgrow="NEVER" />
                   <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="20.0" minWidth="20.0" />
-                <ColumnConstraints fillWidth="false" hgrow="NEVER" />
+                <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="178.0" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="374.0" minHeight="0.0" prefHeight="103.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="ID">
@@ -141,7 +141,7 @@
                   <GridPane GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" />
-                        <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="15.0" prefWidth="15.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="25.0" minWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" />
                      </columnConstraints>
                      <rowConstraints>
