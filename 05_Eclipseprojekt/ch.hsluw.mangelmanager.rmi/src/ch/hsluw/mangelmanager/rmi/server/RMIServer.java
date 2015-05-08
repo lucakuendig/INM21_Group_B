@@ -8,10 +8,14 @@ import javax.swing.JOptionPane;
 
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseROImpl;
+import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
+import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypROImpl;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelROImpl;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungROImpl;
+import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
+import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypROImpl;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonROImpl;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
@@ -58,6 +62,8 @@ public class RMIServer {
 				MeldungRO meldungRO = new MeldungROImpl();
 				PlzRO plzRO = new PlzROImpl();
 				AdresseRO adresseRO = new AdresseROImpl();
+				ObjekttypRO objekttypRO = new ObjekttypROImpl();
+				ArbeitstypRO arbeitstypRO = new ArbeitstypROImpl();
 
 				registry.rebind("personRO", personRO);
 				registry.rebind("projektRO", projektRO);
@@ -66,6 +72,8 @@ public class RMIServer {
 				registry.rebind("meldungRO", meldungRO);
 				registry.rebind("plzRO", plzRO);
 				registry.rebind("adresseRO", adresseRO);
+				registry.rebind("objekttypRO", objekttypRO);
+				registry.rebind("arbeitstypRO", arbeitstypRO);
 
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
 						+ "Server herunterfahren?";
@@ -79,7 +87,9 @@ public class RMIServer {
 				registry.unbind("mangelRO");
 				registry.unbind("meldungRO");
 				registry.unbind("plzRO");
-				registry.unbind("adresserRO");
+				registry.unbind("adresseRO");
+				registry.unbind("objekttypRO");
+				registry.unbind("objekttypRO");
 
 				System.out.println("RMI Server wird heruntergefahren!\n");
 
