@@ -10,16 +10,20 @@ import javafx.util.Callback;
 import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;
+import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
+import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
+import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
@@ -57,7 +61,10 @@ public class ClientRMI {
 	List<Mangel> maengel;
 	List<Meldung> meldung;
 	List<Plz> plz;
+	List<Objekttyp> objekttyp;
+	List<Arbeitstyp> arbeitstyp;
 	List<SuMitarbeiter> sumitarbeiter;
+	List<Mangel> mangelOfProjekt;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
@@ -76,6 +83,8 @@ public class ClientRMI {
 	MeldungRO meldungRO;
 	PlzRO plzRO;
 	AdresseRO adresseRO;
+	ObjekttypRO  objekttypRO;
+	ArbeitstypRO arbeitstypRO;
 
 
 	public static void main(String[] args) {
@@ -107,6 +116,8 @@ public class ClientRMI {
 		String meldungROName ="meldungRO";
 		String plzROName ="plzRO";
 		String adresseROName = "adresseRO";
+		String objekttypROName = "objekttypRO";
+		String arbeitstyROName = "arbeitstypRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -115,7 +126,8 @@ public class ClientRMI {
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
 		this.plzRO = (PlzRO) Naming.lookup(url + plzROName);
 		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
-		
+		this.objekttypRO = (ObjekttypRO) Naming.lookup(url + objekttypROName);
+		this.arbeitstypRO = (ArbeitstypRO) Naming.lookup(url + arbeitstyROName);
 
 		
 	}
@@ -395,6 +407,38 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 			return sumitarbeiter;
+	}
+
+	public List<Objekttyp> getAllObjekttyp() {
+		// TODO Auto-generated method stub
+		try {
+			objekttyp = objekttypRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return objekttyp;
+	}
+	
+	public List<Arbeitstyp> getAllArbeitstyp() {
+		// TODO Auto-generated method stub
+		try {
+			arbeitstyp = arbeitstypRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arbeitstyp;
+	}
+	public List<Mangel> getAllMangelProjekt(Projekt projekt) {
+		try {
+			mangelOfProjekt = mangelRO.findAllMangelProjekt(projekt);
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return mangelOfProjekt;
 	}
 		
 }
