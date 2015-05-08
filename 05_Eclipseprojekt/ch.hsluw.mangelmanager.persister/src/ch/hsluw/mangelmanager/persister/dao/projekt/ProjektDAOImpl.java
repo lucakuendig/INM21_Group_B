@@ -65,7 +65,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByBezeichnung",
 				Projekt.class);
 
-		tQuery.setParameter("bezeichnung", bezeichnung);
+		tQuery.setParameter("bezeichnung", "%" +bezeichnung + "%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -82,7 +82,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByProjektstatus",
 				Projekt.class);
 
-		tQuery.setParameter("projektstatus", projektstatus);
+		tQuery.setParameter("projektstatus", "%" +projektstatus +"%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -99,7 +99,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByOrt",
 				Projekt.class);
 
-		tQuery.setParameter("ort", ort);
+		tQuery.setParameter("ort", "%" + ort + "%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -116,7 +116,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByPlz",
 				Projekt.class);
 
-		tQuery.setParameter("plz", plz);
+		tQuery.setParameter("plz", Integer.parseInt(plz));
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -133,7 +133,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByBauherr",
 				Projekt.class);
 
-		tQuery.setParameter("bauherr", bauherr);
+		tQuery.setParameter("bauherr", "%" +bauherr + "%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -150,7 +150,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByObjekttyp",
 				Projekt.class);
 
-		tQuery.setParameter("objekttyp", objekttyp);
+		tQuery.setParameter("objekttyp", "%" + objekttyp + "%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 
@@ -167,7 +167,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByArbeitstyp",
 				Projekt.class);
 
-		tQuery.setParameter("arbeitstyp", arbeitstyp);
+		tQuery.setParameter("arbeitstyp", "%" +arbeitstyp+ "%");
 
 		List<Projekt> projektListe = tQuery.getResultList();
 

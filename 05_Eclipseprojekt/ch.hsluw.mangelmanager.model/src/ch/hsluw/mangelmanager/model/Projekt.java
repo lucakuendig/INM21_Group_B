@@ -33,14 +33,14 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
-		@NamedQuery(name = "Projekt.findByBezeichnung", query = "SELECT p FROM Projekt p WHERE p.bezeichnung=:bezeichnung"),
+		@NamedQuery(name = "Projekt.findByBezeichnung", query = "SELECT p FROM Projekt p WHERE p.bezeichnung LIKE :bezeichnung"),
 		//@NamedQuery(name = "Projekt.findByDatumFromTillEnd", query = "SELECT p FROM Projekt p WHERE p.startdatum >=:startdatum and p.enddatum <=:enddatum"),
-		@NamedQuery(name = "Projekt.findByBauherr", query = "SELECT p FROM Projekt p join p.fkBauherr b where b.nachname in (:bauherr)"),
-		@NamedQuery(name = "Projekt.findByPlz", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz=:plz"),
-		@NamedQuery(name = "Projekt.findByOrt", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.ort=:ort"),
-		@NamedQuery(name = "Projekt.findByObjekttyp", query = "SELECT p FROM Projekt p WHERE p.fkObjekttyp.bezeichnung=:objekttyp"),
-		@NamedQuery(name = "Projekt.findByArbeittyp", query = "SELECT p FROM Projekt p WHERE p.fkArbeitstyp.bezeichnung=:arbeitstyp"),
-		@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung=:projektstatus"),
+		@NamedQuery(name = "Projekt.findByBauherr", query = "SELECT p FROM Projekt p join p.fkBauherr b where b.nachname LIKE (:bauherr) or b.vorname LIKE (:bauherr)"),
+		@NamedQuery(name = "Projekt.findByPlz", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.plz =:plz"),
+		@NamedQuery(name = "Projekt.findByOrt", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.ort LIKE :ort"),
+		@NamedQuery(name = "Projekt.findByObjekttyp", query = "SELECT p FROM Projekt p WHERE p.fkObjekttyp.bezeichnung LIKE :objekttyp"),
+		@NamedQuery(name = "Projekt.findByArbeitstyp", query = "SELECT p FROM Projekt p WHERE p.fkArbeitstyp.bezeichnung LIKE :arbeitstyp"),
+		@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung LIKE :projektstatus"),
 		@NamedQuery(name = "Projekt.findBySubunternehmenProjekt", query = "SELECT DISTINCT p FROM Projekt p JOIN p.fkProjektSuMitarbeiter ps JOIN ps.fkMitarbeiter sm WHERE sm.fkSubunternehmen =:subunternehmenId")})
 public class Projekt implements Serializable {
 
