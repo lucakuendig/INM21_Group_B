@@ -136,5 +136,5 @@ public interface ProjektDAO {
 	 */
 	public List<Projekt> findProjektByDatumFromTillEnd(Date fromDatum, Date endDatum);
 
-	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen);
+	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen);
 }
