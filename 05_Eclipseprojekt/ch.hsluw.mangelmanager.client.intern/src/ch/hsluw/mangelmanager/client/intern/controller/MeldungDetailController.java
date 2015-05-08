@@ -33,13 +33,13 @@ public class MeldungDetailController implements Initializable {
 		@FXML
 		public Label lblMeldungId;
 		@FXML
-		public TextField txtMeldungProjekt;
+		public Label lblMeldungProjekt;
 		@FXML
-		public TextField txtMeldungMangel;
+		public Label lblMeldungMangel;
 		@FXML
-		public TextField txtMeldungDatum;
+		public Label lblMeldungDatum;
 		@FXML
-		public TextField txtMeldungArt;
+		public Label lblMeldungArt;
 		@FXML
 		public TextArea txtMeldungBeschreibung;
 		
@@ -55,10 +55,10 @@ public class MeldungDetailController implements Initializable {
 				client = ClientRMI.getInstance();
 				meldung = client.getMeldungById(meldungId);
 				lblMeldungId.setText(meldung.getId().toString());
-				txtMeldungProjekt.setText(meldung.getFkMangel().getFkProjekt().getBezeichnung());
-				txtMeldungMangel.setText(meldung.getFkMangel().getBezeichnung());
-				txtMeldungDatum.setText(formatZeit.format(meldung.getZeitpunkt().getTime()));
-				txtMeldungArt.setText(meldung.getFkMeldungstyp().getBezeichnung());
+				lblMeldungProjekt.setText(meldung.getFkMangel().getFkProjekt().getBezeichnung());
+				lblMeldungMangel.setText(meldung.getFkMangel().getBezeichnung());
+				lblMeldungDatum.setText(formatZeit.format(meldung.getZeitpunkt().getTime()));
+				lblMeldungArt.setText(meldung.getFkMeldungstyp().getBezeichnung());
 				txtMeldungBeschreibung.appendText(meldung.getText());
 				
 			} catch (Exception e) {

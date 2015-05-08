@@ -53,8 +53,8 @@ public class ProjektTest {
 			e.printStackTrace();
 		}
 		
-		Projekt projekt3 = pm.findById(1);
-		System.out.println(projekt3.getBezeichnung());
+		
+		
 		
 		List<Projekt> projekte = pm.findAll();
 		System.out.println(projekte.get(0).getEndDatum().getTime());

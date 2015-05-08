@@ -95,18 +95,24 @@
                      <columnConstraints>
                         <ColumnConstraints hgrow="NEVER" minWidth="10.0" />
                         <ColumnConstraints hgrow="NEVER" maxWidth="47.0" minWidth="15.0" prefWidth="47.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="47.0" minWidth="15.0" prefWidth="47.0" />
                         <ColumnConstraints hgrow="SOMETIMES" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
+<<<<<<< HEAD
                         <ComboBox fx:id="cbPersonPlz" prefWidth="150.0" />
                         <TextField fx:id="txtPersonOrt" editable="false" GridPane.columnIndex="2">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </TextField>
+=======
+                        <ComboBox fx:id="cbPersonPlz" prefWidth="100.0" />
+                        <Label text="Label" GridPane.columnIndex="1" />
+>>>>>>> origin/master
                      </children>
                   </GridPane>
                   <Label text="Funktion" GridPane.rowIndex="5">
@@ -117,7 +123,7 @@
                   <ChoiceBox fx:id="cbPersonFunktion" maxWidth="5000.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
+            <Accordion fx:id="lblPersonOrt" layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
               <panes>
                 <TitledPane animated="false" text="Login erstellen">
                   <content>

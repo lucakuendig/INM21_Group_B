@@ -3,42 +3,22 @@ package ch.hsluw.mangelmanager.client.intern;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Observable;
-
-import javafx.beans.value.ObservableValue;
-import javafx.util.Callback;
-
 import org.apache.log4j.Logger;
 
 
-
-
-
-
-
-
-
-
-
-
-
 import ch.hsluw.mangelmanager.model.Adresse;
-import ch.hsluw.mangelmanager.model.Arbeitstyp;
-import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
+import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
+import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -72,10 +52,13 @@ public class ClientRMI {
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
 	List<Meldung> meldung;
+	List<Plz> plz;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
+	Plz plznr;
+	Adresse addAdresse;
 	
 	
 	
@@ -86,6 +69,8 @@ public class ClientRMI {
 	SubunternehmenRO subunternehmenRO;
 	MangelRO mangelRO;
 	MeldungRO meldungRO;
+	PlzRO plzRO;
+	AdresseRO adresseRO;
 
 
 	public static void main(String[] args) {
@@ -115,12 +100,16 @@ public class ClientRMI {
 		String subunternehmenROName = "subunternehmenRO";
 		String mangelROName = "mangelRO";
 		String meldungROName ="meldungRO";
+		String plzROName ="plzRO";
+		String adresseROName = "adresseRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);
 		this.subunternehmenRO = (SubunternehmenRO) Naming.lookup(url + subunternehmenROName);
+		this.plzRO = (PlzRO) Naming.lookup(url + plzROName);
+		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
 		
 
 		
@@ -238,11 +227,152 @@ public class ClientRMI {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	}
+
+
+	public List<Projekt> getProjektByBezeichnung(String bezeichnung) {
+			// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByBezeichnung(bezeichnung);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getBeschreibung());
+			}
+		}
+		catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Plz> getAllPlz() {
+		try {
+			plz = plzRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return plz;
 		
 	}
 
-	
+	public List<Projekt> getProjektByBauherr(String bauherr) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByBauherr(bauherr);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkBauherr().get(0).getNachname());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
 
+	public List<Projekt> getProjektByPlz(String plz) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByPlz(plz);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkAdresse().getPlz().getPlz());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByOrt(String ort) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByOrt(ort);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkAdresse().getPlz().getOrt());
+			}
+		}
+		catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public Plz getPlzById(int plzId) {
+		try {
+			plznr = plzRO.findById(plzId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return plznr;
+	}
+
+	public List<Projekt> getProjektByObjekttyp(String objekttyp) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByObjekttyp(objekttyp);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkObjekttyp().getBezeichnung());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByArbeitstyp(String arbeitstyp) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByArbeitstyp(arbeitstyp);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkArbeitstyp().getBezeichnung());;
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public List<Projekt> getProjektByProjektstatus(String projektstatus) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =  projektRO.findByProjektstatus(projektstatus);
+			for (Projekt projekt : projekte) {
+				System.out.println(projekt.getFkProjektstatus().getBezeichnung());
+			}
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+
+	public void addAdresse(Adresse adresse) {
+		try {
+			adresseRO.add(adresse);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void addSubunternehmen(Subunternehmen addSubunternehmen) {
+		try {
+			subunternehmenRO.add(addSubunternehmen);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+		
 }
+
 
 

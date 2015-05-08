@@ -8,15 +8,18 @@ import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -24,7 +27,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 
 /**
- * The ProjektController handles all interaction with projects * 
+ * The ProjektController handles all interaction with projects *
  * 
  * @author sritz
  * @version 1.0
@@ -32,16 +35,16 @@ import javafx.util.Callback;
  */
 
 public class ProjektController implements Initializable {
-	//RMI Client to interact
+	// RMI Client to interact
 	ClientRMI client = null;
 	RootController rootController = null;
-	
+
 	public void setRootController(RootController rootController) {
 		// TODO Auto-generated method stub
 		this.rootController = rootController;
 	}
-	
-	//Define overviewtable with columns
+
+	// Define overviewtable with columns
 	@FXML
 	private TableView<Projekt> tblProjekt;
 	@FXML
@@ -58,117 +61,197 @@ public class ProjektController implements Initializable {
 	private TableColumn<Projekt, String> colProjektOffeneMeldungen;
 	@FXML
 	private TableColumn<Projekt, String> colProjektAbgeschlossen;
-	
-	//Datalist for Tableview
-	ObservableList<Projekt> data;
-	
-	
 
-	
-	
+	// Datalist for Tableview
+	ObservableList<Projekt> data;
+
+	// Suche
+	@FXML
+	private ChoiceBox<String> cbProjektSearch;
+	@FXML
+	private TextField txtProjektSearch;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		setCellValueFactoryTblProjekt();
-		
 
-		//Client interaction
+		// Client interaction
 		try {
 			client = ClientRMI.getInstance();
 			data = FXCollections.observableArrayList(client.getAllProjekt());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
-		//Set data to tableview
-		tblProjekt.setItems(data);
+		cbProjektSearch.getItems().addAll(
+				FXCollections.observableArrayList("Bezeichnung", "Bauherr",
+						"Plz", "Ort", "Objekttyp", "Arbeitstyp",
+						"Projektstatus"));
+		cbProjektSearch.getSelectionModel().selectFirst();
+		// Handle TextField text changes.
+
 		
-    	
-	
+		txtProjektSearch.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
+				switch (cbProjektSearch.getSelectionModel().getSelectedItem()) {
+				case "Bezeichnung":
+					System.out.println("lala");
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBezeichnung(txtProjektSearch.getText())));
+					break;
+				case "Bauherr":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBauherr(txtProjektSearch.getText())));
+					break;
+				case "Plz":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByPlz(txtProjektSearch.getText())));
+					break;
+				case "Ort":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByOrt(txtProjektSearch.getText())));
+					break;
+				case "Objekttyp":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByObjekttyp(txtProjektSearch.getText())));
+					break;
+				case "Arbeitstyp":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByArbeitstyp(txtProjektSearch.getText())));
+					break;
+				case "Projektstatus":
+					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByProjektstatus(txtProjektSearch.getText())));
+					break;
+				default:
+					System.out
+							.println("TextField Text Changed (newValue: "
+									+ newValue + ")");
+					break;
+				}
+		    }
+		});
+
+		// Set data to tableview
+		//tblProjekt.setItems(data);
+		updateTblProjekt(data);
+	}
+
+	private void updateTblProjekt(ObservableList<Projekt> data) {
+		// TODO Auto-generated method stub
+		for (Projekt projekt : data) {
+			System.out.println(projekt.getBeschreibung());
+		}
+		
+		tblProjekt.setItems(data);
+
 	}
 
 	private void setCellValueFactoryTblProjekt() {
-		//SetCellValueFactory from overviewtable
-		colProjektId.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
-		colProjektBezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
+		// SetCellValueFactory from overviewtable
+		colProjektId
+				.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+						"id"));
+		colProjektBezeichnung
+				.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+						"bezeichnung"));
 
-		colProjektBauherr.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
-		        return new SimpleStringProperty(p.getValue().getFkBauherr().get(0).getNachname() + " " + p.getValue().getFkBauherr().get(0).getVorname());
-		    }
-		});
-		
-		colProjektAdresse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
-		        return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse() + " " +p.getValue().getFkAdresse().getPlz().getPlz() + " " + p.getValue().getFkAdresse().getPlz().getOrt());
-		    }
-		});
-		
-		colProjektOffeneMaengel.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
-		    	int anzMaengel = p.getValue().getFkMaengel().size();
-		    	int anzOffeneMaengel = 0;
-		    	for (int i = 0; i < anzMaengel; i++) {
-		    		if (p.getValue().getFkMaengel().get(i).getFkMangelstatus().getBezeichnung() == "offen") {
-		    			anzOffeneMaengel++;
+		colProjektBauherr
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkBauherr().get(0).getNachname()
+								+ " "
+								+ p.getValue().getFkBauherr().get(0)
+										.getVorname());
 					}
-					
-				}
-		        return new SimpleStringProperty(String.valueOf(anzOffeneMaengel));
-		    }
-		});
-		
-		colProjektOffeneMeldungen.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
-		    	int anzMaengel = p.getValue().getFkMaengel().size();
-		    	int anzMeldungen = 0;
-		    	int anzOffeneMeldungen = 0;
-		    	for (int i = 0; i < anzMaengel; i++) {
-		    		anzMeldungen = p.getValue().getFkMaengel().get(i).getFkMeldung().size();
-		    		for (int j = 0; j < anzMeldungen; j++) {
-		    			if(p.getValue().getFkMaengel().get(i).getFkMeldung().get(j).getQuittiert()){
-		    				anzOffeneMeldungen++;
-		    			}
+				});
+
+		colProjektAdresse
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkAdresse().getStrasse()
+								+ " "
+								+ p.getValue().getFkAdresse().getPlz().getPlz()
+								+ " "
+								+ p.getValue().getFkAdresse().getPlz().getOrt());
 					}
-				}
-		        return new SimpleStringProperty(String.valueOf(anzOffeneMeldungen));     	
-		    }
-		});
-		
-		colProjektAbgeschlossen.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Projekt, String> p) {
-		        return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());
-		    }
-		});
+				});
+
+		colProjektOffeneMaengel
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						int anzMaengel = p.getValue().getFkMaengel().size();
+						int anzOffeneMaengel = 0;
+						for (int i = 0; i < anzMaengel; i++) {
+							if (p.getValue().getFkMaengel().get(i)
+									.getFkMangelstatus().getBezeichnung() == "offen") {
+								anzOffeneMaengel++;
+							}
+
+						}
+						return new SimpleStringProperty(String
+								.valueOf(anzOffeneMaengel));
+					}
+				});
+
+		colProjektOffeneMeldungen
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						int anzMaengel = p.getValue().getFkMaengel().size();
+						int anzMeldungen = 0;
+						int anzOffeneMeldungen = 0;
+						for (int i = 0; i < anzMaengel; i++) {
+							anzMeldungen = p.getValue().getFkMaengel().get(i)
+									.getFkMeldung().size();
+							for (int j = 0; j < anzMeldungen; j++) {
+								if (p.getValue().getFkMaengel().get(i)
+										.getFkMeldung().get(j).getQuittiert()) {
+									anzOffeneMeldungen++;
+								}
+							}
+						}
+						return new SimpleStringProperty(String
+								.valueOf(anzOffeneMeldungen));
+					}
+				});
+
+		colProjektAbgeschlossen
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkProjektstatus().getBezeichnung());
+					}
+				});
 	}
-	
+
 	@FXML
-	public void showProjektDetail(MouseEvent t) throws IOException{
-		if(t.getClickCount() == 2){
-			System.out.println(tblProjekt.getSelectionModel().getSelectedItem().getId());
-			
+	public void showProjektDetail(MouseEvent t) throws IOException {
+		if (t.getClickCount() == 2) {
+			System.out.println(tblProjekt.getSelectionModel().getSelectedItem()
+					.getId());
+
 			try {
 				// Load ProjektDetail View.
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(Main.class
 						.getResource("view/projekt/InneresProjekt.fxml"));
 				AnchorPane inneresProjekt = (AnchorPane) loader.load();
-				
-				ProjektDetailController detailProjektController = loader.<ProjektDetailController>getController();
+
+				ProjektDetailController detailProjektController = loader
+						.<ProjektDetailController> getController();
 				detailProjektController.setRootController(rootController);
-				
-				detailProjektController.init(tblProjekt.getSelectionModel().getSelectedItem().getId());
+
+				detailProjektController.init(tblProjekt.getSelectionModel()
+						.getSelectedItem().getId());
 				rootController.rootLayout.setCenter(inneresProjekt);
-				
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-			
-		
-	}
 
+	}
 
 }
