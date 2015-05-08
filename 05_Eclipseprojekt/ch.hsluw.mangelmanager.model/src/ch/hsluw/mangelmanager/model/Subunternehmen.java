@@ -27,6 +27,8 @@ import javax.persistence.OneToOne;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Subunternehmen.findBySubunternehmenMitarbeiter", query = "SELECT sm FROM SuMitarbeieter sm WHERE sm.fkSubunternehmen=:subunternehmenId")})
 public class Subunternehmen implements Serializable {
 
 	private static final long serialVersionUID = -2526718021212938075L;

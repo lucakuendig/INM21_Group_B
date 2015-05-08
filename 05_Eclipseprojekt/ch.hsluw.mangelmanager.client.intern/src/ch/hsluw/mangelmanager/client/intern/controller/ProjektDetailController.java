@@ -68,7 +68,30 @@ public class ProjektDetailController implements Initializable {
 		
 	}
 	
-		
 	
+	@FXML
+	public void projektCancel(){
+		
+	}
+	@FXML
+	public void projektSave(){
+		
+	}
+	@FXML
+	public void projektAddMangel(){
+		
+	}
+	@FXML
+	public void projektAddMeldung(){
+		
+	}
+	@FXML
+	public void projektAddUnternehmen(){
+		
+	}
+	@FXML
+	public void projektAddBauleiter(){
+		
+	}
 
 }

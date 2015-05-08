@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAO;
 import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAOImpl;
@@ -115,9 +116,6 @@ public class ProjektManagerImpl implements ProjektManager {
 		// TODO Auto-generated method stub
 		return projektDAO.findAllSubunternehmenProjekt(subunternehmen);
 	}
-
-
-
 
 
 

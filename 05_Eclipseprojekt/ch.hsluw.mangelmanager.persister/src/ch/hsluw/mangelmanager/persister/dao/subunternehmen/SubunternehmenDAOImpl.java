@@ -17,6 +17,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
@@ -78,5 +79,21 @@ public class SubunternehmenDAOImpl implements SubunternehmenDAO {
 
 		return anzProjekte;
 		
+	}
+
+	@Override
+	public List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) {
+EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<SuMitarbeiter> tQuery = em.createNamedQuery("Subunternehmen.findBySubunternehmenMitarbeiter",
+				SuMitarbeiter.class);
+
+		tQuery.setParameter("subunternehmenId", subunternehmen);
+
+		List<SuMitarbeiter> mitarbeiterListe = tQuery.getResultList();
+
+		em.close();
+
+		return mitarbeiterListe != null ? mitarbeiterListe : new ArrayList<SuMitarbeiter>();
 	}
 }

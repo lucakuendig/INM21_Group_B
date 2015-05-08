@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 
@@ -164,5 +165,6 @@ public interface ProjektRO extends Remote {
 			throws RemoteException;
 
 	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2) throws RemoteException;
+
 
 }

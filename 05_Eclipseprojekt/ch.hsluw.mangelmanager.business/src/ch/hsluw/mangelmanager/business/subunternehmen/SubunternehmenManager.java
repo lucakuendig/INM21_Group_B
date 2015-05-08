@@ -5,9 +5,11 @@
 
 package ch.hsluw.mangelmanager.business.subunternehmen;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javafx.beans.value.ObservableValue;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
@@ -65,4 +67,6 @@ public interface SubunternehmenManager {
 	String findAllProjekte(int subunternehmen);
 
 	void save(Subunternehmen subunternehmen);
+
+	List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen);
 }

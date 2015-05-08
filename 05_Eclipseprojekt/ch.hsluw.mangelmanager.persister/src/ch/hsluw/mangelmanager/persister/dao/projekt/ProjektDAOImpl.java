@@ -208,18 +208,5 @@ public class ProjektDAOImpl implements ProjektDAO {
 		em.close();
 
 		return projektListe != null ? projektListe : new ArrayList<Projekt>();
-
-//		Query tQuery = em.createNativeQuery("select distinct p.id, p.beschreibung, p.bezeichnung, p.enddatum"
-//				+ ", p.faelligkeitsdatum, p.startdatum, p.fkadresse_id, "
-//				+ "p.fkarbeitstyp_id, p.fkobjekttyp_id, fkprojektstatus_id from projekt as p "
-//				+ "join projektsumitarbeiter as ps on ps.fkprojekt_id = p.id "
-//				+ "join sumitarbeiter as sm on sm.id = ps.fkmitarbeiter_id "
-//				+ "where sm.fksubunternehmen_id = "+subunternehmenid, Projekt.class);
-//
-//		List<Projekt> resProjekte = tQuery.getResultList();
-//
-//		em.close();
-//
-//		return resProjekte;
 	}
 }

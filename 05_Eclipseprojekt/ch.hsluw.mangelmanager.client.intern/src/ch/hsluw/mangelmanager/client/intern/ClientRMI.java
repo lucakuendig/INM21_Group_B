@@ -4,8 +4,10 @@ package ch.hsluw.mangelmanager.client.intern;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.List;
-import org.apache.log4j.Logger;
 
+import javafx.util.Callback;
+
+import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Mangel;
@@ -13,6 +15,7 @@ import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
@@ -54,6 +57,7 @@ public class ClientRMI {
 	List<Mangel> maengel;
 	List<Meldung> meldung;
 	List<Plz> plz;
+	List<SuMitarbeiter> sumitarbeiter;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
@@ -373,14 +377,24 @@ public class ClientRMI {
 		
 	}
 
-	public List<Projekt> getAllSubunternehmenProjekt(Subunternehmen subunternehmen2) {
+	public List<Projekt> getAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
 		try {
-			suprojekte = projektRO.findAllSubunternehmenProjekt(subunternehmen2);
+			suprojekte = projektRO.findAllSubunternehmenProjekt(subunternehmen);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 			return suprojekte;
+	}
+
+	public List<SuMitarbeiter> getAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) {
+		try {
+			sumitarbeiter = subunternehmenRO.findAllSubunternehmenMitarbeiter(subunternehmen);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return sumitarbeiter;
 	}
 		
 }

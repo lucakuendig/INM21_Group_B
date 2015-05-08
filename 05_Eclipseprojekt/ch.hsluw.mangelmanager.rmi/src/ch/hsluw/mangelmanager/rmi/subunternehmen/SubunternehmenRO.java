@@ -11,6 +11,7 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import javafx.beans.value.ObservableValue;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 
@@ -81,5 +82,7 @@ public interface SubunternehmenRO extends Remote {
 	List<Subunternehmen> findAll() throws RemoteException;
 
 	String findAllProjekte(int subunternehmen) throws RemoteException;
+
+	List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) throws RemoteException;
 
 }

@@ -1,5 +1,6 @@
 package ch.hsluw.mangelmanager.client.intern.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,10 +9,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,6 +24,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 public class SubUnternehmenDetailController implements Initializable {
@@ -68,8 +74,26 @@ public class SubUnternehmenDetailController implements Initializable {
 		@FXML
 		private TableColumn<Projekt, String> colUnternehmenProjektStatus;
 		
+		//Projekte pro Subunternehmen
+				@FXML
+				private TableView<SuMitarbeiter> tblUnternehmenMitarbeiter;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterId;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterName;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterVorname;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterStartdatum;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterEnddatum;
+				@FXML
+				private TableColumn<SuMitarbeiter, String> colUnternehmenMitarbeiterTelefon;
+		
+		
 		//Datalist for Tableview
 		ObservableList<Projekt> data;
+		ObservableList<SuMitarbeiter>data2;
 		
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
@@ -83,62 +107,16 @@ public class SubUnternehmenDetailController implements Initializable {
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
-			
-			
-			
+			}			
 		}
 
 
-		private void setCellValueFactoryTblUnternehmenProjekt() {
-			// TODO Auto-generated method stub
-			colUnternehmenProjektId
-			.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
-					"id"));
-	colUnternehmenProjektBezeichnung
-			.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
-					"bezeichnung"));
-
-	colUnternehmenProjektBauherr
-			.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-				public ObservableValue<String> call(
-						CellDataFeatures<Projekt, String> p) {
-					return new SimpleStringProperty(p.getValue()
-							.getFkBauherr().get(0).getNachname()
-							+ " "
-							+ p.getValue().getFkBauherr().get(0)
-									.getVorname());
-				}
-			});
-
-	colUnternehmenProjektStrasse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-				public ObservableValue<String> call(
-						CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse());}
-			});
-	colUnternehmenProjektPlz.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		public ObservableValue<String> call(
-				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getPlz().toString());}
-	});
-	colUnternehmenProjektOrt.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		public ObservableValue<String> call(
-				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getOrt());}
-	});
-	
-//	colUnternehmenProjektStartdatum.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-//		public ObservableValue<String> call(
-//				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getStartDatum().);}
-//	});
-
-	colUnternehmenProjektStatus.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-		public ObservableValue<String> call(
-				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());}
-	});
-		}
+		
 
 
 		public void init(int subunternehmenId) {
 			setCellValueFactoryTblUnternehmenProjekt();
+			setCellValueFactoryTblUnternehmenMiterbeiter();
 				try {
 				client = ClientRMI.getInstance();
 				subunternehmen = client.getSubunternehmenById(subunternehmenId);
@@ -150,11 +128,57 @@ public class SubUnternehmenDetailController implements Initializable {
 				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
 				
 				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen));
+				data2 = FXCollections.observableArrayList(client.getAllSubunternehmenMitarbeiter(subunternehmen));
 				//Set data to tableview
 				tblUnternehmenProjekt.setItems(data);
+				tblUnternehmenMitarbeiter.setItems(data2);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+		}
+		
+		private void setCellValueFactoryTblUnternehmenProjekt() {
+			// TODO Auto-generated method stub
+			colUnternehmenProjektId.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
+			colUnternehmenProjektBezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
+
+			colUnternehmenProjektBauherr.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+						CellDataFeatures<Projekt, String> p) {
+					return new SimpleStringProperty(p.getValue()
+							.getFkBauherr().get(0).getNachname()
+							+ " "
+							+ p.getValue().getFkBauherr().get(0)
+									.getVorname());
+				}
+			});
+
+			colUnternehmenProjektStrasse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+						CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse());}
+			});
+			colUnternehmenProjektPlz.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getPlz().toString());}
+			});
+			colUnternehmenProjektOrt.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getOrt());}
+			});
+	
+//	colUnternehmenProjektStartdatum.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+//		public ObservableValue<String> call(
+//				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getStartDatum().);}
+//	});
+
+			colUnternehmenProjektStatus.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());}
+			});
+		}
+		
+		public void setCellValueFactoryTblUnternehmenMiterbeiter(){
 			
 		}
 		
@@ -182,5 +206,36 @@ public class SubUnternehmenDetailController implements Initializable {
 			}
 		}
 
+		@FXML
+		private void showProjektDetail(MouseEvent t) throws IOException{
+			if (t.getClickCount() == 2) {
+				System.out.println(tblUnternehmenProjekt.getSelectionModel().getSelectedItem()
+						.getId());
+
+				try {
+					// Load ProjektDetail View.
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(Main.class
+							.getResource("view/projekt/InneresProjekt.fxml"));
+					AnchorPane inneresProjekt = (AnchorPane) loader.load();
+
+					ProjektDetailController detailProjektController = loader
+							.<ProjektDetailController> getController();
+					detailProjektController.setRootController(rootController);
+
+					detailProjektController.init(tblUnternehmenProjekt.getSelectionModel()
+							.getSelectedItem().getId());
+					rootController.rootLayout.setCenter(inneresProjekt);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		@FXML
+		public void showMitarbeiterDetail(MouseEvent t){
+			
+		}
 	
 }
