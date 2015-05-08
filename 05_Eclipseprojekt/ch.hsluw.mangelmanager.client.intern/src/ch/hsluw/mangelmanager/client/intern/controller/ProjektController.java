@@ -89,57 +89,60 @@ public class ProjektController implements Initializable {
 						"Plz", "Ort", "Objekttyp", "Arbeitstyp",
 						"Projektstatus"));
 		cbProjektSearch.getSelectionModel().selectFirst();
-		// Handle TextField text changes.
-
 		
+		//If selected Item is changed clean txtProjektSearch
+		cbProjektSearch.valueProperty().addListener(new ChangeListener<String>() {
+            @Override 
+            public void changed(ObservableValue<? extends String> ov, String t, String t1) {                
+            	txtProjektSearch.setText("");          
+            }    
+        });
+		// Handle TextField text changes.
 		txtProjektSearch.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
-				switch (cbProjektSearch.getSelectionModel().getSelectedItem()) {
-				case "Bezeichnung":
-					System.out.println("lala");
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBezeichnung(txtProjektSearch.getText())));
-					break;
-				case "Bauherr":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBauherr(txtProjektSearch.getText())));
-					break;
-				case "Plz":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByPlz(txtProjektSearch.getText())));
-					break;
-				case "Ort":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByOrt(txtProjektSearch.getText())));
-					break;
-				case "Objekttyp":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByObjekttyp(txtProjektSearch.getText())));
-					break;
-				case "Arbeitstyp":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByArbeitstyp(txtProjektSearch.getText())));
-					break;
-				case "Projektstatus":
-					updateTblProjekt(FXCollections.observableArrayList(client.getProjektByProjektstatus(txtProjektSearch.getText())));
-					break;
-				default:
-					System.out
-							.println("TextField Text Changed (newValue: "
-									+ newValue + ")");
-					break;
-				}
+		    	if(newValue.length() <1){
+		    		updateTblProjekt(FXCollections.observableArrayList(client.getAllProjekt()));
+		    	}
+		    	else{
+		    	switch (cbProjektSearch.getSelectionModel().getSelectedItem()) {
+					case "Bezeichnung":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBezeichnung(txtProjektSearch.getText())));
+						break;
+					case "Bauherr":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBauherr(txtProjektSearch.getText())));
+						break;
+					case "Plz":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByPlz(txtProjektSearch.getText())));
+						break;
+					case "Ort":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByOrt(txtProjektSearch.getText())));
+						break;
+					case "Objekttyp":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByObjekttyp(txtProjektSearch.getText())));
+						break;
+					case "Arbeitstyp":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByArbeitstyp(txtProjektSearch.getText())));
+						break;
+					case "Projektstatus":
+						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByProjektstatus(txtProjektSearch.getText())));
+						break;
+					default:
+						updateTblProjekt(data);
+						break;
+					}
+		    	}
 		    }
+		    
 		});
 
 		// Set data to tableview
-		//tblProjekt.setItems(data);
 		updateTblProjekt(data);
 	}
 
 	private void updateTblProjekt(ObservableList<Projekt> data) {
 		// TODO Auto-generated method stub
-		for (Projekt projekt : data) {
-			System.out.println(projekt.getBeschreibung());
-		}
-		
-		tblProjekt.setItems(data);
-
+			tblProjekt.setItems(data);
 	}
 
 	private void setCellValueFactoryTblProjekt() {

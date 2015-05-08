@@ -77,7 +77,6 @@
                      </GridPane.margin>
                   </GridPane>
                   <Label fx:id="lblPersonId" text="Label" GridPane.columnIndex="1" />
-                  <ChoiceBox fx:id="cbProjektBauherr" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <ChoiceBox fx:id="cbProjektObjekttyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <ChoiceBox fx:id="cbProjektArbeitstyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Start-Datum" GridPane.rowIndex="6">
@@ -108,7 +107,6 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label fx:id="lblProjektStrasse" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <columnConstraints>
                         <ColumnConstraints hgrow="NEVER" maxWidth="115.0" minWidth="10.0" prefWidth="115.0" />
@@ -122,6 +120,8 @@
                         <Label fx:id="lblProjektOrt" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
+                  <Label fx:id="lblProjektBauherr" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtProjektStrasse" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="1">
@@ -136,10 +136,10 @@
                                        <children>
                                           <TableView fx:id="tblProjektMangel" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                              <TableColumn fx:id="tblProjektMangel" prefWidth="75.0" text="Offene Mängel">
+                                              <TableColumn prefWidth="75.0" text="Offene Mängel">
                                                    <columns>
-                                                    <TableColumn fx:id="colProjektMangelid" prefWidth="102.99999237060547" text="Mangel Nr." />
-                                                      <TableColumn fx:id="colProjektMangelbezeichnung" prefWidth="75.0" text="Bezeichnung" />
+                                                    <TableColumn fx:id="colProjektMangelId" prefWidth="102.99999237060547" text="Mangel Nr." />
+                                                      <TableColumn fx:id="colProjektMangelBezeichnung" prefWidth="75.0" text="Bezeichnung" />
                                                    </columns>
                                                 </TableColumn>
                                             </columns>
