@@ -102,17 +102,13 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-<<<<<<< HEAD
                         <ComboBox fx:id="cbPersonPlz" prefWidth="150.0" />
                         <TextField fx:id="txtPersonOrt" editable="false" GridPane.columnIndex="2">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </TextField>
-=======
-                        <ComboBox fx:id="cbPersonPlz" prefWidth="100.0" />
-                        <Label text="Label" GridPane.columnIndex="1" />
->>>>>>> origin/master
+
                      </children>
                   </GridPane>
                   <Label text="Funktion" GridPane.rowIndex="5">
