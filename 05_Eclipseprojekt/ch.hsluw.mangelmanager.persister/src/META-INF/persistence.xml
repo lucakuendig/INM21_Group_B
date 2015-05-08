@@ -50,7 +50,7 @@
 		    <property name="eclipselink.logging.level" value="FINE"/> 
 			-->
 			
-			<property name="eclipselink.ddl-generation" value="drop-create-tables" /> 			
+			<property name="eclipselink.ddl-generation" value="create-tables" /> 			
 
 		</properties>
 
