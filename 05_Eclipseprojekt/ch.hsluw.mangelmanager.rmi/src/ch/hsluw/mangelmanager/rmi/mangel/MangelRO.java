@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 
 
@@ -140,5 +142,14 @@ public interface MangelRO extends Remote {
 	 */
 	List<Mangel> findByAbschlussZeit(Date abschlussZeit)
 			throws RemoteException;
+	
+	/**
+	 * Liefert alle Mängel von einem Projekt
+	 * 
+	 * @param projekt
+	 * @return
+	 * @throws RemoteException
+	 */
+	List<Mangel> findAllMangelProjekt(Projekt projekt) throws RemoteException;
 
 }

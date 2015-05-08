@@ -13,6 +13,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -154,6 +156,22 @@ public class MangelDAOImpl implements MangelDAO {
 		em.close();
 
 		return MangelListe != null ? MangelListe : new ArrayList<Mangel>();
+	}
+	
+	@Override
+	public List<Mangel> findAllMangelProjekt(Projekt projekt) {
+		EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByMangelProjekt",
+				Mangel.class);
+
+		tQuery.setParameter("projektId", projekt);
+
+		List<Mangel> mangelListe = tQuery.getResultList();
+
+		em.close();
+
+		return mangelListe != null ? mangelListe : new ArrayList<Mangel>();
 	}
 
 }

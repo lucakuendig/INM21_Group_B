@@ -29,14 +29,15 @@ import javax.persistence.NamedQueries;
  */
 
 @Entity
-//@NamedQueries({
+@NamedQueries({
 //		@NamedQuery(name = "Mangel.findByID", query = "SELECT p FROM Mangel p WHERE p.id=:id"),
 //		@NamedQuery(name = "Mangel.findByName", query = "SELECT p FROM Mangel p WHERE p.name=:name"),
 //		@NamedQuery(name = "Mangel.findByErfassungsZeit", query = "SELECT p FROM Mangel p WHERE p.erfassungsZeit=:erfassungsZeit"),
 //		@NamedQuery(name = "Mangel.findByFaelligkeitsDatum", query = "SELECT p FROM Mangel p WHERE p.faelligkeitsDatum=:faelligkeitsDatum"),
 //		@NamedQuery(name = "Mangel.findByMangelstatus", query = "SELECT p FROM Mangel p WHERE p.fkMangelstatus=:mangelstatus"),
 //		@NamedQuery(name = "Mangel.findByBezeichnung", query = "SELECT p FROM Mangel p WHERE p.bezeichnung=:bezeichnung"),
-//		@NamedQuery(name = "Mangel.findByAbschlussZeit", query = "SELECT p FROM Mangel p WHERE p.abschlussZeit=:abschlussZeit"), })
+//		@NamedQuery(name = "Mangel.findByAbschlussZeit", query = "SELECT p FROM Mangel p WHERE p.abschlussZeit=:abschlussZeit"),
+@NamedQuery(name = "Mangel.findByMangelProjekt", query = "SELECT m FROM Mangel m WHERE m.fkProjekt=:projektId and m.fkMangelstatus.bezeichnung='offen'")})
 public class Mangel implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;

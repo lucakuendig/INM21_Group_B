@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * Interface fuer Mangel Entity
@@ -118,5 +120,12 @@ public interface MangelManager {
 	 * @return
 	 */
 	List<Mangel> findByName(String name);
+	
+	/**
+	 * Liefert alle Mängel vom Projekt
+	 * @param projekt
+	 * @return
+	 */
+	List<Mangel> findAllMangelProjekt(Projekt projekt);
 
 }

@@ -13,6 +13,8 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.mangel.MangelManager;
 import ch.hsluw.mangelmanager.business.mangel.MangelManagerImpl;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 
@@ -89,6 +91,11 @@ public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 	@Override
 	public List<Mangel> findByName(String name) throws RemoteException {
 		return mangelManager.findByName(name);
+	}
+	
+	@Override
+	public List<Mangel> findAllMangelProjekt(Projekt projekt) throws RemoteException {
+		return mangelManager.findAllMangelProjekt(projekt);
 	}
 
 }
