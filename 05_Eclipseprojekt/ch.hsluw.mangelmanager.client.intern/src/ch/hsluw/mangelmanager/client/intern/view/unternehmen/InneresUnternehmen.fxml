@@ -104,7 +104,7 @@
                            <children>
                               <TableView fx:id="tblUnternehmenProjekt" prefHeight="468.0" prefWidth="644.0">
                                 <columns>
-                                  <TableColumn fx:id="colProjektUnternehmenId" maxWidth="2000.0" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="colUnternehmenProjektId" maxWidth="2000.0" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="colUnternehmenProjektBezeichnung" prefWidth="75.0" text="Bezeichnung" />
                                     <TableColumn fx:id="colUnternehmenProjektBauherr" prefWidth="75.0" text="Bauherr" />
                                     <TableColumn fx:id="colUnternehmenProjektStrasse" prefWidth="75.0" text="Strasse" />

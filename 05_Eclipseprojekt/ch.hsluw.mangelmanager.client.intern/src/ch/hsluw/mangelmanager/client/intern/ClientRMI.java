@@ -49,6 +49,7 @@ public class ClientRMI {
 	
 	List<Person> person;
 	List<Projekt> projekte;
+	List<Projekt> suprojekte;
 	List<Subunternehmen> subunternehmen;
 	List<Mangel> maengel;
 	List<Meldung> meldung;
@@ -370,6 +371,16 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public List<Projekt> getAllSubunternehmenProjekt(Subunternehmen subunternehmen2) {
+		try {
+			suprojekte = projektRO.findAllSubunternehmenProjekt(subunternehmen2);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return suprojekte;
 	}
 		
 }

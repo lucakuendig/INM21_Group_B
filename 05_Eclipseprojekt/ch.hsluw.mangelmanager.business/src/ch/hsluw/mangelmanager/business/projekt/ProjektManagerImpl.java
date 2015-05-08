@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAO;
 import ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAOImpl;
 
@@ -107,6 +108,12 @@ public class ProjektManagerImpl implements ProjektManager {
 	@Override
 	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum) {
 		return projektDAO.findProjektByDatumFromTillEnd(fromDatum, endDatum);
+	}
+
+	@Override
+	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+		// TODO Auto-generated method stub
+		return projektDAO.findAllSubunternehmenProjekt(subunternehmen);
 	}
 
 

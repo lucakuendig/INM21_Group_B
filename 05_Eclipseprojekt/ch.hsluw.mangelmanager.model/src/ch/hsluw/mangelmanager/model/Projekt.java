@@ -40,7 +40,8 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "Projekt.findByOrt", query = "SELECT p FROM Projekt p WHERE p.fkAdresse.plz.ort=:ort"),
 		@NamedQuery(name = "Projekt.findByObjekttyp", query = "SELECT p FROM Projekt p WHERE p.fkObjekttyp.bezeichnung=:objekttyp"),
 		@NamedQuery(name = "Projekt.findByArbeittyp", query = "SELECT p FROM Projekt p WHERE p.fkArbeitstyp.bezeichnung=:arbeitstyp"),
-		@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung=:projektstatus") })
+		@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung=:projektstatus"),
+		@NamedQuery(name = "Projekt.findBySubunternehmenProjekt", query = "SELECT DISTINCT p FROM Projekt p, ProjektSuMitarbeiter ps, SuMitarbeiter sm WHERE ps.fkProjekt = p.id AND ps.fkMitarbeiter = sm.id AND sm.fkSubunternehmen =:subunternehmenId")})
 public class Projekt implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;

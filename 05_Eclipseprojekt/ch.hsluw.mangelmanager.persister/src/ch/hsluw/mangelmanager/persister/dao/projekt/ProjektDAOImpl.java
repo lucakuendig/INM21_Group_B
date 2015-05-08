@@ -11,9 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -190,5 +192,34 @@ public class ProjektDAOImpl implements ProjektDAO {
 		em.close();
 
 		return projektListe != null ? projektListe : new ArrayList<Projekt>();
+	}
+
+	@Override
+	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+		EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findBySubunternehmenProjekt",
+				Projekt.class);
+
+		tQuery.setParameter("subunternehmenId", subunternehmen);
+
+		List<Projekt> projektListe = tQuery.getResultList();
+
+		em.close();
+
+		return projektListe != null ? projektListe : new ArrayList<Projekt>();
+
+//		Query tQuery = em.createNativeQuery("select distinct p.id, p.beschreibung, p.bezeichnung, p.enddatum"
+//				+ ", p.faelligkeitsdatum, p.startdatum, p.fkadresse_id, "
+//				+ "p.fkarbeitstyp_id, p.fkobjekttyp_id, fkprojektstatus_id from projekt as p "
+//				+ "join projektsumitarbeiter as ps on ps.fkprojekt_id = p.id "
+//				+ "join sumitarbeiter as sm on sm.id = ps.fkmitarbeiter_id "
+//				+ "where sm.fksubunternehmen_id = "+subunternehmenid, Projekt.class);
+//
+//		List<Projekt> resProjekte = tQuery.getResultList();
+//
+//		em.close();
+//
+//		return resProjekte;
 	}
 }

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * Interface fuer Projekt Entity
@@ -139,6 +140,8 @@ public interface ProjektManager {
 	 * @return
 	 */
 	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum);
+
+	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2);
 
 	
 }

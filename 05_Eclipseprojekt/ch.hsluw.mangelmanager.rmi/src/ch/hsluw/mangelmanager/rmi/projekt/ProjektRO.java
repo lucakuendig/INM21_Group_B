@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 
 
@@ -161,5 +162,7 @@ public interface ProjektRO extends Remote {
 	 */
 	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum)
 			throws RemoteException;
+
+	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2) throws RemoteException;
 
 }

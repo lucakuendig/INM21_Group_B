@@ -14,6 +14,7 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.projekt.ProjektManager;
 import ch.hsluw.mangelmanager.business.projekt.ProjektManagerImpl;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 
@@ -102,6 +103,11 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum)
 			throws RemoteException {
 		return projektManager.findByDatumFromTillEnd(fromDatum,endDatum);
+	}
+
+	@Override
+	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2) throws RemoteException {
+		return projektManager.findAllSubunternehmenProjekt(subunternehmen2);
 	}
 
 	
