@@ -3,6 +3,8 @@ package ch.hsluw.mangelmanager.client.intern.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -16,7 +18,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class SubUnternehmenDetailController implements Initializable {
 
@@ -46,7 +50,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		
 		//Projekte pro Subunternehmen
 		@FXML
-		private TableView<Projekt> tblUnterehmenProjekt;
+		private TableView<Projekt> tblUnternehmenProjekt;
 		@FXML
 		private TableColumn<Projekt, String> colUnternehmenProjektId;
 		@FXML
@@ -69,7 +73,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			setCellValueFactoryTblProjekt();
+			
 			
 			try {
 				client = new ClientRMI();
@@ -87,13 +91,54 @@ public class SubUnternehmenDetailController implements Initializable {
 		}
 
 
-		private void setCellValueFactoryTblProjekt() {
+		private void setCellValueFactoryTblUnternehmenProjekt() {
 			// TODO Auto-generated method stub
-			
+			colUnternehmenProjektId
+			.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+					"id"));
+	colUnternehmenProjektBezeichnung
+			.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+					"bezeichnung"));
+
+	colUnternehmenProjektBauherr
+			.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+						CellDataFeatures<Projekt, String> p) {
+					return new SimpleStringProperty(p.getValue()
+							.getFkBauherr().get(0).getNachname()
+							+ " "
+							+ p.getValue().getFkBauherr().get(0)
+									.getVorname());
+				}
+			});
+
+	colUnternehmenProjektStrasse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+						CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse());}
+			});
+	colUnternehmenProjektPlz.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getPlz().toString());}
+	});
+	colUnternehmenProjektOrt.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getOrt());}
+	});
+	
+//	colUnternehmenProjektStartdatum.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+//		public ObservableValue<String> call(
+//				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getStartDatum().);}
+//	});
+
+	colUnternehmenProjektStatus.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+		public ObservableValue<String> call(
+				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkProjektstatus().getBezeichnung());}
+	});
 		}
 
 
 		public void init(int subunternehmenId) {
+			setCellValueFactoryTblUnternehmenProjekt();
 				try {
 				client = ClientRMI.getInstance();
 				subunternehmen = client.getSubunternehmenById(subunternehmenId);
@@ -105,10 +150,8 @@ public class SubUnternehmenDetailController implements Initializable {
 				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
 				
 				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen));
-				
-				System.out.println(data.get(1).getId());
 				//Set data to tableview
-				//tblUnterehmenProjekt.setItems(data);
+				tblUnternehmenProjekt.setItems(data);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

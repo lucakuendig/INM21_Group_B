@@ -39,6 +39,7 @@ public class ProjektGuMitarbeiter implements Serializable {
 	private GregorianCalendar startDatum;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar endDatum;
+	
 
 	public ProjektGuMitarbeiter() {
 
