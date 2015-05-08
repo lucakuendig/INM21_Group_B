@@ -41,7 +41,15 @@ public class AddPersonController implements Initializable {
 		// TODO Auto-generated method stub
 		this.rootController = rootController;
 	}
+	@FXML
+	public void personSave(){
+		// TODO
+	}
 	
+	@FXML
+	public void personCancel(){
+		// TODO
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -86,7 +86,7 @@
                   <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
               </rowConstraints>
                <children>
-                  <Label text="ID">
+                  <Label text="Personal Nr.">
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>

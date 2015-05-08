@@ -12,19 +12,19 @@
       <GridPane layoutX="6.0" layoutY="33.0" prefHeight="681.0" prefWidth="1274.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
         <columnConstraints>
           <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="114.0" minWidth="114.0" prefWidth="114.0" />
-          <ColumnConstraints hgrow="SOMETIMES" prefWidth="686.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="178.0" minHeight="0.0" prefHeight="37.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="374.0" minHeight="0.0" prefHeight="65.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="67.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="247.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="482.0" minHeight="0.0" prefHeight="247.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="ID">
+            <Label text="Mangel Nr.">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -72,8 +72,8 @@
             </Label>
             <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="586.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="257.0" minWidth="86.0" prefWidth="86.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.0" minWidth="286.0" prefWidth="457.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
