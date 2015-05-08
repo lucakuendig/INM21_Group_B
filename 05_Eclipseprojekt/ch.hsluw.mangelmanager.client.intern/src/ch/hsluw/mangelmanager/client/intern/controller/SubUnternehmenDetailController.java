@@ -179,7 +179,10 @@ public class SubUnternehmenDetailController implements Initializable {
 		}
 		
 		public void setCellValueFactoryTblUnternehmenMiterbeiter(){
-			
+			colUnternehmenMitarbeiterId.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("id"));
+			colUnternehmenMitarbeiterName.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("name"));
+			colUnternehmenMitarbeiterVorname.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("vorname"));
+			colUnternehmenMitarbeiterTelefon.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("telefon"));
 		}
 		
 		@FXML
