@@ -59,7 +59,7 @@
                   <Label prefHeight="17.0" prefWidth="56.0" styleClass="label-bright" text=" bis" GridPane.columnIndex="1" />
                </children>
             </GridPane>
-            <Label text="Priorität" GridPane.rowIndex="4">
+            <Label text="Status" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -85,8 +85,8 @@
             </GridPane>
             <Label fx:id="lblMangelId" styleClass="label-bright" text="id" GridPane.columnIndex="1" />
             <Label fx:id="lblMangelFaellig" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="choiceMangelPrioritaet" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label fx:id="lblMangelBezeichung" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblMangelStatus" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
 	</children>

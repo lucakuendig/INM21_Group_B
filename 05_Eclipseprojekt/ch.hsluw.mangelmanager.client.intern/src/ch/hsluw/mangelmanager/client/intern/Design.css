@@ -3,7 +3,15 @@
 	-fx-background-color:
 	#aed5fc
 }
-.btnwindows7 {
+.logintitle{
+    -fx-font-size: 32pt;
+    -fx-font-weight: bold;
+}
+.label{
+	-fx-font-weight:bold;
+}
+
+.button {
     -fx-background-color: 
         #707070,
         linear-gradient(#fcfcfc, #f3f3f3),
@@ -15,3 +23,15 @@
     -fx-font-size: 14px;
 }
 
+.button:hover {
+      -fx-background-color: 
+        #f2f2f2
+}
+.button:focused{
+	-fx-background-color:
+	#f2f2f2
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
