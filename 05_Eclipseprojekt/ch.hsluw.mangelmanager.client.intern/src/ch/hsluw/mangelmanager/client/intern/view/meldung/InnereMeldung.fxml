@@ -69,7 +69,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMeldungSpeichern" mnemonicParsing="false" text="Speichern" />
+                  <Button fx:id="btnMeldungRead" mnemonicParsing="false" text="Gelesen" />
                   <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
                </children>
             </GridPane>

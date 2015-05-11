@@ -59,7 +59,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="txtMangelBeschreibung" prefHeight="268.0" prefWidth="1075.0" text="Kann später geändert werden" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextArea fx:id="txtMangelBeschreibung" prefHeight="268.0" prefWidth="1075.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Beschreibung" GridPane.rowIndex="4">
                <padding>
                   <Insets left="20.0" />

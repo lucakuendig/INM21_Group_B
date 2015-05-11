@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.Main">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="800" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.Main">
    <children>
       <TextField fx:id="txtBenutzer" layoutX="166.0" layoutY="349.0" prefHeight="25.0" prefWidth="196.0" />
       <Button layoutX="195.0" layoutY="392.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="118.0" text="Anmelden">
@@ -37,5 +37,9 @@
          <font>
             <Font size="18.0" />
          </font>
-      </Label></children>
+      </Label>
+      <Label layoutX="431.0" layoutY="14.0" text="IP" />
+      <Label layoutX="653.0" layoutY="14.0" text="Port" />
+      <TextField fx:id="txtIp" layoutX="444.0" layoutY="10.0" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="txtPort" layoutX="689.0" layoutY="10.0" prefHeight="25.0" prefWidth="95.0" /></children>
 </AnchorPane>

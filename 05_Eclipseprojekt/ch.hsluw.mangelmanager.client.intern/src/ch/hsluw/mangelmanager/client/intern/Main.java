@@ -30,7 +30,6 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		this.loginStage = primaryStage;
 		this.loginStage.setTitle("Mängelmanager");
-
 		initRootLayout();
 
 	}
@@ -50,6 +49,7 @@ public class Main extends Application {
 			Scene scene = new Scene(loginLayout);
 			loginStage.setScene(scene);
 			loginStage.show();
+			loginStage.setResizable(false);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

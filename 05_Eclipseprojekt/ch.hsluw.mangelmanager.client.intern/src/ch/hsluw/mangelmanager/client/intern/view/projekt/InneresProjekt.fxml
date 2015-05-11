@@ -165,7 +165,6 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
-                                          <Button layoutX="359.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMeldung" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                 </items>

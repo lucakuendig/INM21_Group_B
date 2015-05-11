@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="720" minWidth="800" prefHeight="720" prefWidth="1280" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="720" minWidth="800" prefHeight="720" prefWidth="1280" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 <children>
       <GridPane layoutX="6.0" layoutY="33.0" prefHeight="681.0" prefWidth="1274.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
         <columnConstraints>
-          <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="114.0" minWidth="114.0" prefWidth="114.0" />
+          <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="132.0" minWidth="114.0" prefWidth="132.0" />
           <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" />
         </columnConstraints>
         <rowConstraints>
@@ -56,7 +56,7 @@
                <children>
                   <DatePicker fx:id="dateMangelDatumende" GridPane.columnIndex="2" />
                   <TextField fx:id="txtMangelDatumanfang" editable="false" maxHeight="-Infinity" prefHeight="25.0" prefWidth="223.0" />
-                  <Label prefHeight="17.0" prefWidth="56.0" text=" bis" GridPane.columnIndex="1" />
+                  <Label prefHeight="17.0" prefWidth="56.0" styleClass="label-bright" text=" bis" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <Label text="Priorität" GridPane.rowIndex="4">
@@ -64,7 +64,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="txtMangelBeschreibung" prefHeight="268.0" prefWidth="1075.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="txtMangelBeschreibung" editable="false" prefHeight="268.0" prefWidth="1075.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Beschreibung" GridPane.rowIndex="5">
                <padding>
                   <Insets left="20.0" />
@@ -72,21 +72,21 @@
             </Label>
             <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
               <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" maxWidth="257.0" minWidth="86.0" prefWidth="86.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.0" minWidth="286.0" prefWidth="457.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="162.0" minWidth="158.0" prefWidth="162.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
-                  <Button fx:id="btnMangelSpeichern" mnemonicParsing="false" text="Speichern" />
+                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" styleClass="btnwindows7" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMangelDone" mnemonicParsing="false" styleClass="btnwindows7" text="Abgeschlossen" />
                </children>
             </GridPane>
-            <Label fx:id="lblMangelId" text="id" GridPane.columnIndex="1" />
-            <Label fx:id="lblMangelFaellig" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblMangelId" styleClass="label-bright" text="id" GridPane.columnIndex="1" />
+            <Label fx:id="lblMangelFaellig" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="choiceMangelPrioritaet" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="lblMangelBezeichung" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="lblMangelBezeichung" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
 	</children>
