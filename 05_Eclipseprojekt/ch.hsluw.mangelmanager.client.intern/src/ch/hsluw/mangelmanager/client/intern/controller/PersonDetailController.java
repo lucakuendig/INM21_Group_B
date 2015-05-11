@@ -13,6 +13,7 @@ import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Objekttyp;
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
@@ -57,7 +58,9 @@ public class PersonDetailController implements Initializable {
 		this.rootController = rootController;
 	}
 	
-	Projekt projekt = null;
+	Person person = null;
+	
+	//Left Panel
 	@FXML
 	private Label lblPersonId;
 	@FXML
@@ -69,17 +72,89 @@ public class PersonDetailController implements Initializable {
 	@FXML
 	private ComboBox<Integer> cbPersonPlz;
 	@FXML
-	private TextField txtPersonOrt;
+	private Label lblPersonOrt;
 	@FXML
 	private TextField txtPersonTelefon;
 	@FXML
 	private ChoiceBox<String> cbPersonUnternehmen;
 	
+	// Right Panel
+	@FXML
+	private TextField txtPersonBenutzername;
+	@FXML
+	private TextField txtPersonEmail;
+	@FXML
+	private TableView<Projekt> tblPersonProjekt;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektid;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektbezeichnung;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektbauherr;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektadresse;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektmaengel;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektmeldungen;
+	@FXML
+	private TableColumn<Projekt, String> colPersonProjektabgeschlossen;
 	
+	ObservableList<Projekt> projektData;
 	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+	public void initialize(URL location, ResourceBundle resources) {
+		client = ClientRMI.getInstance();
+		formatDatum = new SimpleDateFormat("dd.MM.yyyy");
+		dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
+			cbPersonPlz.getItems().add(plz.getPlz());
+		}
+		try {
+			client = ClientRMI.getInstance();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		setCellValueFactoryTblProjekt();
+	}
+
+	private void setCellValueFactoryTblProjekt() {
+		colPersonProjektid.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
+		colPersonProjektbezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
+		colPersonProjektbauherr.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bauherr"));
+		colPersonProjektadresse.setCellValueFactory(new PropertyValueFactory<Projekt, String>("adresse"));
+		colPersonProjektmaengel.setCellValueFactory(new PropertyValueFactory<Projekt, String>("maengel"));
+		colPersonProjektmeldungen.setCellValueFactory(new PropertyValueFactory<Projekt, String>("meldungen"));
+		colPersonProjektabgeschlossen.setCellValueFactory(new PropertyValueFactory<Projekt, String>("abgeschlossen"));
+	}
+	public void init(int personId) {
+		try {
+		person = client.getPersonById(personId);
+		lblPersonId.setText(person.getId().toString());
+		lblPersonVorname.setText(person.getVorname());
+		txtPersonStrasse.setText(person.getFkAdresse().getStrasse());
+		cbPersonPlz.getSelectionModel().select(person.getFkAdresse().getPlz().getPlz());
+		lblPersonOrt.setText(client.getPlzById((Integer) cbPersonPlz.getSelectionModel().getSelectedItem()).getOrt());
+		txtPersonTelefon.setText(person.getTelefon());
+		cbPersonUnternehmen
+		txtPersonBenutzername.setText
+		txtPersonEmail.setText
+		
+		projektData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
+		tblPersonProjekt.setItems(projektData);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	
+}
+	
+	@FXML
+	public void personCancel(){
+		
+	}
+	@FXML
+	public void personSave(){
 		
 	}
 }
