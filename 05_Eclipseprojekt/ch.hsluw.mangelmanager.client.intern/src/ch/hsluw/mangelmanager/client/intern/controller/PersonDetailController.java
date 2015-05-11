@@ -136,11 +136,11 @@ public class PersonDetailController implements Initializable {
 		cbPersonPlz.getSelectionModel().select(person.getFkAdresse().getPlz().getPlz());
 		lblPersonOrt.setText(client.getPlzById((Integer) cbPersonPlz.getSelectionModel().getSelectedItem()).getOrt());
 		txtPersonTelefon.setText(person.getTelefon());
-		cbPersonUnternehmen
-		txtPersonBenutzername.setText
-		txtPersonEmail.setText
+		cbPersonUnternehmen.getSelectionModel().select(person.getFkUnternehmen.getName());
+		txtPersonBenutzername.setText(person.getFkLogin().getBenutezrname);
+		txtPersonEmail.setText(person.getFkLogin().getEmail);
 		
-		projektData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
+		projektData = FXCollections.observableArrayList(client.getAllProjektPerson(person));
 		tblPersonProjekt.setItems(projektData);
 		
 	} catch (Exception e) {
