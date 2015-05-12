@@ -129,18 +129,18 @@ public class PersonDetailController implements Initializable {
 	}
 	public void init(int personId) {
 		try {
-		person = client.getPersonById(personId);
+		//<person = client.getPersonById(personId);
 		lblPersonId.setText(person.getId().toString());
 		lblPersonVorname.setText(person.getVorname());
-		txtPersonStrasse.setText(person.getFkAdresse().getStrasse());
-		cbPersonPlz.getSelectionModel().select(person.getFkAdresse().getPlz().getPlz());
+		//<txtPersonStrasse.setText(person.getFkAdresse().getStrasse());
+		//<cbPersonPlz.getSelectionModel().select(person.getFkAdresse().getPlz().getPlz());
 		lblPersonOrt.setText(client.getPlzById((Integer) cbPersonPlz.getSelectionModel().getSelectedItem()).getOrt());
 		txtPersonTelefon.setText(person.getTelefon());
-		cbPersonUnternehmen.getSelectionModel().select(person.getFkUnternehmen.getName());
-		txtPersonBenutzername.setText(person.getFkLogin().getBenutezrname);
-		txtPersonEmail.setText(person.getFkLogin().getEmail);
+//		cbPersonUnternehmen.getSelectionModel().select(person.getFkUnternehmen.getName());
+//		txtPersonBenutzername.setText(person.getFkLogin().getBenutezrname);
+//		txtPersonEmail.setText(person.getFkLogin().getEmail);
 		
-		projektData = FXCollections.observableArrayList(client.getAllProjektPerson(person));
+//		projektData = FXCollections.observableArrayList(client.getAllProjektPerson(person));
 		tblPersonProjekt.setItems(projektData);
 		
 	} catch (Exception e) {

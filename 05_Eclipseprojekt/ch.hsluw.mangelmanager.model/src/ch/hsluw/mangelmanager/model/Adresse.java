@@ -31,7 +31,7 @@ public class Adresse implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	private String strasse;
-	@ManyToOne
+	@ManyToOne 
 	private Plz plz;
 
 	public Adresse() {
