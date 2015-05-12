@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.projektgumitarbeiter;
 
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 
 
@@ -52,7 +53,7 @@ public interface ProjektGuMitarbeiterManager {
 	 * @param id
 	 * @return
 	 */
-	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter);
+	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws Exception;
 
 	/**
 	 * Liefert alle Entity-Objekte zurück.
@@ -60,4 +61,6 @@ public interface ProjektGuMitarbeiterManager {
 	 * @return
 	 */
 	List<ProjektGuMitarbeiter> findAll();
+
+	List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt2) throws Exception;
 }

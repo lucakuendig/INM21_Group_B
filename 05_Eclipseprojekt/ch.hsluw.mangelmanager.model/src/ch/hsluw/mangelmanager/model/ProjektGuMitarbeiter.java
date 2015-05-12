@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,6 +26,8 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "ProjektGuMitarbeiter.findAllBauleiterByProjekt", query = "SELECT p FROM ProjektGuMitarbeiter p WHERE p.fkProjekt =:projektId")})
 public class ProjektGuMitarbeiter implements Serializable {
 
 	private static final long serialVersionUID = 5806477597388591398L;

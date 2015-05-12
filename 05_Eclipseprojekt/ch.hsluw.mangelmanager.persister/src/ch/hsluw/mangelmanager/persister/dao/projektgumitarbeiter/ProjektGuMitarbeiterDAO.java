@@ -64,4 +64,6 @@ public interface ProjektGuMitarbeiterDAO {
 	 * @return
 	 */
 	List<ProjektGuMitarbeiter> findAllProjektGuMitarbeiter();
+
+	List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt);
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.business.projektgumitarbeiter.ProjektGuMitarbeiterManager;
 import ch.hsluw.mangelmanager.business.projektgumitarbeiter.ProjektGuMitarbeiterManagerImpl;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 
 public class ProjektGuMitarbeiterROImpl extends UnicastRemoteObject implements ProjektGuMitarbeiterRO {
@@ -46,13 +47,19 @@ public class ProjektGuMitarbeiterROImpl extends UnicastRemoteObject implements P
 	}
 	
 	@Override
-	public ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws RemoteException {
+	public ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws Exception {
 		return projektGuMitarbeiterManager.findById(idProjekt, idMitarbeiter);
 	}
 
 	@Override
 	public List<ProjektGuMitarbeiter> findAll() throws RemoteException {
 		return projektGuMitarbeiterManager.findAll();
+	}
+
+	@Override
+	public List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt2)  throws RemoteException, Exception {
+		// TODO Auto-generated method stub
+		return projektGuMitarbeiterManager.findAllBauleiterByProjekt(projekt2);
 	}	
 
 }

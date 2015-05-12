@@ -55,4 +55,21 @@ public class ProjektGuMitarbeiterDAOImpl implements ProjektGuMitarbeiterDAO {
 	public List<ProjektGuMitarbeiter> findAllProjektGuMitarbeiter() {
 		return new GenericPersisterImpl<ProjektGuMitarbeiter>(ProjektGuMitarbeiter.class).findAll();
 	}
+
+	@Override
+	public List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt) {
+		// TODO Auto-generated method stub
+		EntityManager em = JpaUtil.createEntityManager();
+
+		TypedQuery<ProjektGuMitarbeiter> tQuery = em.createNamedQuery("ProjektGuMitarbeiter.findAllBauleiterByProjekt",
+				ProjektGuMitarbeiter.class);
+
+		tQuery.setParameter("projektId", projekt);
+
+		List<ProjektGuMitarbeiter> bauleiterListe = tQuery.getResultList();
+
+		em.close();
+
+		return bauleiterListe != null ? bauleiterListe : new ArrayList<ProjektGuMitarbeiter>();
+	}
 }

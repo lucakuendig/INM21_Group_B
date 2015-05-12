@@ -10,6 +10,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 
 
@@ -68,8 +69,9 @@ public interface ProjektGuMitarbeiterRO extends Remote {
 	 * @param id
 	 * @return
 	 * @throws RemoteException
+	 * @throws Exception 
 	 */
-	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws RemoteException;
+	ProjektGuMitarbeiter findById(Integer idProjekt, Integer idMitarbeiter) throws RemoteException, Exception;
 
 	/**
 	 * Liefert alle Entity-Objekte zurück.
@@ -78,4 +80,6 @@ public interface ProjektGuMitarbeiterRO extends Remote {
 	 * @throws RemoteException
 	 */
 	List<ProjektGuMitarbeiter> findAll() throws RemoteException;
+
+	List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt2) throws RemoteException, Exception;
 }

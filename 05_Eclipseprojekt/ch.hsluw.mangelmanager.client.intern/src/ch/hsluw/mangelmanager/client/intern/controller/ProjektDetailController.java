@@ -16,6 +16,8 @@ import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -119,6 +121,24 @@ public class ProjektDetailController implements Initializable {
 
 	ObservableList<Subunternehmen> subunternehmenData;
 	
+
+	//Right Panel Bauleiter
+	@FXML
+	private TableView<ProjektGuMitarbeiter> tblProjektBauleiter;
+	@FXML
+	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterId;
+	@FXML
+	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterName;
+	@FXML
+	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterVorname;
+	@FXML
+	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterStartdatum;
+	@FXML
+	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterEnddatum;
+
+
+	ObservableList<ProjektGuMitarbeiter> bauleiterData;
+	
 	
 	
 	@Override
@@ -145,11 +165,48 @@ public class ProjektDetailController implements Initializable {
 		setCellValueFactoryTblMangel();
 		setCellValueFactoryTblMeldung();
 		setCellValueFactoryTblUnternehmen();
+		setCellValueFactoryTblBauleiter();
 	
 		
 	}
 	
 	
+	private void setCellValueFactoryTblBauleiter() {
+		// TODO Auto-generated method stub
+		colProjektBauleiterId.setCellValueFactory(new PropertyValueFactory<ProjektGuMitarbeiter, String>("idProjekt"));
+
+		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getNachname());
+		    }
+		});
+		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getVorname());
+		    }
+		});
+		
+		colProjektBauleiterStartdatum.setCellValueFactory(new Callback<CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+				if (p.getValue().getStartDatum() == null){
+					return new SimpleStringProperty(" ");
+				}else{
+					return new SimpleStringProperty(formatDatum.format(p.getValue().getStartDatum().getTime()));
+				}
+			}
+		});
+		colProjektBauleiterEnddatum.setCellValueFactory(new Callback<CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+			public ObservableValue<String> call(CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+				if (p.getValue().getEndDatum() == null){
+					return new SimpleStringProperty(" ");
+				}else{
+					return new SimpleStringProperty(formatDatum.format(p.getValue().getEndDatum().getTime()));
+				}
+			}
+		});
+	}
+
+
 	private void setCellValueFactoryTblMeldung() {
 		colProjektMeldungId.setCellValueFactory(new PropertyValueFactory<Meldung, String>("id"));
 		colProjektMeldungBezeichnung.setCellValueFactory(new PropertyValueFactory<Meldung, String>("text"));
@@ -199,10 +256,11 @@ public class ProjektDetailController implements Initializable {
 			
 			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
 			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+			bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
 //			
 			tblProjektMangel.setItems(mangelData);
 			tblProjektUnternehmen.setItems(subunternehmenData);
-		
+			tblProjektBauleiter.setItems(bauleiterData);		
 			
 		} catch (Exception e) {
 			e.printStackTrace();

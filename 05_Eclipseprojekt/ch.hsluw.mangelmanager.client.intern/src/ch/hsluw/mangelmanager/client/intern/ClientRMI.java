@@ -19,6 +19,8 @@ import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
@@ -31,6 +33,9 @@ import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
+import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterROImpl;
+import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
 
@@ -69,6 +74,7 @@ public class ClientRMI {
 	List<Objekttyp> objekttyp;
 	List<Arbeitstyp> arbeitstyp;
 	List<SuMitarbeiter> sumitarbeiter;
+	List<ProjektGuMitarbeiter> bauleiter;
 	List<Mangel> mangelOfProjekt;
 	List<Meldung> meldungByMangel;
 	
@@ -98,7 +104,7 @@ public class ClientRMI {
 	ArbeitstypRO arbeitstypRO;
 	MangelstatusRO mangelstatusRO;
 	MeldungstypRO meldungstypRO;
-
+	ProjektGuMitarbeiterRO projektGuMitarbeiterRO;
 	public static void main(String[] args) {
 		try {
 			// Init Application over RMI
@@ -132,6 +138,7 @@ public class ClientRMI {
 		String arbeitstyROName = "arbeitstypRO";
 		String mangelstatusROName = "mangelstatusRO";
 		String meldungstypROName = "meldungstypRO";
+		String projektGuMitarbeiterROName = "projektGuMitarbeiterRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -144,6 +151,7 @@ public class ClientRMI {
 		this.arbeitstypRO = (ArbeitstypRO) Naming.lookup(url + arbeitstyROName);
 		this.mangelstatusRO = (MangelstatusRO) Naming.lookup(url + mangelstatusROName);
 		this.meldungstypRO = (MeldungstypRO) Naming.lookup(url + meldungstypROName);
+		this.projektGuMitarbeiterRO = (ProjektGuMitarbeiterRO) Naming.lookup(url + projektGuMitarbeiterROName);
 
 		
 	}
@@ -539,10 +547,20 @@ public class ClientRMI {
 		try {
 			subunternehmen = subunternehmenRO.findAllSubunternehmenByProjekt(projekt2);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block<<<<<<<<
+			// TODO Auto-generated catch block<
 			e.printStackTrace();
 		}
 			return subunternehmen;
+	}
+
+	public List<ProjektGuMitarbeiter> getBauleiterByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			bauleiter = projektGuMitarbeiterRO.findAllBauleiterByProjekt(projekt2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return bauleiter;
 	}
 	
 		
