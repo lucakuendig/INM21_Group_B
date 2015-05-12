@@ -139,8 +139,6 @@ public class SubUnternehmenController implements Initializable {
 			
 			AddUnternehmenController addUnternehmenController = loader.<AddUnternehmenController>getController();
 			addUnternehmenController.setRootController(rootController);
-			
-			addUnternehmenController.init();
 			rootController.rootLayout.setCenter(addUnternehmen);
 			
 

@@ -49,4 +49,12 @@ public class Mangelstatus implements Serializable {
 	public String getBezeichnung() {
 		return bezeichnung;
 	}
+
+	/**
+	 * @param bezeichnung the bezeichnung to set
+	 */
+	public void setBezeichnung(String bezeichnung) {
+		this.bezeichnung = bezeichnung;
+	}
+	
 }

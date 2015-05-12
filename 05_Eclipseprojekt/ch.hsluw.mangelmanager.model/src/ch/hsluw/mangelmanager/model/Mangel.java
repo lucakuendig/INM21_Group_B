@@ -45,7 +45,7 @@ public class Mangel implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Projekt fkProjekt;
 	private String bezeichnung;
 	private String beschreibung;
@@ -55,7 +55,7 @@ public class Mangel implements Serializable {
 	private GregorianCalendar abschlussZeit;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Mangelstatus fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;
@@ -70,7 +70,7 @@ public class Mangel implements Serializable {
 	 * Constructor
 	 */
 	public Mangel(Projekt fkProjekt, String bezeichnung,
-			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
+			GregorianCalendar erfassungsZeit,
 			GregorianCalendar faelligkeitsDatum, Mangelstatus fkMangelstatus,
 			Login fkLogin, String beschreibung) {
 		super();

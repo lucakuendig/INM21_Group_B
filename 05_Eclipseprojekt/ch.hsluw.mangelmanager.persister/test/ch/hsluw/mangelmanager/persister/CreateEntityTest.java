@@ -78,7 +78,7 @@ public class CreateEntityTest {
 		Subunternehmen su2 = new Subunternehmen(adresse2, "ddduussssssud", "ddddddaahahah");
 		Login login = new Login("sandro", "1234", "sandroritz@ewcom.ch", new Rolle("admin"));
 		
-		Mangel mangel1 = new Mangel(projekt1, "Mangel 1", new GregorianCalendar(2015,8,06), new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015,6,06), new Mangelstatus("offen"), login, "Es liegt ein Mangel vor");
+		Mangel mangel1 = new Mangel(projekt1, "Mangel 1", new GregorianCalendar(2015,8,06), new GregorianCalendar(2015,6,06), new Mangelstatus("offen"), login, "Es liegt ein Mangel vor");
 		Rolle ro1 = new Rolle();
 		Login lo1 = new Login("hape", "ddd", "dudu@dudu.ch", ro1);
 		SuMitarbeiter sm1 = new SuMitarbeiter("peter", "Hans", "38383883", su1, lo1);
@@ -96,8 +96,8 @@ public class CreateEntityTest {
 		Mangelstatus mangelstatus1 = new Mangelstatus("Mangel behoben");
 		Mangelstatus mangelstatus2 = new Mangelstatus("Mangel offen");
 		
-		Mangel mangel2 = new Mangel(projekt1, "Mangel 2", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015, 6, 19), new GregorianCalendar(2015,6,06), mangelstatus1, login, "Schlampige Arbeit");
-		Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), new GregorianCalendar(2015,6,06), mangelstatus2, login, "suber");
+		Mangel mangel2 = new Mangel(projekt1, "Mangel 2", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), mangelstatus1, login, "Schlampige Arbeit");
+		Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), mangelstatus2, login, "suber");
 		Meldungstyp meldungstyp1 = new Meldungstyp("TestMeldung");
 		
 		Meldung meldung1 = new Meldung(mangel2, meldungstyp1, "meldungtext", new GregorianCalendar(2015,5,13), true, login);

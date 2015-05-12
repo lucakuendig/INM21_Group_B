@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="720" minWidth="800" prefHeight="720" prefWidth="1280" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="720" minWidth="800" prefHeight="720" prefWidth="1280" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MangelDetailController">
 <children>
       <GridPane layoutX="6.0" layoutY="33.0" prefHeight="681.0" prefWidth="1274.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
         <columnConstraints>
@@ -80,7 +80,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" styleClass="btnwindows7" text="Abbrechen" GridPane.columnIndex="1" />
-                  <Button fx:id="btnMangelDone" mnemonicParsing="false" styleClass="btnwindows7" text="Abgeschlossen" />
+                  <Button fx:id="btnMangelDone" mnemonicParsing="false" styleClass="btnwindows7" text="Abgeschlossen" onAction="#mangelClose" />
                </children>
             </GridPane>
             <Label fx:id="lblMangelId" styleClass="label-bright" text="id" GridPane.columnIndex="1" />

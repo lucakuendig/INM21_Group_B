@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
@@ -22,6 +23,7 @@ import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
+import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
 import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
@@ -65,11 +67,13 @@ public class ClientRMI {
 	List<Arbeitstyp> arbeitstyp;
 	List<SuMitarbeiter> sumitarbeiter;
 	List<Mangel> mangelOfProjekt;
+	List<Mangelstatus> mangelstatus;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
 	Plz plznr;
+	Mangel mangelnr;
 	Adresse addAdresse;
 	
 	
@@ -85,6 +89,7 @@ public class ClientRMI {
 	AdresseRO adresseRO;
 	ObjekttypRO  objekttypRO;
 	ArbeitstypRO arbeitstypRO;
+	MangelstatusRO mangelstatusRO;
 
 
 	public static void main(String[] args) {
@@ -118,6 +123,7 @@ public class ClientRMI {
 		String adresseROName = "adresseRO";
 		String objekttypROName = "objekttypRO";
 		String arbeitstyROName = "arbeitstypRO";
+		String mangelstatusROName = "mangelstatusRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -128,6 +134,7 @@ public class ClientRMI {
 		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
 		this.objekttypRO = (ObjekttypRO) Naming.lookup(url + objekttypROName);
 		this.arbeitstypRO = (ArbeitstypRO) Naming.lookup(url + arbeitstyROName);
+		this.mangelstatusRO = (MangelstatusRO) Naming.lookup(url + mangelstatusROName);
 
 		
 	}
@@ -439,6 +446,50 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 			return mangelOfProjekt;
+	}
+
+	public Mangel getMangelById(Integer mangelId) {
+		try {
+			mangelnr = mangelRO.findById(mangelId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mangelnr;
+	}
+
+	public void updateMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			mangelRO.update(mangel);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Mangelstatus> getAllMangelStatus() {
+		try {
+			mangelstatus = mangelstatusRO.findAllMangelStatus();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return mangelstatus;
+	}
+
+	public void addMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			mangelRO.add(mangel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 }

@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
@@ -133,5 +135,32 @@ public class MangelController implements Initializable {
 		tblMangel.setItems(data);
 	}
 
+	
+	@FXML
+	public void showMangelDetail(MouseEvent t) throws IOException{
+		if(t.getClickCount() == 2){
+			System.out.println(tblMangel.getSelectionModel().getSelectedItem().getId());
+			
+			try {
+				// Load MangelDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/mangel/InnererMangel.fxml"));
+				AnchorPane innererMangel = (AnchorPane) loader.load();
+				
+				MangelDetailController detailMangelController = loader.<MangelDetailController>getController();
+				detailMangelController.setRootController(rootController);
+				
+				detailMangelController.init(tblMangel.getSelectionModel().getSelectedItem().getId());
+				rootController.rootLayout.setCenter(innererMangel);
+				
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}	
+	}
+	
+	
 }
 

@@ -157,7 +157,23 @@ public class ProjektDetailController implements Initializable {
 	}
 	@FXML
 	public void projektAddMangel(){
-		
+		try {
+			// Load ProjektDetail View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/mangel/AddMangel.fxml"));
+			AnchorPane addMangel = (AnchorPane) loader.load();
+			
+			AddMangelController addMangelController = loader.<AddMangelController>getController();
+			addMangelController.setRootController(rootController);
+			
+			addMangelController.init(projekt);
+			rootController.rootLayout.setCenter(addMangel);
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void projektAddMeldung(){
