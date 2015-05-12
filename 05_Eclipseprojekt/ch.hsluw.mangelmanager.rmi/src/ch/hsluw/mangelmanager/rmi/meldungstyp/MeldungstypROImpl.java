@@ -57,7 +57,7 @@ public class MeldungstypROImpl extends UnicastRemoteObject implements Meldungsty
 	@Override
 	public List<Meldungstyp> findAll() throws RemoteException {
 		// TODO Auto-generated method stub
-		return null;
+		return meldungstypManager.findAll();
 	}
 	
 }

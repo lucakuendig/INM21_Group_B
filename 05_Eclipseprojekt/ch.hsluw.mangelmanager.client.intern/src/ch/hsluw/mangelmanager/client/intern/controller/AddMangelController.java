@@ -24,6 +24,7 @@ import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
@@ -43,6 +44,8 @@ public class AddMangelController implements Initializable {
 		Mangelstatus mangelstatus = null;
 		Login login = null;
 		List<Mangelstatus> mangelstatusl = null;
+		List<Meldungstyp> meldungstypl = null;
+		Meldungstyp meldungstyp = null;
 		
 		
 		@FXML
@@ -66,8 +69,14 @@ public class AddMangelController implements Initializable {
 				this.projekt = projekt;
 				mangelstatusl = client.getAllMangelStatus();			
 				for (Mangelstatus mangelstatus : mangelstatusl) {
-					if(mangelstatus.getBezeichnung() == "offen"){
+					if(mangelstatus.getBezeichnung().equals("Offen")){
 						this.mangelstatus = mangelstatus;
+					}
+				}
+				meldungstypl = client.getAllMeldungstyp();
+				for (Meldungstyp meldungstyp : meldungstypl) {
+					if(meldungstyp.getBezeichnung().equals("Reklamation")){
+						this.meldungstyp = meldungstyp;
 					}
 				}
 				login = new Login();
@@ -83,10 +92,11 @@ public class AddMangelController implements Initializable {
 
 			Calendar cl = Calendar.getInstance();
 			
-			mangel = new Mangel(projekt, txtMangelBeschreibung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getDayOfMonth(), dateMangelFaellig.getValue().getMonthValue(), dateMangelFaellig.getValue().getYear()),mangelstatus ,login , txtMangelBeschreibung.getText());
+			mangel = new Mangel(projekt, txtMangelBezeichung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getDayOfMonth(), dateMangelFaellig.getValue().getMonthValue(), dateMangelFaellig.getValue().getYear()),mangelstatus ,login , txtMangelBeschreibung.getText());
 			
-			client.addMangel(mangel);
-			//client.addMeldung(meldung);
+			meldung = new Meldung(mangel, meldungstyp, txtMangelBeschreibung.getText(), (GregorianCalendar) cl, false, login);
+			
+			client.addMeldung(meldung);
 			
 			try {
 				// Load Unternehmen overview.

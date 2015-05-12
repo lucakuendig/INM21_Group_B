@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -19,6 +20,7 @@ import javafx.fxml.Initializable;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
@@ -51,6 +53,8 @@ import javafx.util.Callback;
 			}
 			
 			Mangel mangel = null;
+			List<Mangelstatus> mangelstatusl = null;
+			Mangelstatus mangelstatus = null;
 			
 			@FXML
 			public Label lblMangelId;
@@ -76,6 +80,14 @@ import javafx.util.Callback;
 					try {
 					client = ClientRMI.getInstance();
 					mangel = client.getMangelById(MangelId);
+					mangelstatusl = client.getAllMangelStatus();			
+					for (Mangelstatus mangelstatus : mangelstatusl) {
+						;
+						if(mangelstatus.getBezeichnung().equals("Abgeschlossen")){
+							this.mangelstatus = mangelstatus;
+						}
+					}
+					
 					formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 					dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 					
@@ -100,7 +112,7 @@ import javafx.util.Callback;
 			
 			@FXML
 			private void mangelClose() {
-				mangel.getFkMangelstatus().setBezeichnung("Abgeschlossen");
+				mangel.setFkMangelstatus(mangelstatus);
 				if(dateMangelDatumende.getValue() != null){
 					mangel.setAbschlussZeit(new GregorianCalendar(dateMangelDatumende.getValue().getDayOfMonth(), dateMangelDatumende.getValue().getMonthValue(), dateMangelDatumende.getValue().getYear()));
 				}

@@ -14,6 +14,7 @@ import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
@@ -25,6 +26,7 @@ import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
+import ch.hsluw.mangelmanager.rmi.meldungstyp.MeldungstypRO;
 import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
@@ -68,6 +70,7 @@ public class ClientRMI {
 	List<SuMitarbeiter> sumitarbeiter;
 	List<Mangel> mangelOfProjekt;
 	List<Mangelstatus> mangelstatus;
+	List<Meldungstyp> meldungstyp;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
@@ -75,6 +78,7 @@ public class ClientRMI {
 	Plz plznr;
 	Mangel mangelnr;
 	Adresse addAdresse;
+	
 	
 	
 	
@@ -90,7 +94,7 @@ public class ClientRMI {
 	ObjekttypRO  objekttypRO;
 	ArbeitstypRO arbeitstypRO;
 	MangelstatusRO mangelstatusRO;
-
+	MeldungstypRO meldungstypRO;
 
 	public static void main(String[] args) {
 		try {
@@ -124,6 +128,7 @@ public class ClientRMI {
 		String objekttypROName = "objekttypRO";
 		String arbeitstyROName = "arbeitstypRO";
 		String mangelstatusROName = "mangelstatusRO";
+		String meldungstypROName = "meldungstypRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -135,6 +140,7 @@ public class ClientRMI {
 		this.objekttypRO = (ObjekttypRO) Naming.lookup(url + objekttypROName);
 		this.arbeitstypRO = (ArbeitstypRO) Naming.lookup(url + arbeitstyROName);
 		this.mangelstatusRO = (MangelstatusRO) Naming.lookup(url + mangelstatusROName);
+		this.meldungstypRO = (MeldungstypRO) Naming.lookup(url + meldungstypROName);
 
 		
 	}
@@ -486,6 +492,28 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			mangelRO.add(mangel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Meldungstyp> getAllMeldungstyp() {
+		// TODO Auto-generated method stub
+		try {
+			meldungstyp = meldungstypRO.findAll();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return meldungstyp;
+	}
+
+	public void addMeldung(Meldung meldung) {
+		// TODO Auto-generated method stub
+		try {
+			meldungRO.add(meldung);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

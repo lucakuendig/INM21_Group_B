@@ -45,7 +45,7 @@ public class Mangel implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Projekt fkProjekt;
 	private String bezeichnung;
 	private String beschreibung;
@@ -55,7 +55,7 @@ public class Mangel implements Serializable {
 	private GregorianCalendar abschlussZeit;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Mangelstatus fkMangelstatus;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;

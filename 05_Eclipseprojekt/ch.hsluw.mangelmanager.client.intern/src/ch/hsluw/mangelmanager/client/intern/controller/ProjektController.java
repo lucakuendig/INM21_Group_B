@@ -187,7 +187,7 @@ public class ProjektController implements Initializable {
 						int anzOffeneMaengel = 0;
 						for (int i = 0; i < anzMaengel; i++) {
 							if (p.getValue().getFkMaengel().get(i)
-									.getFkMangelstatus().getBezeichnung() == "offen") {
+									.getFkMangelstatus().getBezeichnung().equals("Offen")) {
 								anzOffeneMaengel++;
 							}
 
