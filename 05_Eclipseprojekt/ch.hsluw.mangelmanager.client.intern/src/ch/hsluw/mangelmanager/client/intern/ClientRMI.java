@@ -62,6 +62,7 @@ public class ClientRMI {
 	List<Projekt> projekte;
 	List<Projekt> suprojekte;
 	List<Subunternehmen> subunternehmen;
+	
 	List<Mangel> maengel;
 	List<Meldung> meldung;
 	List<Plz> plz;
@@ -69,6 +70,8 @@ public class ClientRMI {
 	List<Arbeitstyp> arbeitstyp;
 	List<SuMitarbeiter> sumitarbeiter;
 	List<Mangel> mangelOfProjekt;
+	List<Meldung> meldungByMangel;
+	
 	List<Mangelstatus> mangelstatus;
 	List<Meldungstyp> meldungstyp;
 	String anzProjekte;
@@ -519,6 +522,29 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 	}
+
+	public List<Meldung> getAllMeldungByMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			meldungByMangel = meldungRO.findAllMeldungByMangel(mangel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return meldungByMangel;
+	}
+
+	public List<Subunternehmen> getUnternehmenByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			subunternehmen = subunternehmenRO.findAllSubunternehmenByProjekt(projekt2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block<<<<<<<<
+			e.printStackTrace();
+		}
+			return subunternehmen;
+	}
+	
 		
 }
 

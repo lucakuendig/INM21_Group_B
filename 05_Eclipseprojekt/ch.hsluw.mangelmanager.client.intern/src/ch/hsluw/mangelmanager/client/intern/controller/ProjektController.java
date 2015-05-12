@@ -205,12 +205,14 @@ public class ProjektController implements Initializable {
 						int anzMeldungen = 0;
 						int anzOffeneMeldungen = 0;
 						for (int i = 0; i < anzMaengel; i++) {
-							anzMeldungen = p.getValue().getFkMaengel().get(i)
-									.getFkMeldung().size();
-							for (int j = 0; j < anzMeldungen; j++) {
-								if (p.getValue().getFkMaengel().get(i)
-										.getFkMeldung().get(j).getQuittiert()) {
-									anzOffeneMeldungen++;
+							if( p.getValue().getFkMaengel().get(i).getFkMangelstatus().getBezeichnung().equals("Offen")){
+								anzMeldungen = p.getValue().getFkMaengel().get(i)
+										.getFkMeldung().size();
+								for (int j = 0; j < anzMeldungen; j++) {
+									if (p.getValue().getFkMaengel().get(i)
+											.getFkMeldung().get(j).getFkMeldungstyp().getBezeichnung().equals("Offen")) {
+										anzOffeneMeldungen++;
+									}
 								}
 							}
 						}

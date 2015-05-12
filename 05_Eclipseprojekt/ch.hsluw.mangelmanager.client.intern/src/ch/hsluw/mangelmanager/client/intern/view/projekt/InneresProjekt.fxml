@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="background" stylesheets="@../../Design.css"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
+<AnchorPane styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
 <children>
       <GridPane layoutY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -134,7 +134,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <TableView fx:id="tblProjektMangel" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tblProjektMangel" layoutY="14.0" onMouseClicked="#showMeldungByMangel" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn prefWidth="75.0" text="Offene Mängel">
                                                    <columns>
@@ -152,12 +152,12 @@
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <TableView layoutX="6.0" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tblProjektMeldung" layoutX="6.0" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                              <TableColumn fx:id="tblProjektMeldungen" prefWidth="75.0" text="Offene Meldungen">
+                                              <TableColumn prefWidth="75.0" text="Offene Meldungen">
                                                    <columns>
-                                                      <TableColumn fx:id="colProjektMeldungid" prefWidth="75.0" text="Meldung Nr." />
-                                                      <TableColumn fx:id="colProjektMeldungbezeichnung" prefWidth="75.0" text="Bezeichnung" />
+                                                      <TableColumn fx:id="colProjektMeldungId" prefWidth="75.0" text="Meldung Nr." />
+                                                      <TableColumn fx:id="colProjektMeldungBezeichnung" prefWidth="75.0" text="Bezeichnung" />
                                                    </columns>
                                                 </TableColumn>
                                             </columns>
@@ -177,14 +177,13 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tblProjektUnternehmen" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="colProjektUnternehmenId" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="colProjektUnternehmenName" prefWidth="75.0" text="Name" />
                                     <TableColumn fx:id="colProjektUnternehmenStrasse" prefWidth="75.0" text="Strasse" />
                                     <TableColumn fx:id="colProjektUnternehmenPlz" prefWidth="75.0" text="PLZ" />
                                     <TableColumn fx:id="colProjektUnternehmenOrt" prefWidth="75.0" text="Ort" />
-                                    <TableColumn fx:id="colProjektUnternehmenEmail" prefWidth="75.0" text="E-Mail" />
                                     <TableColumn fx:id="colProjektUnternehmenTelefon" prefWidth="75.0" text="Telefon" />
                                 </columns>
                                  <columnResizePolicy>

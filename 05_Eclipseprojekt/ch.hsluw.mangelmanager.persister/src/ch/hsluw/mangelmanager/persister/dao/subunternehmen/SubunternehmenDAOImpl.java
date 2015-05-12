@@ -96,4 +96,21 @@ EntityManager em = JpaUtil.createEntityManager();
 
 		return mitarbeiterListe != null ? mitarbeiterListe : new ArrayList<SuMitarbeiter>();
 	}
+
+	@Override
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<Subunternehmen> tQuery = em.createNamedQuery("Subunternehmen.findAllSubunternehmenByProjekt",
+				Subunternehmen.class);
+
+		tQuery.setParameter("projektId", projekt2);
+		List<Subunternehmen> subunternehmenListe = tQuery.getResultList();
+
+		em.close();
+
+		return subunternehmenListe != null ? subunternehmenListe : new ArrayList<Subunternehmen>();
+	}
+	
 }

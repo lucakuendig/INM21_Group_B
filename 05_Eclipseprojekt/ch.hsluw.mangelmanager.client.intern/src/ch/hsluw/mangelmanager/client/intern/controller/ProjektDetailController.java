@@ -12,9 +12,11 @@ import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -80,15 +82,43 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private Label lblProjektFaellig;
 	
-	//Right Panel
+	//Right Panel Mangel
 	@FXML
 	private TableView<Mangel> tblProjektMangel;
 	@FXML
 	private TableColumn<Mangel, String> colProjektMangelId;
 	@FXML
 	private TableColumn<Mangel, String> colProjektMangelBezeichnung;
-	
 	ObservableList<Mangel> mangelData;
+	
+	//Right Panel Meldung
+	@FXML
+	private TableView<Meldung> tblProjektMeldung;
+	@FXML
+	private TableColumn<Meldung, String> colProjektMeldungId;
+	@FXML
+	private TableColumn<Meldung, String> colProjektMeldungBezeichnung;
+
+	ObservableList<Meldung> meldungData;
+	
+	//Right Panel SubUnternehmen
+	@FXML
+	private TableView<Subunternehmen> tblProjektUnternehmen;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenId;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenName;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenStrasse;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenPlz;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenOrt;
+	@FXML
+	private TableColumn<Subunternehmen, String> colProjektUnternehmenTelefon;
+
+	ObservableList<Subunternehmen> subunternehmenData;
+	
 	
 	
 	@Override
@@ -113,13 +143,43 @@ public class ProjektDetailController implements Initializable {
 			e.printStackTrace();
 		}
 		setCellValueFactoryTblMangel();
+		setCellValueFactoryTblMeldung();
+		setCellValueFactoryTblUnternehmen();
+	
 		
+	}
+	
+	
+	private void setCellValueFactoryTblMeldung() {
+		colProjektMeldungId.setCellValueFactory(new PropertyValueFactory<Meldung, String>("id"));
+		colProjektMeldungBezeichnung.setCellValueFactory(new PropertyValueFactory<Meldung, String>("text"));
 	}
 
 
 	private void setCellValueFactoryTblMangel() {
 		colProjektMangelId.setCellValueFactory(new PropertyValueFactory<Mangel, String>("id"));
 		colProjektMangelBezeichnung.setCellValueFactory(new PropertyValueFactory<Mangel, String>("bezeichnung"));
+	}
+	
+	private void setCellValueFactoryTblUnternehmen() {
+		colProjektUnternehmenId.setCellValueFactory(new PropertyValueFactory<Subunternehmen, String>("id"));
+		colProjektUnternehmenName.setCellValueFactory(new PropertyValueFactory<Subunternehmen, String>("name"));
+		colProjektUnternehmenStrasse.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subunternehmen, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkAdresse().getStrasse());
+		    }
+		});
+		colProjektUnternehmenPlz.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subunternehmen, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getPlz().toString());
+		    }
+		});
+		colProjektUnternehmenOrt.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subunternehmen, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
+		        return new SimpleStringProperty( p.getValue().getFkAdresse().getPlz().getOrt());
+		    }
+		});
+		colProjektUnternehmenTelefon.setCellValueFactory(new PropertyValueFactory<Subunternehmen, String>("telefon"));	
 	}
 
 
@@ -138,7 +198,11 @@ public class ProjektDetailController implements Initializable {
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
 			
 			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
+			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+//			
 			tblProjektMangel.setItems(mangelData);
+			tblProjektUnternehmen.setItems(subunternehmenData);
+		
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -146,6 +210,11 @@ public class ProjektDetailController implements Initializable {
 		
 	}
 	
+	@FXML
+	public void showMeldungByMangel(){
+		meldungData = FXCollections.observableArrayList(client.getAllMeldungByMangel(tblProjektMangel.getSelectionModel().getSelectedItem()));
+		tblProjektMeldung.setItems(meldungData);
+	}
 	
 	@FXML
 	public void projektCancel(){

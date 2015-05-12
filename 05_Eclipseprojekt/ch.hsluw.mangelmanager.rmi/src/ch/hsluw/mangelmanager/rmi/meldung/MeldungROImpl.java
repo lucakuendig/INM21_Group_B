@@ -11,6 +11,7 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.business.meldung.MeldungManager;
 import ch.hsluw.mangelmanager.business.meldung.MeldungManagerImpl;
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 
@@ -57,6 +58,12 @@ public class MeldungROImpl extends UnicastRemoteObject implements MeldungRO {
 	public List<Meldung> findAll() throws RemoteException {
 		// TODO Auto-generated method stub
 		return meldungManager.findAll();
+	}
+
+	@Override
+	public List<Meldung> findAllMeldungByMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		return meldungManager.findAllMeldungByMangel(mangel);
 	}
 	
 }

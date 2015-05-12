@@ -5,11 +5,17 @@
 
 package ch.hsluw.mangelmanager.persister.dao.meldung;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
+import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
 
 
@@ -53,5 +59,21 @@ public class MeldungDAOImpl implements MeldungDAO {
 	public List<Meldung> findAllMeldung() {
 		// TODO Auto-generated method stub
 		return new GenericPersisterImpl<Meldung>(Meldung.class).findAll();
+	}
+
+	@Override
+	public List<Meldung> findAllMeldungByMangel(Mangel mangel) {
+EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<Meldung> tQuery = em.createNamedQuery("Meldung.findAllMeldungByMangel",
+				Meldung.class);
+
+		tQuery.setParameter("mangelId", mangel);
+
+		List<Meldung> meldungListe = tQuery.getResultList();
+
+		em.close();
+
+		return meldungListe != null ? meldungListe : new ArrayList<Meldung>();
 	}
 }

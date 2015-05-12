@@ -28,7 +28,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name = "Subunternehmen.findBySubunternehmenMitarbeiter", query = "SELECT sm FROM SuMitarbeiter sm WHERE sm.fkSubunternehmen=:subunternehmenId")})
+	@NamedQuery(name = "Subunternehmen.findBySubunternehmenMitarbeiter", query = "SELECT sm FROM SuMitarbeiter sm WHERE sm.fkSubunternehmen=:subunternehmenId"),
+	@NamedQuery(name = "Subunternehmen.findAllSubunternehmenByProjekt", query = "SELECT DISTINCT su FROM Subunternehmen su JOIN su.fkSuMitarbeiter sm JOIN sm.fkProjektSuMitarbeiter ps WHERE ps.fkProjekt =:projektId")})
 public class Subunternehmen implements Serializable {
 
 	private static final long serialVersionUID = -2526718021212938075L;

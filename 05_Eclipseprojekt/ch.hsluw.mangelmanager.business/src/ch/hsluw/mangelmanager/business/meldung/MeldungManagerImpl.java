@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.meldung;
 
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.persister.dao.meldung.MeldungDAO;
 import ch.hsluw.mangelmanager.persister.dao.meldung.MeldungDAOImpl;
@@ -69,5 +70,11 @@ public class MeldungManagerImpl implements MeldungManager {
 	public List<Meldung> findAll() {
 		// TODO Auto-generated method stub
 		return meldungDAO.findAllMeldung();
+	}
+
+	@Override
+	public List<Meldung> findAllMeldungByMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		return meldungDAO.findAllMeldungByMangel(mangel);
 	}
 }

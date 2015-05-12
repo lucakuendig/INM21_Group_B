@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.persister.dao.meldung;
 
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Meldung;
 
@@ -68,5 +69,7 @@ public interface MeldungDAO {
 	 * @return
 	 */
 	List<Meldung> findAllMeldung();
+
+	List<Meldung> findAllMeldungByMangel(Mangel mangel);
 	
 }
