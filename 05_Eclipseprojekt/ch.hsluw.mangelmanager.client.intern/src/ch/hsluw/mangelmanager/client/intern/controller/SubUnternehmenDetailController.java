@@ -2,6 +2,10 @@ package ch.hsluw.mangelmanager.client.intern.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -15,6 +19,7 @@ import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.scene.control.ComboBox;
@@ -33,6 +38,8 @@ public class SubUnternehmenDetailController implements Initializable {
 	//RMI Client to interact
 		ClientRMI client = null;
 		RootController rootController = null;
+		DateFormat formatDatum = null;
+		DateTimeFormatter dateFormatter = null;
 		
 		public void setRootController(RootController rootController) {
 			// TODO Auto-generated method stub
@@ -119,6 +126,8 @@ public class SubUnternehmenDetailController implements Initializable {
 			setCellValueFactoryTblUnternehmenMiterbeiter();
 				try {
 				client = ClientRMI.getInstance();
+				formatDatum = new SimpleDateFormat("dd.MM.yyyy");
+				dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 				subunternehmen = client.getSubunternehmenById(subunternehmenId);
 				lblUnternehmenId.setText(subunternehmen.getId().toString());
 				txtUnternehmenName.setText(subunternehmen.getName());
@@ -167,10 +176,10 @@ public class SubUnternehmenDetailController implements Initializable {
 				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getFkAdresse().getPlz().getOrt());}
 			});
 	
-//	colUnternehmenProjektStartdatum.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-//		public ObservableValue<String> call(
-//				CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(p.getValue().getStartDatum().);}
-//	});
+			colUnternehmenProjektStartdatum.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+				public ObservableValue<String> call(
+						CellDataFeatures<Projekt, String> p) {return new SimpleStringProperty(formatDatum.format(p.getValue().getStartDatum().getTime()));}
+			});
 
 			colUnternehmenProjektStatus.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
 				public ObservableValue<String> call(
@@ -179,8 +188,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		}
 		
 		public void setCellValueFactoryTblUnternehmenMiterbeiter(){
-			colUnternehmenMitarbeiterId.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("id"));
-			colUnternehmenMitarbeiterName.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("name"));
+			colUnternehmenMitarbeiterName.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("nachname"));
 			colUnternehmenMitarbeiterVorname.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("vorname"));
 			colUnternehmenMitarbeiterTelefon.setCellValueFactory(new PropertyValueFactory<SuMitarbeiter, String>("telefon"));
 		}
@@ -194,6 +202,22 @@ public class SubUnternehmenDetailController implements Initializable {
 			subunternehmen.getFkAdresse().getPlz().setOrt(lblUnternehmenOrt.getText());
 			subunternehmen.getFkAdresse().setStrasse(txtUnternehmenStrasse.getText());
 			client.updateSubunternehmen(subunternehmen);
+			
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/unternehmen/AusseresUnternehmen.fxml"));
+				AnchorPane unternehmen = (AnchorPane) loader.load();
+				
+				SubUnternehmenController subunternehmenController = loader.<SubUnternehmenController>getController();
+				subunternehmenController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(unternehmen);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
 		}
 		

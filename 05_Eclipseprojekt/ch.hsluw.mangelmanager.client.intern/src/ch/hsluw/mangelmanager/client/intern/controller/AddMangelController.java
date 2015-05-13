@@ -79,7 +79,8 @@ public class AddMangelController implements Initializable {
 						this.meldungstyp = meldungstyp;
 					}
 				}
-				login = new Login();
+				login = client.getLoginById(Main.loginId);
+				System.out.println(login.getBenutzername()+ " " + login.getEmail());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -89,12 +90,12 @@ public class AddMangelController implements Initializable {
 		
 		@FXML
 		private void mangelSave() {
-
 			Calendar cl = Calendar.getInstance();
 			
-			mangel = new Mangel(projekt, txtMangelBezeichung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getDayOfMonth(), dateMangelFaellig.getValue().getMonthValue(), dateMangelFaellig.getValue().getYear()),mangelstatus ,login , txtMangelBeschreibung.getText());
+			mangel = new Mangel(projekt, txtMangelBezeichung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getYear(), dateMangelFaellig.getValue().getMonthValue()-1, dateMangelFaellig.getValue().getDayOfMonth()),mangelstatus ,login , txtMangelBeschreibung.getText());
 			
 			meldung = new Meldung(mangel, meldungstyp, txtMangelBeschreibung.getText(), (GregorianCalendar) cl, false, login);
+			
 			
 			client.addMeldung(meldung);
 			
@@ -102,13 +103,13 @@ public class AddMangelController implements Initializable {
 				// Load Unternehmen overview.
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(Main.class
-						.getResource("view/unternehmen/AusseresUnternehmen.fxml"));
-				AnchorPane unternehmen = (AnchorPane) loader.load();
+						.getResource("view/mangel/AussererMangel.fxml"));
+				AnchorPane mangel = (AnchorPane) loader.load();
 				
-				SubUnternehmenController subunternehmenController = loader.<SubUnternehmenController>getController();
-				subunternehmenController.setRootController(rootController);
+				MangelController mangelController = loader.<MangelController>getController();
+				mangelController.setRootController(rootController);
 				
-				rootController.rootLayout.setCenter(unternehmen);
+				rootController.rootLayout.setCenter(mangel);
 
 			} catch (IOException e) {
 				e.printStackTrace();

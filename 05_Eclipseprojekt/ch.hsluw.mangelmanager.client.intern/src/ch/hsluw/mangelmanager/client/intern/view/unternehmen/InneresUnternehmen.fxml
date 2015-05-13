@@ -130,11 +130,8 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                                  <columns>
-                                    <TableColumn fx:id="colUnternehmenMitarbeiterId" prefWidth="43.0" text="ID" />
                                     <TableColumn fx:id="colUnternehmenMitarbeiterName" prefWidth="117.0" text="Name" />
                                     <TableColumn fx:id="colUnternehmenMitarbeiterVorname" prefWidth="71.0" text="Vorname" />
-                                    <TableColumn fx:id="colUnternehmenMitarbeiterStartdatum" prefWidth="89.0" text="Start-Datum" />
-                                    <TableColumn fx:id="colUnternehmenMitarbeiterEnddatum" prefWidth="65.0" text="End-Datum" />
                                     <TableColumn fx:id="colUnternehmenMitarbeiterTelefon" prefWidth="75.0" text="Telefon" />
                                  </columns>
                               </TableView>

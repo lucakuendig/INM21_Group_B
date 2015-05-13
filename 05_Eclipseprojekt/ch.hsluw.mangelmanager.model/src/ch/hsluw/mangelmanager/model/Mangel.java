@@ -55,9 +55,9 @@ public class Mangel implements Serializable {
 	private GregorianCalendar abschlussZeit;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne 
 	private Mangelstatus fkMangelstatus;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Login fkLogin;
 	
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="fkMangel", fetch = FetchType.EAGER)
