@@ -65,5 +65,7 @@ public interface LoginManager {
 	 * @return
 	 */
 	List<Login> findAll();
+
+	Login findByName(String name);
 }
 

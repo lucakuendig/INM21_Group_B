@@ -67,4 +67,10 @@ public class LoginManagerImpl implements LoginManager {
 	public List<Login> findAll() {
 		return loginDAO.findAllLogin();
 	}
+
+	@Override
+	public Login findByName(String name) {
+		// TODO Auto-generated method stub
+		return loginDAO.findByName(name);
+	}
 }

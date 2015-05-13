@@ -55,4 +55,10 @@ public class LoginROImpl extends UnicastRemoteObject implements LoginRO {
 		return loginManager.findAll();
 	}
 
+	@Override
+	public Login findByName(String name) throws RemoteException {
+		// TODO Auto-generated method stub
+		return loginManager.findByName(name);
+	}
+
 }

@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -24,6 +26,9 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@NamedQueries({
+	@NamedQuery(name = "Login.findByName", query = "SELECT l FROM Login l WHERE l.benutzername=:loginName")})
+
 public class Login implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;

@@ -11,10 +11,12 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -54,6 +56,26 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public List<Login> findAllLogin() {
 		return new GenericPersisterImpl<Login>(Login.class).findAll();
+	}
+
+	@Override
+	public Login findByName(String name) {
+		EntityManager em = JpaUtil.createEntityManager();
+		
+		TypedQuery<Login> tQuery = em.createNamedQuery("Login.findByName",
+				Login.class);
+		
+		tQuery.setParameter("loginName", name);
+		
+		try{
+		Login login = tQuery.getSingleResult();
+		em.close();
+		return login;
+		} catch(NoResultException e) {
+			em.close();
+	        return null;
+	    }
+		
 	}
 	
 }
