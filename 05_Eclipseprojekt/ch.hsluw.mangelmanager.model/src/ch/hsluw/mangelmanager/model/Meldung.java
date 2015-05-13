@@ -29,7 +29,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
-@NamedQuery(name = "Meldung.findAllMeldungByMangel", query = "SELECT m FROM Meldung m WHERE m.fkMangel=:mangelId and m.fkMeldungstyp.bezeichnung='Offen'")})
+@NamedQuery(name = "Meldung.findAllMeldungByMangel", query = "SELECT m FROM Meldung m WHERE m.fkMangel=:mangelId and m.quittiert=false")})
 public class Meldung implements Serializable {
 
 	private static final long serialVersionUID = 2067831453127875781L;
