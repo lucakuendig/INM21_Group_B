@@ -41,7 +41,7 @@ public class Meldung implements Serializable {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Mangel fkMangel;
 
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Meldungstyp fkMeldungstyp;
 	private String text;
 	

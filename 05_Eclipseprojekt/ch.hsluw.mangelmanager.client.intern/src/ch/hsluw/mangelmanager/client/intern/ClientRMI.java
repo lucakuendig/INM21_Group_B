@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
+import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
@@ -25,6 +26,7 @@ import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
+import ch.hsluw.mangelmanager.rmi.login.LoginRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
@@ -87,6 +89,8 @@ public class ClientRMI {
 	Plz plznr;
 	Mangel mangelnr;
 	Adresse addAdresse;
+	Login login;
+	Login loginnr;
 	
 	
 	
@@ -105,6 +109,8 @@ public class ClientRMI {
 	MangelstatusRO mangelstatusRO;
 	MeldungstypRO meldungstypRO;
 	ProjektGuMitarbeiterRO projektGuMitarbeiterRO;
+	LoginRO loginRO;
+	
 	public static void main(String[] args) {
 		try {
 			// Init Application over RMI
@@ -139,6 +145,7 @@ public class ClientRMI {
 		String mangelstatusROName = "mangelstatusRO";
 		String meldungstypROName = "meldungstypRO";
 		String projektGuMitarbeiterROName = "projektGuMitarbeiterRO";
+		String loginROName = "loginRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -152,6 +159,7 @@ public class ClientRMI {
 		this.mangelstatusRO = (MangelstatusRO) Naming.lookup(url + mangelstatusROName);
 		this.meldungstypRO = (MeldungstypRO) Naming.lookup(url + meldungstypROName);
 		this.projektGuMitarbeiterRO = (ProjektGuMitarbeiterRO) Naming.lookup(url + projektGuMitarbeiterROName);
+		this.loginRO = (LoginRO) Naming.lookup(url+ loginROName);
 
 		
 	}
@@ -561,6 +569,28 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 			return bauleiter;
+	}
+
+	public Login getLoginByName(String name) {
+		// TODO Auto-generated method stub
+		try {
+			login = loginRO.findByName(name);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return login;
+	}
+
+	public Login getLoginById(Integer loginId) {
+		// TODO Auto-generated method stub
+		try {
+			loginnr = loginRO.findById(loginId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loginnr;
 	}
 	
 		

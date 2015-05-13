@@ -11,6 +11,8 @@ import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseROImpl;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypROImpl;
+import ch.hsluw.mangelmanager.rmi.login.LoginRO;
+import ch.hsluw.mangelmanager.rmi.login.LoginROImpl;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelROImpl;
 import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
@@ -72,7 +74,8 @@ public class RMIServer {
 				ArbeitstypRO arbeitstypRO = new ArbeitstypROImpl();
 				MangelstatusRO mangelstatusRO = new MangelstatusROImpl();
 				MeldungstypRO meldungstypRO = new MeldungstypROImpl();
-				ProjektGuMitarbeiterROImpl projektGuMitarbeiterRO = new ProjektGuMitarbeiterROImpl();			
+				ProjektGuMitarbeiterROImpl projektGuMitarbeiterRO = new ProjektGuMitarbeiterROImpl();
+				LoginRO loginRO = new LoginROImpl();
 
 				registry.rebind("personRO", personRO);
 				registry.rebind("projektRO", projektRO);
@@ -86,6 +89,7 @@ public class RMIServer {
 				registry.rebind("mangelstatusRO", mangelstatusRO);
 				registry.rebind("meldungstypRO", meldungstypRO);
 				registry.rebind("projektGuMitarbeiterRO", projektGuMitarbeiterRO);
+				registry.rebind("loginRO", loginRO);
 				
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
 						+ "Server herunterfahren?";
@@ -105,6 +109,7 @@ public class RMIServer {
 				registry.unbind("mangelstatusRO");
 				registry.unbind("meldungstypRO");
 				registry.unbind("projektGuMitarbeiterRO");
+				registry.unbind("loginRO");
 
 				System.out.println("RMI Server wird heruntergefahren!\n");
 
