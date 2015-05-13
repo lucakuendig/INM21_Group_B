@@ -6,6 +6,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
@@ -18,6 +20,7 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -74,9 +77,9 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private Label lblProjektOrt;
 	@FXML 
-	private ChoiceBox<String> cbProjektObjekttyp;
+	private ChoiceBox<Objekttyp> cbProjektObjekttyp;
 	@FXML 
-	private ChoiceBox<String> cbProjektArbeitstyp;
+	private ChoiceBox<Arbeitstyp> cbProjektArbeitstyp;
 	@FXML
 	private Label lblProjektStartdatum;
 	@FXML
@@ -121,6 +124,12 @@ public class ProjektDetailController implements Initializable {
 
 	ObservableList<Subunternehmen> subunternehmenData;
 	
+	@FXML
+	private ComboBox<Subunternehmen> cbSubunternehmen;
+	@FXML
+	private ComboBox<SuMitarbeiter> cbAnsprechperson;
+	
+	
 
 	//Right Panel Bauleiter
 	@FXML
@@ -150,11 +159,16 @@ public class ProjektDetailController implements Initializable {
 			cbProjektPlz.getItems().add(plz.getPlz());
 		}
 		for (Objekttyp objekttyp : FXCollections.observableArrayList(client.getAllObjekttyp())) {
-			cbProjektObjekttyp.getItems().add(objekttyp.getBezeichnung());
+			cbProjektObjekttyp.getItems().add(objekttyp);
 		}
 		for (Arbeitstyp arbeitstyp : FXCollections.observableArrayList(client.getAllArbeitstyp())) {
-			cbProjektArbeitstyp.getItems().add(arbeitstyp.getBezeichnung());
+			cbProjektArbeitstyp.getItems().add(arbeitstyp);
 		}
+		for (Subunternehmen subunternehmen : FXCollections.observableArrayList(client.getAllSubunternehmen())) {
+			cbSubunternehmen.getItems().add(subunternehmen);
+		}
+		
+		
 		
 		// Client interaction
 		try {
@@ -248,8 +262,8 @@ public class ProjektDetailController implements Initializable {
 			txtProjektStrasse.setText(projekt.getFkAdresse().getStrasse());
 			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz().getPlz());
 			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
-			cbProjektObjekttyp.getSelectionModel().select(projekt.getFkObjekttyp().getBezeichnung());
-			cbProjektArbeitstyp.getSelectionModel().select(projekt.getFkArbeitstyp().getBezeichnung());
+			cbProjektObjekttyp.getSelectionModel().select(projekt.getFkObjekttyp());
+			cbProjektArbeitstyp.getSelectionModel().select(projekt.getFkArbeitstyp());
 			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
 			dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
@@ -279,8 +293,24 @@ public class ProjektDetailController implements Initializable {
 		
 	}
 	@FXML
+	public void fillCbAnsprechperson(){
+		for (SuMitarbeiter sumitarbeiter : client.getAllSubunternehmenMitarbeiter(cbSubunternehmen.getSelectionModel().getSelectedItem())) {
+			cbAnsprechperson.getItems().add(sumitarbeiter);
+		}	
+	}
+	
+	@FXML
 	public void projektSave(){
+	
+		projekt.getFkAdresse().setStrasse(txtProjektStrasse.getText());
+		projekt.getFkAdresse().getPlz().setPlz((Integer) cbProjektPlz.getSelectionModel().getSelectedItem());
+		projekt.getFkAdresse().getPlz().setOrt(lblProjektOrt.getText());
 		
+		projekt.setFkObjekttyp(cbProjektObjekttyp.getSelectionModel().getSelectedItem());
+		projekt.setFkArbeitstyp(cbProjektArbeitstyp.getSelectionModel().getSelectedItem());
+		projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
+
+		client.updateProjekt(projekt);		
 	}
 	@FXML
 	public void projektAddMangel(){
@@ -306,10 +336,15 @@ public class ProjektDetailController implements Initializable {
 	public void projektAddMeldung(){
 		
 	}
+	
 	@FXML
 	public void projektAddUnternehmen(){
-		
+		GregorianCalendar c1 = (GregorianCalendar) Calendar.getInstance();
+		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),c1, null));
+		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+		tblProjektUnternehmen.setItems(subunternehmenData);
 	}
+	
 	@FXML
 	public void projektAddBauleiter(){
 		

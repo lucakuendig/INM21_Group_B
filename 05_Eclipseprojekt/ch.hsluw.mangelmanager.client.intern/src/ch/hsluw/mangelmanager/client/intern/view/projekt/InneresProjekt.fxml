@@ -191,6 +191,8 @@
                                  </columnResizePolicy>
                               </TableView>
                               <Button layoutX="550.0" layoutY="447.0" mnemonicParsing="false" onAction="#projektAddUnternehmen" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <ComboBox fx:id="cbAnsprechperson" layoutX="601.0" layoutY="289.0" prefHeight="25.0" prefWidth="184.0" promptText="Ansprechperson wählen" />
+                              <ComboBox fx:id="cbSubunternehmen" layoutX="404.0" layoutY="289.0" onAction="#fillCbAnsprechperson" prefHeight="25.0" prefWidth="185.0" promptText="Subunternehmen wählen" />
                            </children>
                         </AnchorPane>
                     </content>

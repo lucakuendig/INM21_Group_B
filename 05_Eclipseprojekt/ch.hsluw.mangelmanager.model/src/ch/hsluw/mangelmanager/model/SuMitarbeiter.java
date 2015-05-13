@@ -117,6 +117,10 @@ public class SuMitarbeiter extends Person implements Serializable {
 			List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter) {
 		this.fkProjektSuMitarbeiter = fkProjektSuMitarbeiter;
 	}
+	
+    public String toString() {
+        return getNachname() + " " + getVorname();
+    }
 
 
 }

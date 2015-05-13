@@ -210,7 +210,7 @@ public class ProjektController implements Initializable {
 										.getFkMeldung().size();
 								for (int j = 0; j < anzMeldungen; j++) {
 									if (p.getValue().getFkMaengel().get(i)
-											.getFkMeldung().get(j).getFkMeldungstyp().getBezeichnung().equals("Offen")) {
+											.getFkMeldung().get(j).getQuittiert()) {
 										anzOffeneMeldungen++;
 									}
 								}

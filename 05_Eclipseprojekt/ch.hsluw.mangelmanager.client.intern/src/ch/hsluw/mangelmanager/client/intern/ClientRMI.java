@@ -36,7 +36,6 @@ import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
-import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterROImpl;
 import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -110,6 +109,7 @@ public class ClientRMI {
 	MeldungstypRO meldungstypRO;
 	ProjektGuMitarbeiterRO projektGuMitarbeiterRO;
 	LoginRO loginRO;
+	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
 	
 	public static void main(String[] args) {
 		try {
@@ -146,6 +146,7 @@ public class ClientRMI {
 		String meldungstypROName = "meldungstypRO";
 		String projektGuMitarbeiterROName = "projektGuMitarbeiterRO";
 		String loginROName = "loginRO";
+		String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -160,6 +161,7 @@ public class ClientRMI {
 		this.meldungstypRO = (MeldungstypRO) Naming.lookup(url + meldungstypROName);
 		this.projektGuMitarbeiterRO = (ProjektGuMitarbeiterRO) Naming.lookup(url + projektGuMitarbeiterROName);
 		this.loginRO = (LoginRO) Naming.lookup(url+ loginROName);
+		this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
 
 		
 	}
@@ -591,6 +593,32 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		return loginnr;
+	}
+
+	public void updateProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			projektRO.update(projekt2);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void addSuMitarbeiterByProjekt(ProjektSuMitarbeiter psum) {
+		// TODO Auto-generated method stub
+		try {
+			projektSuMitarbeiterRO.add(psum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 		

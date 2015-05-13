@@ -31,9 +31,9 @@ public class ProjektSuMitarbeiter implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Projekt fkProjekt;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne 
 	private SuMitarbeiter fkMitarbeiter;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar startDatum;
@@ -128,6 +128,11 @@ public class ProjektSuMitarbeiter implements Serializable {
 	public void setEndDatum(GregorianCalendar endDatum) {
 		this.endDatum = endDatum;
 	}
+	
+	 @Override
+     public String toString() {
+         return fkMitarbeiter.getFkSubunternehmen().getName();
+     }
 
 	
 }

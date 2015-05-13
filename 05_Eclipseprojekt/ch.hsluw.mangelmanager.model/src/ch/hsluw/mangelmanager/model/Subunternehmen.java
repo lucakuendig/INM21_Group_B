@@ -135,6 +135,10 @@ public class Subunternehmen implements Serializable {
 	public void setFkSuMitarbeiter(List<SuMitarbeiter> fkSuMitarbeiter) {
 		this.fkSuMitarbeiter = fkSuMitarbeiter;
 	}
+	
+    public String toString() {
+        return name;
+    }
 
 
 }

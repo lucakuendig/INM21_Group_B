@@ -26,15 +26,9 @@ public class ProjektSuMitarbeiterManagerImpl implements ProjektSuMitarbeiterMana
 
 	@Override
 	public ProjektSuMitarbeiter add(ProjektSuMitarbeiter entity) throws Exception {
-
-		if (entity.getFkMitarbeiter() == null && entity.getFkProjekt() == null) {
 			projektSuMitarbeiterDAO.save(entity);
 			return entity;
-		} else {
-			throw new Exception(
-					"Entity im Datenbestand bereits vorhanden (SuMitarbeiter = "
-							+ entity.getFkMitarbeiter().getNachname()+" Projekt= " + entity.getFkProjekt().getBezeichnung() + ")");
-		}
+	
 	}
 
 	@Override
