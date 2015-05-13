@@ -11,6 +11,7 @@ import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
+import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
@@ -26,6 +27,7 @@ import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
+import ch.hsluw.mangelmanager.rmi.bauherr.BauherrRO;
 import ch.hsluw.mangelmanager.rmi.login.LoginRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
@@ -78,6 +80,7 @@ public class ClientRMI {
 	List<ProjektGuMitarbeiter> bauleiter;
 	List<Mangel> mangelOfProjekt;
 	List<Meldung> meldungByMangel;
+	List<Bauherr> bauherren;
 	
 	List<Mangelstatus> mangelstatus;
 	List<Meldungstyp> meldungstyp;
@@ -110,6 +113,7 @@ public class ClientRMI {
 	ProjektGuMitarbeiterRO projektGuMitarbeiterRO;
 	LoginRO loginRO;
 	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
+	BauherrRO bauherrRO;
 	
 	public static void main(String[] args) {
 		try {
@@ -147,6 +151,7 @@ public class ClientRMI {
 		String projektGuMitarbeiterROName = "projektGuMitarbeiterRO";
 		String loginROName = "loginRO";
 		String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
+		String bauherrROName = "bauherrRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -162,6 +167,8 @@ public class ClientRMI {
 		this.projektGuMitarbeiterRO = (ProjektGuMitarbeiterRO) Naming.lookup(url + projektGuMitarbeiterROName);
 		this.loginRO = (LoginRO) Naming.lookup(url+ loginROName);
 		this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
+		this.bauherrRO = (BauherrRO) Naming.lookup(url + bauherrROName);
+
 
 		
 	}
@@ -612,6 +619,31 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projektSuMitarbeiterRO.add(psum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Bauherr> getAllBauherr() {
+		// TODO Auto-generated method stub
+		try {
+			bauherren = bauherrRO.findAll();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return bauherren;
+	}
+
+	public void addProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			projektRO.add(projekt2);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

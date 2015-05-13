@@ -258,5 +258,24 @@ public class ProjektController implements Initializable {
 		}
 
 	}
+	@FXML
+	private void addProjekt(){
+		try {
+			// Load ProjektAdd View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/projekt/AddProjekt.fxml"));
+			AnchorPane addProjekt = (AnchorPane) loader.load();
+
+			AddProjektController addProjektController = loader
+					.<AddProjektController> getController();
+			addProjektController.setRootController(rootController);
+
+			rootController.rootLayout.setCenter(addProjekt);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -155,6 +155,8 @@ public class ProjektDetailController implements Initializable {
 		client = ClientRMI.getInstance();
 		formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+		
+		
 		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
 			cbProjektPlz.getItems().add(plz.getPlz());
 		}
@@ -348,6 +350,14 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	public void projektAddBauleiter(){
 		
+	}
+	
+	@FXML
+	private void plzChange(){
+		if (cbProjektPlz.getSelectionModel().getSelectedItem() != null){
+			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
+		}else{	
+		}
 	}
 
 }
