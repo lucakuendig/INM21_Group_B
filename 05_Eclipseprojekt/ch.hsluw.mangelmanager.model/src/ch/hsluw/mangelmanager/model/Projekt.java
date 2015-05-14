@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -50,7 +51,7 @@ public class Projekt implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Adresse fkAdresse;
 	private String bezeichnung;
 	private String beschreibung;

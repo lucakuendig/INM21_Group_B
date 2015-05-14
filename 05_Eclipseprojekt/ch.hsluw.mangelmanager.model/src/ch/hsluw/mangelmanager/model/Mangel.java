@@ -45,7 +45,7 @@ public class Mangel implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Projekt fkProjekt;
 	private String bezeichnung;
 	private String beschreibung;

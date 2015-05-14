@@ -83,7 +83,7 @@ public class AddProjektController implements Initializable {
 			
 			a = new Adresse(txtProjektStrasse.getText(), cbProjektPlz.getSelectionModel().getSelectedItem());
 			projekt = new Projekt(a,txtProjektBezeichnung.getText(),b, new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()),null,cbProjektObjekttyp.getSelectionModel().getSelectedItem(),cbProjektArbeitstyp.getSelectionModel().getSelectedItem(), new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()),new Projektstatus("Offen"));
-			//client.addAdresse(a);
+			client.addAdresse(a);
 			client.addProjekt(projekt);		
 			
 			try {
