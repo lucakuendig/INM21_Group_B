@@ -9,6 +9,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 
@@ -77,5 +78,7 @@ public interface MeldungRO extends Remote {
 	 * @throws RemoteException
 	 */
 	List<Meldung> findAll() throws RemoteException;
+
+	List<Meldung> findAllMeldungByMangel(Mangel mangel) throws RemoteException;
 	
 }

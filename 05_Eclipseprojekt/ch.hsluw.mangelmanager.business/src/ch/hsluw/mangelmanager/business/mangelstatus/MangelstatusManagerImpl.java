@@ -5,6 +5,8 @@
 
 package ch.hsluw.mangelmanager.business.mangelstatus;
 
+import java.util.List;
+
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAO;
 import ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAOImpl;
@@ -49,5 +51,11 @@ public class MangelstatusManagerImpl implements MangelstatusManager {
 	@Override
 	public void delete(Mangelstatus entity) throws Exception {
 		mangelstatusDAO.delete(entity);
+	}
+
+	@Override
+	public List<Mangelstatus> getAllMangelstatus() throws Exception {
+		// TODO Auto-generated method stub
+		return mangelstatusDAO.findAllMangelstatus();
 	}
 }

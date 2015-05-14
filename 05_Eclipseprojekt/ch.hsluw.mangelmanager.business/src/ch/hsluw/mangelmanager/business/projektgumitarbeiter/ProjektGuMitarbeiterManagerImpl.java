@@ -6,6 +6,7 @@
 package ch.hsluw.mangelmanager.business.projektgumitarbeiter;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAO;
 import ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAOImpl;
@@ -66,5 +67,12 @@ public class ProjektGuMitarbeiterManagerImpl implements ProjektGuMitarbeiterMana
 	@Override
 	public List<ProjektGuMitarbeiter> findAll() {
 		return projektGuMitarbeiterDAO.findAllProjektGuMitarbeiter();
+	}
+
+	@Override
+	public List<ProjektGuMitarbeiter> findAllBauleiterByProjekt(Projekt projekt2)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return projektGuMitarbeiterDAO.findAllBauleiterByProjekt(projekt2);
 	}
 }

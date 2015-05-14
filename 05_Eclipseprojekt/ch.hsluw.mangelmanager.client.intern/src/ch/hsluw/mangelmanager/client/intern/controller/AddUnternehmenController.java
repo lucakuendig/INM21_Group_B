@@ -75,16 +75,6 @@ public class AddUnternehmenController implements Initializable {
 		
 	}
 
-
-	public void init() {
-			try {
-			client = ClientRMI.getInstance();
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 	@FXML
 	private void plzChange(){

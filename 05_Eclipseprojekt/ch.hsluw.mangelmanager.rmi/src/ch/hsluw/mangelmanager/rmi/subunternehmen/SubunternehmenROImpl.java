@@ -13,6 +13,7 @@ import java.util.List;
 import javafx.beans.value.ObservableValue;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManager;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManagerImpl;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
@@ -65,6 +66,12 @@ public class SubunternehmenROImpl extends UnicastRemoteObject implements Subunte
 	@Override
 	public List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) throws RemoteException {
 		return subunternehmenManager.findAllSubunternehmenMitarbeiter(subunternehmen);
+	}
+
+	@Override
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) throws RemoteException {
+		// TODO Auto-generated method stub
+		return subunternehmenManager.findAllSubunternehmenByProjekt(projekt2);
 	}
 
 

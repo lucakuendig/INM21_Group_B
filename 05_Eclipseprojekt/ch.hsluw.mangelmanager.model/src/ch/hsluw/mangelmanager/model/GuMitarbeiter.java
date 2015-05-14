@@ -76,6 +76,11 @@ public class GuMitarbeiter extends Person implements Serializable {
 	public void setFkLogin(Login fkLogin) {
 		this.fkLogin = fkLogin;
 	}
+	
+	@Override
+    public String toString() {
+        return getNachname() + getVorname();
+    }
 
 	
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="background" stylesheets="@../../Design.css"  minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.AddProjektController">
 <children>
       <GridPane layoutY="32.0" prefHeight="562.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -58,12 +58,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnProjektAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1">
+                        <Button fx:id="btnProjektAbbrechen" mnemonicParsing="false" onAction="#cancelProjekt" text="Abbrechen" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="btnProjektSpeichern" mnemonicParsing="false" text="Speichern" />
+                        <Button fx:id="btnProjektSpeichern" mnemonicParsing="false" onAction="#addProjekt" text="Speichern" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -77,17 +77,11 @@
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label text="End-Datum" GridPane.rowIndex="6">
+                  <Label text="Fällig am" GridPane.rowIndex="6">
                      <padding>
                         <Insets left="20.0" />
                      </padding>
                   </Label>
-                  <Label text="Fällig am" GridPane.rowIndex="7">
-                     <padding>
-                        <Insets left="20.0" />
-                     </padding>
-                  </Label>
-                  <DatePicker fx:id="dateProjektEnddatum" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label text="Strasse" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="20.0" />
@@ -98,15 +92,11 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <ComboBox fx:id="cbProjektPlz" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtProjektOrt" editable="false" maxWidth="-Infinity" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="100.0" />
-                     </GridPane.margin>
-                  </TextField>
+                  <ComboBox fx:id="cbProjektPlz" onAction="#plzChange" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="txtProjektStrasse" maxWidth="220.0" prefHeight="25.0" prefWidth="178.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <DatePicker fx:id="dateProjektStartdatum" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                  <DatePicker fx:id="dateProjektFaellig" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="dateProjektFaellig" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="lblProjektOrt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

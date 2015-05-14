@@ -8,6 +8,7 @@ package ch.hsluw.mangelmanager.rmi.mangelstatus;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 import ch.hsluw.mangelmanager.business.mangelstatus.MangelstatusManager;
 import ch.hsluw.mangelmanager.business.mangelstatus.MangelstatusManagerImpl;
@@ -38,6 +39,13 @@ public class MangelstatusROImpl extends UnicastRemoteObject implements Mangelsta
 	@Override
 	public void delete(Mangelstatus entity) throws RemoteException, Exception {
 		mangelstatusManager.delete(entity);
+	}
+
+	@Override
+	public List<Mangelstatus> findAllMangelStatus() throws RemoteException,
+			Exception {
+		// TODO Auto-generated method stub
+		return mangelstatusManager.getAllMangelstatus();
 	}
 
 }

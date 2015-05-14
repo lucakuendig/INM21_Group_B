@@ -31,7 +31,11 @@ public class Adresse implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	private String strasse;
+<<<<<<< HEAD
 	@ManyToOne (cascade=CascadeType.ALL)
+=======
+	@ManyToOne 
+>>>>>>> c8a22782e1c6d3e01aaedd9de8b27e7cc18a2ec1
 	private Plz plz;
 
 	public Adresse() {

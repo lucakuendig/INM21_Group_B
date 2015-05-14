@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="background" stylesheets="@../../Design.css"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
+<AnchorPane styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektDetailController">
 <children>
       <GridPane layoutY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -116,7 +116,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ComboBox fx:id="cbProjektPlz" prefWidth="100.0" />
+                        <ComboBox fx:id="cbProjektPlz" onAction="#plzChange" prefWidth="100.0" />
                         <Label fx:id="lblProjektOrt" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
@@ -134,7 +134,7 @@
                                 <items>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <TableView fx:id="tblProjektMangel" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tblProjektMangel" layoutY="14.0" onMouseClicked="#showMeldungByMangelOderMangel" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
                                               <TableColumn prefWidth="75.0" text="Offene Mängel">
                                                    <columns>
@@ -147,17 +147,17 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
-                                          <Button layoutX="393.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMangel" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Button layoutX="393.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMangel" text="Mangel hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                        <children>
-                                          <TableView layoutX="6.0" layoutY="14.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <TableView fx:id="tblProjektMeldung" layoutX="6.0" layoutY="14.0" onMouseClicked="#showMeldungDetail" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                              <TableColumn fx:id="tblProjektMeldungen" prefWidth="75.0" text="Offene Meldungen">
+                                              <TableColumn prefWidth="75.0" text="Offene Meldungen">
                                                    <columns>
-                                                      <TableColumn fx:id="colProjektMeldungid" prefWidth="75.0" text="Meldung Nr." />
-                                                      <TableColumn fx:id="colProjektMeldungbezeichnung" prefWidth="75.0" text="Bezeichnung" />
+                                                      <TableColumn fx:id="colProjektMeldungId" prefWidth="75.0" text="Meldung Nr." />
+                                                      <TableColumn fx:id="colProjektMeldungBezeichnung" prefWidth="75.0" text="Bezeichnung" />
                                                    </columns>
                                                 </TableColumn>
                                             </columns>
@@ -165,6 +165,7 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
+                                          <Button layoutX="266.0" layoutY="276.0" mnemonicParsing="false" onAction="#projektAddMeldung" prefHeight="26.0" prefWidth="193.0" text="Meldung hinzufügen" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -177,14 +178,13 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <TableView AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tblProjektUnternehmen" onMouseClicked="#showSubunternehmenDetail" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn fx:id="colProjektUnternehmenId" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="colProjektUnternehmenName" prefWidth="75.0" text="Name" />
                                     <TableColumn fx:id="colProjektUnternehmenStrasse" prefWidth="75.0" text="Strasse" />
                                     <TableColumn fx:id="colProjektUnternehmenPlz" prefWidth="75.0" text="PLZ" />
                                     <TableColumn fx:id="colProjektUnternehmenOrt" prefWidth="75.0" text="Ort" />
-                                    <TableColumn fx:id="colProjektUnternehmenEmail" prefWidth="75.0" text="E-Mail" />
                                     <TableColumn fx:id="colProjektUnternehmenTelefon" prefWidth="75.0" text="Telefon" />
                                 </columns>
                                  <columnResizePolicy>
@@ -192,6 +192,8 @@
                                  </columnResizePolicy>
                               </TableView>
                               <Button layoutX="550.0" layoutY="447.0" mnemonicParsing="false" onAction="#projektAddUnternehmen" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <ComboBox fx:id="cbAnsprechperson" layoutX="601.0" layoutY="289.0" prefHeight="25.0" prefWidth="184.0" promptText="Ansprechperson wählen" />
+                              <ComboBox fx:id="cbSubunternehmen" layoutX="404.0" layoutY="289.0" onAction="#fillCbAnsprechperson" prefHeight="25.0" prefWidth="185.0" promptText="Subunternehmen wählen" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -200,7 +202,7 @@
                   <content>
                     <AnchorPane>
                            <children>
-                              <TableView AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tblProjektBauleiter" onMouseClicked="#showBauleiterDetail" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
@@ -213,6 +215,7 @@
                                  </columns>
                               </TableView>
                               <Button layoutX="550.0" layoutY="460.0" mnemonicParsing="false" onAction="#projektAddBauleiter" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                              <ComboBox fx:id="cbProjektBauleiter" layoutX="603.0" layoutY="443.0" prefHeight="25.0" prefWidth="184.0" promptText="Bauleiter wählen" />
                            </children>
                         </AnchorPane>
                   </content>

@@ -63,4 +63,6 @@ public interface LoginDAO {
 	 */
 	List<Login> findAllLogin();
 
+	Login findByName(String name);
+
 }

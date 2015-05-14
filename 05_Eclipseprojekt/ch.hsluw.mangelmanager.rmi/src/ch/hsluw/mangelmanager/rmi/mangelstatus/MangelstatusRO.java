@@ -9,6 +9,7 @@ package ch.hsluw.mangelmanager.rmi.mangelstatus;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 
@@ -53,6 +54,8 @@ public interface MangelstatusRO extends Remote {
 	 * @throws Exception
 	 */
 	void delete(Mangelstatus entity) throws RemoteException, Exception;
+
+	List<Mangelstatus> findAllMangelStatus() throws RemoteException, Exception;
 
 	
 

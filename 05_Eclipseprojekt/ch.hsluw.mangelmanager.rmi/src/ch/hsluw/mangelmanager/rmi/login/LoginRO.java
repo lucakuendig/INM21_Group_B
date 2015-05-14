@@ -79,4 +79,6 @@ public interface LoginRO extends Remote {
 	 * @throws RemoteException
 	 */
 	List<Login> findAll() throws RemoteException;
+
+	Login findByName(String name) throws RemoteException;
 }

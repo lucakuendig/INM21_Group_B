@@ -37,7 +37,7 @@ import javax.persistence.NamedQueries;
 //		@NamedQuery(name = "Mangel.findByMangelstatus", query = "SELECT p FROM Mangel p WHERE p.fkMangelstatus=:mangelstatus"),
 //		@NamedQuery(name = "Mangel.findByBezeichnung", query = "SELECT p FROM Mangel p WHERE p.bezeichnung=:bezeichnung"),
 //		@NamedQuery(name = "Mangel.findByAbschlussZeit", query = "SELECT p FROM Mangel p WHERE p.abschlussZeit=:abschlussZeit"),
-@NamedQuery(name = "Mangel.findByMangelProjekt", query = "SELECT m FROM Mangel m WHERE m.fkProjekt=:projektId and m.fkMangelstatus.bezeichnung='offen'")})
+@NamedQuery(name = "Mangel.findByMangelProjekt", query = "SELECT m FROM Mangel m WHERE m.fkProjekt=:projektId and m.fkMangelstatus.bezeichnung='Offen'")})
 public class Mangel implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
@@ -45,7 +45,7 @@ public class Mangel implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Projekt fkProjekt;
 	private String bezeichnung;
 	private String beschreibung;
@@ -55,12 +55,12 @@ public class Mangel implements Serializable {
 	private GregorianCalendar abschlussZeit;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne 
 	private Mangelstatus fkMangelstatus;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Login fkLogin;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="fkMangel", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="fkMangel", fetch = FetchType.EAGER)
 	private List<Meldung> fkMeldung;
 
 	public Mangel() {
@@ -70,7 +70,7 @@ public class Mangel implements Serializable {
 	 * Constructor
 	 */
 	public Mangel(Projekt fkProjekt, String bezeichnung,
-			GregorianCalendar erfassungsZeit, GregorianCalendar abschlussZeit,
+			GregorianCalendar erfassungsZeit,
 			GregorianCalendar faelligkeitsDatum, Mangelstatus fkMangelstatus,
 			Login fkLogin, String beschreibung) {
 		super();
@@ -231,6 +231,11 @@ public class Mangel implements Serializable {
 	public void setFkMeldung(List<Meldung> fkMeldung) {
 		this.fkMeldung = fkMeldung;
 	}
+	
+	@Override
+    public String toString() {
+        return id +" - " +  bezeichnung;
+    }
 	
 	
 	

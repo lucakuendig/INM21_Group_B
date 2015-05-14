@@ -67,7 +67,6 @@ public class MeldungstypManagerImpl implements MeldungstypManager {
 
 	@Override
 	public List<Meldungstyp> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return meldungstypDAO.findAllMeldungstyp();
 	}
 }

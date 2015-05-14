@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.subunternehmen;
 import java.util.List;
 
 import javafx.beans.value.ObservableValue;
+import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAO;
@@ -20,7 +21,7 @@ import ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAOImpl
  * 
  * @version 1.0
  * @author lkuendig
- * 
+ *
  */
 public class SubunternehmenManagerImpl implements SubunternehmenManager {
 
@@ -90,5 +91,11 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	public List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) {
 		// TODO Auto-generated method stub
 		return subunternehmenDAO.findAllSubunternehmenMitarbeiter(subunternehmen);
+	}
+
+	@Override
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		return subunternehmenDAO.findAllSubunternehmenByProjekt(projekt2);
 	}
 }

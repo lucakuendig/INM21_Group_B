@@ -187,7 +187,7 @@ public class ProjektController implements Initializable {
 						int anzOffeneMaengel = 0;
 						for (int i = 0; i < anzMaengel; i++) {
 							if (p.getValue().getFkMaengel().get(i)
-									.getFkMangelstatus().getBezeichnung() == "offen") {
+									.getFkMangelstatus().getBezeichnung().equals("Offen")) {
 								anzOffeneMaengel++;
 							}
 
@@ -205,12 +205,14 @@ public class ProjektController implements Initializable {
 						int anzMeldungen = 0;
 						int anzOffeneMeldungen = 0;
 						for (int i = 0; i < anzMaengel; i++) {
-							anzMeldungen = p.getValue().getFkMaengel().get(i)
-									.getFkMeldung().size();
-							for (int j = 0; j < anzMeldungen; j++) {
-								if (p.getValue().getFkMaengel().get(i)
-										.getFkMeldung().get(j).getQuittiert()) {
-									anzOffeneMeldungen++;
+							if( p.getValue().getFkMaengel().get(i).getFkMangelstatus().getBezeichnung().equals("Offen")){
+								anzMeldungen = p.getValue().getFkMaengel().get(i)
+										.getFkMeldung().size();
+								for (int j = 0; j < anzMeldungen; j++) {
+									if (p.getValue().getFkMaengel().get(i)
+											.getFkMeldung().get(j).getQuittiert()) {
+										anzOffeneMeldungen++;
+									}
 								}
 							}
 						}
@@ -255,6 +257,25 @@ public class ProjektController implements Initializable {
 			}
 		}
 
+	}
+	@FXML
+	private void addProjekt(){
+		try {
+			// Load ProjektAdd View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/projekt/AddProjekt.fxml"));
+			AnchorPane addProjekt = (AnchorPane) loader.load();
+
+			AddProjektController addProjektController = loader
+					.<AddProjektController> getController();
+			addProjektController.setRootController(rootController);
+
+			rootController.rootLayout.setCenter(addProjekt);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.meldung;
 
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 
 
@@ -67,5 +68,7 @@ public interface MeldungManager {
 	 * @return
 	 */
 	List<Meldung> findAll();
+
+	List<Meldung> findAllMeldungByMangel(Mangel mangel);
 	
 }

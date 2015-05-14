@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,6 +28,8 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
+@NamedQueries({
+@NamedQuery(name = "Meldung.findAllMeldungByMangel", query = "SELECT m FROM Meldung m WHERE m.fkMangel=:mangelId and m.quittiert=false")})
 public class Meldung implements Serializable {
 
 	private static final long serialVersionUID = 2067831453127875781L;
@@ -34,10 +38,10 @@ public class Meldung implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Mangel fkMangel;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Meldungstyp fkMeldungstyp;
 	private String text;
 	
@@ -174,6 +178,11 @@ public class Meldung implements Serializable {
 	public void setZeitpunkt(GregorianCalendar zeitpunkt) {
 		this.zeitpunkt = zeitpunkt;
 	}
+	
+	@Override
+    public String toString() {
+        return text;
+    }
 
 	
 	

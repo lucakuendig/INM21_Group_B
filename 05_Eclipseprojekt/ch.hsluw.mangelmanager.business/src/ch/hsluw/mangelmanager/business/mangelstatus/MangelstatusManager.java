@@ -5,6 +5,8 @@
 
 package ch.hsluw.mangelmanager.business.mangelstatus;
 
+import java.util.List;
+
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 
 
@@ -41,4 +43,6 @@ public interface MangelstatusManager {
 	 * @throws Exception
 	 */
 	void delete(Mangelstatus entity) throws Exception;
+
+	List<Mangelstatus> getAllMangelstatus() throws Exception;
 }

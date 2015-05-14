@@ -77,6 +77,11 @@ public class Bauherr extends Person implements Serializable {
 	public void setFkAdresse(Adresse fkAdresse) {
 		this.fkAdresse = fkAdresse;
 	}
+	
+	@Override
+    public String toString() {
+        return getNachname() + " "+ getVorname();
+    }
 
 
 

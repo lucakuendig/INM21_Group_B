@@ -72,5 +72,10 @@ public class Objekttyp implements Serializable {
 	public void setBezeichnung(String bezeichnung) {
 		this.bezeichnung = bezeichnung;
 	}
+	
+	 @Override
+     public String toString() {
+         return bezeichnung;
+     }
 
 }

@@ -51,6 +51,6 @@ public class MeldungstypDAOImpl implements MeldungstypDAO {
 	@Override
 	public List<Meldungstyp> findAllMeldungstyp() {
 		// TODO Auto-generated method stub
-		return null;
+		return new GenericPersisterImpl<Meldungstyp>(Meldungstyp.class).findAll();
 	}
 }

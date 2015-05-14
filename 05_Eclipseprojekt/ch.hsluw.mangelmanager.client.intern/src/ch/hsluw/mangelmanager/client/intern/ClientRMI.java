@@ -11,22 +11,36 @@ import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
+import ch.hsluw.mangelmanager.model.Bauherr;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
+import ch.hsluw.mangelmanager.rmi.bauherr.BauherrRO;
+import ch.hsluw.mangelmanager.rmi.gumitarbeiter.GuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.login.LoginRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
+import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
 import ch.hsluw.mangelmanager.rmi.meldung.MeldungRO;
+import ch.hsluw.mangelmanager.rmi.meldungstyp.MeldungstypRO;
 import ch.hsluw.mangelmanager.rmi.objekttyp.ObjekttypRO;
 import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
+import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
 
@@ -58,19 +72,31 @@ public class ClientRMI {
 	List<Projekt> projekte;
 	List<Projekt> suprojekte;
 	List<Subunternehmen> subunternehmen;
+	
 	List<Mangel> maengel;
 	List<Meldung> meldung;
 	List<Plz> plz;
 	List<Objekttyp> objekttyp;
 	List<Arbeitstyp> arbeitstyp;
 	List<SuMitarbeiter> sumitarbeiter;
+	List<ProjektGuMitarbeiter> bauleiter;
 	List<Mangel> mangelOfProjekt;
+	List<Meldung> meldungByMangel;
+	List<Bauherr> bauherren;
+	List<GuMitarbeiter> guMitarbeiter;
+ 	
+	List<Mangelstatus> mangelstatus;
+	List<Meldungstyp> meldungstyp;
 	String anzProjekte;
 	Projekt projekt;
 	Subunternehmen subunternehmennr;
 	Meldung meldungnr;
 	Plz plznr;
+	Mangel mangelnr;
 	Adresse addAdresse;
+	Login login;
+	Login loginnr;
+	
 	
 	
 	
@@ -85,8 +111,14 @@ public class ClientRMI {
 	AdresseRO adresseRO;
 	ObjekttypRO  objekttypRO;
 	ArbeitstypRO arbeitstypRO;
-
-
+	MangelstatusRO mangelstatusRO;
+	MeldungstypRO meldungstypRO;
+	ProjektGuMitarbeiterRO projektGuMitarbeiterRO;
+	LoginRO loginRO;
+	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
+	BauherrRO bauherrRO;
+	GuMitarbeiterRO guMitarbeiterRO;
+	
 	public static void main(String[] args) {
 		try {
 			// Init Application over RMI
@@ -118,6 +150,13 @@ public class ClientRMI {
 		String adresseROName = "adresseRO";
 		String objekttypROName = "objekttypRO";
 		String arbeitstyROName = "arbeitstypRO";
+		String mangelstatusROName = "mangelstatusRO";
+		String meldungstypROName = "meldungstypRO";
+		String projektGuMitarbeiterROName = "projektGuMitarbeiterRO";
+		String loginROName = "loginRO";
+		String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
+		String bauherrROName = "bauherrRO";
+		String guMitarbeiterROName = "guMitarbeiterRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -128,6 +167,14 @@ public class ClientRMI {
 		this.adresseRO = (AdresseRO) Naming.lookup(url + adresseROName);
 		this.objekttypRO = (ObjekttypRO) Naming.lookup(url + objekttypROName);
 		this.arbeitstypRO = (ArbeitstypRO) Naming.lookup(url + arbeitstyROName);
+		this.mangelstatusRO = (MangelstatusRO) Naming.lookup(url + mangelstatusROName);
+		this.meldungstypRO = (MeldungstypRO) Naming.lookup(url + meldungstypROName);
+		this.projektGuMitarbeiterRO = (ProjektGuMitarbeiterRO) Naming.lookup(url + projektGuMitarbeiterROName);
+		this.loginRO = (LoginRO) Naming.lookup(url+ loginROName);
+		this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
+		this.bauherrRO = (BauherrRO) Naming.lookup(url + bauherrROName);
+		this.guMitarbeiterRO = (GuMitarbeiterRO) Naming.lookup(url + guMitarbeiterROName);
+
 
 		
 	}
@@ -440,6 +487,204 @@ public class ClientRMI {
 		}
 			return mangelOfProjekt;
 	}
+
+	public Mangel getMangelById(Integer mangelId) {
+		try {
+			mangelnr = mangelRO.findById(mangelId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return mangelnr;
+	}
+
+	public void updateMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			mangelRO.update(mangel);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Mangelstatus> getAllMangelStatus() {
+		try {
+			mangelstatus = mangelstatusRO.findAllMangelStatus();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return mangelstatus;
+	}
+
+	public void addMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			mangelRO.add(mangel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Meldungstyp> getAllMeldungstyp() {
+		// TODO Auto-generated method stub
+		try {
+			meldungstyp = meldungstypRO.findAll();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return meldungstyp;
+	}
+
+	public void addMeldung(Meldung meldung) {
+		// TODO Auto-generated method stub
+		try {
+			meldungRO.add(meldung);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Meldung> getAllMeldungByMangel(Mangel mangel) {
+		// TODO Auto-generated method stub
+		try {
+			meldungByMangel = meldungRO.findAllMeldungByMangel(mangel);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return meldungByMangel;
+	}
+
+	public List<Subunternehmen> getUnternehmenByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			subunternehmen = subunternehmenRO.findAllSubunternehmenByProjekt(projekt2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block<
+			e.printStackTrace();
+		}
+			return subunternehmen;
+	}
+
+	public List<ProjektGuMitarbeiter> getBauleiterByProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			bauleiter = projektGuMitarbeiterRO.findAllBauleiterByProjekt(projekt2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			return bauleiter;
+	}
+
+	public Login getLoginByName(String name) {
+		// TODO Auto-generated method stub
+		try {
+			login = loginRO.findByName(name);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return login;
+	}
+
+	public Login getLoginById(Integer loginId) {
+		// TODO Auto-generated method stub
+		try {
+			loginnr = loginRO.findById(loginId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return loginnr;
+	}
+
+	public void updateProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			projektRO.update(projekt2);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void addSuMitarbeiterByProjekt(ProjektSuMitarbeiter psum) {
+		// TODO Auto-generated method stub
+		try {
+			projektSuMitarbeiterRO.add(psum);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Bauherr> getAllBauherr() {
+		// TODO Auto-generated method stub
+		try {
+			bauherren = bauherrRO.findAll();
+//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return bauherren;
+	}
+
+	public void addProjekt(Projekt projekt2) {
+		// TODO Auto-generated method stub
+		try {
+			projektRO.add(projekt2);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<GuMitarbeiter> getAllGuMitarbeiter() {
+		// TODO Auto-generated method stub
+		try {
+			guMitarbeiter = guMitarbeiterRO.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return guMitarbeiter;
+	}
+
+	public void addGuMitarbeiterByProjekt(
+			ProjektGuMitarbeiter projektGuMitarbeiter) {
+		// TODO Auto-generated method stub
+		try {
+			projektGuMitarbeiterRO.add(projektGuMitarbeiter);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 		
 }
 
