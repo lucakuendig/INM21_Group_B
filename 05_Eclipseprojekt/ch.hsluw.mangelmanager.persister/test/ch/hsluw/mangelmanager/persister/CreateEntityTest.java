@@ -76,7 +76,6 @@ public class CreateEntityTest {
 	EntityManager em = null;
 
 	@Test
-<<<<<<< HEAD
 	public void fillLists() {
 		listAdresse = new ArrayList<Adresse>();
 		listArbeitstyp = new ArrayList<Arbeitstyp>();
@@ -392,44 +391,42 @@ public class CreateEntityTest {
 				9, 11), null));
 
 		listMangel.add(new Mangel(listProjekt.get(0), "Alpha",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(15), "Dachrinne verstopft"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(15),
+				"Dachrinne verstopft"));
 		listMangel.add(new Mangel(listProjekt.get(0), "Beta",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(15), "Dachrinne abgefallen"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(15),
+				"Dachrinne abgefallen"));
 		listMangel.add(new Mangel(listProjekt.get(0), "Rotz",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(15), "Wand eingestürtzt"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(15),
+				"Wand eingestürtzt"));
 		listMangel.add(new Mangel(listProjekt.get(0), "Beeler",
 				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
-						05, 15), new GregorianCalendar(2015, 06, 01),
-				listMangelstatus.get(1), listLogin.get(15),
+						06, 01), listMangelstatus.get(1), listLogin.get(15),
 				"Staubsauger verstopft"));
-		listMangel
-				.add(new Mangel(listProjekt.get(0), "Bekcic",
-						new GregorianCalendar(2015, 5, 05),
-						new GregorianCalendar(2015, 05, 15),
-						new GregorianCalendar(2015, 06, 01), listMangelstatus
-								.get(1), listLogin.get(15), "Ventilator kaputt"));
+		listMangel.add(new Mangel(listProjekt.get(0), "Bekcic",
+				new GregorianCalendar(2015, 5, 05),
+
+				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(1),
+				listLogin.get(15), "Ventilator kaputt"));
 		listMangel.add(new Mangel(listProjekt.get(1), "Lothar",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(16), "Hier könnte ihre Werbung stehen"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(16),
+				"Hier könnte ihre Werbung stehen"));
 		listMangel.add(new Mangel(listProjekt.get(2), "Demogramma",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(17), "Hier könnte ihre Werbung stehen"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(17),
+				"Hier könnte ihre Werbung stehen"));
 		listMangel.add(new Mangel(listProjekt.get(3), "Demogrummu",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(18), "Hier könnte ihre Werbung stehen"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(18),
+				"Hier könnte ihre Werbung stehen"));
 		listMangel.add(new Mangel(listProjekt.get(4), "Projektproblem1",
-				new GregorianCalendar(2015, 5, 05), null,
-				new GregorianCalendar(2015, 06, 01), listMangelstatus.get(0),
-				listLogin.get(19), "Hier könnte ihre Werbung stehen"));
+				new GregorianCalendar(2015, 5, 05), new GregorianCalendar(2015,
+						06, 01), listMangelstatus.get(0), listLogin.get(19),
+				"Hier könnte ihre Werbung stehen"));
 
 		listMeldung.add(new Meldung(listMangel.get(0), listMeldungstyp.get(1),
 				"Bitte schnell beheben", new GregorianCalendar(2015, 5, 05),
@@ -448,78 +445,7 @@ public class CreateEntityTest {
 				listLogin.get(15)));
 
 		em = JpaUtil.createEntityManager();
-=======
-	public void test() {
-		
-		
-		EntityManager em =JpaUtil.createEntityManager();
-		
-		Plz plz1 = new Plz(3984, "Fiesch");
-		Adresse adresse1 = new Adresse("Cheera 13", plz1);
-		
-		Plz plz2 = new Plz(3930, "Visp");
-		Adresse adresse2 = new Adresse("Härpfelstrasse 12", plz2);
-		
-		Bauherr bauherr1 = new Bauherr("Schmid", "Josef", "0278744545" ,adresse2);
-		List<Bauherr> bauherren = new ArrayList<Bauherr>();
-		bauherren.add(bauherr1);
-		
-		Bauherr bauherr2 = new Bauherr("Cihan", "Demir", "0800888888" ,new Adresse("Entenstrasse",new Plz(6207, "Nottwil")));
-		List<Bauherr> bauherren2 = new ArrayList<Bauherr>();
-		bauherren2.add(bauherr2);
-		
-		Bauherr bauherr3 = new Bauherr("Mike", "Iten", "9393939393", new Adresse("Entenstrasse 2", new Plz(6203, "Schwubidu")));
-		bauherren2.add(bauherr3);
-		
-		Arbeitstyp arbeitstyp1 = new Arbeitstyp("Umbau");
-		Projektstatus projektstatus1 = new Projektstatus("abgeschlossen");
-		
-		Projekt projekt1 = new Projekt(adresse1, "sdasdasd", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Projekt projekt2 = new Projekt(adresse1, "Umbau Hütte auf Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Projekt projekt3 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp mit bauherren2", bauherren2,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 11, 10), projektstatus1);
-		Projekt projekt4 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp mit bauherren2", bauherren2,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 8, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Projekt projekt5 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 10, 10), projektstatus1);
-		Projekt projekt6 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Projekt projekt7 = new Projekt(adresse1, "Umbau Hütte auf der Fieschalp", bauherren,  new GregorianCalendar(2015, 6, 06), new GregorianCalendar(2015, 7, 06),
-				new Objekttyp("Alphütte"), arbeitstyp1, new GregorianCalendar(2015, 8, 10), projektstatus1);
-		Subunternehmen su1 = new Subunternehmen(adresse2, "ddduuud", "daahahah");
-		Subunternehmen su2 = new Subunternehmen(adresse2, "ddduussssssud", "ddddddaahahah");
-		Login login = new Login("sandro", "1234", "sandroritz@ewcom.ch", new Rolle("admin"));
-		
-		Mangel mangel1 = new Mangel(projekt1, "Mangel 1", new GregorianCalendar(2015,8,06), new GregorianCalendar(2015,6,06), new Mangelstatus("offen"), login, "Es liegt ein Mangel vor");
-		Rolle ro1 = new Rolle();
-		Login lo1 = new Login("hape", "ddd", "dudu@dudu.ch", ro1);
-		SuMitarbeiter sm1 = new SuMitarbeiter("peter", "Hans", "38383883", su1, lo1);
-		Login lo2 = new Login("ddhape", "ddd", "dudu@dudu.ch", ro1);
-		SuMitarbeiter sm2 = new SuMitarbeiter("dd", "Hans", "383asd83883", su1, lo2);
-		Login lo3 = new Login("hape", "ddd", "dudu@dudu.ch", ro1);
-		SuMitarbeiter sm3 = new SuMitarbeiter("peschr", "Hadns", "383dss83883", su2, lo3);
-		
-		ProjektSuMitarbeiter psm1 = new ProjektSuMitarbeiter(projekt6, sm1, null, null);
-		ProjektSuMitarbeiter psm2 = new ProjektSuMitarbeiter(projekt6, sm2, null, null);
-		ProjektSuMitarbeiter psm3 = new ProjektSuMitarbeiter(projekt5, sm1, null, null);
-		ProjektSuMitarbeiter psm4 = new ProjektSuMitarbeiter(projekt3, sm1, null, null);
-		ProjektSuMitarbeiter psm5 = new ProjektSuMitarbeiter(projekt2, sm3, null, null);
-		
-		Mangelstatus mangelstatus1 = new Mangelstatus("Mangel behoben");
-		Mangelstatus mangelstatus2 = new Mangelstatus("Mangel offen");
-		
-		Mangel mangel2 = new Mangel(projekt1, "Mangel 2", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), mangelstatus1, login, "Schlampige Arbeit");
-		Mangel mangel3 = new Mangel(projekt1, "Mangel 3", new GregorianCalendar(2015,5,12), new GregorianCalendar(2015,6,06), mangelstatus2, login, "suber");
-		Meldungstyp meldungstyp1 = new Meldungstyp("TestMeldung");
-		
-		Meldung meldung1 = new Meldung(mangel2, meldungstyp1, "meldungtext", new GregorianCalendar(2015,5,13), true, login);
-		Meldung meldung2 = new Meldung(mangel3, meldungstyp1, "nid so guet", new GregorianCalendar(2015,5,13),true, login);
-		
-	
-		
->>>>>>> c8a22782e1c6d3e01aaedd9de8b27e7cc18a2ec1
+
 		em.getTransaction().begin();
 		for (Rolle rolle : listRolle) {
 			em.persist(rolle);
@@ -584,5 +510,4 @@ public class CreateEntityTest {
 
 		em.getTransaction().commit();
 	}
-
 }
