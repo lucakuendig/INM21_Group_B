@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
@@ -28,6 +29,7 @@ import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
 import ch.hsluw.mangelmanager.rmi.bauherr.BauherrRO;
+import ch.hsluw.mangelmanager.rmi.gumitarbeiter.GuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.login.LoginRO;
 import ch.hsluw.mangelmanager.rmi.mangel.MangelRO;
 import ch.hsluw.mangelmanager.rmi.mangelstatus.MangelstatusRO;
@@ -81,7 +83,8 @@ public class ClientRMI {
 	List<Mangel> mangelOfProjekt;
 	List<Meldung> meldungByMangel;
 	List<Bauherr> bauherren;
-	
+	List<GuMitarbeiter> guMitarbeiter;
+ 	
 	List<Mangelstatus> mangelstatus;
 	List<Meldungstyp> meldungstyp;
 	String anzProjekte;
@@ -114,6 +117,7 @@ public class ClientRMI {
 	LoginRO loginRO;
 	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
 	BauherrRO bauherrRO;
+	GuMitarbeiterRO guMitarbeiterRO;
 	
 	public static void main(String[] args) {
 		try {
@@ -152,6 +156,7 @@ public class ClientRMI {
 		String loginROName = "loginRO";
 		String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
 		String bauherrROName = "bauherrRO";
+		String guMitarbeiterROName = "guMitarbeiterRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -168,6 +173,7 @@ public class ClientRMI {
 		this.loginRO = (LoginRO) Naming.lookup(url+ loginROName);
 		this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
 		this.bauherrRO = (BauherrRO) Naming.lookup(url + bauherrROName);
+		this.guMitarbeiterRO = (GuMitarbeiterRO) Naming.lookup(url + guMitarbeiterROName);
 
 
 		
@@ -651,6 +657,32 @@ public class ClientRMI {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public List<GuMitarbeiter> getAllGuMitarbeiter() {
+		// TODO Auto-generated method stub
+		try {
+			guMitarbeiter = guMitarbeiterRO.findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			return guMitarbeiter;
+	}
+
+	public void addGuMitarbeiterByProjekt(
+			ProjektGuMitarbeiter projektGuMitarbeiter) {
+		// TODO Auto-generated method stub
+		try {
+			projektGuMitarbeiterRO.add(projektGuMitarbeiter);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 		

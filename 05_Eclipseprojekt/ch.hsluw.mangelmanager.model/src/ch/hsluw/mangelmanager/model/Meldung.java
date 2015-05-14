@@ -38,7 +38,7 @@ public class Meldung implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	private Mangel fkMangel;
 
 	@ManyToOne
@@ -178,6 +178,11 @@ public class Meldung implements Serializable {
 	public void setZeitpunkt(GregorianCalendar zeitpunkt) {
 		this.zeitpunkt = zeitpunkt;
 	}
+	
+	@Override
+    public String toString() {
+        return text;
+    }
 
 	
 	

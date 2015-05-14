@@ -60,7 +60,7 @@ public class Mangel implements Serializable {
 	@ManyToOne
 	private Login fkLogin;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy="fkMangel", fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="fkMangel", fetch = FetchType.EAGER)
 	private List<Meldung> fkMeldung;
 
 	public Mangel() {
@@ -231,6 +231,11 @@ public class Mangel implements Serializable {
 	public void setFkMeldung(List<Meldung> fkMeldung) {
 		this.fkMeldung = fkMeldung;
 	}
+	
+	@Override
+    public String toString() {
+        return id +" - " +  bezeichnung;
+    }
 	
 	
 	

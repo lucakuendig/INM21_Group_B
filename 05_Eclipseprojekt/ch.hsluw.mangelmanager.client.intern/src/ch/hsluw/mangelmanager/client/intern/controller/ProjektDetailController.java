@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Objekttyp;
@@ -57,6 +58,7 @@ public class ProjektDetailController implements Initializable {
 	RootController rootController = null;
 	DateFormat formatDatum = null;
 	DateTimeFormatter dateFormatter = null;
+	GregorianCalendar timestamp = null;
 	
 	public void setRootController(RootController rootController) {
 		// TODO Auto-generated method stub
@@ -144,6 +146,11 @@ public class ProjektDetailController implements Initializable {
 	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterStartdatum;
 	@FXML
 	private TableColumn<ProjektGuMitarbeiter, String> colProjektBauleiterEnddatum;
+	
+	@FXML
+	private ComboBox<GuMitarbeiter> cbProjektBauleiter;
+	
+	
 
 
 	ObservableList<ProjektGuMitarbeiter> bauleiterData;
@@ -155,7 +162,7 @@ public class ProjektDetailController implements Initializable {
 		client = ClientRMI.getInstance();
 		formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-		
+		timestamp = (GregorianCalendar) Calendar.getInstance();
 		
 		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
 			cbProjektPlz.getItems().add(plz.getPlz());
@@ -168,6 +175,9 @@ public class ProjektDetailController implements Initializable {
 		}
 		for (Subunternehmen subunternehmen : FXCollections.observableArrayList(client.getAllSubunternehmen())) {
 			cbSubunternehmen.getItems().add(subunternehmen);
+		}
+		for (GuMitarbeiter guMitarbeiter : FXCollections.observableArrayList(client.getAllGuMitarbeiter())) {
+			cbProjektBauleiter.getItems().add(guMitarbeiter);
 		}
 		
 		
@@ -481,15 +491,17 @@ public class ProjektDetailController implements Initializable {
 	
 	@FXML
 	public void projektAddUnternehmen(){
-		GregorianCalendar c1 = (GregorianCalendar) Calendar.getInstance();
-		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),c1, null));
+		
+		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),timestamp, null));
 		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
 		tblProjektUnternehmen.setItems(subunternehmenData);
 	}
 	
 	@FXML
 	public void projektAddBauleiter(){
-		
+		client.addGuMitarbeiterByProjekt(new ProjektGuMitarbeiter(projekt, cbProjektBauleiter.getSelectionModel().getSelectedItem(), timestamp, null));
+		bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
+		tblProjektBauleiter.setItems(bauleiterData);
 	}
 	
 	@FXML

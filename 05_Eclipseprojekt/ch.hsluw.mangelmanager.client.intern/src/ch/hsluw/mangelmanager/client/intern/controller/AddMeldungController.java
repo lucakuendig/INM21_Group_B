@@ -43,11 +43,10 @@ public class AddMeldungController implements Initializable {
 		}
 
 		Login login = null;
-		Meldungstyp meldungstyp = null;
 		
 		
 		@FXML
-		public TextField lblMeldungProjekt;
+		public Label lblMeldungProjekt;
 		@FXML 
 		private TextField txtMeldungstyp;
 		@FXML
