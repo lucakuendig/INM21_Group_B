@@ -285,14 +285,54 @@ public class ProjektDetailController implements Initializable {
 	}
 	
 	@FXML
-	public void showMeldungByMangel(){
-		meldungData = FXCollections.observableArrayList(client.getAllMeldungByMangel(tblProjektMangel.getSelectionModel().getSelectedItem()));
-		tblProjektMeldung.setItems(meldungData);
+	public void showMeldungByMangelOderMangel(MouseEvent t) throws IOException{
+		if(t.getClickCount() ==1){
+			meldungData = FXCollections.observableArrayList(client.getAllMeldungByMangel(tblProjektMangel.getSelectionModel().getSelectedItem()));
+			tblProjektMeldung.setItems(meldungData);
+		}
+		else if (t.getClickCount() == 2) {
+			System.out.println(tblProjektMangel.getSelectionModel().getSelectedItem()
+					.getId());
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/mangel/InnererMangel.fxml"));
+				AnchorPane innererMangel = (AnchorPane) loader.load();
+
+				MangelDetailController mangelDetailController = loader
+						.<MangelDetailController> getController();
+				mangelDetailController.setRootController(rootController);
+
+				mangelDetailController.init(tblProjektMangel.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(innererMangel);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	@FXML
 	public void projektCancel(){
-		
+		try {
+			// Load ProjektDetail View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/projekt/AusseresProjekt.fxml"));
+			AnchorPane ausseresProjekt = (AnchorPane) loader.load();
+			
+			ProjektController projektController = loader.<ProjektController>getController();
+			projektController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(ausseresProjekt);
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void fillCbAnsprechperson(){
@@ -337,6 +377,90 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	public void projektAddMeldung(){
 		
+	}
+	
+	
+		
+	
+	
+	@FXML
+	private void showMeldungDetail(MouseEvent t) throws IOException{
+		if (t.getClickCount() == 2) {
+			System.out.println(tblProjektMeldung.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/InnereMeldung.fxml"));
+				AnchorPane innereMeldung = (AnchorPane) loader.load();
+
+				MeldungDetailController meldungDetailController = loader
+						.<MeldungDetailController> getController();
+				meldungDetailController.setRootController(rootController);
+
+				meldungDetailController.init(tblProjektMeldung.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(innereMeldung);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@FXML
+	private void showSubunternehmenDetail(MouseEvent t) throws IOException{
+		if (t.getClickCount() == 2) {
+			System.out.println(tblProjektUnternehmen.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/unternehmen/InneresUnternehmen.fxml"));
+				AnchorPane inneresUnternehmen = (AnchorPane) loader.load();
+
+				SubUnternehmenDetailController subunternehmenDetailController = loader
+						.<SubUnternehmenDetailController> getController();
+				subunternehmenDetailController.setRootController(rootController);
+
+				subunternehmenDetailController.init(tblProjektUnternehmen.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(inneresUnternehmen);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	@FXML
+	private void showBauleiterDetail(MouseEvent t) throws IOException{
+		if (t.getClickCount() == 2) {
+			System.out.println(tblProjektBauleiter.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/person/InnerePerson.fxml"));
+				AnchorPane innerePerson = (AnchorPane) loader.load();
+
+				PersonDetailController personDetailController = loader
+						.<PersonDetailController> getController();
+				personDetailController.setRootController(rootController);
+
+				personDetailController.init(tblProjektBauleiter.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(innerePerson);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@FXML

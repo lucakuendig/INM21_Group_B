@@ -223,7 +223,21 @@ public class SubUnternehmenDetailController implements Initializable {
 		
 		@FXML
 		private void unternehmenCancel(){
-			
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/unternehmen/AusseresUnternehmen.fxml"));
+				AnchorPane unternehmen = (AnchorPane) loader.load();
+				
+				SubUnternehmenController subunternehmenController = loader.<SubUnternehmenController>getController();
+				subunternehmenController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(unternehmen);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		@FXML
 		private void plzChange(){
