@@ -55,13 +55,14 @@ public class AddProjektController implements Initializable {
 			// TODO Auto-generated method stub
 			this.rootController = rootController;
 		}
-		
+		@FXML
+		private TextField txtProjektBezeichnung;
 		@FXML
 		private ChoiceBox<Bauherr> cbProjektBauherr;
 		@FXML
 		private TextField txtProjektStrasse;
 		@FXML 
-		private ComboBox<Integer> cbProjektPlz;
+		private ComboBox<Plz> cbProjektPlz;
 		@FXML
 		private Label lblProjektOrt;
 		@FXML 
@@ -77,19 +78,22 @@ public class AddProjektController implements Initializable {
 		private void addProjekt(){
 			b = new ArrayList<Bauherr>();
 			b.add(cbProjektBauherr.getSelectionModel().getSelectedItem());
+			projekt = new Projekt();
+			Adresse a = new Adresse(txtProjektStrasse.getText(), cbProjektPlz.getSelectionModel().getSelectedItem());
+			projekt.setBezeichnung(txtProjektBezeichnung.getText());
 			projekt.setFkBauherr(b);
-			projekt.setFkAdresse(new Adresse(txtProjektStrasse.getText(), new Plz(cbProjektPlz.getSelectionModel().getSelectedItem(), lblProjektOrt.getText())));
-			projekt.getFkAdresse().setStrasse(txtProjektStrasse.getText());		
+			projekt.setFkAdresse(a);
 			projekt.setFkObjekttyp(cbProjektObjekttyp.getSelectionModel().getSelectedItem());
 			projekt.setFkArbeitstyp(cbProjektArbeitstyp.getSelectionModel().getSelectedItem());
 			projekt.setStartDatum(new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()));
 			projekt.setFaelligkeitsDatum(new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()));
+			client.addAdresse(a);
 			client.addProjekt(projekt);		
 			
 			try {
 				// Load Projekt overview.
 				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(ShowMethodClass.class
+				loader.setLocation(Main.class
 						.getResource("view/projekt/AusseresProjekt.fxml"));
 				AnchorPane projekte = (AnchorPane) loader.load();
 				
@@ -111,7 +115,7 @@ public class AddProjektController implements Initializable {
 		@FXML
 		private void plzChange(){
 			if (cbProjektPlz.getSelectionModel().getSelectedItem() != null){
-				lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
+				lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
 			}else{	
 			}
 		}
@@ -129,7 +133,7 @@ public class AddProjektController implements Initializable {
 				cbProjektBauherr.getItems().add(bauherr);
 			}
 			for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-				cbProjektPlz.getItems().add(plz.getPlz());
+				cbProjektPlz.getItems().add(plz);
 			}
 			for (Objekttyp objekttyp : FXCollections.observableArrayList(client.getAllObjekttyp())) {
 				cbProjektObjekttyp.getItems().add(objekttyp);

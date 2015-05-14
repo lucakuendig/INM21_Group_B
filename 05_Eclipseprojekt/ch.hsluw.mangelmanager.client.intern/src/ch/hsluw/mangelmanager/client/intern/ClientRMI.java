@@ -684,6 +684,19 @@ public class ClientRMI {
 		}
 		
 	}
+
+	public void updateProjektGuMitarbeiter(ProjektGuMitarbeiter lastBauleiter) {
+		// TODO Auto-generated method stub
+		try {
+			projektGuMitarbeiterRO.update(lastBauleiter);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 		
 }

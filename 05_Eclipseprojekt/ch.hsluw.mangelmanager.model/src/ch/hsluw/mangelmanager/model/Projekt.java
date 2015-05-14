@@ -50,7 +50,7 @@ public class Projekt implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne (cascade = CascadeType.ALL)
+	@ManyToOne (cascade = CascadeType.PERSIST)
 	private Adresse fkAdresse;
 	private String bezeichnung;
 	private String beschreibung;

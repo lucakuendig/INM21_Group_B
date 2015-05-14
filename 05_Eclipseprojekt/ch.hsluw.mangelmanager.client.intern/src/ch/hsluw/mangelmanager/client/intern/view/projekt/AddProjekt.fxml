@@ -97,6 +97,8 @@
                   <DatePicker fx:id="dateProjektStartdatum" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <DatePicker fx:id="dateProjektFaellig" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <Label fx:id="lblProjektOrt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="Bezeichnung" GridPane.rowIndex="7" />
+                  <TextField fx:id="txtProjektBezeichnung" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                </children>
             </GridPane>
          </children>
