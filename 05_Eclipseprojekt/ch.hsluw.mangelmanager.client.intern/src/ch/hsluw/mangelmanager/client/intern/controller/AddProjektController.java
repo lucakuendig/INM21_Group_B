@@ -40,6 +40,7 @@ import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Objekttyp;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class AddProjektController implements Initializable {
@@ -50,6 +51,7 @@ public class AddProjektController implements Initializable {
 		DateFormat formatDatum = null;
 		DateTimeFormatter dateFormatter = null;
 		List<Bauherr> b = null;
+		Adresse a = null;
 		
 		public void setRootController(RootController rootController) {
 			// TODO Auto-generated method stub
@@ -78,16 +80,10 @@ public class AddProjektController implements Initializable {
 		private void addProjekt(){
 			b = new ArrayList<Bauherr>();
 			b.add(cbProjektBauherr.getSelectionModel().getSelectedItem());
-			projekt = new Projekt();
-			Adresse a = new Adresse(txtProjektStrasse.getText(), cbProjektPlz.getSelectionModel().getSelectedItem());
-			projekt.setBezeichnung(txtProjektBezeichnung.getText());
-			projekt.setFkBauherr(b);
-			projekt.setFkAdresse(a);
-			projekt.setFkObjekttyp(cbProjektObjekttyp.getSelectionModel().getSelectedItem());
-			projekt.setFkArbeitstyp(cbProjektArbeitstyp.getSelectionModel().getSelectedItem());
-			projekt.setStartDatum(new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()));
-			projekt.setFaelligkeitsDatum(new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()));
-			client.addAdresse(a);
+			
+			a = new Adresse(txtProjektStrasse.getText(), cbProjektPlz.getSelectionModel().getSelectedItem());
+			projekt = new Projekt(a,txtProjektBezeichnung.getText(),b, new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()),null,cbProjektObjekttyp.getSelectionModel().getSelectedItem(),cbProjektArbeitstyp.getSelectionModel().getSelectedItem(), new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()),new Projektstatus("Offen"));
+			//client.addAdresse(a);
 			client.addProjekt(projekt);		
 			
 			try {
@@ -116,7 +112,6 @@ public class AddProjektController implements Initializable {
 		private void plzChange(){
 			if (cbProjektPlz.getSelectionModel().getSelectedItem() != null){
 				lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
-			}else{	
 			}
 		}
 

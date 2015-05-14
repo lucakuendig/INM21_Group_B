@@ -65,9 +65,9 @@ public class AddUnternehmenController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			client = new ClientRMI();
+			client = new ClientRMI().getInstance();
 			for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-				cbUnternehmenPlz.getItems().add(cbUnternehmenPlz.getSelectionModel().getSelectedItem());
+				cbUnternehmenPlz.getItems().add(plz);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,7 +80,6 @@ public class AddUnternehmenController implements Initializable {
 	private void plzChange(){
 		if (cbUnternehmenPlz.getSelectionModel().getSelectedItem() != null){
 			lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
-		}else{	
 		}
 	}
 	@FXML
