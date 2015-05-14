@@ -147,7 +147,7 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
-                                          <Button layoutX="393.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMangel" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Button layoutX="393.0" layoutY="353.0" mnemonicParsing="false" onAction="#projektAddMangel" text="Mangel hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -165,6 +165,7 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
+                                          <Button layoutX="266.0" layoutY="276.0" mnemonicParsing="false" onAction="#projektAddMeldung" prefHeight="26.0" prefWidth="193.0" text="Meldung hinzufügen" />
                                        </children>
                                     </AnchorPane>
                                 </items>

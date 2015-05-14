@@ -376,7 +376,23 @@ public class ProjektDetailController implements Initializable {
 	}
 	@FXML
 	public void projektAddMeldung(){
-		
+		try {
+			// Load ProjektDetail View.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/meldung/AddMeldung.fxml"));
+			AnchorPane addMeldung = (AnchorPane) loader.load();
+			
+			AddMeldungController addMeldungController = loader.<AddMeldungController>getController();
+			addMeldungController.setRootController(rootController);
+			
+			addMeldungController.init(tblProjektMangel.getSelectionModel().getSelectedItem());
+			rootController.rootLayout.setCenter(addMeldung);
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
