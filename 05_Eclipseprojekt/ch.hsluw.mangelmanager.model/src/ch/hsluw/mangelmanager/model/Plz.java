@@ -25,6 +25,7 @@ public class Plz implements Serializable {
 
 	@Id
 	private Integer plz;
+	@Id
 	private String ort;
 
 	public Plz() {
