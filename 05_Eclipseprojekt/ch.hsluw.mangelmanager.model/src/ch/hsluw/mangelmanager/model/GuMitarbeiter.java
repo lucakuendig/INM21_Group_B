@@ -29,7 +29,7 @@ public class GuMitarbeiter extends Person implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne (cascade = CascadeType.ALL)
 	private Login fkLogin;
 	
 	public GuMitarbeiter(){

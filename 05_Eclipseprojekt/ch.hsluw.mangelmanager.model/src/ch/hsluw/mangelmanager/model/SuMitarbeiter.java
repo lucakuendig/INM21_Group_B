@@ -35,12 +35,12 @@ public class SuMitarbeiter extends Person implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@XmlInverseReference(mappedBy = "fkSuMitarbeiter")
 	private Subunternehmen fkSubunternehmen;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Login fkLogin;
-	@OneToMany (cascade = CascadeType.PERSIST, mappedBy = "fkMitarbeiter", fetch = FetchType.EAGER)
+	@OneToMany (mappedBy = "fkMitarbeiter", fetch = FetchType.EAGER)
 	private List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter;
 
 	public SuMitarbeiter() {

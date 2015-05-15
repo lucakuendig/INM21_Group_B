@@ -33,7 +33,7 @@ public interface GuMitarbeiterRO extends Remote {
 	 * @throws RemoteException
 	 * @throws Exception
 	 */
-	GuMitarbeiter add(GuMitarbeiter entity) throws RemoteException, Exception;
+	 GuMitarbeiter add(GuMitarbeiter entity) throws RemoteException, Exception;
 
 	/**
 	 * Updatet die übergebene Entity.

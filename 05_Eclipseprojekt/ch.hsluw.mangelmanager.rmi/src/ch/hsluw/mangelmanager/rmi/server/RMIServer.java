@@ -40,8 +40,12 @@ import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusRO;
 import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusROImpl;
 import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterROImpl;
+import ch.hsluw.mangelmanager.rmi.rolle.RolleRO;
+import ch.hsluw.mangelmanager.rmi.rolle.RolleROImpl;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenROImpl;
+import ch.hsluw.mangelmanager.rmi.sumitarbeiter.SuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.sumitarbeiter.SuMitarbeiterROImpl;
 
 
 public class RMIServer {
@@ -89,7 +93,9 @@ public class RMIServer {
 				ProjektSuMitarbeiterRO projektSuMitarbeiterRO = new ProjektSuMitarbeiterROImpl();
 				BauherrRO bauherrRO = new BauherrROImpl();
 				GuMitarbeiterRO guMitarbeiterRO = new GuMitarbeiterROImpl();
+				SuMitarbeiterRO suMitarbeiterRO = new SuMitarbeiterROImpl();
 				ProjektstatusRO projektstatusRO = new ProjektstatusROImpl();
+				RolleRO rolleRO = new RolleROImpl();
 
 				registry.rebind("personRO", personRO);
 				registry.rebind("projektRO", projektRO);
@@ -108,6 +114,8 @@ public class RMIServer {
 				registry.rebind("bauherrRO", bauherrRO);
 				registry.rebind("guMitarbeiterRO", guMitarbeiterRO);
 				registry.rebind("projektstatusRO", projektstatusRO);
+				registry.rebind("suMitarbeiterRO", suMitarbeiterRO);
+				registry.bind("rolleRO", rolleRO);
 
 				
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
@@ -133,6 +141,8 @@ public class RMIServer {
 				registry.unbind("bauherrRO");
 				registry.unbind("guMitarbeiterRO");
 				registry.unbind("projektstatusRO");
+				registry.unbind("suMitarbeiterRO");
+				registry.unbind("rolleRO");
 
 				System.out.println("RMI Server wird heruntergefahren!\n");
 

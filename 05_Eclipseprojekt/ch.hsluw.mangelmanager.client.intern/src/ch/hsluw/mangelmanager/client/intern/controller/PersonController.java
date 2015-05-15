@@ -200,7 +200,6 @@ public class PersonController implements Initializable {
 			AddPersonController addPersonController = loader.<AddPersonController>getController();
 			addPersonController.setRootController(rootController);
 			
-			addPersonController.init();
 			rootController.rootLayout.setCenter(addPerson);
 			
 

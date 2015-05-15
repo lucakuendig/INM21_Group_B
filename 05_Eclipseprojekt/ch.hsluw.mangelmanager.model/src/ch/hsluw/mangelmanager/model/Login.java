@@ -40,7 +40,7 @@ public class Login implements Serializable {
 	private String benutzername;
 	private String passwort;
 	private String email;
-	@ManyToOne (cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Rolle fkrolle;
 
 	public Login() {
