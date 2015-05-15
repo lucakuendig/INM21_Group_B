@@ -1,6 +1,5 @@
 package ch.hsluw.mangelmanager.persister;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -47,7 +46,7 @@ import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 public class CreateEntityTest {
 
 	/**
-	 * Create Lists
+	 * Create empty Lists
 	 */
 	List<Adresse> listAdresse = null;
 	List<Arbeitstyp> listArbeitstyp = null;
@@ -72,9 +71,11 @@ public class CreateEntityTest {
 	List<Rolle> listRolle = null;
 	List<Subunternehmen> listSubunternehmen = null;
 	List<SuMitarbeiter> listSuMitarbeiter = null;
-
 	EntityManager em = null;
 
+	/**
+	 * Change lists to ArrayLists and fill them with Data
+	 */
 	@Test
 	public void fillLists() {
 		listAdresse = new ArrayList<Adresse>();
@@ -102,11 +103,7 @@ public class CreateEntityTest {
 		listSuMitarbeiter = new ArrayList<SuMitarbeiter>();
 
 		/**
-		 * Fill Lists
-		 */
-
-		/**
-		 * fill listPlz from csv
+		 * fill listPlz from csv Ortschaften.csv with PLZ und Ortschaftsnamen
 		 */
 		try {
 			FileReader fileread = new FileReader("Ortschaften.csv");
@@ -124,6 +121,10 @@ public class CreateEntityTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		/**
+		 * Fill Lists with data
+		 */
 		listAdresse.add(new Adresse("Baustrasse 1", listPlz.get(2)));
 		listAdresse.add(new Adresse("Baustrasse 2", listPlz.get(2)));
 		listAdresse.add(new Adresse("Baustrasse 3", listPlz.get(2)));
@@ -443,9 +444,14 @@ public class CreateEntityTest {
 		listMeldung.add(new Meldung(listMangel.get(4), listMeldungstyp.get(1),
 				"Es ist zu heiss!!!", new GregorianCalendar(2015, 5, 05), true,
 				listLogin.get(15)));
-
+		/**
+		 * create Entity Manger
+		 */
 		em = JpaUtil.createEntityManager();
 
+		/**
+		 * Persists the lists
+		 */
 		em.getTransaction().begin();
 		for (Rolle rolle : listRolle) {
 			em.persist(rolle);
