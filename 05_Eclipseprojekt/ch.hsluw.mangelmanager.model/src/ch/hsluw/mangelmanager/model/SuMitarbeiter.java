@@ -14,6 +14,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
+
 
 /**
  * Diese Klasse bildet einen SuMitarbeiter ab.
@@ -32,6 +36,7 @@ public class SuMitarbeiter extends Person implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	@ManyToOne(cascade = CascadeType.PERSIST)
+	@XmlInverseReference(mappedBy = "fkSuMitarbeiter")
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Login fkLogin;

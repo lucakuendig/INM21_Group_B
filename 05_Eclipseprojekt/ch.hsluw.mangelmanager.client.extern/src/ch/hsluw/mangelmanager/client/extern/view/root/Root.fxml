@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.extern.controller.RootController">
+   <left>
+      <AnchorPane prefHeight="255.0" prefWidth="153.0" styleClass="background" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="rootPersonen" layoutY="41.0" mnemonicParsing="false" onAction="#showPersonen" prefHeight="42.0" prefWidth="150.0" text="Personen" AnchorPane.topAnchor="41.0" />
+            <Button fx:id="rootUnternehmen" layoutY="85.0" mnemonicParsing="false" onAction="#showUnternehmen" prefHeight="42.0" prefWidth="150.0" text="Unternehmen" AnchorPane.topAnchor="85.0" />
+            <Button fx:id="rootProjekt" layoutY="128.0" mnemonicParsing="false" onAction="#showProjekte" prefHeight="42.0" prefWidth="150.0" text="Projekte" AnchorPane.topAnchor="128.0" />
+            <Button fx:id="rootMaengel" layoutY="172.0" mnemonicParsing="false" onAction="#showMaengel" prefHeight="42.0" prefWidth="150.0" text="Mängel" AnchorPane.topAnchor="172.0" />
+            <Button fx:id="rootMeldungen" layoutY="115.0" mnemonicParsing="false" onAction="#showMeldungen" prefHeight="42.0" prefWidth="150.0" text="Meldungen" AnchorPane.topAnchor="213.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Benutzer">
+              <items>
+                <MenuItem fx:id="rootLogout" mnemonicParsing="false" onAction="#logout" text="Logout" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <AnchorPane fx:id="rootCenter" minWidth="200.0" styleClass="background" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

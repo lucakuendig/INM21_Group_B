@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="background" stylesheets="@../../Design.css"  prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.PersonController">
+   <children>
+     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+       <children>
+     	 <TableView fx:id="tblPerson" prefHeight="375.0" prefWidth="480.0">
+          <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+        <columns>
+          <TableColumn fx:id="colPersonId" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="colPersonName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="colPersonVorname" prefWidth="75.0" text="Vorname" />
+                  <TableColumn fx:id="colPersonTyp" prefWidth="75.0" text="Personentyp" />
+            <TableColumn fx:id="colPersonUnternehmen" prefWidth="95.0" text="Unternehmen" />
+            <TableColumn fx:id="colPersonTelefon" prefWidth="64.0" text="Telefon" />
+                  <TableColumn fx:id="colPersonBenutzername" prefWidth="75.0" text="Benutzername" />
+                  <TableColumn fx:id="colPersonEmail" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="colPersonRolle" prefWidth="75.0" text="Rolle" />
+        </columns>
+      </TableView>
+   </children>
+   </StackPane>
+   <ChoiceBox fx:id="cbPersonSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
+	<TextField fx:id="txtPersonSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnPersonNew" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#addPerson" prefWidth="75.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
+      <Button fx:id="btnPersonDelete" layoutX="46.0" layoutY="8.0" mnemonicParsing="false" onAction="#deletePerson" prefWidth="75.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
+	 </children>
+</AnchorPane>

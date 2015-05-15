@@ -12,6 +12,9 @@
 bin/
 gen/
 
+# Tomcat PlumEE
+apache-tomee-1.7.1-plume\
+
 # Local configuration file (sdk path, etc)
 local.properties
 

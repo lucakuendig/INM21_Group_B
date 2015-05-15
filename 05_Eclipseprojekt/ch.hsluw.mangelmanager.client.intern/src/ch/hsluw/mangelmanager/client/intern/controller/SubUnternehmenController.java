@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;

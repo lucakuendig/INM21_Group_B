@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,7 +39,7 @@ public class RootController implements Initializable {
 		try {
 			// Load Person overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ShowMethodClass.class
+			loader.setLocation(Main.class
 					.getResource("view/person/AusserePerson.fxml"));
 			AnchorPane personen = (AnchorPane) loader.load();
 			
@@ -78,7 +77,7 @@ public class RootController implements Initializable {
 		try {
 			// Load Projekt overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ShowMethodClass.class
+			loader.setLocation(Main.class
 					.getResource("view/projekt/AusseresProjekt.fxml"));
 			AnchorPane projekte = (AnchorPane) loader.load();
 			
@@ -97,7 +96,7 @@ public class RootController implements Initializable {
 		try {
 			// Load Maengel overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ShowMethodClass.class
+			loader.setLocation(Main.class
 					.getResource("view/mangel/AussererMangel.fxml"));
 			AnchorPane maengel = (AnchorPane) loader.load();
 			
@@ -116,7 +115,7 @@ public class RootController implements Initializable {
 		try {
 			// Load Meldung overview.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(ShowMethodClass.class
+			loader.setLocation(Main.class
 					.getResource("view/meldung/AussereMeldung.fxml"));
 			AnchorPane meldungen = (AnchorPane) loader.load();
 			
