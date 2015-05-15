@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<children>
+      <GridPane layoutY="33.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="30.0" />
+            <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="25.0" minWidth="25.0" prefWidth="25.0" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
+              <panes>
+                <TitledPane animated="false" text="Login">
+                  <content>
+                    <AnchorPane>
+                           <children>
+                              <GridPane layoutX="8.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="NEVER" prefWidth="100.0" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                  <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextField fx:id="txtPersonBenutzername" prefWidth="200.0" GridPane.columnIndex="1" />
+                                    <TextField fx:id="txtPersonEmail" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Benutzername" />
+                                    <Label text="E-Mail" GridPane.rowIndex="1" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="Projekte">
+                  <content>
+                    <AnchorPane>
+                           <children>
+                              <TableView fx:id="tblPersonProjekt" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn fx:id="colPersonProjektid" minWidth="-1.0" prefWidth="-1.0" text="ID" />
+                                    <TableColumn fx:id="colPersonProjektbezeichnung" minWidth="-1.0" prefWidth="-1.0" text="Bezeichnung" />
+                                    <TableColumn fx:id="colPersonProjektbauherr" minWidth="-1.0" prefWidth="-1.0" text="Bauherr" />
+                                    <TableColumn fx:id="colPersonProjektadresse" minWidth="-1.0" prefWidth="-1.0" text="Adresse" />
+                                    <TableColumn fx:id="colPersonProjektmaengel" minWidth="-1.0" prefWidth="-1.0" text="Mängel" />
+                                    <TableColumn fx:id="colPersonProjektmeldungen" minWidth="-1.0" prefWidth="-1.0" text="Meldungen" />
+                                    <TableColumn fx:id="colPersonProjektabgeschlossen" minWidth="-1.0" prefWidth="-1.0" text="Abgeschlossen" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+            <GridPane layoutY="33.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="594.0" AnchorPane.topAnchor="33.0">
+              <columnConstraints>
+                <ColumnConstraints fillWidth="false" hgrow="NEVER" minWidth="99.0" />
+                  <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="20.0" minWidth="20.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="50.0" vgrow="NEVER" />
+              </rowConstraints>
+               <children>
+                  <Label text="Personal Nr.">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Name" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Vorname" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Strasse" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Telefon" GridPane.rowIndex="5">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <GridPane GridPane.columnIndex="2" GridPane.rowIndex="7">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="70.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="btnPersonAbbrechen" mnemonicParsing="false" onAction="#personCancel" text="Abbrechen" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="20.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="btnPersonSpeichern" mnemonicParsing="false" onAction="#personSave" text="Speichern" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </GridPane>
+                  <Label text="Unternehmen" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <TextField fx:id="txtPersonTelefon" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <ChoiceBox fx:id="cbPersonUnternehmen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Label fx:id="lblPersonId" text="Label" GridPane.columnIndex="2" />
+                  <Label text="PLZ / Ort" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <GridPane GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <columnConstraints>
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="122.0" minWidth="52.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="69.0" minWidth="0.0" prefWidth="11.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <ComboBox fx:id="cbPersonPlz" prefWidth="100.0" />
+                        <Label fx:id="lblPersonOrt" text="Label" GridPane.columnIndex="2" />
+                     </children>
+                  </GridPane>
+                  <Label fx:id="lblPersonName" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label fx:id="lblPersonVorname" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtPersonStrasse" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+	</children>
+</AnchorPane>

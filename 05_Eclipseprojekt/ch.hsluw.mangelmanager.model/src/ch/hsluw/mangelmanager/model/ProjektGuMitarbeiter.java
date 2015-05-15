@@ -35,9 +35,9 @@ public class ProjektGuMitarbeiter implements Serializable {
 	@Id
 	@GeneratedValue
 	private int id;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Projekt fkProjekt;
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private GuMitarbeiter fkMitarbeiter;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar startDatum;

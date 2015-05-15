@@ -57,7 +57,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		@FXML
 		public TextField txtUnternehmenStrasse;
 		@FXML
-		public ComboBox cbUnternehmenPlz;
+		public ComboBox<Plz> cbUnternehmenPlz;
 		@FXML
 		public Label lblUnternehmenOrt;
 		
@@ -107,9 +107,9 @@ public class SubUnternehmenDetailController implements Initializable {
 			
 			
 			try {
-				client = new ClientRMI();
+				client = ClientRMI.getInstance();
 				for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-					cbUnternehmenPlz.getItems().add(plz.getPlz());
+					cbUnternehmenPlz.getItems().add(plz);
 				}
 				
 			} catch (Exception e) {
@@ -125,7 +125,7 @@ public class SubUnternehmenDetailController implements Initializable {
 			setCellValueFactoryTblUnternehmenProjekt();
 			setCellValueFactoryTblUnternehmenMiterbeiter();
 				try {
-				client = ClientRMI.getInstance();
+
 				formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 				dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 				subunternehmen = client.getSubunternehmenById(subunternehmenId);
@@ -133,8 +133,8 @@ public class SubUnternehmenDetailController implements Initializable {
 				txtUnternehmenName.setText(subunternehmen.getName());
 				txtUnternehmenTelefon.setText(subunternehmen.getTelefon());
 				txtUnternehmenStrasse.setText(subunternehmen.getFkAdresse().getStrasse());
-				cbUnternehmenPlz.setValue(subunternehmen.getFkAdresse().getPlz().getPlz());
-				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
+				cbUnternehmenPlz.setValue(subunternehmen.getFkAdresse().getPlz());
+				lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
 				
 				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen));
 				data2 = FXCollections.observableArrayList(client.getAllSubunternehmenMitarbeiter(subunternehmen));
@@ -198,7 +198,7 @@ public class SubUnternehmenDetailController implements Initializable {
 			
 			subunternehmen.setName(txtUnternehmenName.getText());
 			subunternehmen.setTelefon(txtUnternehmenTelefon.getText());
-			subunternehmen.getFkAdresse().getPlz().setPlz((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem());
+			subunternehmen.getFkAdresse().setPlz(cbUnternehmenPlz.getSelectionModel().getSelectedItem());
 			subunternehmen.getFkAdresse().getPlz().setOrt(lblUnternehmenOrt.getText());
 			subunternehmen.getFkAdresse().setStrasse(txtUnternehmenStrasse.getText());
 			client.updateSubunternehmen(subunternehmen);
@@ -242,7 +242,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		@FXML
 		private void plzChange(){
 			if (cbUnternehmenPlz.getSelectionModel().getSelectedItem() != null){
-				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
+				lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
 			}else{	
 			}
 		}

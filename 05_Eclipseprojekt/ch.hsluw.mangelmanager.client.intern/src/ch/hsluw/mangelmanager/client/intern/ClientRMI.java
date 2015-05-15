@@ -24,6 +24,7 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
@@ -40,6 +41,7 @@ import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusRO;
 import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
 
@@ -71,6 +73,7 @@ public class ClientRMI {
 	List<Person> person;
 	List<Projekt> projekte;
 	List<Projekt> suprojekte;
+	List<Projektstatus> projektstatus;
 	List<Subunternehmen> subunternehmen;
 	
 	List<Mangel> maengel;
@@ -118,6 +121,7 @@ public class ClientRMI {
 	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
 	BauherrRO bauherrRO;
 	GuMitarbeiterRO guMitarbeiterRO;
+	ProjektstatusRO projektstatusRO;
 	
 	public static void main(String[] args) {
 		try {
@@ -157,6 +161,7 @@ public class ClientRMI {
 		String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
 		String bauherrROName = "bauherrRO";
 		String guMitarbeiterROName = "guMitarbeiterRO";
+		String projektstatusROName = "projektstatusRO";
 		
 		this.personRO = (PersonRO) Naming.lookup(personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -174,6 +179,7 @@ public class ClientRMI {
 		this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
 		this.bauherrRO = (BauherrRO) Naming.lookup(url + bauherrROName);
 		this.guMitarbeiterRO = (GuMitarbeiterRO) Naming.lookup(url + guMitarbeiterROName);
+		this.projektstatusRO = (ProjektstatusRO) Naming.lookup(url + projektstatusROName);
 
 
 		
@@ -683,6 +689,32 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		
+	}
+
+	public void updateProjektGuMitarbeiter(ProjektGuMitarbeiter lastBauleiter) {
+		// TODO Auto-generated method stub
+		try {
+			projektGuMitarbeiterRO.update(lastBauleiter);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Projektstatus> getAllProjektstatus() {
+		// TODO Auto-generated method stub
+	
+		try {
+			projektstatus =	projektstatusRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return projektstatus;
 	}
 	
 		

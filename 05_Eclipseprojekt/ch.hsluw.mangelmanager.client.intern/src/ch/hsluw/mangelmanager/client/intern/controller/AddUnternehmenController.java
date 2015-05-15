@@ -58,16 +58,16 @@ public class AddUnternehmenController implements Initializable {
 	@FXML
 	public TextField txtUnternehmenStrasse;
 	@FXML
-	public ComboBox cbUnternehmenPlz;
+	public ComboBox<Plz> cbUnternehmenPlz;
 	@FXML
 	public Label lblUnternehmenOrt;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			client = new ClientRMI();
+			client = new ClientRMI().getInstance();
 			for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-				cbUnternehmenPlz.getItems().add(plz.getPlz());
+				cbUnternehmenPlz.getItems().add(plz);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,16 +79,14 @@ public class AddUnternehmenController implements Initializable {
 	@FXML
 	private void plzChange(){
 		if (cbUnternehmenPlz.getSelectionModel().getSelectedItem() != null){
-			lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
-		}else{	
+			lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
 		}
 	}
 	@FXML
 	private void unternehmenSave() {
 		
-		adresse = new Adresse(txtUnternehmenStrasse.getText(), client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()));
+		adresse = new Adresse(txtUnternehmenStrasse.getText(),cbUnternehmenPlz.getSelectionModel().getSelectedItem());
 		subunternehmen = new Subunternehmen(adresse, txtUnternehmenName.getText(), txtUnternehmenTelefon.getText());
-		client.addAdresse(adresse);
 		client.addSubunternehmen(subunternehmen);
 		
 		try {

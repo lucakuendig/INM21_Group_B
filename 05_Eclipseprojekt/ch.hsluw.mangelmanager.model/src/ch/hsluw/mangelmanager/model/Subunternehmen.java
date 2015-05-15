@@ -17,6 +17,9 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlTransient;
+
+import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 /**
  * Diese Klasse bildet ein Subunternehmen ab.
@@ -42,6 +45,7 @@ public class Subunternehmen implements Serializable {
 	private String name;
 	private String telefon;
 	@OneToMany(cascade = CascadeType.PERSIST, mappedBy ="fkSubunternehmen", fetch = FetchType.EAGER)
+	@XmlInverseReference(mappedBy = "fkSubunternehmen")
 	private List<SuMitarbeiter> fkSuMitarbeiter;
 
 	public Subunternehmen() {

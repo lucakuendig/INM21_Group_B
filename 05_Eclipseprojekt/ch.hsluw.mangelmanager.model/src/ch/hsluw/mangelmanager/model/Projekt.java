@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -50,12 +51,12 @@ public class Projekt implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne (cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Adresse fkAdresse;
 	private String bezeichnung;
 	private String beschreibung;
 
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Bauherr> fkBauherr;
 
 	@Temporal(TemporalType.DATE)
@@ -63,15 +64,15 @@ public class Projekt implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar endDatum;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Objekttyp fkObjekttyp;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Arbeitstyp fkArbeitstyp;
 	@Temporal(TemporalType.DATE)
 	private GregorianCalendar faelligkeitsDatum;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	private Projektstatus fkProjektstatus;
 
 	@OneToMany (cascade = CascadeType.PERSIST, mappedBy="fkProjekt", fetch = FetchType.EAGER)

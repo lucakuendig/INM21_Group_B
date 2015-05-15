@@ -72,4 +72,8 @@ public class Plz implements Serializable {
 		this.ort = ort;
 	}
 
+	@Override
+    public String toString() {
+        return String.valueOf(plz);
+    }
 }

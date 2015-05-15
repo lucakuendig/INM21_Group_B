@@ -75,7 +75,7 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private TextField txtProjektStrasse;
 	@FXML 
-	private ComboBox<Integer> cbProjektPlz;
+	private ComboBox<Plz> cbProjektPlz;
 	@FXML
 	private Label lblProjektOrt;
 	@FXML 
@@ -165,7 +165,7 @@ public class ProjektDetailController implements Initializable {
 		timestamp = (GregorianCalendar) Calendar.getInstance();
 		
 		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-			cbProjektPlz.getItems().add(plz.getPlz());
+			cbProjektPlz.getItems().add(plz);
 		}
 		for (Objekttyp objekttyp : FXCollections.observableArrayList(client.getAllObjekttyp())) {
 			cbProjektObjekttyp.getItems().add(objekttyp);
@@ -181,13 +181,7 @@ public class ProjektDetailController implements Initializable {
 		}
 		
 		
-		
-		// Client interaction
-		try {
-			client = ClientRMI.getInstance();	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		setCellValueFactoryTblMangel();
 		setCellValueFactoryTblMeldung();
 		setCellValueFactoryTblUnternehmen();
@@ -199,14 +193,17 @@ public class ProjektDetailController implements Initializable {
 	
 	private void setCellValueFactoryTblBauleiter() {
 		// TODO Auto-generated method stub
-		colProjektBauleiterId.setCellValueFactory(new PropertyValueFactory<ProjektGuMitarbeiter, String>("idProjekt"));
-
+		colProjektBauleiterId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkProjekt().getId().toString());
+		    }
+		});
 		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getNachname());
 		    }
 		});
-		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		colProjektBauleiterVorname.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getVorname());
 		    }
@@ -272,12 +269,16 @@ public class ProjektDetailController implements Initializable {
 			lblPersonId.setText(projekt.getId().toString());
 			lblProjektBauherr.setText(projekt.getFkBauherr().get(0).getNachname() + " " +projekt.getFkBauherr().get(0).getVorname());
 			txtProjektStrasse.setText(projekt.getFkAdresse().getStrasse());
-			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz().getPlz());
-			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
+			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz());
+			lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
+			cbProjektArbeitstyp.setValue(projekt.getFkArbeitstyp());
 			cbProjektObjekttyp.getSelectionModel().select(projekt.getFkObjekttyp());
-			cbProjektArbeitstyp.getSelectionModel().select(projekt.getFkArbeitstyp());
+			
 			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
-			dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
+			if(dateProjektEnddatum.getValue() != null){
+				dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
+
+			}
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
 			
 			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
@@ -355,14 +356,30 @@ public class ProjektDetailController implements Initializable {
 	public void projektSave(){
 	
 		projekt.getFkAdresse().setStrasse(txtProjektStrasse.getText());
-		projekt.getFkAdresse().getPlz().setPlz((Integer) cbProjektPlz.getSelectionModel().getSelectedItem());
+		projekt.getFkAdresse().getPlz().setPlz((Integer) cbProjektPlz.getSelectionModel().getSelectedItem().getPlz());
 		projekt.getFkAdresse().getPlz().setOrt(lblProjektOrt.getText());
 		
 		projekt.setFkObjekttyp(cbProjektObjekttyp.getSelectionModel().getSelectedItem());
 		projekt.setFkArbeitstyp(cbProjektArbeitstyp.getSelectionModel().getSelectedItem());
-		projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
-
+		if(dateProjektEnddatum.getValue() != null){
+			projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
+		}
 		client.updateProjekt(projekt);		
+		try {
+			// Load Projekt overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/projekt/AusseresProjekt.fxml"));
+			AnchorPane projekte = (AnchorPane) loader.load();
+			
+			ProjektController projektController = loader.<ProjektController>getController();
+			projektController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(projekte);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void projektAddMangel(){
@@ -491,7 +508,6 @@ public class ProjektDetailController implements Initializable {
 	
 	@FXML
 	public void projektAddUnternehmen(){
-		
 		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),timestamp, null));
 		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
 		tblProjektUnternehmen.setItems(subunternehmenData);
@@ -499,7 +515,13 @@ public class ProjektDetailController implements Initializable {
 	
 	@FXML
 	public void projektAddBauleiter(){
-		client.addGuMitarbeiterByProjekt(new ProjektGuMitarbeiter(projekt, cbProjektBauleiter.getSelectionModel().getSelectedItem(), timestamp, null));
+		//Letzter Bauleiter Enddatum sezten
+		ProjektGuMitarbeiter lastBauleiter= tblProjektBauleiter.getItems().get(tblProjektBauleiter.getItems().size()-1);
+		lastBauleiter.setEndDatum(timestamp);
+		client.updateProjektGuMitarbeiter(lastBauleiter);
+		bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
+		tblProjektBauleiter.setItems(bauleiterData);
+		client.addGuMitarbeiterByProjekt(new ProjektGuMitarbeiter(projekt, cbProjektBauleiter.getSelectionModel().getSelectedItem(), timestamp, null));		
 		bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
 		tblProjektBauleiter.setItems(bauleiterData);
 	}
@@ -507,8 +529,7 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private void plzChange(){
 		if (cbProjektPlz.getSelectionModel().getSelectedItem() != null){
-			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
-		}else{	
+			lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
 		}
 	}
 
