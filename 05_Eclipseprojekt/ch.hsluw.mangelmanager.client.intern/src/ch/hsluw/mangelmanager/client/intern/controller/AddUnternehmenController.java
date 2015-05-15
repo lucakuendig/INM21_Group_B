@@ -87,7 +87,6 @@ public class AddUnternehmenController implements Initializable {
 		
 		adresse = new Adresse(txtUnternehmenStrasse.getText(),cbUnternehmenPlz.getSelectionModel().getSelectedItem());
 		subunternehmen = new Subunternehmen(adresse, txtUnternehmenName.getText(), txtUnternehmenTelefon.getText());
-		client.addAdresse(adresse);
 		client.addSubunternehmen(subunternehmen);
 		
 		try {

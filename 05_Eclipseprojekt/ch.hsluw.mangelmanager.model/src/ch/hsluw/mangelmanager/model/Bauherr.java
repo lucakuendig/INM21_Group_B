@@ -29,7 +29,7 @@ public class Bauherr extends Person implements Serializable {
 	@Id
 	@GeneratedValue	
 	private Integer id;
-	@OneToOne (cascade = CascadeType.PERSIST)
+	@OneToOne (cascade = CascadeType.ALL)
 	private Adresse fkAdresse;
 
 	public Bauherr() {

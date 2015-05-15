@@ -28,7 +28,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.client.intern.ShowMethodClass;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -52,6 +51,7 @@ public class AddProjektController implements Initializable {
 		DateTimeFormatter dateFormatter = null;
 		List<Bauherr> b = null;
 		Adresse a = null;
+		Projektstatus ps = null;
 		
 		public void setRootController(RootController rootController) {
 			// TODO Auto-generated method stub
@@ -82,8 +82,8 @@ public class AddProjektController implements Initializable {
 			b.add(cbProjektBauherr.getSelectionModel().getSelectedItem());
 			
 			a = new Adresse(txtProjektStrasse.getText(), cbProjektPlz.getSelectionModel().getSelectedItem());
-			projekt = new Projekt(a,txtProjektBezeichnung.getText(),b, new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()),null,cbProjektObjekttyp.getSelectionModel().getSelectedItem(),cbProjektArbeitstyp.getSelectionModel().getSelectedItem(), new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()),new Projektstatus("Offen"));
-			client.addAdresse(a);
+			projekt = new Projekt(a,txtProjektBezeichnung.getText(),b, new GregorianCalendar(dateProjektStartdatum.getValue().getYear(), dateProjektStartdatum.getValue().getMonthValue() -1, dateProjektStartdatum.getValue().getDayOfMonth()),null,cbProjektObjekttyp.getSelectionModel().getSelectedItem(),cbProjektArbeitstyp.getSelectionModel().getSelectedItem(), new GregorianCalendar(dateProjektFaellig.getValue().getYear(), dateProjektFaellig.getValue().getMonthValue() -1, dateProjektFaellig.getValue().getDayOfMonth()),ps);
+			//client.addAdresse(a);
 			client.addProjekt(projekt);		
 			
 			try {
@@ -135,6 +135,11 @@ public class AddProjektController implements Initializable {
 			}
 			for (Arbeitstyp arbeitstyp : FXCollections.observableArrayList(client.getAllArbeitstyp())) {
 				cbProjektArbeitstyp.getItems().add(arbeitstyp);
+			}
+			for (Projektstatus projektstatus : FXCollections.observableArrayList(client.getAllProjektstatus())) {
+				if(projektstatus.getBezeichnung().equals("Offen")){
+					ps = projektstatus;
+				}
 			}
 			
 			// Client interaction
