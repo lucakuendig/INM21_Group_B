@@ -165,7 +165,7 @@
                                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                              </columnResizePolicy>
                                           </TableView>
-                                          <Button layoutX="266.0" layoutY="276.0" mnemonicParsing="false" onAction="#projektAddMeldung" prefHeight="26.0" prefWidth="193.0" text="Meldung hinzufügen" />
+                                          <Button layoutX="266.0" layoutY="276.0" mnemonicParsing="false" onAction="#projektAddMeldung" prefHeight="26.0" prefWidth="193.0" text="Meldung hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -215,7 +215,7 @@
                                  </columns>
                               </TableView>
                               <Button layoutX="550.0" layoutY="460.0" mnemonicParsing="false" onAction="#projektAddBauleiter" text="Hinzufügen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                              <ComboBox fx:id="cbProjektBauleiter" layoutX="603.0" layoutY="443.0" prefHeight="25.0" prefWidth="184.0" promptText="Bauleiter wählen" />
+                              <ComboBox fx:id="cbProjektBauleiter" layoutX="603.0" layoutY="446.0" prefHeight="25.0" prefWidth="184.0" promptText="Bauleiter wählen" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="158.0" />
                            </children>
                         </AnchorPane>
                   </content>

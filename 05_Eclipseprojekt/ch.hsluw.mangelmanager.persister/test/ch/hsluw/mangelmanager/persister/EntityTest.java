@@ -84,97 +84,149 @@ public class EntityTest {
 		}
 	}
 
-//	@Test
-//	public void projektAdresseSaveTest() {
-//		try {
-//			ProjektDAO projektdao = new ProjektDAOImpl();
-//			PlzDAO plzdao = new PlzDAOImpl();
-//			List<Plz> listPlz = plzdao.findAllPlz();
-//
-//			BauherrDAO bauherrdao = new BauherrDAOImpl();
-//			List<Bauherr> listBauherr = bauherrdao.findAllBauherr();
-//
-//			ProjektstatusDAO projektstatusdao = new ProjektstatusDAOImpl();
-//			List<Projektstatus> listProjektstatus = projektstatusdao
-//					.findAllProjektstatus();
-//
-//			ObjekttypDAO objekttypdao = new ObjekttypDAOImpl();
-//			List<Objekttyp> listObjekttyp = objekttypdao.findAllObjekttyp();
-//
-//			ArbeitstypDAO arbeitstypdao = new ArbeitstypDAOImpl();
-//			List<Arbeitstyp> listArbeitstyp = arbeitstypdao.findAllArbeitstyp();
-//
-//			AdresseDAO adressdao = new AdresseDAOImpl();
-//			Adresse adresse = new Adresse("Test Strasse 12", listPlz.get(99));
-//			adressdao.save(adresse);
-//			
-//		Projekt projekt = new Projekt(adresse, "Projekt Test",
-//					listBauherr, new GregorianCalendar(2014, 4, 01), null,
-//					listObjekttyp.get(5), listArbeitstyp.get(0),
-//					new GregorianCalendar(2015, 4, 20),
-//					listProjektstatus.get(0));
-//
-//			projektdao.save(projekt); 
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			fail("Couldn't save Projekt / Adresse");
-//		}
-//	}
+	// @Test
+	// public void projektAdresseSaveTest() {
+	// try {
+	// ProjektDAO projektdao = new ProjektDAOImpl();
+	// PlzDAO plzdao = new PlzDAOImpl();
+	// List<Plz> listPlz = plzdao.findAllPlz();
+	//
+	// BauherrDAO bauherrdao = new BauherrDAOImpl();
+	// List<Bauherr> listBauherr = bauherrdao.findAllBauherr();
+	//
+	// ProjektstatusDAO projektstatusdao = new ProjektstatusDAOImpl();
+	// List<Projektstatus> listProjektstatus = projektstatusdao
+	// .findAllProjektstatus();
+	//
+	// ObjekttypDAO objekttypdao = new ObjekttypDAOImpl();
+	// List<Objekttyp> listObjekttyp = objekttypdao.findAllObjekttyp();
+	//
+	// ArbeitstypDAO arbeitstypdao = new ArbeitstypDAOImpl();
+	// List<Arbeitstyp> listArbeitstyp = arbeitstypdao.findAllArbeitstyp();
+	//
+	// AdresseDAO adressdao = new AdresseDAOImpl();
+	// Adresse adresse = new Adresse("Test Strasse 12", listPlz.get(99));
+	// adressdao.save(adresse);
+	//
+	// Projekt projekt = new Projekt(adresse, "Projekt Test",
+	// listBauherr, new GregorianCalendar(2014, 4, 01), null,
+	// listObjekttyp.get(5), listArbeitstyp.get(0),
+	// new GregorianCalendar(2015, 4, 20),
+	// listProjektstatus.get(0));
+	//
+	// projektdao.save(projekt);
+	//
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// fail("Couldn't save Projekt / Adresse");
+	// }
+	// }
 	/**
 	 * Test if Projekts are delete able
 	 */
 
-	@Test(expected=AssertionError.class)
-		public void deleteProjekt() {
-		try	{
-				ProjektDAO projektdao = new ProjektDAOImpl();
-				List<Projekt> listProjekt = projektdao.findAllProjekt();
-				Projekt projekt = listProjekt.get(listProjekt.size() - 1);
-				projektdao.delete(projekt);
-			} catch (Exception e) {
-				e.printStackTrace();
-				fail("Couldn't delete Projekt");
-			}
-			}
-	/**
-	 * Test if Projekts are delete able
-	 */
-		@Test(expected=AssertionError.class)
-		public void deleteProjektById() {
-		try	{
-				ProjektDAO projektdao = new ProjektDAOImpl();
-				projektdao.deleteProjektById(109);
-			} catch (Exception e) {
-				e.printStackTrace();
-				fail("Couldn't delete Projekt");
-			}
+	@Test(expected = AssertionError.class)
+	public void deleteProjekt() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size() - 1);
+			projektdao.delete(projekt);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't delete Projekt");
+		}
 	}
-		/**
-		 * Test if Projekte are findable by ID
-		 */
-		@Test
-		public void findProjektById() {
-		try	{
-				ProjektDAO projektdao = new ProjektDAOImpl();
-				System.out.println(projektdao.findProjektById(109).getBezeichnung());
-			} catch (Exception e) {
-				e.printStackTrace();
-				fail("Couldn't find Projekt by ID");
-			}
-			}
-		@Test
-		public void findProjektByArbeitstyp() {
-		try	{
-			ArbeitstypDAO arbeitstypdao = new ArbeitstypDAOImpl();
-			List<Arbeitstyp> listArbeitstyp = arbeitstypdao.findAllArbeitstyp();
-			Arbeitstyp arbeitstyp = listArbeitstyp.get(listArbeitstyp.size() - 1);
-				ProjektDAO projektdao = new ProjektDAOImpl();
-				System.out.println(projektdao.findProjektByArbeitstyp("Umbau").size());
-			} catch (Exception e) {
-				e.printStackTrace();
-				fail("Couldn't find Projekt by Arbeitstyp");
-			}
-			}
-}
 
+	/**
+	 * Test if Projekts are delete able
+	 */
+	@Test(expected = AssertionError.class)
+	public void deleteProjektById() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			projektdao.deleteProjektById(109);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't delete Projekt");
+		}
+	}
+
+	/**
+	 * Test if Projekte are findable by ID
+	 */
+	@Test
+	public void findProjektById() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			System.out
+					.println(projektdao.findProjektById(109).getBezeichnung());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by ID");
+		}
+	}
+
+	/**
+	 * Test if Projekte are findable by Arbeitstyp
+	 */
+	@Test
+	public void findProjektByArbeitstyp() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			assertTrue(projektdao.findProjektByArbeitstyp("Umbau").size() > 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Arbeitstyp");
+		}
+	}
+
+	@Test
+	public void findProjektByBezeichnung() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			assertTrue(projektdao.findProjektByBezeichnung("Projekt Alpha")
+					.size() > 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Bezeichnung");
+		}
+	}
+
+	@Test
+	public void findProjektByProjektstatus() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			assertTrue(projektdao.findProjektByProjektstatus("Abgeschlossen")
+					.size() > 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Projektstatus");
+		}
+	}
+
+	@Test
+	public void findProjektByOrt() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size() - 1);
+			assertTrue(projektdao.findProjektByOrt(projekt.getFkAdresse().getPlz().getOrt()).size() > 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Ort");
+		}
+	}
+	@Test
+	public void findProjektByPlz() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size() - 1);
+			assertTrue(projektdao.findProjektByPlz(projekt.getFkAdresse().getPlz().getPlz().toString()).size() > 0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Plz");
+		}
+	}
+}
