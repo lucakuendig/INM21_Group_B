@@ -266,17 +266,6 @@ public class EntityTest {
 			fail("Couldn't find Projekt by Arbeitstyp");
 		}
 	}
-	@Test
-	public void findProjektByDatumFromTillEnd() {
-		try {
-			ProjektDAO projektdao = new ProjektDAOImpl();
-			List<Projekt> listProjekt = projektdao.findAllProjekt();
-			Projekt projekt = listProjekt.get(listProjekt.size()-5);
-			assertTrue(projektdao.findProjektByDatumFromTillEnd(projekt.getStartDatum().getTime(), projekt.getEndDatum().getTime()).size()>0);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Couldn't find Projekt by DatumFromTillEnd");
-		}
-	}
+	
 
 }
