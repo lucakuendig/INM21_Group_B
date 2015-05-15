@@ -47,10 +47,8 @@ public class AddMeldungController implements Initializable {
 		
 		@FXML
 		public Label lblMeldungProjekt;
-		@FXML 
-		private TextField txtMeldungstyp;
 		@FXML
-		private ChoiceBox<Mangel> cbMeldungMangel;
+		private Label lblMeldungMangel;
 		@FXML
 		private ChoiceBox<Meldungstyp> cbMeldungstyp;
 		@FXML
@@ -62,9 +60,6 @@ public class AddMeldungController implements Initializable {
 			// TODO Auto-generated method stub
 			try {
 				client = new ClientRMI();
-				for (Mangel mangel : client.getAllMangel()) {
-					cbMeldungMangel.getItems().add(mangel);
-				}
 				for (Meldungstyp meldungstyp : client.getAllMeldungstyp()) {
 					cbMeldungstyp.getItems().add(meldungstyp);
 				}	
@@ -81,7 +76,7 @@ public class AddMeldungController implements Initializable {
 			try {	
 				this.mangel = mangel;
 				lblMeldungProjekt.setText(mangel.getFkProjekt().getBezeichnung());
-				cbMeldungMangel.getSelectionModel().select(mangel);
+				lblMeldungMangel.setText(mangel.getBezeichnung());
 				login = client.getLoginById(Main.loginId);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
