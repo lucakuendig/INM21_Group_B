@@ -229,4 +229,54 @@ public class EntityTest {
 			fail("Couldn't find Projekt by Plz");
 		}
 	}
+	
+	@Test
+	public void findProjektByBauherr() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size()-1);
+			assertTrue(projektdao.findProjektByBauherr(projekt.getFkBauherr().get(0).getNachname()).size()>0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Bauherr");
+		}
+	}
+	@Test
+	public void findProjektByObjekttyp() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size()-1);
+			assertTrue(projektdao.findProjektByObjekttyp(projekt.getFkObjekttyp().getBezeichnung()).size()>0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Objekttyp");
+		}
+	}
+	@Test
+	public void findProjektArbeitstyp() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size()-1);
+			assertTrue(projektdao.findProjektByArbeitstyp(projekt.getFkArbeitstyp().getBezeichnung()).size()>0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by Arbeitstyp");
+		}
+	}
+	@Test
+	public void findProjektByDatumFromTillEnd() {
+		try {
+			ProjektDAO projektdao = new ProjektDAOImpl();
+			List<Projekt> listProjekt = projektdao.findAllProjekt();
+			Projekt projekt = listProjekt.get(listProjekt.size()-5);
+			assertTrue(projektdao.findProjektByDatumFromTillEnd(projekt.getStartDatum().getTime(), projekt.getEndDatum().getTime()).size()>0);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail("Couldn't find Projekt by DatumFromTillEnd");
+		}
+	}
+
 }
