@@ -176,23 +176,7 @@ public class ProjektDAOImpl implements ProjektDAO {
 		return projektListe != null ? projektListe : new ArrayList<Projekt>();
 	}
 
-	@Override
-	public List<Projekt> findProjektByDatumFromTillEnd(Date fromDatum, Date endDatum) {
 
-		EntityManager em = JpaUtil.createEntityManager();
-
-		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findByDatumFromTillEnd",
-				Projekt.class);
-
-		tQuery.setParameter("fromDatum", fromDatum);
-		tQuery.setParameter("endDatum", endDatum);
-
-		List<Projekt> projektListe = tQuery.getResultList();
-
-		em.close();
-
-		return projektListe != null ? projektListe : new ArrayList<Projekt>();
-	}
 
 	@Override
 	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen) {

@@ -134,7 +134,6 @@ public interface ProjektDAO {
 	 * @param endDatum
 	 * @return
 	 */
-	public List<Projekt> findProjektByDatumFromTillEnd(Date fromDatum, Date endDatum);
 
 	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen);
 }
