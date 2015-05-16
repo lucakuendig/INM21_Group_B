@@ -483,6 +483,18 @@ public class CreateEntityTest {
 		for (Bauherr bauherr : listBauherr) {
 			em.persist(bauherr);
 		}
+		for (Bauherr bauherr : listBauherr2) {
+			em.persist(bauherr);
+		}
+		for (Bauherr bauherr : listBauherr3) {
+			em.persist(bauherr);
+		}
+		for (Bauherr bauherr : listBauherr4) {
+			em.persist(bauherr);
+		}
+		for (Bauherr bauherr : listBauherr5) {
+			em.persist(bauherr);
+		}
 		for (Subunternehmen subunternehmen : listSubunternehmen) {
 			em.persist(subunternehmen);
 		}
