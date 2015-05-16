@@ -170,17 +170,29 @@ public class MangelController implements Initializable {
 		try {
 			client = ClientRMI.getInstance();
 			data = FXCollections.observableArrayList(client.getAllMangel());
-			File file = new File(
-					"C:"+ "\\" + formatZeit.format(new Date()) + "Mangelliste.csv.");
+			/*
+			 * Creates a CSV File in which the List will be saved C: is the
+			 * directory in which the File will be saved
+			 */
+			File file = new File("C:" + "\\" + formatZeit.format(new Date())
+					+ "Mangelliste.csv.");
 			writer = new BufferedWriter(new FileWriter(file));
+
+			// The data that has to be put into the .csv File
 			for (Mangel mangel : data) {
-				String text = mangel.getId() + ";"
-						+ mangel.getFkProjekt().getBezeichnung() + ";"
-						+ mangel.getBezeichnung() + ";"
-						+ formatZeit.format(mangel.getErfassungsZeit().getTime()) + ";"
-						+ formatZeit.format(mangel.getFaelligkeitsDatum().getTime()) + ";"
+				String text = mangel.getId()
+						+ ";"
+						+ mangel.getFkProjekt().getBezeichnung()
+						+ ";"
+						+ mangel.getBezeichnung()
+						+ ";"
+						+ formatZeit.format(mangel.getErfassungsZeit()
+								.getTime())
+						+ ";"
+						+ formatZeit.format(mangel.getFaelligkeitsDatum()
+								.getTime()) + ";"
 						+ mangel.getFkMangelstatus().getBezeichnung() + ";"
-						+ ";" +  "\n";
+						+ "\n";
 
 				writer.write(text);
 			}
