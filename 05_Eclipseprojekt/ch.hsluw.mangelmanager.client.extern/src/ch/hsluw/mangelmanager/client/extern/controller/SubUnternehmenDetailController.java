@@ -15,8 +15,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
 import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
@@ -35,8 +35,8 @@ import javafx.util.Callback;
 
 public class SubUnternehmenDetailController implements Initializable {
 
-	//RMI Client to interact
-		ClientRMI client = null;
+	//WS Client to interact
+		ClientWS client = null;
 		RootController rootController = null;
 		DateFormat formatDatum = null;
 		DateTimeFormatter dateFormatter = null;
@@ -107,8 +107,8 @@ public class SubUnternehmenDetailController implements Initializable {
 			
 			
 			try {
-				client = new ClientRMI();
-				for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
+				client = new ClientWS();
+				for (Plz plz : FXCollections.observableArrayList(client.proxy.getAllPlz())) {
 					cbUnternehmenPlz.getItems().add(plz.getPlz());
 				}
 				
@@ -125,19 +125,19 @@ public class SubUnternehmenDetailController implements Initializable {
 			setCellValueFactoryTblUnternehmenProjekt();
 			setCellValueFactoryTblUnternehmenMiterbeiter();
 				try {
-				client = ClientRMI.getInstance();
+				client = ClientWS.getInstance();
 				formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 				dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-				subunternehmen = client.getSubunternehmenById(subunternehmenId);
+				subunternehmen = client.proxy.getSubunternehmenById(subunternehmenId);
 				lblUnternehmenId.setText(subunternehmen.getId().toString());
 				txtUnternehmenName.setText(subunternehmen.getName());
 				txtUnternehmenTelefon.setText(subunternehmen.getTelefon());
 				txtUnternehmenStrasse.setText(subunternehmen.getFkAdresse().getStrasse());
 				cbUnternehmenPlz.setValue(subunternehmen.getFkAdresse().getPlz().getPlz());
-				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
+				lblUnternehmenOrt.setText(client.proxy.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
 				
-				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen));
-				data2 = FXCollections.observableArrayList(client.getAllSubunternehmenMitarbeiter(subunternehmen));
+				data = FXCollections.observableArrayList(client.proxy.getAllSubunternehmenProjekt(subunternehmen));
+				data2 = FXCollections.observableArrayList(client.proxy.getAllSubunternehmenMitarbeiter(subunternehmen));
 				//Set data to tableview
 				tblUnternehmenProjekt.setItems(data);
 				tblUnternehmenMitarbeiter.setItems(data2);
@@ -201,7 +201,7 @@ public class SubUnternehmenDetailController implements Initializable {
 			subunternehmen.getFkAdresse().getPlz().setPlz((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem());
 			subunternehmen.getFkAdresse().getPlz().setOrt(lblUnternehmenOrt.getText());
 			subunternehmen.getFkAdresse().setStrasse(txtUnternehmenStrasse.getText());
-			client.updateSubunternehmen(subunternehmen);
+			client.proxy.updateSubunternehmen(subunternehmen);
 			
 			try {
 				// Load Unternehmen overview.
@@ -242,7 +242,7 @@ public class SubUnternehmenDetailController implements Initializable {
 		@FXML
 		private void plzChange(){
 			if (cbUnternehmenPlz.getSelectionModel().getSelectedItem() != null){
-				lblUnternehmenOrt.setText(client.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
+				lblUnternehmenOrt.setText(client.proxy.getPlzById((Integer) cbUnternehmenPlz.getSelectionModel().getSelectedItem()).getOrt());
 			}else{	
 			}
 		}

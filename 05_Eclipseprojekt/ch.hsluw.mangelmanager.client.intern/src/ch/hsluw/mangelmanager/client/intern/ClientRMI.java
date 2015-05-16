@@ -102,6 +102,7 @@ public class ClientRMI {
 	Adresse addAdresse;
 	Login login;
 	Login loginnr;
+	Person personnr;
 	List<Rolle> rollen;
 	
 	
@@ -763,6 +764,17 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		return rollen;
+	}
+
+	public Person getPersonById(int personId) {
+		// TODO Auto-generated method stub
+		try {
+			personnr = personRO.findById(personId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return personnr;
 	}
 	
 		

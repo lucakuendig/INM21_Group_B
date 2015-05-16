@@ -129,12 +129,12 @@ public class PersonDetailController implements Initializable {
 	}
 	public void init(int personId) {
 		try {
-		//<person = client.getPersonById(personId);
+		person = client.getPersonById(personId);
 		lblPersonId.setText(person.getId().toString());
 		lblPersonVorname.setText(person.getVorname());
-		//<txtPersonStrasse.setText(person.getFkAdresse().getStrasse());
+		//txtPersonStrasse.setText(person.getFkAdresse().getStrasse());
 		//<cbPersonPlz.getSelectionModel().select(person.getFkAdresse().getPlz().getPlz());
-		lblPersonOrt.setText(client.getPlzById((Integer) cbPersonPlz.getSelectionModel().getSelectedItem()).getOrt());
+		//lblPersonOrt.setText(client.getPlzById((Integer) cbPersonPlz.getSelectionModel().getSelectedItem()).getOrt());
 		txtPersonTelefon.setText(person.getTelefon());
 //		cbPersonUnternehmen.getSelectionModel().select(person.getFkUnternehmen.getName());
 //		txtPersonBenutzername.setText(person.getFkLogin().getBenutezrname);

@@ -207,8 +207,8 @@ public class PersonController implements Initializable {
 						.<PersonDetailController> getController();
 				detailPersonController.setRootController(rootController);
 
-				detailPersonController.init(tblPerson.getSelectionModel()
-						.getSelectedItem().getId());
+				detailPersonController.init(tblPerson.getSelectionModel().getSelectedItem()
+						.getId());
 				rootController.rootLayout.setCenter(inneresPerson);
 
 			} catch (IOException e) {

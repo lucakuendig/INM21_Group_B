@@ -32,11 +32,10 @@ public class SuMitarbeiter extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1751601309829678863L;
 
-	@Id
-	@GeneratedValue
-	private Integer id;
+//	@Id
+//	@GeneratedValue
+//	private Integer id;
 	@ManyToOne
-//	@XmlInverseReference(mappedBy = "fkSuMitarbeiter")
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Login fkLogin;
@@ -63,20 +62,20 @@ public class SuMitarbeiter extends Person implements Serializable {
 		this.fkLogin = fkLogin;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
+//	/**
+//	 * @return the id
+//	 */
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	/**
+//	 * @param id
+//	 *            the id to set
+//	 */
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
 
 	/**
 	 * @return the fkSubunternehmen

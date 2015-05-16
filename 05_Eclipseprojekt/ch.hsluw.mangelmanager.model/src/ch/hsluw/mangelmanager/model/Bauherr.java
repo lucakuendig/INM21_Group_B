@@ -26,9 +26,9 @@ public class Bauherr extends Person implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
 
-	@Id
-	@GeneratedValue	
-	private Integer id;
+//	@Id
+//	@GeneratedValue	
+//	private Integer id;
 	@OneToOne (cascade = CascadeType.ALL)
 	private Adresse fkAdresse;
 
@@ -50,19 +50,19 @@ public class Bauherr extends Person implements Serializable {
 		this.fkAdresse = fkAdresse;
 	}
 
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
+//	/**
+//	 * @return the id
+//	 */
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	/**
+//	 * @param id the id to set
+//	 */
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
 
 	/**
 	 * @return the fkAdresse
