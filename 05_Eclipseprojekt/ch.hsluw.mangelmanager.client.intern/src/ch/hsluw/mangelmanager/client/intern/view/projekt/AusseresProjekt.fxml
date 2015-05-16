@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.ProjektController">
    <children>
 
-     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+     <StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="39.0">
        <children>          
       <TableView fx:id="tblProjekt" onMouseClicked="#showProjektDetail" prefHeight="375.0" prefWidth="480.0">
       	<columnResizePolicy>
@@ -27,6 +27,5 @@
 	<ChoiceBox fx:id="cbProjektSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
 	<TextField fx:id="txtProjektSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
       <Button fx:id="btnProjektNew" layoutX="20.0" layoutY="8.0" mnemonicParsing="false" onAction="#addProjekt" prefHeight="26.0" prefWidth="94.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
-      <Button fx:id="btnProjektDelete" layoutX="90.0" layoutY="8.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Löschen" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="8.0" />
    </children>
 </AnchorPane>

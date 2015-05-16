@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="background" stylesheets="@../../Design.css"  minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.AddUnternehmenController">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="600" prefWidth="1080" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.AddUnternehmenController">
 <children>
       <GridPane layoutY="32.0" prefHeight="562.0" prefWidth="1080.0">
          <columnConstraints>
@@ -24,11 +24,11 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="701.0" minWidth="10.0" prefWidth="292.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="374.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+                <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
               </rowConstraints>
                <children>
                   <Label text="Name">
@@ -82,7 +82,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Accordion layoutX="406.0" layoutY="53.0" prefHeight="455.0" prefWidth="622.0" GridPane.columnIndex="1">
+            <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="1">
               <panes>
                   <TitledPane animated="false" text="Projekte">
                     <content>
@@ -103,7 +103,7 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnUnternehmenProjektAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" />
+                              <Button fx:id="btnUnternehmenProjektAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="8.0" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -125,12 +125,15 @@
                                     <TableColumn fx:id="colUnternehmenMitarbeiterTelefon" prefWidth="75.0" text="Telefon" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="btnUnternehmenMitarbeiterAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" />
+                              <Button fx:id="btnUnternehmenMitarbeiterAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="8.0" />
                            </children>
                         </AnchorPane>
                   </content>
                 </TitledPane>
               </panes>
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </GridPane.margin>
             </Accordion>
          </children>
       </GridPane>

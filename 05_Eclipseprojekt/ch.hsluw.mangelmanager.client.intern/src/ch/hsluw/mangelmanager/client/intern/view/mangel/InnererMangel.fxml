@@ -64,7 +64,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="txtMangelBeschreibung" editable="false" prefHeight="268.0" prefWidth="1075.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextArea fx:id="txtMangelBeschreibung" editable="false" maxHeight="247.0" maxWidth="500.0" prefHeight="247.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label text="Beschreibung" GridPane.rowIndex="5">
                <padding>
                   <Insets left="20.0" />
@@ -72,7 +72,7 @@
             </Label>
             <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
               <columnConstraints>
-                <ColumnConstraints hgrow="NEVER" maxWidth="162.0" minWidth="158.0" prefWidth="162.0" />
+                <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="162.0" minWidth="158.0" prefWidth="162.0" />
                 <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
@@ -80,7 +80,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" styleClass="btnwindows7" text="Abbrechen" GridPane.columnIndex="1" />
-                  <Button fx:id="btnMangelDone" mnemonicParsing="false" styleClass="btnwindows7" text="Abgeschlossen" onAction="#mangelClose" />
+                  <Button fx:id="btnMangelDone" mnemonicParsing="false" onAction="#mangelClose" styleClass="btnwindows7" text="Abgeschlossen" />
                </children>
             </GridPane>
             <Label fx:id="lblMangelId" styleClass="label-bright" text="id" GridPane.columnIndex="1" />
