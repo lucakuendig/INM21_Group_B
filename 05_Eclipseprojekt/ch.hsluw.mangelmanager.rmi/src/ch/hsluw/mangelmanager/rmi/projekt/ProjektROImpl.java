@@ -100,14 +100,9 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 		return projektManager.findByArbeitstyp(arbeitstyp);
 	}
 	
-	@Override
-	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum)
-			throws RemoteException {
-		return projektManager.findByDatumFromTillEnd(fromDatum,endDatum);
-	}
 
 	@Override
-	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2) throws RemoteException {
+	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen2) throws RemoteException {
 		return projektManager.findAllSubunternehmenProjekt(subunternehmen2);
 	}
 

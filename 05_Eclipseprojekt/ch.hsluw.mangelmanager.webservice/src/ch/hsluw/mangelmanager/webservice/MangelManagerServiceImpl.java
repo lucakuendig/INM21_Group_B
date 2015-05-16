@@ -682,7 +682,7 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getUnternehmenByProjekt(ch.hsluw.mangelmanager.model.Projekt)
 	 */
 	@Override
-	public List<Subunternehmen> getUnternehmenByProjekt(Projekt projekt2) {
+	public List<Subunternehmen> getUnternehmenByProjekt(Integer projekt2) {
 		// TODO Auto-generated method stub
 		try {
 			subunternehmen = subunternehmenRO.findAllSubunternehmenByProjekt(projekt2);

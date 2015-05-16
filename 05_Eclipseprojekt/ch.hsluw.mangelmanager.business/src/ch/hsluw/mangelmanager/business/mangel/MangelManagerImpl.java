@@ -101,7 +101,7 @@ public class MangelManagerImpl implements MangelManager {
 	}
 	
 	@Override
-	public List<Mangel> findAllMangelProjekt(Projekt projekt) {
+	public List<Mangel> findAllMangelProjekt(Integer projekt) {
 		return mangelDAO.findAllMangelProjekt(projekt);
 	}
 

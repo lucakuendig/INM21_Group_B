@@ -36,7 +36,7 @@ public class SuMitarbeiter extends Person implements Serializable {
 	@GeneratedValue
 	private Integer id;
 	@ManyToOne
-	@XmlInverseReference(mappedBy = "fkSuMitarbeiter")
+//	@XmlInverseReference(mappedBy = "fkSuMitarbeiter")
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Login fkLogin;

@@ -86,6 +86,6 @@ public interface SubunternehmenRO extends Remote {
 
 	List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) throws RemoteException;
 
-	List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) throws RemoteException;
+	List<Subunternehmen> findAllSubunternehmenByProjekt(Integer projekt2) throws RemoteException;
 
 }

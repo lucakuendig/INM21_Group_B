@@ -161,10 +161,8 @@ public interface ProjektRO extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum)
-			throws RemoteException;
 
-	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2) throws RemoteException;
+	List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen2) throws RemoteException;
 
 
 }

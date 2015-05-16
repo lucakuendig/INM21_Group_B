@@ -106,13 +106,9 @@ public class ProjektManagerImpl implements ProjektManager {
 		return projektDAO.findProjektByObjekttyp(arbeitstyp);
 	}
 	
-	@Override
-	public List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum) {
-		return projektDAO.findProjektByDatumFromTillEnd(fromDatum, endDatum);
-	}
 
 	@Override
-	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen) {
 		// TODO Auto-generated method stub
 		return projektDAO.findAllSubunternehmenProjekt(subunternehmen);
 	}

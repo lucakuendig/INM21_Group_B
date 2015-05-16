@@ -38,7 +38,7 @@ public class Meldung implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne
+
 	private Mangel fkMangel;
 
 	@ManyToOne

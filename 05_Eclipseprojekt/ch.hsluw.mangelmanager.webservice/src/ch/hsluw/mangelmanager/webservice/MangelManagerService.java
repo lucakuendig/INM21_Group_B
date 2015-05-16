@@ -96,7 +96,7 @@ public interface MangelManagerService {
 	public abstract List<Meldung> getAllMeldungByMangel(Mangel mangel);
 	@WebMethod
 	public abstract List<Subunternehmen> getUnternehmenByProjekt(
-			Projekt projekt2);
+			Integer projekt2);
 	@WebMethod
 	public abstract List<ProjektGuMitarbeiter> getBauleiterByProjekt(
 			Projekt projekt2);

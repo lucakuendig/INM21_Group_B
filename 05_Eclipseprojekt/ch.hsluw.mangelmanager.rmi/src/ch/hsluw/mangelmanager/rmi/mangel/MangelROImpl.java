@@ -94,7 +94,7 @@ public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 	}
 	
 	@Override
-	public List<Mangel> findAllMangelProjekt(Projekt projekt) throws RemoteException {
+	public List<Mangel> findAllMangelProjekt(Integer projekt) throws RemoteException {
 		return mangelManager.findAllMangelProjekt(projekt);
 	}
 

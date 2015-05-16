@@ -94,10 +94,7 @@ public class AddMangelController implements Initializable {
 			
 			mangel = new Mangel(projekt, txtMangelBezeichung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getYear(), dateMangelFaellig.getValue().getMonthValue()-1, dateMangelFaellig.getValue().getDayOfMonth()),mangelstatus ,login , txtMangelBeschreibung.getText());
 			
-			meldung = new Meldung(mangel, meldungstyp, txtMangelBeschreibung.getText(), (GregorianCalendar) cl, false, login);
-			
-			
-			client.addMeldung(meldung);
+			client.addMangel(mangel);
 			
 			try {
 				// Load Unternehmen overview.

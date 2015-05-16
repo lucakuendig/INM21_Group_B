@@ -122,7 +122,7 @@ public interface MangelDAO {
 	 * @param projekt
 	 * @return
 	 */
-	public List<Mangel> findAllMangelProjekt(Projekt projekt);
+	public List<Mangel> findAllMangelProjekt(Integer projekt);
 
 
 }

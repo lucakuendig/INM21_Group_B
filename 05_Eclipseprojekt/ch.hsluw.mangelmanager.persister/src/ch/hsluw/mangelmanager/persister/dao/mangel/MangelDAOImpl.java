@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Mangel;
@@ -159,13 +160,14 @@ public class MangelDAOImpl implements MangelDAO {
 	}
 	
 	@Override
-	public List<Mangel> findAllMangelProjekt(Projekt projekt) {
+	public List<Mangel> findAllMangelProjekt(Integer projekt) {
 		EntityManager em = JpaUtil.createEntityManager();
 		
-		TypedQuery<Mangel> tQuery = em.createNamedQuery("Mangel.findByMangelProjekt",
-				Mangel.class);
-
-		tQuery.setParameter("projektId", projekt);
+		Query tQuery = em.createNativeQuery(
+				"select distinct m.* from mangel as m, projekt as p, mangelstatus ms "
+				+ "where m.fkprojekt_id = "+projekt
+				+ "and m.fkmangelstatus_id = ms.id "
+				+ "and ms.bezeichnung = 'Offen'", Mangel.class);
 
 		List<Mangel> mangelListe = tQuery.getResultList();
 

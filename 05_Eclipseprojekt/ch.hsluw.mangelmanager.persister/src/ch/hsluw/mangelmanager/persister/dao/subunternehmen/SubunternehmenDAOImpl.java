@@ -98,14 +98,17 @@ EntityManager em = JpaUtil.createEntityManager();
 	}
 
 	@Override
-	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) {
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Integer projekt2) {
 		// TODO Auto-generated method stub
-EntityManager em = JpaUtil.createEntityManager();
+		EntityManager em = JpaUtil.createEntityManager();
+				
 		
-		TypedQuery<Subunternehmen> tQuery = em.createNamedQuery("Subunternehmen.findAllSubunternehmenByProjekt",
+		Query tQuery = em.createNativeQuery("select s.* from subunternehmen as s, "
+				+ "sumitarbeiter as sm, projektsumitarbeiter as ps "
+				+ "where ps.fkmitarbeiter_id = sm.id "
+				+ "and sm.fksubunternehmen_id = s.id and ps.fkprojekt_id = "+ projekt2,
 				Subunternehmen.class);
 
-		tQuery.setParameter("projektId", projekt2);
 		List<Subunternehmen> subunternehmenListe = tQuery.getResultList();
 
 		em.close();

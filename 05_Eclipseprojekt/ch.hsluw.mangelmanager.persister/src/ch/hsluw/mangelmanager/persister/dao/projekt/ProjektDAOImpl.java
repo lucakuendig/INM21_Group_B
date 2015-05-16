@@ -179,13 +179,15 @@ public class ProjektDAOImpl implements ProjektDAO {
 
 
 	@Override
-	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen) {
 		EntityManager em = JpaUtil.createEntityManager();
 		
-		TypedQuery<Projekt> tQuery = em.createNamedQuery("Projekt.findBySubunternehmenProjekt",
+		Query tQuery = em.createNativeQuery("select distinct p.* from projekt as p, projektsumitarbeiter as ps, "
+				+ "sumitarbeiter as sm "
+				+ "where ps.fkprojekt_id = p.id "
+				+ "and ps.fkmitarbeiter_id = sm.id "
+				+ "and sm.fksubunternehmen_id = "+subunternehmen,
 				Projekt.class);
-
-		tQuery.setParameter("subunternehmenId", subunternehmen);
 
 		List<Projekt> projektListe = tQuery.getResultList();
 

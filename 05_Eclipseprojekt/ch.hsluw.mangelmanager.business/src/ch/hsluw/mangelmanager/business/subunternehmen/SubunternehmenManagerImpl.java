@@ -94,7 +94,7 @@ public class SubunternehmenManagerImpl implements SubunternehmenManager {
 	}
 
 	@Override
-	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) {
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Integer projekt2) {
 		// TODO Auto-generated method stub
 		return subunternehmenDAO.findAllSubunternehmenByProjekt(projekt2);
 	}

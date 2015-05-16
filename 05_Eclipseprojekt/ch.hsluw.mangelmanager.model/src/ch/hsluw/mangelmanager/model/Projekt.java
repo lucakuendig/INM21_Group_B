@@ -42,7 +42,7 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "Projekt.findByObjekttyp", query = "SELECT p FROM Projekt p WHERE p.fkObjekttyp.bezeichnung LIKE :objekttyp"),
 		@NamedQuery(name = "Projekt.findByArbeitstyp", query = "SELECT p FROM Projekt p WHERE p.fkArbeitstyp.bezeichnung LIKE :arbeitstyp"),
 		@NamedQuery(name = "Projekt.findByProjektstatus", query = "SELECT p FROM Projekt p WHERE p.fkProjektstatus.bezeichnung LIKE :projektstatus"),
-		@NamedQuery(name = "Projekt.findBySubunternehmenProjekt", query = "SELECT DISTINCT p FROM Projekt p JOIN p.fkProjektSuMitarbeiter ps JOIN ps.fkMitarbeiter sm WHERE sm.fkSubunternehmen =:subunternehmenId")})
+		})
 public class Projekt implements Serializable {
 
 	private static final long serialVersionUID = 6294667886934890151L;
@@ -74,13 +74,6 @@ public class Projekt implements Serializable {
 
 	@ManyToOne
 	private Projektstatus fkProjektstatus;
-
-	@OneToMany (cascade = CascadeType.PERSIST, mappedBy="fkProjekt", fetch = FetchType.EAGER)
-	private List<Mangel> fkMaengel;
-	@OneToMany (cascade = CascadeType.PERSIST, mappedBy="fkProjekt", fetch = FetchType.EAGER)
-	private List<ProjektGuMitarbeiter> fkProjektGuMitarbeiter;
-	@OneToMany (cascade = CascadeType.PERSIST, mappedBy="fkProjekt", fetch = FetchType.EAGER)
-	private List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter;
 	
 	public Projekt() {
 		// TODO Auto-generated constructor stub
@@ -267,53 +260,6 @@ public class Projekt implements Serializable {
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
 	}
-
-	/**
-	 * @return the fkMaengel
-	 */
-	public List<Mangel> getFkMaengel() {
-		return fkMaengel;
-	}
-
-	/**
-	 * @param fkMaengel the fkMaengel to set
-	 */
-	public void setFkMaengel(List<Mangel> fkMaengel) {
-		this.fkMaengel = fkMaengel;
-	}
-
-	/**
-	 * @return the fkProjektGuMitarbeiter
-	 */
-	public List<ProjektGuMitarbeiter> getFkProjektGuMitarbeiter() {
-		return fkProjektGuMitarbeiter;
-	}
-
-	/**
-	 * @param fkProjektGuMitarbeiter the fkProjektGuMitarbeiter to set
-	 */
-	public void setFkProjektGuMitarbeiter(
-			List<ProjektGuMitarbeiter> fkProjektGuMitarbeiter) {
-		this.fkProjektGuMitarbeiter = fkProjektGuMitarbeiter;
-	}
-
-	/**
-	 * @return the fkProjektSuMitarbeiter
-	 */
-	public List<ProjektSuMitarbeiter> getFkProjektSuMitarbeiter() {
-		return fkProjektSuMitarbeiter;
-	}
-
-	/**
-	 * @param fkProjektSuMitarbeiter the fkProjektSuMitarbeiter to set
-	 */
-	public void setFkProjektSuMitarbeiter(
-			List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter) {
-		this.fkProjektSuMitarbeiter = fkProjektSuMitarbeiter;
-	}
-	
-	
-
 
 	
 

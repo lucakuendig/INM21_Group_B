@@ -136,7 +136,7 @@ public class SubUnternehmenDetailController implements Initializable {
 				cbUnternehmenPlz.setValue(subunternehmen.getFkAdresse().getPlz());
 				lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
 				
-				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen));
+				data = FXCollections.observableArrayList(client.getAllSubunternehmenProjekt(subunternehmen.getId()));
 				data2 = FXCollections.observableArrayList(client.getAllSubunternehmenMitarbeiter(subunternehmen));
 				//Set data to tableview
 				tblUnternehmenProjekt.setItems(data);

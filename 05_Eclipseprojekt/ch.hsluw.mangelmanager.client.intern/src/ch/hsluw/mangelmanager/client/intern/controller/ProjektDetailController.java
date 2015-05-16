@@ -281,8 +281,8 @@ public class ProjektDetailController implements Initializable {
 			}
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
 			
-			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
-			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt.getId()));
+			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt.getId()));
 			bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
 //			
 			tblProjektMangel.setItems(mangelData);
@@ -509,7 +509,7 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	public void projektAddUnternehmen(){
 		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),timestamp, null));
-		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt.getId()));
 		tblProjektUnternehmen.setItems(subunternehmenData);
 	}
 	

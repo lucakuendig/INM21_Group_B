@@ -69,7 +69,7 @@ public class SubunternehmenROImpl extends UnicastRemoteObject implements Subunte
 	}
 
 	@Override
-	public List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2) throws RemoteException {
+	public List<Subunternehmen> findAllSubunternehmenByProjekt(Integer projekt2) throws RemoteException {
 		// TODO Auto-generated method stub
 		return subunternehmenManager.findAllSubunternehmenByProjekt(projekt2);
 	}

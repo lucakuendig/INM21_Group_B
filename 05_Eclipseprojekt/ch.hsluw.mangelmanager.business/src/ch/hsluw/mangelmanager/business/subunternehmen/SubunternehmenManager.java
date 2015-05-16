@@ -71,5 +71,5 @@ public interface SubunternehmenManager {
 
 	List<SuMitarbeiter> findAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen);
 
-	List<Subunternehmen> findAllSubunternehmenByProjekt(Projekt projekt2);
+	List<Subunternehmen> findAllSubunternehmenByProjekt(Integer projekt2);
 }

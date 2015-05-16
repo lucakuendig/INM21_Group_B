@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -186,6 +187,34 @@ public class PersonController implements Initializable {
 		       
 		    }
 		});
+	}
+	
+	
+	@FXML
+	public void showPersonDetail(MouseEvent t) throws IOException {
+		if (t.getClickCount() == 2) {
+			System.out.println(tblPerson.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/person/InnerePerson.fxml"));
+				AnchorPane inneresPerson = (AnchorPane) loader.load();
+
+				PersonDetailController detailPersonController = loader
+						.<PersonDetailController> getController();
+				detailPersonController.setRootController(rootController);
+
+				detailPersonController.init(tblPerson.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(inneresPerson);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	@FXML

@@ -32,7 +32,7 @@ import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 @Entity
 @NamedQueries({
 	@NamedQuery(name = "Subunternehmen.findBySubunternehmenMitarbeiter", query = "SELECT sm FROM SuMitarbeiter sm WHERE sm.fkSubunternehmen=:subunternehmenId"),
-	@NamedQuery(name = "Subunternehmen.findAllSubunternehmenByProjekt", query = "SELECT DISTINCT su FROM Subunternehmen su JOIN su.fkSuMitarbeiter sm JOIN sm.fkProjektSuMitarbeiter ps WHERE ps.fkProjekt =:projektId")})
+	@NamedQuery(name = "Subunternehmen.findAllSubunternehmenByProjekt", query = "SELECT DISTINCT sm.fkSubunternehmen FROM SuMitarbeiter sm, ProjektSuMitarbeiter ps WHERE ps.fkMitarbeiter = sm.id AND ps.fkProjekt =:projektId")})
 public class Subunternehmen implements Serializable {
 
 	private static final long serialVersionUID = -2526718021212938075L;
@@ -44,9 +44,6 @@ public class Subunternehmen implements Serializable {
 	private Adresse fkAdresse;
 	private String name;
 	private String telefon;
-	@OneToMany(cascade = CascadeType.PERSIST, mappedBy ="fkSubunternehmen", fetch = FetchType.EAGER)
-	@XmlInverseReference(mappedBy = "fkSubunternehmen")
-	private List<SuMitarbeiter> fkSuMitarbeiter;
 
 	public Subunternehmen() {
 
@@ -126,19 +123,19 @@ public class Subunternehmen implements Serializable {
 		this.telefon = telefon;
 	}
 
-	/**
-	 * @return the fkSuMitarbeiter
-	 */
-	public List<SuMitarbeiter> getFkSuMitarbeiter() {
-		return fkSuMitarbeiter;
-	}
-
-	/**
-	 * @param fkSuMitarbeiter the fkSuMitarbeiter to set
-	 */
-	public void setFkSuMitarbeiter(List<SuMitarbeiter> fkSuMitarbeiter) {
-		this.fkSuMitarbeiter = fkSuMitarbeiter;
-	}
+//	/**
+//	 * @return the fkSuMitarbeiter
+//	 */
+//	public List<SuMitarbeiter> getFkSuMitarbeiter() {
+//		return fkSuMitarbeiter;
+//	}
+//
+//	/**
+//	 * @param fkSuMitarbeiter the fkSuMitarbeiter to set
+//	 */
+//	public void setFkSuMitarbeiter(List<SuMitarbeiter> fkSuMitarbeiter) {
+//		this.fkSuMitarbeiter = fkSuMitarbeiter;
+//	}
 	
     public String toString() {
         return name;

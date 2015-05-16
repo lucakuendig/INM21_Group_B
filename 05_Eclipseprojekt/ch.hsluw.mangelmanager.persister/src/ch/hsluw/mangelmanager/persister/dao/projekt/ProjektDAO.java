@@ -135,5 +135,5 @@ public interface ProjektDAO {
 	 * @return
 	 */
 
-	public List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen);
+	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen);
 }

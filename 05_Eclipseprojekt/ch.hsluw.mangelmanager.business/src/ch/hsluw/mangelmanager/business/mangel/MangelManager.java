@@ -126,6 +126,6 @@ public interface MangelManager {
 	 * @param projekt
 	 * @return
 	 */
-	List<Mangel> findAllMangelProjekt(Projekt projekt);
+	List<Mangel> findAllMangelProjekt(Integer projekt);
 
 }

@@ -132,17 +132,8 @@ public interface ProjektManager {
 	 */
 	List<Projekt> findByArbeitstyp(String arbeitstyp);
 	
-	/**
-	 * Liefert die Liste mit Projekten für den übergebenen Zeitrahmen zurück, falls
-	 * welche gefunden, sonst eine leere Liste.
-	 * 
-	 * @param fromDatum
-	 * @param endDatum
-	 * @return
-	 */
-	List<Projekt> findByDatumFromTillEnd(Date fromDatum, Date endDatum);
 
-	List<Projekt> findAllSubunternehmenProjekt(Subunternehmen subunternehmen2);
+	List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen2);
 
 
 	

@@ -150,6 +150,6 @@ public interface MangelRO extends Remote {
 	 * @return
 	 * @throws RemoteException
 	 */
-	List<Mangel> findAllMangelProjekt(Projekt projekt) throws RemoteException;
+	List<Mangel> findAllMangelProjekt(Integer projekt) throws RemoteException;
 
 }

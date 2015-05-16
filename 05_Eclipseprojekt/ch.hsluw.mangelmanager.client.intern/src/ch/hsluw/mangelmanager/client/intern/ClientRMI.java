@@ -452,7 +452,7 @@ public class ClientRMI {
 		
 	}
 
-	public List<Projekt> getAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+	public List<Projekt> getAllSubunternehmenProjekt(Integer subunternehmen) {
 		try {
 			suprojekte = projektRO.findAllSubunternehmenProjekt(subunternehmen);
 		} catch (RemoteException e) {
@@ -493,7 +493,7 @@ public class ClientRMI {
 		}
 		return arbeitstyp;
 	}
-	public List<Mangel> getAllMangelProjekt(Projekt projekt) {
+	public List<Mangel> getAllMangelProjekt(Integer projekt) {
 		try {
 			mangelOfProjekt = mangelRO.findAllMangelProjekt(projekt);
 //			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
@@ -581,7 +581,7 @@ public class ClientRMI {
 			return meldungByMangel;
 	}
 
-	public List<Subunternehmen> getUnternehmenByProjekt(Projekt projekt2) {
+	public List<Subunternehmen> getUnternehmenByProjekt(Integer projekt2) {
 		// TODO Auto-generated method stub
 		try {
 			subunternehmen = subunternehmenRO.findAllSubunternehmenByProjekt(projekt2);
