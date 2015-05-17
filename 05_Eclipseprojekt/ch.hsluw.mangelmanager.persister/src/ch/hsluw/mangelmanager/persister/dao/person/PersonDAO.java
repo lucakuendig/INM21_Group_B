@@ -6,11 +6,9 @@ package ch.hsluw.mangelmanager.persister.dao.person;
 
 
 
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Person;
-import ch.hsluw.mangelmanager.model.Projekt;
 
 /**
  * Interface fuer Person Entity

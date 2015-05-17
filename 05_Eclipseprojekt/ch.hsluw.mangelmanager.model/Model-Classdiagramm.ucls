@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="ch.hsluw.mangelmanager.model.Projektstatus" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Projektstatus.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="256" width="220" x="1510" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="ch.hsluw.mangelmanager.model.Rolle" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Rolle.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="256" width="210" x="437" y="2445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="ch.hsluw.mangelmanager.model.Bauherr" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Bauherr.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="285" x="1164" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="ch.hsluw.mangelmanager.model.Plz" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Plz.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="276" width="210" x="1231" y="2781"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="ch.hsluw.mangelmanager.model.SuMitarbeiter" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/SuMitarbeiter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="236" width="425" x="822" y="1253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter" 
+    project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/ProjektGuMitarbeiter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="396" width="602" x="734" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ch.hsluw.mangelmanager.model.Projekt" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Projekt.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="696" width="939" x="1376" y="1253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="ch.hsluw.mangelmanager.model.GuMitarbeiter" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/GuMitarbeiter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="305" x="477" y="1253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="ch.hsluw.mangelmanager.model.Person" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Person.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="376" width="217" x="477" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="ch.hsluw.mangelmanager.model.Login" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Login.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="416" width="245" x="437" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="ch.hsluw.mangelmanager.model.Mangelstatus" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Mangelstatus.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="236" width="220" x="-223" y="1253"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="ch.hsluw.mangelmanager.model.Meldung" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Meldung.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="516" width="522" x="42" y="21"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="ch.hsluw.mangelmanager.model.Objekttyp" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Objekttyp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="276" width="220" x="1770" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="ch.hsluw.mangelmanager.model.Adresse" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Adresse.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="296" width="210" x="1231" y="2445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="ch.hsluw.mangelmanager.model.Meldungstyp" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Meldungstyp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="276" width="220" x="-483" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="ch.hsluw.mangelmanager.model.Arbeitstyp" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Arbeitstyp.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="276" width="220" x="2030" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="ch.hsluw.mangelmanager.model.Mangel" project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Mangel.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="636" width="639" x="-223" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter" 
+    project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/ProjektSuMitarbeiter.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="416" width="600" x="1376" y="577"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="ch.hsluw.mangelmanager.model.Subunternehmen" 
+    project="ch.hsluw.mangelmanager.model" 
+    file="/ch.hsluw.mangelmanager.model/src/ch/hsluw/mangelmanager/model/Subunternehmen.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="376" width="302" x="822" y="1989"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="20">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="21" name="fkLogin"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="24" name="fkMitarbeiter"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="fkProjektstatus"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="30" name="fkLogin"/>      
+      <multiplicity id="31" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="32">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="33" name="fkMeldungstyp"/>      
+      <multiplicity id="34" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="36" name="fkAdresse"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="1479" y="1989"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="39" name="fkAdresse"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="41">    
+    <bendpoint x="1298" y="1253"/>    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="42">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="43" name="fkArbeitstyp"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="46" name="fkObjekttyp"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="49" name="fkMangelstatus"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="52" name="fkAdresse"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="446" y="577"/>    
+    <bendpoint x="446" y="1253"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="55" name="fkLogin"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="57">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="58">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="59" name="fkSubunternehmen"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="61">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="62">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="63" name="fkProjekt"/>      
+      <multiplicity id="64" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="65">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="66" name="fkProjekt"/>      
+      <multiplicity id="67" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="68">    
+    <bendpoint x="116" y="1253"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="69" name="fkLogin"/>      
+      <multiplicity id="70" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="71">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="72" name="plz"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="74">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="75" name="fkMangel"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="78" name="fkBauherr"/>      
+      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="81" name="fkProjekt"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="84" name="fkrolle"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="86">    
+    <bendpoint x="1277" y="1253"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <association id="87">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="88" name="fkMitarbeiter"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

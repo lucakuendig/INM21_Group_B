@@ -1,15 +1,16 @@
 package ch.hsluw.mangelmanager.client.extern.controller;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
-import ch.hsluw.mangelmanager.client.extern.ClientWS;
-import ch.hsluw.mangelmanager.client.extern.Main;
-import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,13 +24,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Mangel;
 
 /**
  * The MangelController handles all interaction with Mangel *
  * 
- * @author sritz
+ * @author sritz & mmont
  * @version 1.0
  *
  */
@@ -39,12 +42,12 @@ public class MangelController implements Initializable {
 	ClientWS client = null;
 
 	RootController rootController = null;
-	
+
 	public void setRootController(RootController rootController) {
 		// TODO Auto-generated method stub
 		this.rootController = rootController;
 	}
-	
+
 	// Define overviewtable with columns
 	@FXML
 	private TableView<Mangel> tblMangel;
@@ -70,58 +73,77 @@ public class MangelController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		 DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
-		 DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
-		 
-		colMangelId.setCellValueFactory(new PropertyValueFactory<Mangel, String>("id"));
-		colMangelBezeichnung.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-					public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-						return new SimpleStringProperty(p.getValue().getBezeichnung());
-					}
-				});
-		colMangelProjekt.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-					public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-						return new SimpleStringProperty(p.getValue().getFkProjekt().getBezeichnung());
-					}
-				});
-		
-		colMangelErfassungsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-				if (p.getValue().getErfassungsZeit() == null){
-					return new SimpleStringProperty(" ");
-				}else{
-					return new SimpleStringProperty(formatZeit.format(p.getValue().getErfassungsZeit().getTime()));
-				}
-			}
-		});
-		
-		colMangelFaelligkeitsdatum.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-				if (p.getValue().getFaelligkeitsDatum() == null){
-					return new SimpleStringProperty(" ");
-				}else{
-					return new SimpleStringProperty(formatDatum.format(p.getValue().getFaelligkeitsDatum().getTime()));
-				}
-			}
-		});
-		
-		colMangelAbschlusszeit.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-				if (p.getValue().getAbschlussZeit() == null){
-					return new SimpleStringProperty(" ");
-				}else{
-				return new SimpleStringProperty(formatZeit.format(p.getValue().getAbschlussZeit().getTime()));
-				}
-			}
-		});
-		
-		colMangelMangelstatus.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Mangel, String> p) {
-				return new SimpleStringProperty(p.getValue().getFkMangelstatus().getBezeichnung());
-			}
-		});
+		DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
+		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
-		
+		colMangelId
+				.setCellValueFactory(new PropertyValueFactory<Mangel, String>(
+						"id"));
+		colMangelBezeichnung
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getBezeichnung());
+					}
+				});
+		colMangelProjekt
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkProjekt().getBezeichnung());
+					}
+				});
+
+		colMangelErfassungsdatum
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						if (p.getValue().getErfassungsZeit() == null) {
+							return new SimpleStringProperty(" ");
+						} else {
+							return new SimpleStringProperty(formatZeit.format(p
+									.getValue().getErfassungsZeit().getTime()));
+						}
+					}
+				});
+
+		colMangelFaelligkeitsdatum
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						if (p.getValue().getFaelligkeitsDatum() == null) {
+							return new SimpleStringProperty(" ");
+						} else {
+							return new SimpleStringProperty(formatDatum
+									.format(p.getValue().getFaelligkeitsDatum()
+											.getTime()));
+						}
+					}
+				});
+
+		colMangelAbschlusszeit
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						if (p.getValue().getAbschlussZeit() == null) {
+							return new SimpleStringProperty(" ");
+						} else {
+							return new SimpleStringProperty(formatZeit.format(p
+									.getValue().getAbschlussZeit().getTime()));
+						}
+					}
+				});
+
+		colMangelMangelstatus
+				.setCellValueFactory(new Callback<CellDataFeatures<Mangel, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Mangel, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkMangelstatus().getBezeichnung());
+					}
+				});
 
 		// Client interaction
 		try {
@@ -135,32 +157,77 @@ public class MangelController implements Initializable {
 		tblMangel.setItems(data);
 	}
 
-	
+	/**
+	 * prints the TableView into a .csv file
+	 * 
+	 * @throws IOException
+	 */
+	public void exportTableView() throws IOException {
+		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+		Writer writer = null;
+		try {
+			client = ClientWS.getInstance();
+			data = FXCollections.observableArrayList(client.proxy.getAllMangel());
+			/*
+			 * Creates a CSV File in which the List will be saved C: is the
+			 * directory in which the File will be saved
+			 */
+			File file = new File("C:" + "\\" + formatZeit.format(new Date())
+					+ "Mangelliste.csv.");
+			writer = new BufferedWriter(new FileWriter(file));
+
+			// The data that has to be put into the .csv File
+			for (Mangel mangel : data) {
+				String text = mangel.getId()
+						+ ";"
+						+ mangel.getFkProjekt().getBezeichnung()
+						+ ";"
+						+ mangel.getBezeichnung()
+						+ ";"
+						+ formatZeit.format(mangel.getErfassungsZeit()
+								.getTime())
+						+ ";"
+						+ formatZeit.format(mangel.getFaelligkeitsDatum()
+								.getTime()) + ";"
+						+ mangel.getFkMangelstatus().getBezeichnung() + ";"
+						+ "\n";
+
+				writer.write(text);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+
+			writer.flush();
+			writer.close();
+		}
+	}
+
 	@FXML
-	public void showMangelDetail(MouseEvent t) throws IOException{
-		if(t.getClickCount() == 2){
-			System.out.println(tblMangel.getSelectionModel().getSelectedItem().getId());
-			
+	public void showMangelDetail(MouseEvent t) throws IOException {
+		if (t.getClickCount() == 2) {
+			System.out.println(tblMangel.getSelectionModel().getSelectedItem()
+					.getId());
+
 			try {
 				// Load MangelDetail View.
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(Main.class
 						.getResource("view/mangel/InnererMangel.fxml"));
 				AnchorPane innererMangel = (AnchorPane) loader.load();
-				
-				MangelDetailController detailMangelController = loader.<MangelDetailController>getController();
+
+				MangelDetailController detailMangelController = loader
+						.<MangelDetailController> getController();
 				detailMangelController.setRootController(rootController);
-				
-				detailMangelController.init(tblMangel.getSelectionModel().getSelectedItem().getId());
+
+				detailMangelController.init(tblMangel.getSelectionModel()
+						.getSelectedItem().getId());
 				rootController.rootLayout.setCenter(innererMangel);
-				
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}	
+		}
 	}
-	
-	
-}
 
+}

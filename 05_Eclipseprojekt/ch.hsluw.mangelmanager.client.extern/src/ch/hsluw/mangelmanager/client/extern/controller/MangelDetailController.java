@@ -10,39 +10,23 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Mangelstatus;
-import ch.hsluw.mangelmanager.model.Plz;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Mangelstatus;
 
 	public class MangelDetailController implements Initializable {
 	
-		//RMI Client to interact
-			ClientRMI client = null;
+		//WS Client to interact
+			ClientWS client = null;
 			RootController rootController = null;
 			DateFormat formatDatum = null;
 			DateTimeFormatter dateFormatter = null;
@@ -78,9 +62,9 @@ import javafx.util.Callback;
 			
 			public void init(Integer MangelId) {
 					try {
-					client = ClientRMI.getInstance();
-					mangel = client.getMangelById(MangelId);
-					mangelstatusl = client.getAllMangelStatus();			
+					client = ClientWS.getInstance();
+					mangel = client.proxy.getMangelById(MangelId);
+					mangelstatusl = client.proxy.getAllMangelStatus();			
 					for (Mangelstatus mangelstatus : mangelstatusl) {
 						;
 						if(mangelstatus.getBezeichnung().equals("Abgeschlossen")){
@@ -117,8 +101,26 @@ import javafx.util.Callback;
 					mangel.setAbschlussZeit(new GregorianCalendar(dateMangelDatumende.getValue().getDayOfMonth(), dateMangelDatumende.getValue().getMonthValue(), dateMangelDatumende.getValue().getYear()));
 				}
 				lblMangelStatus.setText("Abgeschlossen");
-				client.updateMangel(mangel);
+				client.proxy.updateMangel(mangel);
 				
+			}
+			@FXML
+			public void mangelCancel(){
+				try {
+					// Load Unternehmen overview.
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(Main.class
+							.getResource("view/mangel/AussererMangel.fxml"));
+					AnchorPane mangel = (AnchorPane) loader.load();
+					
+					MangelController mangelController = loader.<MangelController>getController();
+					mangelController.setRootController(rootController);
+					
+					rootController.rootLayout.setCenter(mangel);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 	
 }

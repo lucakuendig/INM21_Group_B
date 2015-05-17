@@ -13,8 +13,6 @@ import java.util.List;
 import ch.hsluw.mangelmanager.business.mangel.MangelManager;
 import ch.hsluw.mangelmanager.business.mangel.MangelManagerImpl;
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class MangelROImpl extends UnicastRemoteObject implements MangelRO {
 

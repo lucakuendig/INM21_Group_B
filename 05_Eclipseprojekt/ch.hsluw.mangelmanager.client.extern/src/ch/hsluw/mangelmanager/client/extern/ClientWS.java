@@ -4,11 +4,8 @@ import java.net.URL;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
-import javax.xml.ws.WebServiceRef;
 
-import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.webservice.MangelManagerService;
-import ch.hsluw.mangelmanager.webservice.MangelManagerServiceImpl;
 
 /**
  * Diese Klasse stellt das Userinterface fuer den MangelMangager via SOAP/WS

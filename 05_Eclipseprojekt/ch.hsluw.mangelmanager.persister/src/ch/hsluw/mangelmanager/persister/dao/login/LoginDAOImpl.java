@@ -6,8 +6,6 @@ package ch.hsluw.mangelmanager.persister.dao.login;
 
 
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,8 +13,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Login;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 

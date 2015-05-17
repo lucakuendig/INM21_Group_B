@@ -8,7 +8,6 @@ package ch.hsluw.mangelmanager.persister.dao.mangelstatus;
 
 import java.util.List;
 
-
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 

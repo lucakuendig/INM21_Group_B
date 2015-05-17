@@ -1,14 +1,15 @@
 package ch.hsluw.mangelmanager.persister;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 import javax.persistence.RollbackException;
 
-import org.junit.Test;
 import org.eclipse.persistence.exceptions.DatabaseException;
+import org.junit.Test;
 
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;

@@ -15,10 +15,10 @@
           <ColumnConstraints hgrow="SOMETIMES" prefWidth="686.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="374.0" minHeight="0.0" prefHeight="65.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="0.0" prefHeight="247.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="482.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
+            <RowConstraints fillHeight="false" maxHeight="482.0" minHeight="0.0" prefHeight="247.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <TextField fx:id="txtMangelBezeichung" maxWidth="-Infinity" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="1" />
@@ -32,7 +32,7 @@
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextArea fx:id="txtMangelBeschreibung" prefHeight="268.0" prefWidth="1075.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextArea fx:id="txtMangelBeschreibung" maxWidth="500.0" prefHeight="268.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Beschreibung" GridPane.rowIndex="2">
                <padding>
                   <Insets left="20.0" />
@@ -40,14 +40,14 @@
             </Label>
             <GridPane prefHeight="39.0" prefWidth="543.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="590.0" minWidth="10.0" prefWidth="586.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="162.0" minWidth="162.0" prefWidth="162.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" onAction="#addMangelCancel" text="Abbrechen" GridPane.columnIndex="1" />
                   <Button fx:id="btnMangelSpeichern" mnemonicParsing="false" onAction="#mangelSave" text="Speichern" />
                </children>
             </GridPane>

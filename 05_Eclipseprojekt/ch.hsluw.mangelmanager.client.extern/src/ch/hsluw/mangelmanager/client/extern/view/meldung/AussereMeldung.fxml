@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane styleClass="background" stylesheets="@../../Design.css"  prefHeight="699" prefWidth="800" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.MeldungController">
+<AnchorPane prefHeight="699" prefWidth="800" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.extern.controller.MeldungController">
 	<children>
-		<StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="-39.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="39.0">
+		<StackPane fx:id="stackPane" layoutY="39.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="39.0">
 			<children>
 				<TableView fx:id="tblMeldung" onMouseClicked="#showMeldungDetail" prefHeight="375.0" prefWidth="480.0">
 					<columnResizePolicy>
@@ -24,7 +24,5 @@
 				</TableView>
 			</children>
 		</StackPane>
-		<ChoiceBox fx:id="cbMeldungSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
-		<TextField fx:id="txtMeldungSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
 	</children>
 </AnchorPane>

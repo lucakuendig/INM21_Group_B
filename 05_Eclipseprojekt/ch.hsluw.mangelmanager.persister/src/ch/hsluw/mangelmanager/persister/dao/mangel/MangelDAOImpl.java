@@ -14,8 +14,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 

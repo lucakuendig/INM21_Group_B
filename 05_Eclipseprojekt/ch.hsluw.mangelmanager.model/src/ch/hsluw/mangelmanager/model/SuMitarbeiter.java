@@ -5,18 +5,10 @@
 package ch.hsluw.mangelmanager.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.xml.bind.annotation.XmlTransient;
-
-import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 
 
 /**
@@ -31,16 +23,12 @@ import org.eclipse.persistence.oxm.annotations.XmlInverseReference;
 public class SuMitarbeiter extends Person implements Serializable {
 
 	private static final long serialVersionUID = 1751601309829678863L;
-
-//	@Id
-//	@GeneratedValue
-//	private Integer id;
+	
 	@ManyToOne
 	private Subunternehmen fkSubunternehmen;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Login fkLogin;
-	@OneToMany (mappedBy = "fkMitarbeiter", fetch = FetchType.EAGER)
-	private List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter;
+
 
 	public SuMitarbeiter() {
 		super();
@@ -62,20 +50,6 @@ public class SuMitarbeiter extends Person implements Serializable {
 		this.fkLogin = fkLogin;
 	}
 
-//	/**
-//	 * @return the id
-//	 */
-//	public Integer getId() {
-//		return id;
-//	}
-//
-//	/**
-//	 * @param id
-//	 *            the id to set
-//	 */
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
 
 	/**
 	 * @return the fkSubunternehmen
@@ -107,20 +81,6 @@ public class SuMitarbeiter extends Person implements Serializable {
 		this.fkLogin = fkLogin;
 	}
 
-	/**
-	 * @return the fkProjektSuMitarbeiter
-	 */
-	public List<ProjektSuMitarbeiter> getFkProjektSuMitarbeiter() {
-		return fkProjektSuMitarbeiter;
-	}
-
-	/**
-	 * @param fkProjektSuMitarbeiter the fkProjektSuMitarbeiter to set
-	 */
-	public void setFkProjektSuMitarbeiter(
-			List<ProjektSuMitarbeiter> fkProjektSuMitarbeiter) {
-		this.fkProjektSuMitarbeiter = fkProjektSuMitarbeiter;
-	}
 	
     public String toString() {
         return getNachname() + " " + getVorname();

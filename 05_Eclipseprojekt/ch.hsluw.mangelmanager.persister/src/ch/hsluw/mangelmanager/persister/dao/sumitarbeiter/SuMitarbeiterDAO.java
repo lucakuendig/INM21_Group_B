@@ -6,10 +6,8 @@ package ch.hsluw.mangelmanager.persister.dao.sumitarbeiter;
 
 
 
-import java.util.Date;
 import java.util.List;
 
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 
 /**

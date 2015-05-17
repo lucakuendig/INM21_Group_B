@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,8 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Projekt;
 
 /**
  * The ProjektController handles all interaction with projects *
@@ -35,8 +34,8 @@ import javafx.util.Callback;
  */
 
 public class ProjektController implements Initializable {
-	// RMI Client to interact
-	ClientRMI client = null;
+	// WS Client to interact
+	ClientWS client = null;
 	RootController rootController = null;
 
 	public void setRootController(RootController rootController) {
@@ -78,15 +77,15 @@ public class ProjektController implements Initializable {
 
 		// Client interaction
 		try {
-			client = ClientRMI.getInstance();
-			data = FXCollections.observableArrayList(client.getAllProjekt());
+			client = ClientWS.getInstance();
+			data = FXCollections.observableArrayList(client.proxy.getAllProjekt());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		cbProjektSearch.getItems().addAll(
 				FXCollections.observableArrayList("Bezeichnung", "Bauherr",
-						"Plz", "Ort", "Objekttyp", "Arbeitstyp",
+						"Plz", "Ort",
 						"Projektstatus"));
 		cbProjektSearch.getSelectionModel().selectFirst();
 		
@@ -102,30 +101,24 @@ public class ProjektController implements Initializable {
 		    @Override
 		    public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
 		    	if(newValue.length() <1){
-		    		updateTblProjekt(FXCollections.observableArrayList(client.getAllProjekt()));
+		    		updateTblProjekt(FXCollections.observableArrayList(client.proxy.getAllProjekt()));
 		    	}
 		    	else{
 		    	switch (cbProjektSearch.getSelectionModel().getSelectedItem()) {
 					case "Bezeichnung":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBezeichnung(txtProjektSearch.getText())));
+						updateTblProjekt(FXCollections.observableArrayList(client.proxy.getProjektByBezeichnung(txtProjektSearch.getText())));
 						break;
 					case "Bauherr":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByBauherr(txtProjektSearch.getText())));
+						updateTblProjekt(FXCollections.observableArrayList(client.proxy.getProjektByBauherr(txtProjektSearch.getText())));
 						break;
 					case "Plz":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByPlz(txtProjektSearch.getText())));
+						updateTblProjekt(FXCollections.observableArrayList(client.proxy.getProjektByPlz(txtProjektSearch.getText())));
 						break;
 					case "Ort":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByOrt(txtProjektSearch.getText())));
-						break;
-					case "Objekttyp":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByObjekttyp(txtProjektSearch.getText())));
-						break;
-					case "Arbeitstyp":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByArbeitstyp(txtProjektSearch.getText())));
+						updateTblProjekt(FXCollections.observableArrayList(client.proxy.getProjektByOrt(txtProjektSearch.getText())));
 						break;
 					case "Projektstatus":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByProjektstatus(txtProjektSearch.getText())));
+						updateTblProjekt(FXCollections.observableArrayList(client.proxy.getProjektByProjektstatus(txtProjektSearch.getText())));
 						break;
 					default:
 						updateTblProjekt(data);
@@ -179,47 +172,6 @@ public class ProjektController implements Initializable {
 					}
 				});
 
-		colProjektOffeneMaengel
-				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-					public ObservableValue<String> call(
-							CellDataFeatures<Projekt, String> p) {
-						int anzMaengel = p.getValue().getFkMaengel().size();
-						int anzOffeneMaengel = 0;
-						for (int i = 0; i < anzMaengel; i++) {
-							if (p.getValue().getFkMaengel().get(i)
-									.getFkMangelstatus().getBezeichnung().equals("Offen")) {
-								anzOffeneMaengel++;
-							}
-
-						}
-						return new SimpleStringProperty(String
-								.valueOf(anzOffeneMaengel));
-					}
-				});
-
-		colProjektOffeneMeldungen
-				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-					public ObservableValue<String> call(
-							CellDataFeatures<Projekt, String> p) {
-						int anzMaengel = p.getValue().getFkMaengel().size();
-						int anzMeldungen = 0;
-						int anzOffeneMeldungen = 0;
-						for (int i = 0; i < anzMaengel; i++) {
-							if( p.getValue().getFkMaengel().get(i).getFkMangelstatus().getBezeichnung().equals("Offen")){
-								anzMeldungen = p.getValue().getFkMaengel().get(i)
-										.getFkMeldung().size();
-								for (int j = 0; j < anzMeldungen; j++) {
-									if (p.getValue().getFkMaengel().get(i)
-											.getFkMeldung().get(j).getQuittiert()) {
-										anzOffeneMeldungen++;
-									}
-								}
-							}
-						}
-						return new SimpleStringProperty(String
-								.valueOf(anzOffeneMeldungen));
-					}
-				});
 
 		colProjektAbgeschlossen
 				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {

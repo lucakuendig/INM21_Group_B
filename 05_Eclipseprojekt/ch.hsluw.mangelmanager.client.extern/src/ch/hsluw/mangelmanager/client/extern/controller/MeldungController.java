@@ -6,11 +6,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Projekt;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,8 +19,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Meldung;
 
 /**
  * The MeldungController handles all interaction with meldungen * 
@@ -37,8 +34,8 @@ import javafx.util.Callback;
 
 public class MeldungController implements Initializable {
 
-	//RMI Client to interact
-		ClientRMI client = null;
+	//WS Client to interact
+		ClientWS client = null;
 		
 		RootController rootController = null;
 		
@@ -101,8 +98,8 @@ public class MeldungController implements Initializable {
 		
 			//Client interaction
 			try {
-				client = new ClientRMI();
-				data = FXCollections.observableArrayList(client.getAllMeldung());
+				client = new ClientWS();
+				data = FXCollections.observableArrayList(client.proxy.getAllMeldung());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

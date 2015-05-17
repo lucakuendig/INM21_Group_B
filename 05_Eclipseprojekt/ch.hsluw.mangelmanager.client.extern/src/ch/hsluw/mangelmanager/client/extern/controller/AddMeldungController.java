@@ -3,35 +3,25 @@ package ch.hsluw.mangelmanager.client.extern.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import com.sun.jmx.snmp.Timestamp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import ch.hsluw.mangelmanager.client.extern.ClientWS;
 import ch.hsluw.mangelmanager.client.extern.Main;
-import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Meldungstyp;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 public class AddMeldungController implements Initializable {
-		//RMI Client to interact
+		//WS Client to interact
 		ClientWS client = null;
 		RootController rootController = null;
 		Mangel mangel = null;
@@ -47,10 +37,8 @@ public class AddMeldungController implements Initializable {
 		
 		@FXML
 		public Label lblMeldungProjekt;
-		@FXML 
-		private TextField txtMeldungstyp;
 		@FXML
-		private ChoiceBox<Mangel> cbMeldungMangel;
+		private Label lblMeldungMangel;
 		@FXML
 		private ChoiceBox<Meldungstyp> cbMeldungstyp;
 		@FXML
@@ -62,9 +50,6 @@ public class AddMeldungController implements Initializable {
 			// TODO Auto-generated method stub
 			try {
 				client = new ClientWS();
-				for (Mangel mangel : client.proxy.getAllMangel()) {
-					cbMeldungMangel.getItems().add(mangel);
-				}
 				for (Meldungstyp meldungstyp : client.proxy.getAllMeldungstyp()) {
 					cbMeldungstyp.getItems().add(meldungstyp);
 				}	
@@ -81,7 +66,7 @@ public class AddMeldungController implements Initializable {
 			try {	
 				this.mangel = mangel;
 				lblMeldungProjekt.setText(mangel.getFkProjekt().getBezeichnung());
-				cbMeldungMangel.getSelectionModel().select(mangel);
+				lblMeldungMangel.setText(mangel.getBezeichnung());
 				login = client.proxy.getLoginById(Main.loginId);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -111,6 +96,24 @@ public class AddMeldungController implements Initializable {
 				e.printStackTrace();
 			}
 			
+		}
+		@FXML
+		public void addMeldungCancel(){
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 }

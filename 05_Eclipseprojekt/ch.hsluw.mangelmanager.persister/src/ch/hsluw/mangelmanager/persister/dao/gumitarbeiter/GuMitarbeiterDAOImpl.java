@@ -6,17 +6,10 @@ package ch.hsluw.mangelmanager.persister.dao.gumitarbeiter;
 
 
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
-import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
-import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
 /**
  * Interface implementation fuer GuMitarbeiter Entity

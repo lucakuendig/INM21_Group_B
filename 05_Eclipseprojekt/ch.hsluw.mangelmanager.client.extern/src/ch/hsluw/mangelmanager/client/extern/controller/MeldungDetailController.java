@@ -1,24 +1,25 @@
 package ch.hsluw.mangelmanager.client.extern.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Meldung;
 
 public class MeldungDetailController implements Initializable {
 
-	//RMI Client to interact
-		ClientRMI client = null;
+	//WS Client to interact
+		ClientWS client = null;
 		RootController rootController = null;
 		DateFormat formatZeit;
 	
@@ -52,8 +53,8 @@ public class MeldungDetailController implements Initializable {
 
 		public void init(int meldungId) {
 				try {
-				client = ClientRMI.getInstance();
-				meldung = client.getMeldungById(meldungId);
+				client = ClientWS.getInstance();
+				meldung = client.proxy.getMeldungById(meldungId);
 				lblMeldungId.setText(meldung.getId().toString());
 				lblMeldungProjekt.setText(meldung.getFkMangel().getFkProjekt().getBezeichnung());
 				lblMeldungMangel.setText(meldung.getFkMangel().getBezeichnung());
@@ -68,9 +69,43 @@ public class MeldungDetailController implements Initializable {
 		}
 		
 		@FXML
-		private void saveMeldung() {
-			
-		}
+		private void meldungCancel() {
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		@FXML
+		public void meldungRead(){
+			meldung.setQuittiert(true);
+			client.proxy.updateMeldung(meldung);
+			
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	
 }

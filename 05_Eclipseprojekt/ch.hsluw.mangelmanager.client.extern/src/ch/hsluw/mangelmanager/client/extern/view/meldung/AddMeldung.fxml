@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="600" minWidth="700" prefHeight="720" prefWidth="1280" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.intern.controller.AddMeldungController">
+<AnchorPane minHeight="600" minWidth="700" prefHeight="720" prefWidth="1280" styleClass="background" stylesheets="@../../Design.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.hsluw.mangelmanager.client.extern.controller.AddMeldungController">
 <children>
       <GridPane layoutX="-6.0" layoutY="39.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="39.0">
         <columnConstraints>
@@ -17,7 +17,6 @@
         <rowConstraints>
           <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
-          <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="0.0" prefHeight="45.0" vgrow="NEVER" />
             <RowConstraints fillHeight="false" vgrow="NEVER" />
             <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="45.0" vgrow="NEVER" />
@@ -28,13 +27,13 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Meldungstyp" GridPane.rowIndex="3">
+            <Label text="Meldungstyp" GridPane.rowIndex="2">
                <padding>
                   <Insets left="20.0" />
                </padding>
             </Label>
-            <TextArea fx:id="txtMeldungBeschreibung" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label text="Beschreibung" GridPane.rowIndex="4">
+            <TextArea fx:id="txtMeldungBeschreibung" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Beschreibung" GridPane.rowIndex="3">
                <padding>
                   <Insets left="20.0" />
                </padding>
@@ -44,24 +43,22 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="lblMeldungProjekt" text="Da wir Meldungen nur über Projekte erstellen selbst Ausfüllend?" GridPane.columnIndex="1" />
-            <ChoiceBox fx:id="cbMeldungstyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="lblMeldungProjekt" text="Selbstausfüllend" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="cbMeldungstyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="337.0" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="162.0" minWidth="162.0" prefWidth="162.0" />
+                <ColumnConstraints hgrow="SOMETIMES" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Button fx:id="btnMeldungSpeichern" mnemonicParsing="false" onAction="#meldungSave" text="Speichern" />
-                  <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" onAction="#addMeldungCancel" text="Abbrechen" GridPane.columnIndex="1" />
                </children>
             </GridPane>
-            <ChoiceBox fx:id="cbMeldungMangel" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Meldung" GridPane.rowIndex="2" />
-            <TextField fx:id="txtMeldungstyp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="lblMeldungMangel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
 	</children>

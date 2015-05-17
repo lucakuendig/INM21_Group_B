@@ -20,6 +20,8 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.Rolle;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 
@@ -70,7 +72,7 @@ public interface MangelManagerService {
 	public abstract void addSubunternehmen(Subunternehmen addSubunternehmen);
 	@WebMethod
 	public abstract List<Projekt> getAllSubunternehmenProjekt(
-			Subunternehmen subunternehmen);
+			Integer subunternehmen);
 	@WebMethod
 	public abstract List<SuMitarbeiter> getAllSubunternehmenMitarbeiter(
 			Subunternehmen subunternehmen);
@@ -79,7 +81,7 @@ public interface MangelManagerService {
 	@WebMethod
 	public abstract List<Arbeitstyp> getAllArbeitstyp();
 	@WebMethod
-	public abstract List<Mangel> getAllMangelProjekt(Projekt projekt);
+	public abstract List<Mangel> getAllMangelProjekt(Integer projekt);
 	@WebMethod
 	public abstract Mangel getMangelById(Integer mangelId);
 	@WebMethod
@@ -117,4 +119,24 @@ public interface MangelManagerService {
 	@WebMethod
 	public abstract void addGuMitarbeiterByProjekt(
 			ProjektGuMitarbeiter projektGuMitarbeiter);
+	@WebMethod
+	public abstract void updateProjektGuMitarbeiter(ProjektGuMitarbeiter lastBauleiter);
+	@WebMethod
+	public abstract List<Projektstatus> getAllProjektstatus();
+	@WebMethod
+	public abstract void addGuMitarbeiter(GuMitarbeiter guMitarbeiter);
+	@WebMethod
+	public abstract void addSuMitarbeiter(SuMitarbeiter suMitarbeiter);
+	@WebMethod
+	public abstract void addBauherr(Bauherr bauherr);
+	@WebMethod
+	public abstract List<Rolle> getAllRolle();
+	@WebMethod
+	public abstract Person getPersonById(int personId);
+	@WebMethod
+	public abstract List<Projekt> getProjektbyPerson(Person person);
+	@WebMethod
+	public abstract void updatePerson(Person person);
+	@WebMethod
+	public abstract void updateMeldung(Meldung meldung2);
 }

@@ -5,8 +5,6 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.List;
 
-import javafx.util.Callback;
-
 import org.apache.log4j.Logger;
 
 import ch.hsluw.mangelmanager.model.Adresse;

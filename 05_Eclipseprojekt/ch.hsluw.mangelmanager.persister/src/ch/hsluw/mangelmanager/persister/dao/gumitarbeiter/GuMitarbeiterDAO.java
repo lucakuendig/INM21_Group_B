@@ -6,7 +6,6 @@ package ch.hsluw.mangelmanager.persister.dao.gumitarbeiter;
 
 
 
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.GuMitarbeiter;

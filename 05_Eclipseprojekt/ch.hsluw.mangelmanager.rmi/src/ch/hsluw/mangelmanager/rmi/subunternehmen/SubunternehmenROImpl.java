@@ -10,10 +10,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-import javafx.beans.value.ObservableValue;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManager;
 import ch.hsluw.mangelmanager.business.subunternehmen.SubunternehmenManagerImpl;
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 

@@ -9,8 +9,6 @@ import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
-import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseROImpl;
 import ch.hsluw.mangelmanager.rmi.arbeitstyp.ArbeitstypRO;
@@ -37,7 +35,6 @@ import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzROImpl;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektROImpl;
-import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
 import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterROImpl;
 import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusRO;
 import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusROImpl;

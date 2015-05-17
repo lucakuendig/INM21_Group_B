@@ -5,13 +5,10 @@
 
 package ch.hsluw.mangelmanager.business.projekt;
 
-import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * Interface fuer Projekt Entity

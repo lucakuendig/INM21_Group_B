@@ -9,7 +9,6 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Meldung;
 
 
 

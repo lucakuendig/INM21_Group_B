@@ -24,6 +24,8 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.Rolle;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.rmi.adresse.AdresseRO;
@@ -40,8 +42,11 @@ import ch.hsluw.mangelmanager.rmi.person.PersonRO;
 import ch.hsluw.mangelmanager.rmi.plz.PlzRO;
 import ch.hsluw.mangelmanager.rmi.projekt.ProjektRO;
 import ch.hsluw.mangelmanager.rmi.projektgumitarbeiter.ProjektGuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.projektstatus.ProjektstatusRO;
 import ch.hsluw.mangelmanager.rmi.projektsumitarbeiter.ProjektSuMitarbeiterRO;
+import ch.hsluw.mangelmanager.rmi.rolle.RolleRO;
 import ch.hsluw.mangelmanager.rmi.subunternehmen.SubunternehmenRO;
+import ch.hsluw.mangelmanager.rmi.sumitarbeiter.SuMitarbeiterRO;
 
 @WebService(endpointInterface = "ch.hsluw.mangelmanager.webservice.MangelManagerService")
 public class MangelManagerServiceImpl implements MangelManagerService{
@@ -49,6 +54,7 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	List<Person> person;
 	List<Projekt> projekte;
 	List<Projekt> suprojekte;
+	List<Projektstatus> projektstatus;
 	List<Subunternehmen> subunternehmen;
 	
 	List<Mangel> maengel;
@@ -74,6 +80,8 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	Adresse addAdresse;
 	Login login;
 	Login loginnr;
+	Person personnr;
+	List<Rolle> rollen;
 	
 	PersonRO personRO;
 	ProjektRO projektRO;
@@ -91,6 +99,9 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	ProjektSuMitarbeiterRO projektSuMitarbeiterRO;
 	BauherrRO bauherrRO;
 	GuMitarbeiterRO guMitarbeiterRO;
+	ProjektstatusRO projektstatusRO;
+	SuMitarbeiterRO suMitarbeiterRO;
+	RolleRO rolleRO;
 
 	public MangelManagerServiceImpl() throws Exception {
 		/*
@@ -135,6 +146,9 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			String projektSuMitarbeiterROName = "projektSuMitarbeiterRO";
 			String bauherrROName = "bauherrRO";
 			String guMitarbeiterROName = "guMitarbeiterRO";
+			String suMitarbeiterROName = "suMitarbeiterRO";
+			String projektstatusROName = "projektstatusRO";
+			String rolleROName = "rolleRO";
 			
 			this.personRO = (PersonRO) Naming.lookup(personROName);
 			this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
@@ -152,6 +166,9 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			this.projektSuMitarbeiterRO = (ProjektSuMitarbeiterRO) Naming.lookup(url + projektSuMitarbeiterROName);
 			this.bauherrRO = (BauherrRO) Naming.lookup(url + bauherrROName);
 			this.guMitarbeiterRO = (GuMitarbeiterRO) Naming.lookup(url + guMitarbeiterROName);
+			this.projektstatusRO = (ProjektstatusRO) Naming.lookup(url + projektstatusROName);
+			this.suMitarbeiterRO = (SuMitarbeiterRO) Naming.lookup(url + suMitarbeiterROName);
+			this.rolleRO = (RolleRO) Naming.lookup(url + rolleROName);
 
 		} catch (MalformedURLException | RemoteException | NotBoundException e) {
 			throw e;
@@ -159,10 +176,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 	
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllProjekt()
-	 */
-	@Override
 	public List<Projekt> getAllProjekt() {
 		// TODO Auto-generated method stub
 		try {
@@ -175,10 +188,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		
 	}
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllSubunternehmen()
-	 */
-	@Override
 	public List<Subunternehmen> getAllSubunternehmen() {
 		
 		try {
@@ -190,10 +199,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return subunternehmen;
 	}
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektproSubunternehmen(int)
-	 */
-	@Override
 	public String getProjektproSubunternehmen(int subunternehmen){
 		try {
 			anzProjekte = subunternehmenRO.findAllProjekte(subunternehmen);
@@ -206,10 +211,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 	
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMangel()
-	 */
-	@Override
 	public List<Mangel> getAllMangel() {
 
 		// TODO Auto-generated method stub
@@ -224,10 +225,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 	
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMeldung()
-	 */
-	@Override
 	public List<Meldung> getAllMeldung(){
 		try {
 			meldung = meldungRO.findAll();
@@ -238,10 +235,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return meldung;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektById(int)
-	 */
-	@Override
 	public Projekt getProjektById(int projektId) {
 		// TODO Auto-generated method stub
 		try {
@@ -253,10 +246,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekt;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getSubunternehmenById(int)
-	 */
-	@Override
 	public Subunternehmen getSubunternehmenById(int subunternehmenId) {
 		try {
 			subunternehmennr = subunternehmenRO.findById(subunternehmenId);
@@ -267,10 +256,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return subunternehmennr;
 	}
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getMeldungById(int)
-	 */
-	@Override
 	public Meldung getMeldungById(int meldungId) {
 		try {
 			meldungnr = meldungRO.findById(meldungId);
@@ -281,10 +266,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return meldungnr;
 	}
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllPerson()
-	 */
-	@Override
 	public List<Person> getAllPerson() {
 		// TODO Auto-generated method stub
 		try {
@@ -297,10 +278,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#updateSubunternehmen(ch.hsluw.mangelmanager.model.Subunternehmen)
-	 */
-	@Override
 	public void updateSubunternehmen(Subunternehmen subunternehmen) {
 			try {
 				subunternehmenRO.update(subunternehmen);
@@ -314,10 +291,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByBezeichnung(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByBezeichnung(String bezeichnung) {
 			// TODO Auto-generated method stub
 		try {
@@ -333,10 +306,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllPlz()
-	 */
-	@Override
 	public List<Plz> getAllPlz() {
 		try {
 			plz = plzRO.findAll();
@@ -349,10 +318,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByBauherr(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByBauherr(String bauherr) {
 		// TODO Auto-generated method stub
 		try {
@@ -367,10 +332,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByPlz(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByPlz(String plz) {
 		// TODO Auto-generated method stub
 		try {
@@ -385,10 +346,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByOrt(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByOrt(String ort) {
 		// TODO Auto-generated method stub
 		try {
@@ -404,10 +361,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getPlzById(int)
-	 */
-	@Override
 	public Plz getPlzById(int plzId) {
 		try {
 			plznr = plzRO.findById(plzId);
@@ -418,10 +371,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return plznr;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByObjekttyp(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByObjekttyp(String objekttyp) {
 		// TODO Auto-generated method stub
 		try {
@@ -436,10 +385,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByArbeitstyp(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByArbeitstyp(String arbeitstyp) {
 		// TODO Auto-generated method stub
 		try {
@@ -454,10 +399,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return projekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getProjektByProjektstatus(java.lang.String)
-	 */
-	@Override
 	public List<Projekt> getProjektByProjektstatus(String projektstatus) {
 		// TODO Auto-generated method stub
 		try {
@@ -473,10 +414,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 	}
 
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addAdresse(ch.hsluw.mangelmanager.model.Adresse)
-	 */
-	@Override
 	public void addAdresse(Adresse adresse) {
 		try {
 			adresseRO.add(adresse);
@@ -486,10 +423,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addSubunternehmen(ch.hsluw.mangelmanager.model.Subunternehmen)
-	 */
-	@Override
 	public void addSubunternehmen(Subunternehmen addSubunternehmen) {
 		try {
 			subunternehmenRO.add(addSubunternehmen);
@@ -500,11 +433,7 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllSubunternehmenProjekt(ch.hsluw.mangelmanager.model.Subunternehmen)
-	 */
-	@Override
-	public List<Projekt> getAllSubunternehmenProjekt(Subunternehmen subunternehmen) {
+	public List<Projekt> getAllSubunternehmenProjekt(Integer subunternehmen) {
 		try {
 			suprojekte = projektRO.findAllSubunternehmenProjekt(subunternehmen);
 		} catch (RemoteException e) {
@@ -514,10 +443,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return suprojekte;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllSubunternehmenMitarbeiter(ch.hsluw.mangelmanager.model.Subunternehmen)
-	 */
-	@Override
 	public List<SuMitarbeiter> getAllSubunternehmenMitarbeiter(Subunternehmen subunternehmen) {
 		try {
 			sumitarbeiter = subunternehmenRO.findAllSubunternehmenMitarbeiter(subunternehmen);
@@ -528,10 +453,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return sumitarbeiter;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllObjekttyp()
-	 */
-	@Override
 	public List<Objekttyp> getAllObjekttyp() {
 		// TODO Auto-generated method stub
 		try {
@@ -543,10 +464,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return objekttyp;
 	}
 	
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllArbeitstyp()
-	 */
-	@Override
 	public List<Arbeitstyp> getAllArbeitstyp() {
 		// TODO Auto-generated method stub
 		try {
@@ -557,11 +474,7 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 		return arbeitstyp;
 	}
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMangelProjekt(ch.hsluw.mangelmanager.model.Projekt)
-	 */
-	@Override
-	public List<Mangel> getAllMangelProjekt(Projekt projekt) {
+	public List<Mangel> getAllMangelProjekt(Integer projekt) {
 		try {
 			mangelOfProjekt = mangelRO.findAllMangelProjekt(projekt);
 //			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
@@ -572,10 +485,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return mangelOfProjekt;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getMangelById(java.lang.Integer)
-	 */
-	@Override
 	public Mangel getMangelById(Integer mangelId) {
 		try {
 			mangelnr = mangelRO.findById(mangelId);
@@ -586,10 +495,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return mangelnr;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#updateMangel(ch.hsluw.mangelmanager.model.Mangel)
-	 */
-	@Override
 	public void updateMangel(Mangel mangel) {
 		// TODO Auto-generated method stub
 		try {
@@ -603,10 +508,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMangelStatus()
-	 */
-	@Override
 	public List<Mangelstatus> getAllMangelStatus() {
 		try {
 			mangelstatus = mangelstatusRO.findAllMangelStatus();
@@ -618,10 +519,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return mangelstatus;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addMangel(ch.hsluw.mangelmanager.model.Mangel)
-	 */
-	@Override
 	public void addMangel(Mangel mangel) {
 		// TODO Auto-generated method stub
 		try {
@@ -632,10 +529,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMeldungstyp()
-	 */
-	@Override
 	public List<Meldungstyp> getAllMeldungstyp() {
 		// TODO Auto-generated method stub
 		try {
@@ -648,10 +541,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return meldungstyp;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addMeldung(ch.hsluw.mangelmanager.model.Meldung)
-	 */
-	@Override
 	public void addMeldung(Meldung meldung) {
 		// TODO Auto-generated method stub
 		try {
@@ -662,10 +551,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllMeldungByMangel(ch.hsluw.mangelmanager.model.Mangel)
-	 */
-	@Override
 	public List<Meldung> getAllMeldungByMangel(Mangel mangel) {
 		// TODO Auto-generated method stub
 		try {
@@ -677,10 +562,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return meldungByMangel;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getUnternehmenByProjekt(ch.hsluw.mangelmanager.model.Projekt)
-	 */
-	@Override
 	public List<Subunternehmen> getUnternehmenByProjekt(Integer projekt2) {
 		// TODO Auto-generated method stub
 		try {
@@ -692,10 +573,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return subunternehmen;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getBauleiterByProjekt(ch.hsluw.mangelmanager.model.Projekt)
-	 */
-	@Override
 	public List<ProjektGuMitarbeiter> getBauleiterByProjekt(Projekt projekt2) {
 		// TODO Auto-generated method stub
 		try {
@@ -706,10 +583,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return bauleiter;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getLoginByName(java.lang.String)
-	 */
-	@Override
 	public Login getLoginByName(String name) {
 		// TODO Auto-generated method stub
 		try {
@@ -721,10 +594,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return login;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getLoginById(java.lang.Integer)
-	 */
-	@Override
 	public Login getLoginById(Integer loginId) {
 		// TODO Auto-generated method stub
 		try {
@@ -736,10 +605,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		return loginnr;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#updateProjekt(ch.hsluw.mangelmanager.model.Projekt)
-	 */
-	@Override
 	public void updateProjekt(Projekt projekt2) {
 		// TODO Auto-generated method stub
 		try {
@@ -753,10 +618,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addSuMitarbeiterByProjekt(ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter)
-	 */
-	@Override
 	public void addSuMitarbeiterByProjekt(ProjektSuMitarbeiter psum) {
 		// TODO Auto-generated method stub
 		try {
@@ -770,10 +631,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllBauherr()
-	 */
-	@Override
 	public List<Bauherr> getAllBauherr() {
 		// TODO Auto-generated method stub
 		try {
@@ -786,10 +643,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return bauherren;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addProjekt(ch.hsluw.mangelmanager.model.Projekt)
-	 */
-	@Override
 	public void addProjekt(Projekt projekt2) {
 		// TODO Auto-generated method stub
 		try {
@@ -803,10 +656,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#getAllGuMitarbeiter()
-	 */
-	@Override
 	public List<GuMitarbeiter> getAllGuMitarbeiter() {
 		// TODO Auto-generated method stub
 		try {
@@ -818,10 +667,6 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 			return guMitarbeiter;
 	}
 
-	/* (non-Javadoc)
-	 * @see ch.hsluw.mangelmanager.webservice.MangelManagerServiced#addGuMitarbeiterByProjekt(ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter)
-	 */
-	@Override
 	public void addGuMitarbeiterByProjekt(
 			ProjektGuMitarbeiter projektGuMitarbeiter) {
 		// TODO Auto-generated method stub
@@ -836,5 +681,114 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 		}
 		
 	}
+
+	public void updateProjektGuMitarbeiter(ProjektGuMitarbeiter lastBauleiter) {
+		// TODO Auto-generated method stub
+		try {
+			projektGuMitarbeiterRO.update(lastBauleiter);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Projektstatus> getAllProjektstatus() {
+		// TODO Auto-generated method stub
+		try {
+			projektstatus =	projektstatusRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return projektstatus;
+	}
+
+	public void addGuMitarbeiter(GuMitarbeiter guMitarbeiter) {
+		// TODO Auto-generated method stub
+		try {
+			guMitarbeiterRO.add(guMitarbeiter);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void addSuMitarbeiter(SuMitarbeiter suMitarbeiter) {
+		// TODO Auto-generated method stub
+		try {
+			suMitarbeiterRO.add(suMitarbeiter);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void addBauherr(Bauherr bauherr) {
+		// TODO Auto-generated method stub
+		try {
+			bauherrRO.add(bauherr);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public List<Rolle> getAllRolle() {
+		try {
+			rollen = rolleRO.findAll();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rollen;
+	}
+
+	public Person getPersonById(int personId) {
+		// TODO Auto-generated method stub
+		try {
+			personnr = personRO.findById(personId);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return personnr;
+	}
+
+	public List<Projekt> getProjektbyPerson(Person person) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =	projektRO.findProjektbyPerson(person);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public void updatePerson(Person person) {
+		// TODO Auto-generated method stub
+		try {
+			personRO.update(person);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void updateMeldung(Meldung meldung2) {
+		// TODO Auto-generated method stub
+		try {
+			meldungRO.update(meldung2);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
+		
 }
+
+
+

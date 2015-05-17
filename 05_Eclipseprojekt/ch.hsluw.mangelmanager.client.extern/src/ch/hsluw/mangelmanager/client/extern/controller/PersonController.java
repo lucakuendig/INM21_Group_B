@@ -11,22 +11,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Callback;
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
 import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Person;
-import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 
 /**
@@ -37,8 +33,8 @@ import ch.hsluw.mangelmanager.model.SuMitarbeiter;
  */
 public class PersonController implements Initializable {
 	RootController rootController = null;
-	// RMI Client to interact
-	ClientRMI client = null;
+	// WS Client to interact
+	ClientWS client = null;
 
 	public void setRootController(RootController rootController) {
 		// TODO Auto-generated method stub
@@ -82,8 +78,8 @@ public class PersonController implements Initializable {
 		
 		//Client interaction
 				try {
-					client = ClientRMI.getInstance();
-					data = FXCollections.observableArrayList(client.getAllPerson());
+					client = ClientWS.getInstance();
+					data = FXCollections.observableArrayList(client.proxy.getAllPerson());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -188,6 +184,34 @@ public class PersonController implements Initializable {
 		});
 	}
 	
+	
+	@FXML
+	public void showPersonDetail(MouseEvent t) throws IOException {
+		if (t.getClickCount() == 2) {
+			System.out.println(tblPerson.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/person/InnerePerson.fxml"));
+				AnchorPane inneresPerson = (AnchorPane) loader.load();
+
+				PersonDetailController detailPersonController = loader
+						.<PersonDetailController> getController();
+				detailPersonController.setRootController(rootController);
+
+				detailPersonController.init(tblPerson.getSelectionModel().getSelectedItem()
+						.getId());
+				rootController.rootLayout.setCenter(inneresPerson);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	@FXML
 	private void addPerson(){
 		try {
@@ -200,7 +224,6 @@ public class PersonController implements Initializable {
 			AddPersonController addPersonController = loader.<AddPersonController>getController();
 			addPersonController.setRootController(rootController);
 			
-			addPersonController.init();
 			rootController.rootLayout.setCenter(addPerson);
 			
 

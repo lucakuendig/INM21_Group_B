@@ -2,14 +2,8 @@ package ch.hsluw.mangelmanager.client.extern.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import ch.hsluw.mangelmanager.client.extern.ClientWS;
-import ch.hsluw.mangelmanager.client.extern.Main;
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -22,8 +16,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * The SubunternehmenController handles all interaction with subunternehmen * 
@@ -56,8 +52,6 @@ public class SubUnternehmenController implements Initializable {
 	private TableColumn<Subunternehmen, String> colSubunternehmenTelefon;
 	@FXML
 	private TableColumn<Subunternehmen, String> colSubunternehmenOffeneProjekte;
-	@FXML
-	private TableColumn<Subunternehmen, String> colSubunternehmenAnzMitarbeiter;
 	
 	//Datalist for Tableview
 	ObservableList<Subunternehmen> data;
@@ -83,12 +77,6 @@ public class SubUnternehmenController implements Initializable {
 		    }
 		});
 		
-		
-//		colSubunternehmenAnzMitarbeiter.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Subunternehmen, String>, ObservableValue<String>>() {
-//		    public ObservableValue<String> call(TableColumn.CellDataFeatures<Subunternehmen, String> p) {
-//		        return new SimpleStringProperty(String.valueOf(p.getValue().getFkSuMitarbeiter().size()));
-//		    	}
-//		});	
 		
 		//Client interaction
 		try {

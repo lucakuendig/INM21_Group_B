@@ -9,8 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAO;
 import ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAOImpl;
 

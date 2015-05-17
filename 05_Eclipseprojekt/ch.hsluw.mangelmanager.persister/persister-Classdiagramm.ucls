@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/adresse/AdresseDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="309" x="770" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="ch.hsluw.mangelmanager.persister.dao.adresse.AdresseDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/adresse/AdresseDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="309" x="770" y="313"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="ch.hsluw.mangelmanager.persister.dao.arbeitstyp.ArbeitstypDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/arbeitstyp/ArbeitstypDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="571" y="665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="4" language="java" name="ch.hsluw.mangelmanager.persister.dao.arbeitstyp.ArbeitstypDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/arbeitstyp/ArbeitstypDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="571" y="931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="5" language="java" name="ch.hsluw.mangelmanager.persister.dao.bauherr.BauherrDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/bauherr/BauherrDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="308" x="422" y="313"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="ch.hsluw.mangelmanager.persister.dao.bauherr.BauherrDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/bauherr/BauherrDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="308" x="422" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="ch.hsluw.mangelmanager.persister.dao.gumitarbeiter.GuMitarbeiterDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/gumitarbeiter/GuMitarbeiterDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="341" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="ch.hsluw.mangelmanager.persister.dao.gumitarbeiter.GuMitarbeiterDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/gumitarbeiter/GuMitarbeiterDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="196" width="341" x="41" y="313"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="ch.hsluw.mangelmanager.persister.dao.login.LoginDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/login/LoginDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="189" y="665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="ch.hsluw.mangelmanager.persister.dao.login.LoginDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/login/LoginDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="189" y="931"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="11" language="java" 
+    name="ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektgumitarbeiter/ProjektGuMitarbeiterDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1287" y="1536"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="12" language="java" name="ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projekt/ProjektDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="236" y="1306"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="13" language="java" name="ch.hsluw.mangelmanager.persister.dao.plz.PlzDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/plz/PlzDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1280" y="386"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="14" language="java" name="ch.hsluw.mangelmanager.persister.dao.person.PersonDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/person/PersonDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1738" y="930"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="15" language="java" name="ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/mangelstatus/MangelstatusDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="981" y="664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="16" language="java" name="ch.hsluw.mangelmanager.persister.dao.meldung.MeldungDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/meldung/MeldungDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1373" y="936"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="17" language="java" name="ch.hsluw.mangelmanager.persister.dao.meldung.MeldungDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/meldung/MeldungDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1373" y="674"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/mangel/MangelDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="729" y="1314"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="19" language="java" name="ch.hsluw.mangelmanager.persister.dao.projekt.ProjektDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projekt/ProjektDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="236" y="1732"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="20" language="java" 
+    name="ch.hsluw.mangelmanager.persister.dao.projektgumitarbeiter.ProjektGuMitarbeiterDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektgumitarbeiter/ProjektGuMitarbeiterDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1283" y="1270"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="21" language="java" name="ch.hsluw.mangelmanager.persister.dao.mangel.MangelDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/mangel/MangelDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="729" y="1740"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="22" language="java" name="ch.hsluw.mangelmanager.persister.dao.objekttyp.ObjekttypDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/objekttyp/ObjekttypDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2118" y="944"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="23" language="java" name="ch.hsluw.mangelmanager.persister.dao.person.PersonDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/person/PersonDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1730" y="664"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="ch.hsluw.mangelmanager.persister.dao.mangelstatus.MangelstatusDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/mangelstatus/MangelstatusDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="981" y="922"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="ch.hsluw.mangelmanager.persister.dao.objekttyp.ObjekttypDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/objekttyp/ObjekttypDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2114" y="674"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="ch.hsluw.mangelmanager.persister.dao.plz.PlzDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/plz/PlzDAOImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1276" y="140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="ch.hsluw.mangelmanager.persister.dao.meldungstyp.MeldungstypDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/meldungstyp/MeldungstypDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1623" y="140"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="28" language="java" name="ch.hsluw.mangelmanager.persister.dao.meldungstyp.MeldungstypDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/meldungstyp/MeldungstypDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1635" y="398"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="29" language="java" name="ch.hsluw.mangelmanager.persister.dao.sumitarbeiter.SuMitarbeiterDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/sumitarbeiter/SuMitarbeiterDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2036" y="146"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="ch.hsluw.mangelmanager.persister.util.JpaUtil" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/util/JpaUtil.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3302" y="262"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="31" language="java" name="ch.hsluw.mangelmanager.persister.dao.rolle.RolleDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/rolle/RolleDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2566" y="952"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="32" language="java" name="ch.hsluw.mangelmanager.persister.dao.projektstatus.ProjektstatusDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektstatus/ProjektstatusDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2487" y="138"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="33" language="java" name="ch.hsluw.mangelmanager.persister.dao.projektstatus.ProjektstatusDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektstatus/ProjektstatusDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2491" y="436"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="34" language="java" 
+    name="ch.hsluw.mangelmanager.persister.dao.projektsumitarbeiter.ProjektSuMitarbeiterDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektsumitarbeiter/ProjektSuMitarbeiterDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1873" y="1532"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="35" language="java" name="ch.hsluw.mangelmanager.persister.dao.rolle.RolleDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/rolle/RolleDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2545" y="682"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/generic/GenericPersisterImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3359" y="838"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="37" language="java" name="ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/subunternehmen/SubunternehmenDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2430" y="1602"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="38" language="java" 
+    name="ch.hsluw.mangelmanager.persister.dao.projektsumitarbeiter.ProjektSuMitarbeiterDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/projektsumitarbeiter/ProjektSuMitarbeiterDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1868" y="1262"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="39" language="java" name="ch.hsluw.mangelmanager.persister.dao.sumitarbeiter.SuMitarbeiterDAO" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/sumitarbeiter/SuMitarbeiterDAO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2060" y="404"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="40" language="java" name="ch.hsluw.mangelmanager.persister.generic.GenericPersister" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/generic/GenericPersister.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3163" y="1440"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="41" language="java" name="ch.hsluw.mangelmanager.persister.dao.subunternehmen.SubunternehmenDAOImpl" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/src/ch/hsluw/mangelmanager/persister/dao/subunternehmen/SubunternehmenDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2434" y="1296"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="ch.hsluw.mangelmanager.persister.CreateEntityTest" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/test/ch/hsluw/mangelmanager/persister/CreateEntityTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3612" y="1348"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="ch.hsluw.mangelmanager.persister.EntityTest" 
+    project="ch.hsluw.mangelmanager.persister" 
+    file="/ch.hsluw.mangelmanager.persister/test/ch/hsluw/mangelmanager/persister/EntityTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3672" y="504"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="45">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <realization id="46">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <realization id="48">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <realization id="49">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="33"/>  
+  </realization>  
+  <dependency id="50">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="51">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="52">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="53">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <dependency id="54">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="57">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="16"/>  
+  </realization>  
+  <dependency id="58">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="59">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="60">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <realization id="65">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <realization id="69">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="72">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <dependency id="73">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <realization id="75">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="31"/>  
+  </realization>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="77">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="19"/>  
+  </realization>  
+  <dependency id="78">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="79">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="39"/>  
+  </realization>  
+  <realization id="80">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <dependency id="81">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="82">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="83">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <realization id="84">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="22"/>  
+  </realization>  
+  <dependency id="85">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="26"/>  
+  </dependency>  
+  <realization id="86">    
+    <end type="SOURCE" refId="27"/>    
+    <end type="TARGET" refId="28"/>  
+  </realization>  
+  <dependency id="87">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="88">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="89">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <dependency id="90">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="91">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="34"/>  
+  </realization>  
+  <dependency id="92">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="93">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="94">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <dependency id="95">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="96">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="36"/>  
+  </dependency>  
+  <realization id="97">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="40"/>  
+  </realization>  
+  <dependency id="98">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="99">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <realization id="100">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="37"/>  
+  </realization>  
+  <realization id="101">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <dependency id="102">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="103">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <realization id="104">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <dependency id="105">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="106">    
+    <end type="SOURCE" refId="43"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

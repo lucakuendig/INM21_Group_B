@@ -10,19 +10,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
-import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
-import ch.hsluw.mangelmanager.model.Arbeitstyp;
-import ch.hsluw.mangelmanager.model.GuMitarbeiter;
-import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Meldung;
-import ch.hsluw.mangelmanager.model.Objekttyp;
-import ch.hsluw.mangelmanager.model.Plz;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
-import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
-import ch.hsluw.mangelmanager.model.SuMitarbeiter;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -30,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -41,8 +27,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
+import ch.hsluw.mangelmanager.client.extern.ClientWS;
+import ch.hsluw.mangelmanager.client.extern.Main;
+import ch.hsluw.mangelmanager.model.Arbeitstyp;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.model.Meldung;
+import ch.hsluw.mangelmanager.model.Objekttyp;
+import ch.hsluw.mangelmanager.model.Plz;
+import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
+import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Projektstatus;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * The ProjektDetailController handles all interaction with projects * 
@@ -53,8 +52,8 @@ import javafx.util.Callback;
  */
 
 public class ProjektDetailController implements Initializable {
-	//RMI Client to interact
-	ClientRMI client = null;
+	//WS Client to interact
+	ClientWS client = null;
 	RootController rootController = null;
 	DateFormat formatDatum = null;
 	DateTimeFormatter dateFormatter = null;
@@ -75,19 +74,21 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private TextField txtProjektStrasse;
 	@FXML 
-	private ComboBox<Integer> cbProjektPlz;
+	private ComboBox<Plz> cbProjektPlz;
 	@FXML
 	private Label lblProjektOrt;
 	@FXML 
-	private ChoiceBox<Objekttyp> cbProjektObjekttyp;
+	private ComboBox<Objekttyp> cbProjektObjekttyp;
 	@FXML 
-	private ChoiceBox<Arbeitstyp> cbProjektArbeitstyp;
+	private ComboBox<Arbeitstyp> cbProjektArbeitstyp;
 	@FXML
 	private Label lblProjektStartdatum;
 	@FXML
 	private DatePicker dateProjektEnddatum;	
 	@FXML
 	private Label lblProjektFaellig;
+	@FXML	
+	private ComboBox<Projektstatus> cbProjektStatus;
 	
 	//Right Panel Mangel
 	@FXML
@@ -159,35 +160,31 @@ public class ProjektDetailController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		client = ClientRMI.getInstance();
+		client = ClientWS.getInstance();
 		formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 		timestamp = (GregorianCalendar) Calendar.getInstance();
 		
-		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
-			cbProjektPlz.getItems().add(plz.getPlz());
+		for (Plz plz : FXCollections.observableArrayList(client.proxy.getAllPlz())) {
+			cbProjektPlz.getItems().add(plz);
 		}
-		for (Objekttyp objekttyp : FXCollections.observableArrayList(client.getAllObjekttyp())) {
+		for (Objekttyp objekttyp : FXCollections.observableArrayList(client.proxy.getAllObjekttyp())) {
 			cbProjektObjekttyp.getItems().add(objekttyp);
 		}
-		for (Arbeitstyp arbeitstyp : FXCollections.observableArrayList(client.getAllArbeitstyp())) {
+		for (Arbeitstyp arbeitstyp : FXCollections.observableArrayList(client.proxy.getAllArbeitstyp())) {
 			cbProjektArbeitstyp.getItems().add(arbeitstyp);
 		}
-		for (Subunternehmen subunternehmen : FXCollections.observableArrayList(client.getAllSubunternehmen())) {
+		for (Subunternehmen subunternehmen : FXCollections.observableArrayList(client.proxy.getAllSubunternehmen())) {
 			cbSubunternehmen.getItems().add(subunternehmen);
 		}
-		for (GuMitarbeiter guMitarbeiter : FXCollections.observableArrayList(client.getAllGuMitarbeiter())) {
+		for (GuMitarbeiter guMitarbeiter : FXCollections.observableArrayList(client.proxy.getAllGuMitarbeiter())) {
 			cbProjektBauleiter.getItems().add(guMitarbeiter);
 		}
-		
-		
-		
-		// Client interaction
-		try {
-			client = ClientRMI.getInstance();	
-		} catch (Exception e) {
-			e.printStackTrace();
+		for (Projektstatus projektStatus : FXCollections.observableArrayList(client.proxy.getAllProjektstatus())) {
+			cbProjektStatus.getItems().add(projektStatus);
 		}
+		
+
 		setCellValueFactoryTblMangel();
 		setCellValueFactoryTblMeldung();
 		setCellValueFactoryTblUnternehmen();
@@ -199,14 +196,17 @@ public class ProjektDetailController implements Initializable {
 	
 	private void setCellValueFactoryTblBauleiter() {
 		// TODO Auto-generated method stub
-		colProjektBauleiterId.setCellValueFactory(new PropertyValueFactory<ProjektGuMitarbeiter, String>("idProjekt"));
-
+		colProjektBauleiterId.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
+		        return new SimpleStringProperty(p.getValue().getFkProjekt().getId().toString());
+		    }
+		});
 		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getNachname());
 		    }
 		});
-		colProjektBauleiterName.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
+		colProjektBauleiterVorname.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String>, ObservableValue<String>>() {
 		    public ObservableValue<String> call(TableColumn.CellDataFeatures<ProjektGuMitarbeiter, String> p) {
 		        return new SimpleStringProperty(p.getValue().getFkMitarbeiter().getVorname());
 		    }
@@ -268,22 +268,30 @@ public class ProjektDetailController implements Initializable {
 
 	public void init(int projektId) {
 			try {
-			projekt = client.getProjektById(projektId);
+			projekt = client.proxy.getProjektById(projektId);
 			lblPersonId.setText(projekt.getId().toString());
 			lblProjektBauherr.setText(projekt.getFkBauherr().get(0).getNachname() + " " +projekt.getFkBauherr().get(0).getVorname());
 			txtProjektStrasse.setText(projekt.getFkAdresse().getStrasse());
-			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz().getPlz());
-			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
+			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz());
+			cbProjektPlz.setPromptText(projekt.getFkAdresse().getPlz().getPlz().toString());
+			lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
+			cbProjektArbeitstyp.setValue(projekt.getFkArbeitstyp());
+			cbProjektArbeitstyp.setPromptText(projekt.getFkArbeitstyp().getBezeichnung());
 			cbProjektObjekttyp.getSelectionModel().select(projekt.getFkObjekttyp());
-			cbProjektArbeitstyp.getSelectionModel().select(projekt.getFkArbeitstyp());
-			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
-			dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
-			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
+			cbProjektObjekttyp.setPromptText(projekt.getFkObjekttyp().getBezeichnung());
 			
-			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt));
-			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
-			bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
-//			
+			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
+			if(dateProjektEnddatum.getValue() != null){
+				dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
+
+			}
+			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
+			cbProjektStatus.getSelectionModel().select(projekt.getFkProjektstatus());
+			//cbProjektStatus.setPromptText(projekt.getFkProjektstatus().getBezeichnung());
+			
+			mangelData = FXCollections.observableArrayList(client.proxy.getAllMangelProjekt(projekt.getId()));
+			subunternehmenData = FXCollections.observableArrayList(client.proxy.getUnternehmenByProjekt(projekt.getId()));
+			bauleiterData = FXCollections.observableArrayList(client.proxy.getBauleiterByProjekt(projekt));	
 			tblProjektMangel.setItems(mangelData);
 			tblProjektUnternehmen.setItems(subunternehmenData);
 			tblProjektBauleiter.setItems(bauleiterData);		
@@ -297,7 +305,7 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	public void showMeldungByMangelOderMangel(MouseEvent t) throws IOException{
 		if(t.getClickCount() ==1){
-			meldungData = FXCollections.observableArrayList(client.getAllMeldungByMangel(tblProjektMangel.getSelectionModel().getSelectedItem()));
+			meldungData = FXCollections.observableArrayList(client.proxy.getAllMeldungByMangel(tblProjektMangel.getSelectionModel().getSelectedItem()));
 			tblProjektMeldung.setItems(meldungData);
 		}
 		else if (t.getClickCount() == 2) {
@@ -346,7 +354,7 @@ public class ProjektDetailController implements Initializable {
 	}
 	@FXML
 	public void fillCbAnsprechperson(){
-		for (SuMitarbeiter sumitarbeiter : client.getAllSubunternehmenMitarbeiter(cbSubunternehmen.getSelectionModel().getSelectedItem())) {
+		for (SuMitarbeiter sumitarbeiter : client.proxy.getAllSubunternehmenMitarbeiter(cbSubunternehmen.getSelectionModel().getSelectedItem())) {
 			cbAnsprechperson.getItems().add(sumitarbeiter);
 		}	
 	}
@@ -355,14 +363,30 @@ public class ProjektDetailController implements Initializable {
 	public void projektSave(){
 	
 		projekt.getFkAdresse().setStrasse(txtProjektStrasse.getText());
-		projekt.getFkAdresse().getPlz().setPlz((Integer) cbProjektPlz.getSelectionModel().getSelectedItem());
+		projekt.getFkAdresse().getPlz().setPlz((Integer) cbProjektPlz.getSelectionModel().getSelectedItem().getPlz());
 		projekt.getFkAdresse().getPlz().setOrt(lblProjektOrt.getText());
 		
 		projekt.setFkObjekttyp(cbProjektObjekttyp.getSelectionModel().getSelectedItem());
 		projekt.setFkArbeitstyp(cbProjektArbeitstyp.getSelectionModel().getSelectedItem());
-		projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
+		if(dateProjektEnddatum.getValue() != null){
+			projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
+		}
+		client.proxy.updateProjekt(projekt);		
+		try {
+			// Load Projekt overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/projekt/AusseresProjekt.fxml"));
+			AnchorPane projekte = (AnchorPane) loader.load();
+			
+			ProjektController projektController = loader.<ProjektController>getController();
+			projektController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(projekte);
 
-		client.updateProjekt(projekt);		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	@FXML
 	public void projektAddMangel(){
@@ -491,24 +515,28 @@ public class ProjektDetailController implements Initializable {
 	
 	@FXML
 	public void projektAddUnternehmen(){
-		
-		client.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),timestamp, null));
-		subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt));
+		client.proxy.addSuMitarbeiterByProjekt(new ProjektSuMitarbeiter(projekt, cbAnsprechperson.getSelectionModel().getSelectedItem(),timestamp, null));
+		subunternehmenData = FXCollections.observableArrayList(client.proxy.getUnternehmenByProjekt(projekt.getId()));
 		tblProjektUnternehmen.setItems(subunternehmenData);
 	}
 	
 	@FXML
 	public void projektAddBauleiter(){
-		client.addGuMitarbeiterByProjekt(new ProjektGuMitarbeiter(projekt, cbProjektBauleiter.getSelectionModel().getSelectedItem(), timestamp, null));
-		bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
+		//Letzter Bauleiter Enddatum sezten
+		ProjektGuMitarbeiter lastBauleiter= tblProjektBauleiter.getItems().get(tblProjektBauleiter.getItems().size()-1);
+		lastBauleiter.setEndDatum(timestamp);
+		client.proxy.updateProjektGuMitarbeiter(lastBauleiter);
+		bauleiterData = FXCollections.observableArrayList(client.proxy.getBauleiterByProjekt(projekt));
+		tblProjektBauleiter.setItems(bauleiterData);
+		client.proxy.addGuMitarbeiterByProjekt(new ProjektGuMitarbeiter(projekt, cbProjektBauleiter.getSelectionModel().getSelectedItem(), timestamp, null));		
+		bauleiterData = FXCollections.observableArrayList(client.proxy.getBauleiterByProjekt(projekt));
 		tblProjektBauleiter.setItems(bauleiterData);
 	}
 	
 	@FXML
 	private void plzChange(){
 		if (cbProjektPlz.getSelectionModel().getSelectedItem() != null){
-			lblProjektOrt.setText(client.getPlzById((Integer) cbProjektPlz.getSelectionModel().getSelectedItem()).getOrt());
-		}else{	
+			lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
 		}
 	}
 

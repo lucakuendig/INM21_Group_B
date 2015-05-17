@@ -3,12 +3,9 @@ package ch.hsluw.mangelmanager.client.extern.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import com.sun.jmx.snmp.Timestamp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,18 +16,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import ch.hsluw.mangelmanager.client.extern.ClientWS;
 import ch.hsluw.mangelmanager.client.extern.Main;
-import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Login;
 import ch.hsluw.mangelmanager.model.Mangel;
 import ch.hsluw.mangelmanager.model.Mangelstatus;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Meldungstyp;
 import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
-import ch.hsluw.mangelmanager.client.extern.controller.*;
 
 public class AddMangelController implements Initializable {
-		//RMI Client to interact
+		//WS Client to interact
 		ClientWS client = null;
 		RootController rootController = null;
 		Projekt projekt = null;
@@ -95,10 +89,7 @@ public class AddMangelController implements Initializable {
 			
 			mangel = new Mangel(projekt, txtMangelBezeichung.getText(),(GregorianCalendar) cl, new GregorianCalendar(dateMangelFaellig.getValue().getYear(), dateMangelFaellig.getValue().getMonthValue()-1, dateMangelFaellig.getValue().getDayOfMonth()),mangelstatus ,login , txtMangelBeschreibung.getText());
 			
-			meldung = new Meldung(mangel, meldungstyp, txtMangelBeschreibung.getText(), (GregorianCalendar) cl, false, login);
-			
-			
-			client.proxy.addMeldung(meldung);
+			client.proxy.addMangel(mangel);
 			
 			try {
 				// Load Unternehmen overview.
@@ -116,6 +107,24 @@ public class AddMangelController implements Initializable {
 				e.printStackTrace();
 			}
 			
+		}
+		@FXML
+		public void addMangelCancel(){
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/mangel/AussererMangel.fxml"));
+				AnchorPane mangel = (AnchorPane) loader.load();
+				
+				MangelController mangelController = loader.<MangelController>getController();
+				mangelController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(mangel);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 }

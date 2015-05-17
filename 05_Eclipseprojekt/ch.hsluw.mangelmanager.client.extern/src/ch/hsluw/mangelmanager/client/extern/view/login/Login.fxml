@@ -37,9 +37,5 @@
          <font>
             <Font size="18.0" />
          </font>
-      </Label>
-      <Label layoutX="431.0" layoutY="14.0" text="IP" />
-      <Label layoutX="653.0" layoutY="14.0" text="Port" />
-      <TextField fx:id="txtIp" layoutX="444.0" layoutY="10.0" prefHeight="25.0" prefWidth="196.0" text="localhost" />
-      <TextField fx:id="txtPort" layoutX="689.0" layoutY="10.0" prefHeight="25.0" prefWidth="95.0" text="1099" /></children>
+      </Label></children>
 </AnchorPane>

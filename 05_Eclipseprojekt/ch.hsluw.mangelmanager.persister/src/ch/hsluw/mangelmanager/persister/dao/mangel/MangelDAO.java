@@ -9,8 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import ch.hsluw.mangelmanager.model.Mangel;
-import ch.hsluw.mangelmanager.model.Projekt;
-import ch.hsluw.mangelmanager.model.Subunternehmen;
 
 /**
  * Interface fuer Mangel Entity

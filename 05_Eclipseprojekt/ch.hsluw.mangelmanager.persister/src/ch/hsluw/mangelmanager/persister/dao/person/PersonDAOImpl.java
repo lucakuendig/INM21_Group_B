@@ -6,19 +6,13 @@ package ch.hsluw.mangelmanager.persister.dao.person;
 
 
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 import ch.hsluw.mangelmanager.model.Bauherr;
 import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
-import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
 /**
  * Interface fuer Person Entity
