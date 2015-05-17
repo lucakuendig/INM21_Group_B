@@ -149,7 +149,7 @@ public class ClientRMI {
 
 
 		// init rmi connection
-		String url = "rmi://"+Main.ip+":"+Main.port+"/";
+		String url = "rmi://localhost:1099/";
 		String personROName = "personRO";
 		String projektROName = "projektRO";
 		String subunternehmenROName = "subunternehmenRO";
@@ -408,7 +408,7 @@ public class ClientRMI {
 		try {
 			projekte =  projektRO.findByArbeitstyp(arbeitstyp);
 			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkArbeitstyp().getBezeichnung());;
+				System.out.println(projekt.getFkArbeitstyp().getBezeichnung());
 			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -495,7 +495,6 @@ public class ClientRMI {
 	public List<Mangel> getAllMangelProjekt(Integer projekt) {
 		try {
 			mangelOfProjekt = mangelRO.findAllMangelProjekt(projekt);
-//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -804,6 +803,7 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 	}
+	
 	
 		
 }
