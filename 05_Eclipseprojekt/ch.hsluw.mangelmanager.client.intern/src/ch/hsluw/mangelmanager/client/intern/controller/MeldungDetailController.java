@@ -1,5 +1,6 @@
 package ch.hsluw.mangelmanager.client.intern.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -7,13 +8,16 @@ import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
+import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Meldung;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 public class MeldungDetailController implements Initializable {
 
@@ -68,9 +72,43 @@ public class MeldungDetailController implements Initializable {
 		}
 		
 		@FXML
-		private void saveMeldung() {
-			
-		}
+		private void meldungCancel() {
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
 
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		@FXML
+		public void meldungRead(){
+			meldung.setQuittiert(true);
+			client.updateMeldung(meldung);
+			
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	
 }

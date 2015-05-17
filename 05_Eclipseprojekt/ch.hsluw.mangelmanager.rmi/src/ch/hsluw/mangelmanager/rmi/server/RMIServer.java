@@ -1,8 +1,11 @@
 package ch.hsluw.mangelmanager.rmi.server;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
@@ -53,12 +56,27 @@ public class RMIServer {
 	public static void main(String[] args) {
 
 		/*
-		 * Port und Host-IP (an sich sollten diese Angaben aus einer
-		 * Property-Datei eingelesen werden)
+		 * Port und Host-IP 
 		 */
-		int port = 1099;
-		String hostIp = "localhost";
+		int port;
+		String hostIp;
 
+		/* Properties laden */
+		Properties props = new Properties();
+
+		InputStream is = RMIServer.class.getClassLoader()
+				.getResourceAsStream("ws.properties");
+
+		try {
+			props.load(is);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		hostIp = props.getProperty("rmi.host_ip");
+		port = Integer.parseInt(props.getProperty("rmi.port"));
+		
 		Registry registry = null;
 
 		try {
@@ -120,8 +138,7 @@ public class RMIServer {
 				
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
 						+ "Server herunterfahren?";
-				JOptionPane.showMessageDialog(null, msg, "ServerName ["
-						+ hostIp + ":" + port + "]",
+				JOptionPane.showMessageDialog(null, msg, hostIp + ":" + port ,
 						JOptionPane.QUESTION_MESSAGE);
 
 				registry.unbind("personRO");
@@ -132,7 +149,7 @@ public class RMIServer {
 				registry.unbind("plzRO");
 				registry.unbind("adresseRO");
 				registry.unbind("objekttypRO");
-				registry.unbind("arbeitsttypRO");
+				registry.unbind("arbeitstypRO");
 				registry.unbind("mangelstatusRO");
 				registry.unbind("meldungstypRO");
 				registry.unbind("projektGuMitarbeiterRO");

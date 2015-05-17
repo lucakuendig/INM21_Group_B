@@ -94,8 +94,7 @@ public class MangelManagerServiceImpl implements MangelManagerService{
 
 	public MangelManagerServiceImpl() throws Exception {
 		/*
-		 * Host-IP und RMI-Port definieren (an sich würde man diese Angaben aus
-		 * der Property-Datei einlesen)
+		 * Host-IP und RMI-Port definieren
 		 */
 		String hostIp;
 		int rmiPort;

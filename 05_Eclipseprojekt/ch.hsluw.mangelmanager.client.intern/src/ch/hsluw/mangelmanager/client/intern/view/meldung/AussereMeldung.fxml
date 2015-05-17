@@ -24,7 +24,5 @@
 				</TableView>
 			</children>
 		</StackPane>
-		<ChoiceBox fx:id="cbMeldungSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
-		<TextField fx:id="txtMeldungSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
 	</children>
 </AnchorPane>

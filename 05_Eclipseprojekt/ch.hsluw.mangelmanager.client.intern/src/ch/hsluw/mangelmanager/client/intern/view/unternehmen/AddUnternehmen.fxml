@@ -50,7 +50,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btnUnternehmenAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1">
+                        <Button fx:id="btnUnternehmenAbbrechen" mnemonicParsing="false" onAction="#unternehmenCancel" text="Abbrechen" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>

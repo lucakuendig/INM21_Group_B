@@ -26,6 +26,8 @@ public class Main extends Application {
 	private static Stage loginStage;
 	private static AnchorPane loginLayout;
 	public static Integer loginId;
+	public static String port;
+	public static String ip;
 	
 	@FXML
 	private Label lblLoginError;
@@ -33,6 +35,10 @@ public class Main extends Application {
 	private TextField txtBenutzer;
 	@FXML
 	private PasswordField pwPasswort;
+	@FXML
+	private TextField txtIp;
+	@FXML
+	private TextField txtPort;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -65,6 +71,9 @@ public class Main extends Application {
 
 	@FXML
 	public void login() throws IOException {
+		
+		ip = txtIp.getText();
+		port = txtPort.getText();
 		
 		client = ClientRMI.getInstance();
 		Login data = client.getLoginByName(txtBenutzer.getText());

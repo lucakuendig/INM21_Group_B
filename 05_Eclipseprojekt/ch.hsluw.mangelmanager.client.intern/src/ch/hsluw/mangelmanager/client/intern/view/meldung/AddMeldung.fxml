@@ -55,7 +55,7 @@
               </rowConstraints>
                <children>
                   <Button fx:id="btnMeldungSpeichern" mnemonicParsing="false" onAction="#meldungSave" text="Speichern" />
-                  <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMeldungAbbrechen" mnemonicParsing="false" onAction="#addMeldungCancel" text="Abbrechen" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <Label fx:id="lblMeldungMangel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />

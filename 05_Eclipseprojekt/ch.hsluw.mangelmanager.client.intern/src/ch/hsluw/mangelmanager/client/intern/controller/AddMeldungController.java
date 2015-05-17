@@ -107,5 +107,23 @@ public class AddMeldungController implements Initializable {
 			}
 			
 		}
+		@FXML
+		public void addMeldungCancel(){
+			try {
+				// Load Unternehmen overview.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/meldung/AussereMeldung.fxml"));
+				AnchorPane meldung = (AnchorPane) loader.load();
+				
+				MeldungController meldungController = loader.<MeldungController>getController();
+				meldungController.setRootController(rootController);
+				
+				rootController.rootLayout.setCenter(meldung);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 
 }

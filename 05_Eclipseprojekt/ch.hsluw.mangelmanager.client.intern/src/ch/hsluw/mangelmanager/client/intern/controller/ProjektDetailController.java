@@ -21,6 +21,7 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.ProjektGuMitarbeiter;
 import ch.hsluw.mangelmanager.model.ProjektSuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Projektstatus;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import javafx.beans.property.SimpleStringProperty;
@@ -88,6 +89,8 @@ public class ProjektDetailController implements Initializable {
 	private DatePicker dateProjektEnddatum;	
 	@FXML
 	private Label lblProjektFaellig;
+	@FXML	
+	private ComboBox<Projektstatus> cbProjektStatus;
 	
 	//Right Panel Mangel
 	@FXML
@@ -179,7 +182,9 @@ public class ProjektDetailController implements Initializable {
 		for (GuMitarbeiter guMitarbeiter : FXCollections.observableArrayList(client.getAllGuMitarbeiter())) {
 			cbProjektBauleiter.getItems().add(guMitarbeiter);
 		}
-		
+		for (Projektstatus projektStatus : FXCollections.observableArrayList(client.getAllProjektstatus())) {
+			cbProjektStatus.getItems().add(projektStatus);
+		}
 		
 
 		setCellValueFactoryTblMangel();
@@ -270,9 +275,12 @@ public class ProjektDetailController implements Initializable {
 			lblProjektBauherr.setText(projekt.getFkBauherr().get(0).getNachname() + " " +projekt.getFkBauherr().get(0).getVorname());
 			txtProjektStrasse.setText(projekt.getFkAdresse().getStrasse());
 			cbProjektPlz.getSelectionModel().select(projekt.getFkAdresse().getPlz());
+			cbProjektPlz.setPromptText(projekt.getFkAdresse().getPlz().getPlz().toString());
 			lblProjektOrt.setText(cbProjektPlz.getSelectionModel().getSelectedItem().getOrt());
 			cbProjektArbeitstyp.setValue(projekt.getFkArbeitstyp());
+			cbProjektArbeitstyp.setPromptText(projekt.getFkArbeitstyp().getBezeichnung());
 			cbProjektObjekttyp.getSelectionModel().select(projekt.getFkObjekttyp());
+			cbProjektObjekttyp.setPromptText(projekt.getFkObjekttyp().getBezeichnung());
 			
 			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
 			if(dateProjektEnddatum.getValue() != null){
@@ -280,11 +288,12 @@ public class ProjektDetailController implements Initializable {
 
 			}
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
+			cbProjektStatus.getSelectionModel().select(projekt.getFkProjektstatus());
+			//cbProjektStatus.setPromptText(projekt.getFkProjektstatus().getBezeichnung());
 			
 			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt.getId()));
 			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt.getId()));
-			bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));
-//			
+			bauleiterData = FXCollections.observableArrayList(client.getBauleiterByProjekt(projekt));	
 			tblProjektMangel.setItems(mangelData);
 			tblProjektUnternehmen.setItems(subunternehmenData);
 			tblProjektBauleiter.setItems(bauleiterData);		

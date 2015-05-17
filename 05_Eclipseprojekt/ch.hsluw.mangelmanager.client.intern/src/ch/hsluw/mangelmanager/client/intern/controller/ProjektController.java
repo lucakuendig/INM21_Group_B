@@ -86,7 +86,7 @@ public class ProjektController implements Initializable {
 
 		cbProjektSearch.getItems().addAll(
 				FXCollections.observableArrayList("Bezeichnung", "Bauherr",
-						"Plz", "Ort", "Objekttyp", "Arbeitstyp",
+						"Plz", "Ort",
 						"Projektstatus"));
 		cbProjektSearch.getSelectionModel().selectFirst();
 		
@@ -117,12 +117,6 @@ public class ProjektController implements Initializable {
 						break;
 					case "Ort":
 						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByOrt(txtProjektSearch.getText())));
-						break;
-					case "Objekttyp":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByObjekttyp(txtProjektSearch.getText())));
-						break;
-					case "Arbeitstyp":
-						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByArbeitstyp(txtProjektSearch.getText())));
 						break;
 					case "Projektstatus":
 						updateTblProjekt(FXCollections.observableArrayList(client.getProjektByProjektstatus(txtProjektSearch.getText())));

@@ -47,7 +47,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" onAction="#addMangelCancel" text="Abbrechen" GridPane.columnIndex="1" />
                   <Button fx:id="btnMangelSpeichern" mnemonicParsing="false" onAction="#mangelSave" text="Speichern" />
                </children>
             </GridPane>

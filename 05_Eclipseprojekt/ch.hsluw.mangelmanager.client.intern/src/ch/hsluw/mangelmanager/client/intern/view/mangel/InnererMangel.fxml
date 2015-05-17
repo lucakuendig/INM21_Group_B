@@ -79,7 +79,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" styleClass="btnwindows7" text="Abbrechen" GridPane.columnIndex="1" />
+                  <Button fx:id="btnMangelAbbrechen" mnemonicParsing="false" onAction="#mangelCancel" styleClass="btnwindows7" text="Abbrechen" GridPane.columnIndex="1" />
                   <Button fx:id="btnMangelDone" mnemonicParsing="false" onAction="#mangelClose" styleClass="btnwindows7" text="Abgeschlossen" />
                </children>
             </GridPane>

@@ -200,7 +200,35 @@ public class PersonDetailController implements Initializable {
 		e.printStackTrace();
 	}
 	
-}
+	}
+	
+	@FXML
+	public void showProjektDetail(MouseEvent t) throws IOException{
+		if (t.getClickCount() == 2) {
+			System.out.println(tblPersonProjekt.getSelectionModel().getSelectedItem()
+					.getId());
+
+			try {
+				// Load ProjektDetail View.
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(Main.class
+						.getResource("view/projekt/InneresProjekt.fxml"));
+				AnchorPane inneresProjekt = (AnchorPane) loader.load();
+
+				ProjektDetailController detailProjektController = loader
+						.<ProjektDetailController> getController();
+				detailProjektController.setRootController(rootController);
+
+				detailProjektController.init(tblPersonProjekt.getSelectionModel()
+						.getSelectedItem().getId());
+				rootController.rootLayout.setCenter(inneresProjekt);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
 	
 	@FXML
 	private void plzChange(){
@@ -211,7 +239,21 @@ public class PersonDetailController implements Initializable {
 	
 	@FXML
 	public void personCancel(){
-		
+		try {
+			// Load Unternehmen overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/person/AusserePerson.fxml"));
+			AnchorPane person = (AnchorPane) loader.load();
+			
+			PersonController personController = loader.<PersonController>getController();
+			personController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(person);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML

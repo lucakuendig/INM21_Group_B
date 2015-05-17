@@ -151,7 +151,7 @@ public class ClientRMI {
 
 
 		// init rmi connection
-		String url = "rmi://localhost:1099/";
+		String url = "rmi://"+Main.ip+":"+Main.port+"/";
 		String personROName = "personRO";
 		String projektROName = "projektRO";
 		String subunternehmenROName = "subunternehmenRO";
@@ -791,6 +791,16 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			personRO.update(person);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public void updateMeldung(Meldung meldung2) {
+		// TODO Auto-generated method stub
+		try {
+			meldungRO.update(meldung2);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

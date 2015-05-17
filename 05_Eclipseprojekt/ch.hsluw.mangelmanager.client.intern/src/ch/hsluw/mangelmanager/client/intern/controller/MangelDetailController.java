@@ -120,5 +120,23 @@ import javafx.util.Callback;
 				client.updateMangel(mangel);
 				
 			}
+			@FXML
+			public void mangelCancel(){
+				try {
+					// Load Unternehmen overview.
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(Main.class
+							.getResource("view/mangel/AussererMangel.fxml"));
+					AnchorPane mangel = (AnchorPane) loader.load();
+					
+					MangelController mangelController = loader.<MangelController>getController();
+					mangelController.setRootController(rootController);
+					
+					rootController.rootLayout.setCenter(mangel);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 	
 }

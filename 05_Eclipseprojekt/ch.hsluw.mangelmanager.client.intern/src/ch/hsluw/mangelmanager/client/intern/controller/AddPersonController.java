@@ -113,11 +113,40 @@ public class AddPersonController implements Initializable {
 		}else{
 			lblPersonError.setText("Funktion Auswählen");
 		}
+		try {
+			// Load Unternehmen overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/person/AusserePerson.fxml"));
+			AnchorPane person = (AnchorPane) loader.load();
+			
+			PersonController personController = loader.<PersonController>getController();
+			personController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(person);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
 	public void personCancel(){
-		// TODO
+		try {
+			// Load Unternehmen overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Main.class
+					.getResource("view/person/AusserePerson.fxml"));
+			AnchorPane person = (AnchorPane) loader.load();
+			
+			PersonController personController = loader.<PersonController>getController();
+			personController.setRootController(rootController);
+			
+			rootController.rootLayout.setCenter(person);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//enabled or disabled fields if not needed

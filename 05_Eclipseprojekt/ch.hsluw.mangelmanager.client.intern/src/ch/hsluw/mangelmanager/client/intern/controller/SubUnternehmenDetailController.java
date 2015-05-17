@@ -276,7 +276,29 @@ public class SubUnternehmenDetailController implements Initializable {
 		
 		@FXML
 		public void showMitarbeiterDetail(MouseEvent t){
-			
+			if (t.getClickCount() == 2) {
+				System.out.println(tblUnternehmenMitarbeiter.getSelectionModel().getSelectedItem()
+						.getId());
+
+				try {
+					// Load ProjektDetail View.
+					FXMLLoader loader = new FXMLLoader();
+					loader.setLocation(Main.class
+							.getResource("view/person/InnerePerson.fxml"));
+					AnchorPane inneresPerson = (AnchorPane) loader.load();
+
+					PersonDetailController detailPersonController = loader
+							.<PersonDetailController> getController();
+					detailPersonController.setRootController(rootController);
+
+					detailPersonController.init(tblUnternehmenMitarbeiter.getSelectionModel().getSelectedItem()
+							.getId());
+					rootController.rootLayout.setCenter(inneresPerson);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	
 }

@@ -19,13 +19,10 @@
             <TableColumn fx:id="colSubunternehmenAdresse" text="Adresse" />
             <TableColumn fx:id="colSubunternehmenTelefon" prefWidth="145.0" text="Telefon" />
             <TableColumn fx:id="colSubunternehmenOffeneProjekte" prefWidth="104.0" text="Offene Projekte" />
-            <TableColumn fx:id="colSubunternehmenAnzMitarbeiter" prefWidth="75.0" text="Anzahl Mitarbeiter" />
         </columns>
       </TableView>
       </children>
      </StackPane>
-   <ChoiceBox fx:id="cbUnternehmenSearch" layoutX="400.0" layoutY="8.0" prefWidth="150.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="8.0" />
-	<TextField fx:id="txtUnternehmenSearch" layoutX="577.0" layoutY="8.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="8.0" />
       <Button fx:id="btnUnternehmenNew" layoutX="26.0" layoutY="8.0" mnemonicParsing="false" onAction="#addUnternehmen" prefHeight="26.0" prefWidth="87.0" text="Neu" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="8.0" />
 	 </children>
 </AnchorPane>
