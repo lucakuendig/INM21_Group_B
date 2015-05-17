@@ -264,22 +264,22 @@ public class EntityTest {
 			fail("Couldn't find Projekt by Arbeitstyp");
 		}
 	}
-/**
- * Tests if Projekte are findable by Subunternehmen
- */
-	@Test
-	public void findProjekByfindAllSubunternehmenProjekt() {
-		try {
-			ProjektDAO projektdao = new ProjektDAOImpl();
-			List<Projekt> listProjekt = projektdao.findAllProjekt();
-			Projekt projekt = listProjekt.get(listProjekt.size() - 1);
-			assertTrue(projektdao.findAllSubunternehmenProjekt(
-					projekt.getFkProjektSuMitarbeiter().get(0)
-							.getFkMitarbeiter().getFkSubunternehmen()).size() > 0);
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Couldn't find Projekt by findAllSubunternehmenProjekt");
-		}
-	}
+///**
+// * Tests if Projekte are findable by Subunternehmen
+// */
+//	@Test
+//	public void findProjekByfindAllSubunternehmenProjekt() {
+//		try {
+//			ProjektDAO projektdao = new ProjektDAOImpl();
+//			List<Projekt> listProjekt = projektdao.findAllProjekt();
+//			Projekt projekt = listProjekt.get(listProjekt.size() - 1);
+//			assertTrue(projektdao.findAllSubunternehmenProjekt(
+//					projekt.getFkProjektSuMitarbeiter().get(0)
+//							.getFkMitarbeiter().getFkSubunternehmen()).size() > 0);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			fail("Couldn't find Projekt by findAllSubunternehmenProjekt");
+//		}
+//	}
 
 }

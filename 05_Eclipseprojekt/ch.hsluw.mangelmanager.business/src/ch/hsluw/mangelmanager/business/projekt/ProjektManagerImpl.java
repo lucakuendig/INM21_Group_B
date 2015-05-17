@@ -7,6 +7,7 @@ package ch.hsluw.mangelmanager.business.projekt;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
@@ -111,6 +112,12 @@ public class ProjektManagerImpl implements ProjektManager {
 	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen) {
 		// TODO Auto-generated method stub
 		return projektDAO.findAllSubunternehmenProjekt(subunternehmen);
+	}
+
+	@Override
+	public List<Projekt> findProjektbyPerson(Person person) {
+		// TODO Auto-generated method stub
+		return projektDAO.findProjektByPerson(person);
 	}
 
 

@@ -103,7 +103,7 @@ EntityManager em = JpaUtil.createEntityManager();
 		EntityManager em = JpaUtil.createEntityManager();
 				
 		
-		Query tQuery = em.createNativeQuery("select s.* from subunternehmen as s, "
+		Query tQuery = em.createNativeQuery("select distinct s.* from subunternehmen as s, "
 				+ "sumitarbeiter as sm, projektsumitarbeiter as ps "
 				+ "where ps.fkmitarbeiter_id = sm.id "
 				+ "and sm.fksubunternehmen_id = s.id and ps.fkprojekt_id = "+ projekt2,

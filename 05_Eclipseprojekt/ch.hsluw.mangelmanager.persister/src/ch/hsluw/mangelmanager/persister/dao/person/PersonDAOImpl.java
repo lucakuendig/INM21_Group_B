@@ -13,7 +13,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import ch.hsluw.mangelmanager.model.Bauherr;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Person;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
@@ -32,7 +35,14 @@ public class PersonDAOImpl implements PersonDAO {
 
 	@Override
 	public Person update(Person entity) throws Exception {
-		return new GenericPersisterImpl<Person>(Person.class).update(entity);
+		if(entity instanceof SuMitarbeiter){
+			return new GenericPersisterImpl<SuMitarbeiter>(SuMitarbeiter.class).update((SuMitarbeiter) entity);
+		}
+		else if(entity instanceof GuMitarbeiter){
+			return new GenericPersisterImpl<GuMitarbeiter>(GuMitarbeiter.class).update((GuMitarbeiter)entity);
+		}else{
+			return new GenericPersisterImpl<Bauherr>(Bauherr.class).update((Bauherr)entity);
+		}
 	}
 
 	@Override

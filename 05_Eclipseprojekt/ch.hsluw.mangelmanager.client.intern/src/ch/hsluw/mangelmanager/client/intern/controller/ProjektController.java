@@ -179,47 +179,6 @@ public class ProjektController implements Initializable {
 					}
 				});
 
-//		colProjektOffeneMaengel
-//				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-//					public ObservableValue<String> call(
-//							CellDataFeatures<Projekt, String> p) {
-//						int anzMaengel = p.getValue().getFkMaengel().size();
-//						int anzOffeneMaengel = 0;
-//						for (int i = 0; i < anzMaengel; i++) {
-//							if (p.getValue().getFkMaengel().get(i)
-//									.getFkMangelstatus().getBezeichnung().equals("Offen")) {
-//								anzOffeneMaengel++;
-//							}
-//
-//						}
-//						return new SimpleStringProperty(String
-//								.valueOf(anzOffeneMaengel));
-//					}
-//				});
-
-//		colProjektOffeneMeldungen
-//				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-//					public ObservableValue<String> call(
-//							CellDataFeatures<Projekt, String> p) {
-//						int anzMaengel = p.getValue().getFkMaengel().size();
-//						int anzMeldungen = 0;
-//						int anzOffeneMeldungen = 0;
-//						for (int i = 0; i < anzMaengel; i++) {
-//							if( p.getValue().getFkMaengel().get(i).getFkMangelstatus().getBezeichnung().equals("Offen")){
-//								anzMeldungen = p.getValue().getFkMaengel().get(i)
-//										.getFkMeldung().size();
-//								for (int j = 0; j < anzMeldungen; j++) {
-//									if (p.getValue().getFkMaengel().get(i)
-//											.getFkMeldung().get(j).getQuittiert()) {
-//										anzOffeneMeldungen++;
-//									}
-//								}
-//							}
-//						}
-//						return new SimpleStringProperty(String
-//								.valueOf(anzOffeneMeldungen));
-//					}
-//				});
 
 		colProjektAbgeschlossen
 				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {

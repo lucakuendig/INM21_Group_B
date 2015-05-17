@@ -14,7 +14,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import ch.hsluw.mangelmanager.model.Bauherr;
+import ch.hsluw.mangelmanager.model.GuMitarbeiter;
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Projekt;
+import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
 import ch.hsluw.mangelmanager.persister.generic.GenericPersisterImpl;
 import ch.hsluw.mangelmanager.persister.util.JpaUtil;
@@ -194,5 +198,46 @@ public class ProjektDAOImpl implements ProjektDAO {
 		em.close();
 
 		return projektListe != null ? projektListe : new ArrayList<Projekt>();
+	}
+
+	@Override
+	public List<Projekt> findProjektByPerson(Person person) {
+EntityManager em = JpaUtil.createEntityManager();
+		
+		if(person instanceof SuMitarbeiter){
+		Query tQuery = em.createNativeQuery("select distinct p.* from projekt as p,"
+				+ " projektsumitarbeiter as ps, person as pr "
+				+ " where ps.fkprojekt_id = p.id "
+				+ " and ps.fkmitarbeiter_id = pr.id"
+				+ " and pr.id = "+person.getId(),
+				Projekt.class);
+		List<Projekt> projektListe = tQuery.getResultList();
+		em.close();
+
+		return projektListe != null ? projektListe : new ArrayList<Projekt>();
+		}
+		else if(person instanceof GuMitarbeiter){
+			Query tQuery = em.createNativeQuery("select distinct p.* from projekt as p,"
+					+ " projektgumitarbeiter as pg, person as pr "
+					+ " where pg.fkprojekt_id = p.id "
+					+ " and pg.fkmitarbeiter_id = pr.id"
+					+ " and pr.id = "+person.getId(),
+					Projekt.class);
+			List<Projekt> projektListe = tQuery.getResultList();
+			em.close();
+
+			return projektListe != null ? projektListe : new ArrayList<Projekt>();
+			}else{
+			Query tQuery = em.createNativeQuery("select distinct p.* from projekt as p, "
+					+ "projekt_bauherr as b, person as pr"
+					+ " where b.projekt_id = p.id"
+					+ " and b.fkbauherr_id = pr.id"
+					+ " and pr.id = "+person.getId(),
+					Projekt.class);
+			List<Projekt> projektListe = tQuery.getResultList();
+			em.close();
+			return projektListe != null ? projektListe : new ArrayList<Projekt>();
+		}
+
 	}
 }

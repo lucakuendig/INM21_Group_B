@@ -84,7 +84,6 @@ public class Main extends Application {
 				stage.setTitle("Mängelmanager");
 				stage.setMaximized(true);
 				stage.show();
-	
 				Stage stageToClose = (Stage) txtBenutzer.getScene().getWindow();
 				stageToClose.close();
 			} else {

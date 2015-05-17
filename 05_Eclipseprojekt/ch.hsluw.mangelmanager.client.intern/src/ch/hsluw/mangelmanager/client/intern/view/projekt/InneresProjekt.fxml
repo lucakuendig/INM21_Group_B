@@ -77,8 +77,8 @@
                      </GridPane.margin>
                   </GridPane>
                   <Label fx:id="lblPersonId" text="Label" GridPane.columnIndex="1" />
-                  <ChoiceBox fx:id="cbProjektObjekttyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ChoiceBox fx:id="cbProjektArbeitstyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <ComboBox fx:id="cbProjektObjekttyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="cbProjektArbeitstyp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Start-Datum" GridPane.rowIndex="6">
                      <padding>
                         <Insets left="20.0" />

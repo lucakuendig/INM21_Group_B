@@ -717,7 +717,6 @@ public class ClientRMI {
 
 	public List<Projektstatus> getAllProjektstatus() {
 		// TODO Auto-generated method stub
-	
 		try {
 			projektstatus =	projektstatusRO.findAll();
 		} catch (RemoteException e) {
@@ -775,6 +774,27 @@ public class ClientRMI {
 			e.printStackTrace();
 		}
 		return personnr;
+	}
+
+	public List<Projekt> getProjektbyPerson(Person person) {
+		// TODO Auto-generated method stub
+		try {
+			projekte =	projektRO.findProjektbyPerson(person);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return projekte;
+	}
+
+	public void updatePerson(Person person) {
+		// TODO Auto-generated method stub
+		try {
+			personRO.update(person);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 		

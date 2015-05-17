@@ -79,9 +79,9 @@ public class ProjektDetailController implements Initializable {
 	@FXML
 	private Label lblProjektOrt;
 	@FXML 
-	private ChoiceBox<Objekttyp> cbProjektObjekttyp;
+	private ComboBox<Objekttyp> cbProjektObjekttyp;
 	@FXML 
-	private ChoiceBox<Arbeitstyp> cbProjektArbeitstyp;
+	private ComboBox<Arbeitstyp> cbProjektArbeitstyp;
 	@FXML
 	private Label lblProjektStartdatum;
 	@FXML

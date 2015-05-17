@@ -13,6 +13,7 @@ import java.util.List;
 
 import ch.hsluw.mangelmanager.business.projekt.ProjektManager;
 import ch.hsluw.mangelmanager.business.projekt.ProjektManagerImpl;
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
@@ -104,6 +105,13 @@ public class ProjektROImpl extends UnicastRemoteObject implements ProjektRO {
 	@Override
 	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen2) throws RemoteException {
 		return projektManager.findAllSubunternehmenProjekt(subunternehmen2);
+	}
+
+	@Override
+	public List<Projekt> findProjektbyPerson(Person person)
+			throws RemoteException {
+		// TODO Auto-generated method stub
+		return projektManager.findProjektbyPerson(person);
 	}
 
 	

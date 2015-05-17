@@ -9,6 +9,7 @@ package ch.hsluw.mangelmanager.persister.dao.projekt;
 import java.util.Date;
 import java.util.List;
 
+import ch.hsluw.mangelmanager.model.Person;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 import ch.hsluw.mangelmanager.model.Subunternehmen;
@@ -136,4 +137,6 @@ public interface ProjektDAO {
 	 */
 
 	public List<Projekt> findAllSubunternehmenProjekt(Integer subunternehmen);
+
+	public List<Projekt> findProjektByPerson(Person person);
 }

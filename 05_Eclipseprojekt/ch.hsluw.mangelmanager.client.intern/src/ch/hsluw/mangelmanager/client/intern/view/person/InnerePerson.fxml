@@ -21,24 +21,27 @@
          <children>
             <Accordion layoutX="406.0" layoutY="53.0" GridPane.columnIndex="2">
               <panes>
-                <TitledPane animated="false" text="Login">
+                <TitledPane fx:id="tpPersonLogin" animated="false" text="Login" visible="false">
                   <content>
                     <AnchorPane>
                            <children>
                               <GridPane layoutX="8.0" layoutY="7.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="NEVER" prefWidth="100.0" />
-                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="NEVER" maxWidth="152.00000762939453" minWidth="105.0" prefWidth="152.00000762939453" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="835.0" minWidth="100.0" prefWidth="787.9999923706055" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                                   <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+                                    <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField fx:id="txtPersonBenutzername" prefWidth="200.0" GridPane.columnIndex="1" />
+                                    <Label fx:id="lblPersonBenutzername" prefWidth="200.0" GridPane.columnIndex="1" />
                                     <TextField fx:id="txtPersonEmail" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                     <Label text="Benutzername" />
                                     <Label text="E-Mail" GridPane.rowIndex="1" />
+                                    <Label text="Rolle" GridPane.rowIndex="2" />
+                                    <Label fx:id="lblPersonLoginRolle" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </children>
@@ -58,8 +61,6 @@
                                     <TableColumn fx:id="colPersonProjektbezeichnung" minWidth="-1.0" prefWidth="-1.0" text="Bezeichnung" />
                                     <TableColumn fx:id="colPersonProjektbauherr" minWidth="-1.0" prefWidth="-1.0" text="Bauherr" />
                                     <TableColumn fx:id="colPersonProjektadresse" minWidth="-1.0" prefWidth="-1.0" text="Adresse" />
-                                    <TableColumn fx:id="colPersonProjektmaengel" minWidth="-1.0" prefWidth="-1.0" text="Mängel" />
-                                    <TableColumn fx:id="colPersonProjektmeldungen" minWidth="-1.0" prefWidth="-1.0" text="Meldungen" />
                                     <TableColumn fx:id="colPersonProjektabgeschlossen" minWidth="-1.0" prefWidth="-1.0" text="Abgeschlossen" />
                                  </columns>
                               </TableView>
@@ -131,13 +132,13 @@
                         <Insets />
                      </GridPane.margin>
                   </GridPane>
-                  <Label text="Unternehmen" GridPane.rowIndex="6">
+                  <Label fx:id="lblPersonUnternehmen" text="Unternehmen" visible="false" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
                   <TextField fx:id="txtPersonTelefon" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <ChoiceBox fx:id="cbPersonUnternehmen" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Label fx:id="lblPersonUnternehmenanz" prefHeight="39.0" prefWidth="270.0" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                   <Label fx:id="lblPersonId" text="Label" GridPane.columnIndex="2" />
                   <Label text="PLZ / Ort" GridPane.rowIndex="4">
                      <padding>
@@ -146,7 +147,7 @@
                   </Label>
                   <GridPane GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <columnConstraints>
-                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="122.0" minWidth="52.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="122.0" minWidth="52.0" prefWidth="150.0" />
                         <ColumnConstraints fillWidth="false" hgrow="NEVER" maxWidth="69.0" minWidth="0.0" prefWidth="11.0" />
                         <ColumnConstraints hgrow="SOMETIMES" />
                      </columnConstraints>
@@ -154,13 +155,13 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ComboBox fx:id="cbPersonPlz" prefWidth="100.0" />
-                        <Label fx:id="lblPersonOrt" text="Label" GridPane.columnIndex="2" />
+                        <ComboBox fx:id="cbPersonPlz" disable="true" onAction="#plzChange" prefHeight="39.0" prefWidth="128.0" />
+                        <Label fx:id="lblPersonOrt" disable="true" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                   <Label fx:id="lblPersonName" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label fx:id="lblPersonVorname" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtPersonStrasse" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="txtPersonStrasse" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children>
