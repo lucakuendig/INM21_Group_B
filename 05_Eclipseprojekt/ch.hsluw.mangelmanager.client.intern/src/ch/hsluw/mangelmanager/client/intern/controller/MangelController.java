@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
@@ -54,7 +57,8 @@ public class MangelController implements Initializable {
 		// TODO Auto-generated method stub
 		this.rootController = rootController;
 	}
-
+	@FXML
+	private Label lblMangelExport;
 	// Define overviewtable with columns
 	@FXML
 	private TableView<Mangel> tblMangel;
@@ -79,18 +83,9 @@ public class MangelController implements Initializable {
 	// SetCellValueFactory from overviewtable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		/* Properties laden */
-		Properties props = new Properties();
-		InputStream is = MangelController.class.getClassLoader()
-				.getResourceAsStream("RMI.properties");
-		try {
-			props.load(is);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		csvpath = System.getProperty("user.home");
+		lblMangelExport.setText("The File will be saved at: " + csvpath);
 		
-		 csvpath = props.getProperty("mangel.csv_path");
 		
 		DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
@@ -186,6 +181,7 @@ public class MangelController implements Initializable {
 		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy_hh_mm");
 		Writer writer = null;
 		try {
+			lblMangelExport.setText("The File was saved at: " + csvpath);
 			client = ClientRMI.getInstance();
 			data = FXCollections.observableArrayList(client.getAllMangel());
 			/*
