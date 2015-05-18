@@ -4,11 +4,13 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Writer;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -28,6 +30,7 @@ import javafx.util.Callback;
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Mangel;
+import ch.hsluw.mangelmanager.rmi.server.RMIServer;
 
 /**
  * The MangelController handles all interaction with Mangel *
@@ -38,9 +41,13 @@ import ch.hsluw.mangelmanager.model.Mangel;
  */
 
 public class MangelController implements Initializable {
+	String csvpath;
+	
 	// RMI Client to interact
 	ClientRMI client = null;
-
+	
+	
+	
 	RootController rootController = null;
 
 	public void setRootController(RootController rootController) {
@@ -72,7 +79,19 @@ public class MangelController implements Initializable {
 	// SetCellValueFactory from overviewtable
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		/* Properties laden */
+		Properties props = new Properties();
+		InputStream is = MangelController.class.getClassLoader()
+				.getResourceAsStream("RMI.properties");
+		try {
+			props.load(is);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		 csvpath = props.getProperty("mangel.csv_path");
+		
 		DateFormat formatDatum = new SimpleDateFormat("dd.MM.yyyy");
 		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
 
@@ -163,7 +182,8 @@ public class MangelController implements Initializable {
 	 * @throws IOException
 	 */
 	public void exportTableView() throws IOException {
-		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+		
+		DateFormat formatZeit = new SimpleDateFormat("dd.MM.yyyy_hh_mm");
 		Writer writer = null;
 		try {
 			client = ClientRMI.getInstance();
@@ -172,8 +192,7 @@ public class MangelController implements Initializable {
 			 * Creates a CSV File in which the List will be saved C: is the
 			 * directory in which the File will be saved
 			 */
-			File file = new File("C:" + "\\" + formatZeit.format(new Date())
-					+ "Mangelliste.csv.");
+			File file = new File(csvpath + "\\" + (formatZeit.format(new Date())) + "_Mangelliste.csv");
 			writer = new BufferedWriter(new FileWriter(file));
 
 			// The data that has to be put into the .csv File

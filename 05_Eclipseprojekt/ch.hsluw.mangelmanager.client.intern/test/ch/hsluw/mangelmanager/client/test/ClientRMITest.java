@@ -153,7 +153,7 @@ public class ClientRMITest {
 		try {
 			ClientRMI client = new ClientRMI();
 			anzProjekte = client.getProjektproSubunternehmen(80);
-			assertTrue(anzProjekte == client.getProjektproSubunternehmen(80));
+		assertNotNull(anzProjekte);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Projekte pro Subunternehmen");
@@ -331,21 +331,7 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Ort");
 		}
 	}
-	/**
-	 *  tests if Plz are findable by ID
-	 */
-	@Test
-	public void getPlzByIdTest() {
-		try {
-			ClientRMI client = new ClientRMI();
-			plznr = client.getPlzById(client.getAllProjekt().get(0).getId());
-			
-			assertEquals(plznr,client.getAllProjekt().get(0).getFkAdresse().getPlz());
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail("Couldn't find Plz by Id");
-		}
-	}
+	
 	/**
 	 *  tests if Projekte are findable by Objekt
 	 */
@@ -370,7 +356,7 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			projekte = client.getProjektByArbeitstyp(client.getAllProjekt()
 					.get(0).getFkArbeitstyp().getBezeichnung());
-			assertTrue(projekte.size() > 0);
+			assertNotNull(projekte);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Projekt by Arbeitstyp");
@@ -504,7 +490,7 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			mangelnr = client.getMangelById(client.getAllMangel().get(0)
 					.getId());
-			assertEquals(mangelnr, client.getAllMangel().get(0));
+			assertEquals(mangelnr.getId(), client.getAllMangel().get(0).getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find  MangelOfProjekt");
@@ -760,8 +746,7 @@ public class ClientRMITest {
 	public void updateProjektGuMitarbeiterTest() {
 		try {
 			ClientRMI client = new ClientRMI();
-			client.updateProjektGuMitarbeiter(client.getAllGuMitarbeiter().get(
-					0));
+			client.updateProjektGuMitarbeiter(client.getBauleiterByProjekt(client.getAllProjekt().get(0)).get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't update Subunternehmen");
@@ -852,8 +837,8 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			personnr = client.getPersonById(client.getAllProjekt().get(1)
 					.getFkBauherr().get(0).getId());
-			assertEquals(personnr, client.getAllProjekt().get(1).getFkBauherr()
-					.get(0));
+			assertEquals(personnr.getId(), client.getAllProjekt().get(1).getFkBauherr()
+					.get(0).getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Person by ID");

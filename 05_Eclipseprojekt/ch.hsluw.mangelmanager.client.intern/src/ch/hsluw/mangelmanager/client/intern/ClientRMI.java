@@ -313,9 +313,7 @@ public class ClientRMI {
 			// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByBezeichnung(bezeichnung);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getBeschreibung());
-			}
+		
 		}
 		catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -340,9 +338,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByBauherr(bauherr);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkBauherr().get(0).getNachname());
-			}
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -354,9 +350,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByPlz(plz);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkAdresse().getPlz().getPlz());
-			}
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -368,9 +362,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByOrt(ort);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkAdresse().getPlz().getOrt());
-			}
+			
 		}
 		catch (RemoteException e) {
 			// TODO Auto-generated catch block
@@ -393,9 +385,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByObjekttyp(objekttyp);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkObjekttyp().getBezeichnung());
-			}
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -407,9 +397,6 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByArbeitstyp(arbeitstyp);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkArbeitstyp().getBezeichnung());
-			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -421,9 +408,6 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			projekte =  projektRO.findByProjektstatus(projektstatus);
-			for (Projekt projekt : projekte) {
-				System.out.println(projekt.getFkProjektstatus().getBezeichnung());
-			}
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -528,7 +512,7 @@ public class ClientRMI {
 	public List<Mangelstatus> getAllMangelStatus() {
 		try {
 			mangelstatus = mangelstatusRO.findAllMangelStatus();
-//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -550,7 +534,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			meldungstyp = meldungstypRO.findAll();
-//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -652,7 +636,7 @@ public class ClientRMI {
 		// TODO Auto-generated method stub
 		try {
 			bauherren = bauherrRO.findAll();
-//			System.out.println(mangelOfProjekt.get(0).getBezeichnung());
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
