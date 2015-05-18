@@ -132,7 +132,7 @@ public class SubUnternehmenDetailController implements Initializable {
 				txtUnternehmenTelefon.setText(subunternehmen.getTelefon());
 				txtUnternehmenStrasse.setText(subunternehmen.getFkAdresse().getStrasse());
 				cbUnternehmenPlz.setValue(subunternehmen.getFkAdresse().getPlz());
-				lblUnternehmenOrt.setText(cbUnternehmenPlz.getSelectionModel().getSelectedItem().getOrt());
+				lblUnternehmenOrt.setText(subunternehmen.getFkAdresse().getPlz().getOrt()));
 				
 				data = FXCollections.observableArrayList(client.proxy.getAllSubunternehmenProjekt(subunternehmen.getId()));
 				data2 = FXCollections.observableArrayList(client.proxy.getAllSubunternehmenMitarbeiter(subunternehmen));

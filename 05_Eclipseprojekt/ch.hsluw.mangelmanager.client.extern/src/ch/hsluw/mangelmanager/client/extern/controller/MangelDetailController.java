@@ -98,7 +98,7 @@ import ch.hsluw.mangelmanager.model.Mangelstatus;
 			private void mangelClose() {
 				mangel.setFkMangelstatus(mangelstatus);
 				if(dateMangelDatumende.getValue() != null){
-					mangel.setAbschlussZeit(new GregorianCalendar(dateMangelDatumende.getValue().getDayOfMonth(), dateMangelDatumende.getValue().getMonthValue(), dateMangelDatumende.getValue().getYear()));
+					mangel.setAbschlussZeit(new GregorianCalendar(dateMangelDatumende.getValue().getYear(), dateMangelDatumende.getValue().getMonthValue() -1, dateMangelDatumende.getValue().getDayOfMonth()));
 				}
 				lblMangelStatus.setText("Abgeschlossen");
 				client.proxy.updateMangel(mangel);
