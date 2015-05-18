@@ -3,15 +3,12 @@ package ch.hsluw.mangelmanager.client.test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.*;
 
-import java.rmi.Naming;
-import java.rmi.RemoteException;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Test;
 
 import ch.hsluw.mangelmanager.client.intern.ClientRMI;
-import ch.hsluw.mangelmanager.client.intern.Main;
 import ch.hsluw.mangelmanager.model.Adresse;
 import ch.hsluw.mangelmanager.model.Arbeitstyp;
 import ch.hsluw.mangelmanager.model.Bauherr;
@@ -62,7 +59,7 @@ import ch.hsluw.mangelmanager.rmi.sumitarbeiter.SuMitarbeiterRO;
 public class ClientRMITest {
 
 	// all the needed objects
-	
+
 	List<Person> person;
 	List<Projekt> projekte;
 	List<Projekt> suprojekte;
@@ -116,7 +113,7 @@ public class ClientRMITest {
 	RolleRO rolleRO;
 
 	// The Tests
-	
+
 	/**
 	 * Tests if Projekte are findable
 	 */
@@ -131,6 +128,7 @@ public class ClientRMITest {
 			fail("Couldn't find Projekte");
 		}
 	}
+
 	/**
 	 * Tests if Subunternehmen are findable
 	 */
@@ -145,6 +143,7 @@ public class ClientRMITest {
 			fail("Couldn't find Subunternehmen");
 		}
 	}
+
 	/**
 	 * Tests if Projekte pro Subunternehmen are findable
 	 */
@@ -153,12 +152,13 @@ public class ClientRMITest {
 		try {
 			ClientRMI client = new ClientRMI();
 			anzProjekte = client.getProjektproSubunternehmen(80);
-		assertNotNull(anzProjekte);
+			assertNotNull(anzProjekte);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Projekte pro Subunternehmen");
 		}
 	}
+
 	/**
 	 * Tests if Mängel are findable
 	 */
@@ -173,6 +173,7 @@ public class ClientRMITest {
 			fail("Couldn't find Mängel");
 		}
 	}
+
 	/**
 	 * Tests if Meldungen are findable
 	 */
@@ -187,8 +188,9 @@ public class ClientRMITest {
 			fail("Couldn't find Meldung");
 		}
 	}
+
 	/**
-	 * Tests if Projekte are findable by ID 
+	 * Tests if Projekte are findable by ID
 	 */
 	@Test
 	public void getProjektByIdTest() {
@@ -201,8 +203,9 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by ID");
 		}
 	}
+
 	/**
-	 * Tests if Subunternehmen are findable by ID 
+	 * Tests if Subunternehmen are findable by ID
 	 */
 	@Test
 	public void getSubunternehmenByIdTest() {
@@ -215,8 +218,9 @@ public class ClientRMITest {
 			fail("Couldn't find Subunternehme by ID");
 		}
 	}
+
 	/**
-	 * Tests if Meldungenare findable by ID 
+	 * Tests if Meldungenare findable by ID
 	 */
 	@Test
 	public void getMeldungByIdTest() {
@@ -229,6 +233,7 @@ public class ClientRMITest {
 			fail("Couldn't find Meldung by ID");
 		}
 	}
+
 	/**
 	 * Tests if Personen are findable
 	 */
@@ -243,6 +248,7 @@ public class ClientRMITest {
 			fail("Couldn't find Person");
 		}
 	}
+
 	/**
 	 * Tests if Subunternehmen are updateable
 	 */
@@ -256,6 +262,7 @@ public class ClientRMITest {
 			fail("Couldn't update Subunternehmen");
 		}
 	}
+
 	/**
 	 * Tests if Projekte are findable by Bezeichnung
 	 */
@@ -271,6 +278,7 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Bezeichnung");
 		}
 	}
+
 	/**
 	 * Tests if PLZ are findable
 	 */
@@ -285,6 +293,7 @@ public class ClientRMITest {
 			fail("Couldn't find PLZ");
 		}
 	}
+
 	/**
 	 * Tests if Projekte are findableby Bauherr
 	 */
@@ -300,6 +309,7 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Bauherr");
 		}
 	}
+
 	/**
 	 * Tests if Projekte are findable by Plz
 	 */
@@ -317,7 +327,7 @@ public class ClientRMITest {
 	}
 
 	/**
-	 *  tests if Projekte are findable by Ort
+	 * tests if Projekte are findable by Ort
 	 */
 	@Test
 	public void getProjektByOrtTest() {
@@ -331,9 +341,9 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Ort");
 		}
 	}
-	
+
 	/**
-	 *  tests if Projekte are findable by Objekt
+	 * tests if Projekte are findable by Objekt
 	 */
 	@Test
 	public void getProjektByObjekttypTest() {
@@ -347,8 +357,9 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Objekttyp");
 		}
 	}
+
 	/**
-	 *  tests if Projekte are findable by Arbeitstyp
+	 * tests if Projekte are findable by Arbeitstyp
 	 */
 	@Test
 	public void getProjektByArbeitstypTest() {
@@ -362,8 +373,9 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Arbeitstyp");
 		}
 	}
+
 	/**
-	 *  tests if Projekte are findable by Projektstatus
+	 * tests if Projekte are findable by Projektstatus
 	 */
 	@Test
 	public void getProjektByProjektstatusTest() {
@@ -377,8 +389,9 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Projektstatus");
 		}
 	}
+
 	/**
-	 *  tests if Adressen are addable
+	 * tests if Adressen are addable
 	 */
 	@Test
 	public void addAdresseTest() {
@@ -392,8 +405,9 @@ public class ClientRMITest {
 			fail("Couldn't add Adresse");
 		}
 	}
+
 	/**
-	 *  tests if Subunternehmen are addable
+	 * tests if Subunternehmen are addable
 	 */
 	@Test
 	public void addSubunternehmenTest() {
@@ -408,8 +422,9 @@ public class ClientRMITest {
 			fail("Couldn't add Subunternehmen");
 		}
 	}
+
 	/**
-	 *  tests if Subunternehmen-Projekte are findable
+	 * tests if Subunternehmen-Projekte are findable
 	 */
 	@Test
 	public void getAllSubunternehmenProjektTest() {
@@ -423,8 +438,9 @@ public class ClientRMITest {
 			fail("Couldn't find all Subunternehmenprojekte");
 		}
 	}
+
 	/**
-	 *  tests if all Mitarbeiter of a Subunternehmen are findable
+	 * tests if all Mitarbeiter of a Subunternehmen are findable
 	 */
 	@Test
 	public void getAllSubunternehmenMitarbeiterTest() {
@@ -438,8 +454,9 @@ public class ClientRMITest {
 			fail("Couldn't find all Subunternehmenmitarbeiter");
 		}
 	}
+
 	/**
-	 *  tests if Objekttyp are findable 
+	 * tests if Objekttyp are findable
 	 */
 	@Test
 	public void getAllObjekttypTest() {
@@ -452,8 +469,9 @@ public class ClientRMITest {
 			fail("Couldn't find Objekttyp");
 		}
 	}
+
 	/**
-	 * tests if Objekttyp are findable 
+	 * tests if Objekttyp are findable
 	 */
 	@Test
 	public void getAllArbeitstypTest() {
@@ -466,8 +484,9 @@ public class ClientRMITest {
 			fail("Couldn't find  Arbeitstyp");
 		}
 	}
+
 	/**
-	 * tests if Mangel of a Projekt are findable 
+	 * tests if Mangel of a Projekt are findable
 	 */
 	@Test
 	public void getAllMangelProjektTest() {
@@ -481,6 +500,7 @@ public class ClientRMITest {
 			fail("Couldn't find  MangelOfProjekt");
 		}
 	}
+
 	/**
 	 * tests if Mängel are findable by
 	 */
@@ -490,12 +510,13 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			mangelnr = client.getMangelById(client.getAllMangel().get(0)
 					.getId());
-			assertEquals(mangelnr.getId(), client.getAllMangel().get(0).getId());
+			assertNotNull(mangelnr);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find  MangelOfProjekt");
 		}
 	}
+
 	/**
 	 * tests if Mängel are updateable
 	 */
@@ -510,8 +531,9 @@ public class ClientRMITest {
 			fail("Couldn't update Mangel");
 		}
 	}
+
 	/**
-	 * tests if Mangelstatuse are findable 
+	 * tests if Mangelstatuse are findable
 	 */
 	@Test
 	public void getAllMangelStatusTest() {
@@ -524,8 +546,9 @@ public class ClientRMITest {
 			fail("Couldn't find  AllMangelStatus");
 		}
 	}
+
 	/**
-	 * tests if Mängel are addable 
+	 * tests if Mängel are addable
 	 */
 	@Test
 	public void addMangelTest() {
@@ -541,8 +564,9 @@ public class ClientRMITest {
 			fail("Couldn't add Mangel");
 		}
 	}
+
 	/**
-	 * tests if Meldungstypen are findable 
+	 * tests if Meldungstypen are findable
 	 */
 	@Test
 	public void getAllMeldungstypTest() {
@@ -555,6 +579,7 @@ public class ClientRMITest {
 			fail("Couldn't find all Meldungstyp");
 		}
 	}
+
 	/**
 	 * tests if Meldungen are addable
 	 */
@@ -572,6 +597,7 @@ public class ClientRMITest {
 			fail("Couldn't add Meldung");
 		}
 	}
+
 	/**
 	 * tests if Meldungen are findable by Mangel
 	 */
@@ -587,6 +613,7 @@ public class ClientRMITest {
 			fail("Couldn't find all Meldung by Mangel");
 		}
 	}
+
 	/**
 	 * tests if Unternehmen are findable by Projekt
 	 */
@@ -602,6 +629,7 @@ public class ClientRMITest {
 			fail("Couldn't find Unternehmen by Projekt");
 		}
 	}
+
 	/**
 	 * tests if Bauleiter are findable by Projekt
 	 */
@@ -617,6 +645,7 @@ public class ClientRMITest {
 			fail("Couldn't find Bauleiter by Projekt");
 		}
 	}
+
 	/**
 	 * tests if Login are findable by Name
 	 */
@@ -631,6 +660,7 @@ public class ClientRMITest {
 			fail("Couldn't find Login by Name");
 		}
 	}
+
 	/**
 	 * tests if Login are findable by ID
 	 */
@@ -645,6 +675,7 @@ public class ClientRMITest {
 			fail("Couldn't find Login by ID");
 		}
 	}
+
 	/**
 	 * tests if Projekte are updateable
 	 */
@@ -658,6 +689,7 @@ public class ClientRMITest {
 			fail("Couldn't update Projekt");
 		}
 	}
+
 	/**
 	 * tests if SuMitarbeiter are addable by Projekt
 	 */
@@ -676,6 +708,7 @@ public class ClientRMITest {
 			fail("Couldn't add ProjektSuMitarbeiter");
 		}
 	}
+
 	/**
 	 * tests if Bauherren are findable
 	 */
@@ -690,15 +723,21 @@ public class ClientRMITest {
 			fail("Couldn't find all Bauherr");
 		}
 	}
+
 	/**
 	 * tests if Projekte are addable
 	 */
 	@Test
 	public void addProjektTest() {
 		try {
+			// Add Adresse für Projekt
 			ClientRMI client = new ClientRMI();
-			Projekt test = new Projekt(client.getAllProjekt().get(0)
-					.getFkAdresse(), "RMI Test", projekt.getFkBauherr(),
+			Adresse adressetest = new Adresse("RMI Projekt Strasse 3", client
+					.getAllPlz().get(55));
+			client.addAdresse(adressetest);
+			
+			//Add projekt
+			Projekt test = new Projekt(adressetest, "RMI Test", client.getAllBauherr(),
 					new GregorianCalendar(2015, 5, 18), new GregorianCalendar(
 							2015, 6, 06), client.getAllObjekttyp().get(3),
 					client.getAllArbeitstyp().get(1), new GregorianCalendar(
@@ -709,6 +748,7 @@ public class ClientRMITest {
 			fail("Couldn't add Projekt");
 		}
 	}
+
 	/**
 	 * tests if GuMitarbeiter are findable
 	 */
@@ -723,6 +763,7 @@ public class ClientRMITest {
 			fail("Couldn't find all guMitarbeiter");
 		}
 	}
+
 	/**
 	 * tests if GuMitarbeiter are addable by Projekt
 	 */
@@ -739,6 +780,7 @@ public class ClientRMITest {
 			fail("Couldn't add GuMitarbeiter by Projekt");
 		}
 	}
+
 	/**
 	 * tests if GuMitarbeiter are updateable
 	 */
@@ -746,12 +788,14 @@ public class ClientRMITest {
 	public void updateProjektGuMitarbeiterTest() {
 		try {
 			ClientRMI client = new ClientRMI();
-			client.updateProjektGuMitarbeiter(client.getBauleiterByProjekt(client.getAllProjekt().get(0)).get(0));
+			client.updateProjektGuMitarbeiter(client.getBauleiterByProjekt(
+					client.getAllProjekt().get(0)).get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't update Subunternehmen");
 		}
 	}
+
 	/**
 	 * tests if Projektstatuse are findable
 	 */
@@ -766,6 +810,7 @@ public class ClientRMITest {
 			fail("Couldn't find all Projektstatus");
 		}
 	}
+
 	/**
 	 * tests if GuMitarbeiter are addable
 	 */
@@ -781,6 +826,7 @@ public class ClientRMITest {
 			fail("Couldn't add GuMitarbeiter by Projekt");
 		}
 	}
+
 	/**
 	 * tests if SuMitarbeiter are addable
 	 */
@@ -796,8 +842,9 @@ public class ClientRMITest {
 			fail("Couldn't add SuMitarbeiter");
 		}
 	}
+
 	/**
-	 * tests if Bauherren are addable 
+	 * tests if Bauherren are addable
 	 */
 	@Test
 	public void addBauherrTest() {
@@ -814,6 +861,7 @@ public class ClientRMITest {
 			fail("Couldn't add SuMitarbeiter");
 		}
 	}
+
 	/**
 	 * tests if Rollen are findable
 	 */
@@ -828,6 +876,7 @@ public class ClientRMITest {
 			fail("Couldn't find all Rollen");
 		}
 	}
+
 	/**
 	 * tests if Personen are findable by ID
 	 */
@@ -837,13 +886,14 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			personnr = client.getPersonById(client.getAllProjekt().get(1)
 					.getFkBauherr().get(0).getId());
-			assertEquals(personnr.getId(), client.getAllProjekt().get(1).getFkBauherr()
-					.get(0).getId());
+			assertNotNull(personnr);
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Person by ID");
 		}
 	}
+
 	/**
 	 * tests if Projekte are findable by Person
 	 */
@@ -859,6 +909,7 @@ public class ClientRMITest {
 			fail("Couldn't find Projekt by Person");
 		}
 	}
+
 	/**
 	 * tests if Personen are updateable
 	 */
@@ -872,6 +923,7 @@ public class ClientRMITest {
 			fail("Couldn't update Person");
 		}
 	}
+
 	/**
 	 * tests if Meldungen are updateable
 	 */

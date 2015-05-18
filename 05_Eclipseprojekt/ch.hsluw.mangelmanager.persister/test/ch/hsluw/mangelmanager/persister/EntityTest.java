@@ -1,5 +1,6 @@
 package ch.hsluw.mangelmanager.persister;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -149,8 +150,7 @@ public class EntityTest {
 	public void findProjektById() {
 		try {
 			ProjektDAO projektdao = new ProjektDAOImpl();
-			System.out
-					.println(projektdao.findProjektById(109).getBezeichnung());
+			assertNotNull(projektdao.findProjektById(109).getBezeichnung());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Projekt by ID");
@@ -163,7 +163,7 @@ public class EntityTest {
 	public void findProjektByBezeichnung() {
 		try {
 			ProjektDAO projektdao = new ProjektDAOImpl();
-			assertTrue(projektdao.findProjektByBezeichnung("Projekt Alpha")
+			assertTrue(projektdao.findProjektByBezeichnung(projektdao.findAllProjekt().get(0).getBezeichnung())
 					.size() > 0);
 		} catch (Exception e) {
 			e.printStackTrace();
