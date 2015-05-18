@@ -75,7 +75,7 @@
                   <TextField fx:id="txtUnternehmenName" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" />
                   <TextField fx:id="txtUnternehmenStrasse" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="txtUnternehmenTelefon" maxWidth="240.0" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label fx:id="lblUnternehmenOrt" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label fx:id="lblUnternehmenOrt" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="100.0" />
                      </GridPane.margin>
@@ -103,7 +103,6 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <Button fx:id="btnUnternehmenProjektAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="8.0" />
                            </children>
                         </AnchorPane>
                     </content>
@@ -125,7 +124,6 @@
                                     <TableColumn fx:id="colUnternehmenMitarbeiterTelefon" prefWidth="75.0" text="Telefon" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="btnUnternehmenMitarbeiterAdd" layoutX="550.0" layoutY="472.0" mnemonicParsing="false" text="Hinzufügen" AnchorPane.bottomAnchor="-5.0" AnchorPane.rightAnchor="8.0" />
                            </children>
                         </AnchorPane>
                   </content>
