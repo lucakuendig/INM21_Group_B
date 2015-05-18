@@ -87,13 +87,23 @@ public class AddPersonController implements Initializable {
 		// TODO
 		if(cbPersonFunktion.getValue() != null){
 			if(cbPersonFunktion.getValue().equals("GuMitarbeiter")){
-				login = new Login(txtPersonBenutzername.getText(), txtPersonPasswort.getText(), txtPersonEmail.getText(), cbPersonRolle.getSelectionModel().getSelectedItem());
-				guMitarbeiter = new GuMitarbeiter(txtPersonName.getText(), txtPersonVorname.getText(), txtPersonTelefon.getText(), login);
-				client.proxy.addGuMitarbeiter(guMitarbeiter);
+				if(txtPersonPasswort.getText().equals(txtPersonPasswortWiederholen.getText())){
+					login = new Login(txtPersonBenutzername.getText(), txtPersonPasswort.getText(), txtPersonEmail.getText(), cbPersonRolle.getSelectionModel().getSelectedItem());
+					guMitarbeiter = new GuMitarbeiter(txtPersonName.getText(), txtPersonVorname.getText(), txtPersonTelefon.getText(), login);
+					client.proxy.addGuMitarbeiter(guMitarbeiter);
+				}else{
+					lblPersonError.setText("Passwort wiederholen!");
+					return;
+				}
 			}else if(cbPersonFunktion.getValue().equals("SuMitarbeiter")){
-				login = new Login(txtPersonBenutzername.getText(), txtPersonPasswort.getText(), txtPersonEmail.getText(), cbPersonRolle.getSelectionModel().getSelectedItem());
-				suMitarbeiter = new SuMitarbeiter(txtPersonName.getText(), txtPersonVorname.getText(), txtPersonTelefon.getText(), cbPersonUnternehmen.getSelectionModel().getSelectedItem(), login);
-				client.proxy.addSuMitarbeiter(suMitarbeiter);
+				if(txtPersonPasswort.getText().equals(txtPersonPasswortWiederholen.getText())){
+					login = new Login(txtPersonBenutzername.getText(), txtPersonPasswort.getText(), txtPersonEmail.getText(), cbPersonRolle.getSelectionModel().getSelectedItem());
+					suMitarbeiter = new SuMitarbeiter(txtPersonName.getText(), txtPersonVorname.getText(), txtPersonTelefon.getText(), cbPersonUnternehmen.getSelectionModel().getSelectedItem(), login);
+					client.proxy.addSuMitarbeiter(suMitarbeiter);
+				}else{
+					lblPersonError.setText("Passwort wiederholen!");
+					return;
+				}
 			}else{
 				adresse = new Adresse(txtPersonStrasse.getText(), cbPersonPlz.getSelectionModel().getSelectedItem());
 				bauherr = new Bauherr(txtPersonName.getText(), txtPersonVorname.getText(), txtPersonTelefon.getText(), adresse);
@@ -101,6 +111,7 @@ public class AddPersonController implements Initializable {
 			}
 		}else{
 			lblPersonError.setText("Funktion Auswählen");
+			return;
 		}
 		try {
 			// Load Unternehmen overview.
