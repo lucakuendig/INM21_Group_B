@@ -186,9 +186,6 @@ public class ProjektController implements Initializable {
 	@FXML
 	public void showProjektDetail(MouseEvent t) throws IOException {
 		if (t.getClickCount() == 2) {
-			System.out.println(tblProjekt.getSelectionModel().getSelectedItem()
-					.getId());
-
 			try {
 				// Load ProjektDetail View.
 				FXMLLoader loader = new FXMLLoader();

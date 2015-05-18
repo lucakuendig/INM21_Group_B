@@ -112,7 +112,6 @@ public class MeldungController implements Initializable {
 		@FXML
 		public void showMeldungDetail(MouseEvent t) throws IOException{
 			if(t.getClickCount() == 2){
-				System.out.println(tblMeldung.getSelectionModel().getSelectedItem().getId());
 				
 				try {
 					// Load MeldungDetail View.

@@ -64,132 +64,136 @@ public class PersonController implements Initializable {
 	@FXML
 	private TableColumn<Person, String> colPersonRolle;
 
-
-	
-
-	
-
 	// Datalist for Tableview
 	ObservableList<Person> data;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setCellValueFactoryTblPerson();
-		
-		//Client interaction
-				try {
-					client = ClientRMI.getInstance();
-					data = FXCollections.observableArrayList(client.getAllPerson());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
 
-				//Set data to tableview
-				tblPerson.setItems(data);
+		// Client interaction
+		try {
+			client = ClientRMI.getInstance();
+			data = FXCollections.observableArrayList(client.getAllPerson());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// Set data to tableview
+		tblPerson.setItems(data);
 	}
 
-	
-	
 	private void setCellValueFactoryTblPerson() {
-		colPersonId.setCellValueFactory(new PropertyValueFactory<Person, String>("id"));
-		colPersonName.setCellValueFactory(new PropertyValueFactory<Person, String>("nachname"));
-		colPersonVorname.setCellValueFactory(new PropertyValueFactory<Person, String>("vorname"));
-		colPersonTyp.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
-		    	if (p.getValue() instanceof Bauherr) {
-		    		 return new SimpleStringProperty("Bauherr");
-				}
-		    	else if (p.getValue() instanceof GuMitarbeiter) {
-		    		 return new SimpleStringProperty("General-Mitarbeiter");
-				}
-		    	else if (p.getValue() instanceof SuMitarbeiter) {
-		    		 return new SimpleStringProperty("Subunternehmen-Mitarbeiter");
-				}	    	
-		    	else{
-		    		return new SimpleStringProperty("unbekannt");
-		    	}
-		       
-		    }
-		});
-		
-		colPersonUnternehmen.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
-		    	if (p.getValue() instanceof Bauherr) {
-		    		 return new SimpleStringProperty("Kein Unternehmen");
-				}
-		    	else if (p.getValue() instanceof GuMitarbeiter) {
-		    		 return new SimpleStringProperty("W & W");
-				}
-		    	else if (p.getValue() instanceof SuMitarbeiter) {
-		    		 return new SimpleStringProperty(((SuMitarbeiter) p.getValue()).getFkSubunternehmen().getName());
-				}	    	
-		    	else{
-		    		return new SimpleStringProperty("unbekannt");
-		    	}
-		       
-		    }
-		});
-		
-		colPersonTelefon.setCellValueFactory(new PropertyValueFactory<Person, String>("telefon"));
-		colPersonBenutzername.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
-		    	if (p.getValue() instanceof Bauherr) {
-		    		 return new SimpleStringProperty("-");
-				}
-		    	else if (p.getValue() instanceof GuMitarbeiter) {
-		    		 return new SimpleStringProperty(((GuMitarbeiter) p.getValue()).getFkLogin().getBenutzername());
-				}
-		    	else if (p.getValue() instanceof SuMitarbeiter) {
-		    		 return new SimpleStringProperty(((SuMitarbeiter) p.getValue()).getFkLogin().getBenutzername());
-				}	    	
-		    	else{
-		    		return new SimpleStringProperty("unbekannt");
-		    	}
-		    }
-		});
-		colPersonEmail.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
-		    	if (p.getValue() instanceof Bauherr) {
-		    		 return new SimpleStringProperty("-");
-				}
-		    	else if (p.getValue() instanceof GuMitarbeiter) {
-		    		 return new SimpleStringProperty(((GuMitarbeiter) p.getValue()).getFkLogin().getEmail());
-				}
-		    	else if (p.getValue() instanceof SuMitarbeiter) {
-		    		 return new SimpleStringProperty(((SuMitarbeiter) p.getValue()).getFkLogin().getEmail());
-				}	    	
-		    	else{
-		    		return new SimpleStringProperty("unbekannt");
-		    	}
-		       
-		    }
-		});
-		colPersonRolle.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
-		    public ObservableValue<String> call(CellDataFeatures<Person, String> p) {
-		    	if (p.getValue() instanceof Bauherr) {
-		    		 return new SimpleStringProperty("-");
-				}
-		    	else if (p.getValue() instanceof GuMitarbeiter) {
-		    		 return new SimpleStringProperty(((GuMitarbeiter) p.getValue()).getFkLogin().getFkrolle().getName());
-				}
-		    	else if (p.getValue() instanceof SuMitarbeiter) {
-		    		 return new SimpleStringProperty(((SuMitarbeiter) p.getValue()).getFkLogin().getFkrolle().getName());
-				}	    	
-		    	else{
-		    		return new SimpleStringProperty("unbekannt");
-		    	}
-		       
-		    }
-		});
+		colPersonId
+				.setCellValueFactory(new PropertyValueFactory<Person, String>(
+						"id"));
+		colPersonName
+				.setCellValueFactory(new PropertyValueFactory<Person, String>(
+						"nachname"));
+		colPersonVorname
+				.setCellValueFactory(new PropertyValueFactory<Person, String>(
+						"vorname"));
+		colPersonTyp
+				.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Person, String> p) {
+						if (p.getValue() instanceof Bauherr) {
+							return new SimpleStringProperty("Bauherr");
+						} else if (p.getValue() instanceof GuMitarbeiter) {
+							return new SimpleStringProperty(
+									"General-Mitarbeiter");
+						} else if (p.getValue() instanceof SuMitarbeiter) {
+							return new SimpleStringProperty(
+									"Subunternehmen-Mitarbeiter");
+						} else {
+							return new SimpleStringProperty("unbekannt");
+						}
+
+					}
+				});
+
+		colPersonUnternehmen
+				.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Person, String> p) {
+						if (p.getValue() instanceof Bauherr) {
+							return new SimpleStringProperty("Kein Unternehmen");
+						} else if (p.getValue() instanceof GuMitarbeiter) {
+							return new SimpleStringProperty("W & W");
+						} else if (p.getValue() instanceof SuMitarbeiter) {
+							return new SimpleStringProperty(((SuMitarbeiter) p
+									.getValue()).getFkSubunternehmen()
+									.getName());
+						} else {
+							return new SimpleStringProperty("unbekannt");
+						}
+
+					}
+				});
+
+		colPersonTelefon
+				.setCellValueFactory(new PropertyValueFactory<Person, String>(
+						"telefon"));
+		colPersonBenutzername
+				.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Person, String> p) {
+						if (p.getValue() instanceof Bauherr) {
+							return new SimpleStringProperty("-");
+						} else if (p.getValue() instanceof GuMitarbeiter) {
+							return new SimpleStringProperty(((GuMitarbeiter) p
+									.getValue()).getFkLogin().getBenutzername());
+						} else if (p.getValue() instanceof SuMitarbeiter) {
+							return new SimpleStringProperty(((SuMitarbeiter) p
+									.getValue()).getFkLogin().getBenutzername());
+						} else {
+							return new SimpleStringProperty("unbekannt");
+						}
+					}
+				});
+		colPersonEmail
+				.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Person, String> p) {
+						if (p.getValue() instanceof Bauherr) {
+							return new SimpleStringProperty("-");
+						} else if (p.getValue() instanceof GuMitarbeiter) {
+							return new SimpleStringProperty(((GuMitarbeiter) p
+									.getValue()).getFkLogin().getEmail());
+						} else if (p.getValue() instanceof SuMitarbeiter) {
+							return new SimpleStringProperty(((SuMitarbeiter) p
+									.getValue()).getFkLogin().getEmail());
+						} else {
+							return new SimpleStringProperty("unbekannt");
+						}
+
+					}
+				});
+		colPersonRolle
+				.setCellValueFactory(new Callback<CellDataFeatures<Person, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Person, String> p) {
+						if (p.getValue() instanceof Bauherr) {
+							return new SimpleStringProperty("-");
+						} else if (p.getValue() instanceof GuMitarbeiter) {
+							return new SimpleStringProperty(((GuMitarbeiter) p
+									.getValue()).getFkLogin().getFkrolle()
+									.getName());
+						} else if (p.getValue() instanceof SuMitarbeiter) {
+							return new SimpleStringProperty(((SuMitarbeiter) p
+									.getValue()).getFkLogin().getFkrolle()
+									.getName());
+						} else {
+							return new SimpleStringProperty("unbekannt");
+						}
+
+					}
+				});
 	}
-	
-	
+
 	@FXML
 	public void showPersonDetail(MouseEvent t) throws IOException {
 		if (t.getClickCount() == 2) {
-			System.out.println(tblPerson.getSelectionModel().getSelectedItem()
-					.getId());
 
 			try {
 				// Load ProjektDetail View.
@@ -202,8 +206,8 @@ public class PersonController implements Initializable {
 						.<PersonDetailController> getController();
 				detailPersonController.setRootController(rootController);
 
-				detailPersonController.init(tblPerson.getSelectionModel().getSelectedItem()
-						.getId());
+				detailPersonController.init(tblPerson.getSelectionModel()
+						.getSelectedItem().getId());
 				rootController.rootLayout.setCenter(inneresPerson);
 
 			} catch (IOException e) {
@@ -211,28 +215,29 @@ public class PersonController implements Initializable {
 			}
 		}
 	}
-	
+
 	@FXML
-	private void addPerson(){
+	private void addPerson() {
 		try {
 			// Load ProjektDetail View.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
 					.getResource("view/person/AddPerson.fxml"));
 			AnchorPane addPerson = (AnchorPane) loader.load();
-			
-			AddPersonController addPersonController = loader.<AddPersonController>getController();
+
+			AddPersonController addPersonController = loader
+					.<AddPersonController> getController();
 			addPersonController.setRootController(rootController);
-			
+
 			rootController.rootLayout.setCenter(addPerson);
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
-	private void deletePerson(){
-		
+	private void deletePerson() {
+
 	}
 }

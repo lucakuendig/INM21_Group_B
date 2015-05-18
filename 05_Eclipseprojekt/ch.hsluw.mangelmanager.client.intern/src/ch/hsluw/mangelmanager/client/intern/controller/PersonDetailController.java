@@ -34,30 +34,28 @@ import ch.hsluw.mangelmanager.model.Plz;
 import ch.hsluw.mangelmanager.model.Projekt;
 import ch.hsluw.mangelmanager.model.SuMitarbeiter;
 
-
-
 /**
- * The ProjektDetailController handles all interaction with person * 
+ * The ProjektDetailController handles all interaction with person *
  * 
  * @author mmont
  * @version 1.0
  *
  */
 public class PersonDetailController implements Initializable {
-	//RMI Client to interact
+	// RMI Client to interact
 	ClientRMI client = null;
 	RootController rootController = null;
 	DateFormat formatDatum = null;
 	DateTimeFormatter dateFormatter = null;
-	
+
 	public void setRootController(RootController rootController) {
 		// TODO Auto-generated method stub
 		this.rootController = rootController;
 	}
-	
+
 	Person person = null;
-	
-	//Left Panel
+
+	// Left Panel
 	@FXML
 	private Label lblPersonId;
 	@FXML
@@ -76,7 +74,7 @@ public class PersonDetailController implements Initializable {
 	private TextField txtPersonTelefon;
 	@FXML
 	private Label lblPersonUnternehmenanz;
-	
+
 	// Right Panel
 	@FXML
 	private TitledPane tpPersonLogin;
@@ -98,13 +96,13 @@ public class PersonDetailController implements Initializable {
 	private TableColumn<Projekt, String> colPersonProjektadresse;
 	@FXML
 	private TableColumn<Projekt, String> colPersonProjektabgeschlossen;
-	
+
 	ObservableList<Projekt> projektData;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			client = ClientRMI.getInstance();	
+			client = ClientRMI.getInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -114,91 +112,109 @@ public class PersonDetailController implements Initializable {
 		for (Plz plz : FXCollections.observableArrayList(client.getAllPlz())) {
 			cbPersonPlz.getItems().add(plz);
 		}
-		
+
 		setCellValueFactoryTblProjekt();
 	}
 
 	private void setCellValueFactoryTblProjekt() {
-		colPersonProjektid.setCellValueFactory(new PropertyValueFactory<Projekt, String>("id"));
-		colPersonProjektbezeichnung.setCellValueFactory(new PropertyValueFactory<Projekt, String>("bezeichnung"));
-		colPersonProjektbauherr.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(
-					CellDataFeatures<Projekt, String> p) {
-				return new SimpleStringProperty(p.getValue()
-						.getFkBauherr().get(0).getNachname()
-						+ " "
-						+ p.getValue().getFkBauherr().get(0)
-								.getVorname());
-			}
-		});
+		colPersonProjektid
+				.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+						"id"));
+		colPersonProjektbezeichnung
+				.setCellValueFactory(new PropertyValueFactory<Projekt, String>(
+						"bezeichnung"));
+		colPersonProjektbauherr
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkBauherr().get(0).getNachname()
+								+ " "
+								+ p.getValue().getFkBauherr().get(0)
+										.getVorname());
+					}
+				});
 
-		colPersonProjektadresse.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(
-					CellDataFeatures<Projekt, String> p) {
-				return new SimpleStringProperty(p.getValue()
-						.getFkAdresse().getStrasse()
-						+ " "
-						+ p.getValue().getFkAdresse().getPlz().getPlz()
-						+ " "
-						+ p.getValue().getFkAdresse().getPlz().getOrt());
-			}
-		});
-		colPersonProjektabgeschlossen.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(
-					CellDataFeatures<Projekt, String> p) {
-				return new SimpleStringProperty(p.getValue()
-						.getFkProjektstatus().getBezeichnung());
-			}
-		});
+		colPersonProjektadresse
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkAdresse().getStrasse()
+								+ " "
+								+ p.getValue().getFkAdresse().getPlz().getPlz()
+								+ " "
+								+ p.getValue().getFkAdresse().getPlz().getOrt());
+					}
+				});
+		colPersonProjektabgeschlossen
+				.setCellValueFactory(new Callback<CellDataFeatures<Projekt, String>, ObservableValue<String>>() {
+					public ObservableValue<String> call(
+							CellDataFeatures<Projekt, String> p) {
+						return new SimpleStringProperty(p.getValue()
+								.getFkProjektstatus().getBezeichnung());
+					}
+				});
 	}
+
 	public void init(int personId) {
 		try {
-		person = client.getPersonById(personId);
-		projektData = FXCollections.observableArrayList(client.getProjektbyPerson(person));
-		lblPersonId.setText(person.getId().toString());
-		lblPersonVorname.setText(person.getVorname());
-		lblPersonName.setText(person.getNachname());
-		
-		if(person instanceof Bauherr){
-			cbPersonPlz.setDisable(false);
-			lblPersonOrt.setDisable(false);
-			txtPersonStrasse.setDisable(false);
-			cbPersonPlz.getSelectionModel().select(((Bauherr)person).getFkAdresse().getPlz().getPlz());
-			cbPersonPlz.setPromptText(((Bauherr)person).getFkAdresse().getPlz().getPlz().toString());
-			lblPersonOrt.setText(((Bauherr) person).getFkAdresse().getPlz().getOrt());
-			txtPersonStrasse.setText(((Bauherr)person).getFkAdresse().getStrasse());			
-		}
-		txtPersonTelefon.setText(person.getTelefon());
-		if(person instanceof GuMitarbeiter || person instanceof SuMitarbeiter){
-			tpPersonLogin.setVisible(true);
-			if(person instanceof SuMitarbeiter){
-			lblPersonUnternehmenanz.setVisible(true);
-			lblPersonUnternehmen.setVisible(true);
-			lblPersonUnternehmenanz.setText(((SuMitarbeiter)person).getFkSubunternehmen().getName());
-			lblPersonBenutzername.setText(((SuMitarbeiter)person).getFkLogin().getBenutzername());
-			txtPersonEmail.setText(((SuMitarbeiter)person).getFkLogin().getEmail());
-			lblPersonLoginRolle.setText(((SuMitarbeiter)person).getFkLogin().getFkrolle().getName());
-			}
-			if(person instanceof GuMitarbeiter){
-				lblPersonBenutzername.setText(((GuMitarbeiter)person).getFkLogin().getBenutzername());
-				txtPersonEmail.setText(((GuMitarbeiter)person).getFkLogin().getEmail());
-				lblPersonLoginRolle.setText(((GuMitarbeiter)person).getFkLogin().getFkrolle().getName());
-				}
-		}
-		tblPersonProjekt.setItems(projektData);
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	
-	}
-	
-	@FXML
-	public void showProjektDetail(MouseEvent t) throws IOException{
-		if (t.getClickCount() == 2) {
-			System.out.println(tblPersonProjekt.getSelectionModel().getSelectedItem()
-					.getId());
+			person = client.getPersonById(personId);
+			projektData = FXCollections.observableArrayList(client
+					.getProjektbyPerson(person));
+			lblPersonId.setText(person.getId().toString());
+			lblPersonVorname.setText(person.getVorname());
+			lblPersonName.setText(person.getNachname());
 
+			if (person instanceof Bauherr) {
+				cbPersonPlz.setDisable(false);
+				lblPersonOrt.setDisable(false);
+				txtPersonStrasse.setDisable(false);
+				cbPersonPlz.getSelectionModel().select(
+						((Bauherr) person).getFkAdresse().getPlz().getPlz());
+				cbPersonPlz.setPromptText(((Bauherr) person).getFkAdresse()
+						.getPlz().getPlz().toString());
+				lblPersonOrt.setText(((Bauherr) person).getFkAdresse().getPlz()
+						.getOrt());
+				txtPersonStrasse.setText(((Bauherr) person).getFkAdresse()
+						.getStrasse());
+			}
+			txtPersonTelefon.setText(person.getTelefon());
+			if (person instanceof GuMitarbeiter
+					|| person instanceof SuMitarbeiter) {
+				tpPersonLogin.setVisible(true);
+				if (person instanceof SuMitarbeiter) {
+					lblPersonUnternehmenanz.setVisible(true);
+					lblPersonUnternehmen.setVisible(true);
+					lblPersonUnternehmenanz.setText(((SuMitarbeiter) person)
+							.getFkSubunternehmen().getName());
+					lblPersonBenutzername.setText(((SuMitarbeiter) person)
+							.getFkLogin().getBenutzername());
+					txtPersonEmail.setText(((SuMitarbeiter) person)
+							.getFkLogin().getEmail());
+					lblPersonLoginRolle.setText(((SuMitarbeiter) person)
+							.getFkLogin().getFkrolle().getName());
+				}
+				if (person instanceof GuMitarbeiter) {
+					lblPersonBenutzername.setText(((GuMitarbeiter) person)
+							.getFkLogin().getBenutzername());
+					txtPersonEmail.setText(((GuMitarbeiter) person)
+							.getFkLogin().getEmail());
+					lblPersonLoginRolle.setText(((GuMitarbeiter) person)
+							.getFkLogin().getFkrolle().getName());
+				}
+			}
+			tblPersonProjekt.setItems(projektData);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@FXML
+	public void showProjektDetail(MouseEvent t) throws IOException {
+		if (t.getClickCount() == 2) {
 			try {
 				// Load ProjektDetail View.
 				FXMLLoader loader = new FXMLLoader();
@@ -210,8 +226,8 @@ public class PersonDetailController implements Initializable {
 						.<ProjektDetailController> getController();
 				detailProjektController.setRootController(rootController);
 
-				detailProjektController.init(tblPersonProjekt.getSelectionModel()
-						.getSelectedItem().getId());
+				detailProjektController.init(tblPersonProjekt
+						.getSelectionModel().getSelectedItem().getId());
 				rootController.rootLayout.setCenter(inneresProjekt);
 
 			} catch (IOException e) {
@@ -220,48 +236,52 @@ public class PersonDetailController implements Initializable {
 		}
 
 	}
-	
+
 	@FXML
-	private void plzChange(){
-		if (cbPersonPlz.getSelectionModel().getSelectedItem() != null){
-			lblPersonOrt.setText(cbPersonPlz.getSelectionModel().getSelectedItem().getOrt());
+	private void plzChange() {
+		if (cbPersonPlz.getSelectionModel().getSelectedItem() != null) {
+			lblPersonOrt.setText(cbPersonPlz.getSelectionModel()
+					.getSelectedItem().getOrt());
 		}
 	}
-	
+
 	@FXML
-	public void personCancel(){
+	public void personCancel() {
 		try {
 			// Load Unternehmen overview.
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class
 					.getResource("view/person/AusserePerson.fxml"));
 			AnchorPane person = (AnchorPane) loader.load();
-			
-			PersonController personController = loader.<PersonController>getController();
+
+			PersonController personController = loader
+					.<PersonController> getController();
 			personController.setRootController(rootController);
-			
+
 			rootController.rootLayout.setCenter(person);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@FXML
-	public void personSave(){
-		if(person instanceof SuMitarbeiter){
+	public void personSave() {
+		if (person instanceof SuMitarbeiter) {
 			person.setTelefon(txtPersonTelefon.getText());
-			((SuMitarbeiter) person).getFkLogin().setEmail(txtPersonEmail.getText());
-		}
-		else if(person instanceof GuMitarbeiter){
+			((SuMitarbeiter) person).getFkLogin().setEmail(
+					txtPersonEmail.getText());
+		} else if (person instanceof GuMitarbeiter) {
 			person.setTelefon(txtPersonTelefon.getText());
-			((GuMitarbeiter) person).getFkLogin().setEmail(txtPersonEmail.getText());
-		}
-		else if(person instanceof Bauherr){
-			((Bauherr) person).getFkAdresse().setStrasse(txtPersonStrasse.getText());
-			((Bauherr) person).getFkAdresse().setPlz(cbPersonPlz.getSelectionModel().getSelectedItem());
+			((GuMitarbeiter) person).getFkLogin().setEmail(
+					txtPersonEmail.getText());
+		} else if (person instanceof Bauherr) {
+			((Bauherr) person).getFkAdresse().setStrasse(
+					txtPersonStrasse.getText());
+			((Bauherr) person).getFkAdresse().setPlz(
+					cbPersonPlz.getSelectionModel().getSelectedItem());
 			person.setTelefon(txtPersonTelefon.getText());
 		}
-			client.updatePerson(person);
+		client.updatePerson(person);
 	}
 }

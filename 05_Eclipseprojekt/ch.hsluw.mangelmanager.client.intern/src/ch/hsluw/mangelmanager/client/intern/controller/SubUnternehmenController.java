@@ -94,7 +94,6 @@ public class SubUnternehmenController implements Initializable {
 	@FXML
 	public void showSubunternehmenDetail(MouseEvent t) throws IOException{
 		if(t.getClickCount() == 2){
-			System.out.println(tblSubunternehmen.getSelectionModel().getSelectedItem().getId());
 			
 			try {
 				// Load SubunternehmenDetail View.

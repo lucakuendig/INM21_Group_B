@@ -75,7 +75,7 @@ public class AddMangelController implements Initializable {
 					}
 				}
 				login = client.getLoginById(Main.loginId);
-				System.out.println(login.getBenutzername()+ " " + login.getEmail());
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

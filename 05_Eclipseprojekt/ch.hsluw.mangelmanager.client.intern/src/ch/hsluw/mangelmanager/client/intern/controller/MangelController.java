@@ -221,8 +221,7 @@ public class MangelController implements Initializable {
 	@FXML
 	public void showMangelDetail(MouseEvent t) throws IOException {
 		if (t.getClickCount() == 2) {
-			System.out.println(tblMangel.getSelectionModel().getSelectedItem()
-					.getId());
+			
 
 			try {
 				// Load MangelDetail View.
