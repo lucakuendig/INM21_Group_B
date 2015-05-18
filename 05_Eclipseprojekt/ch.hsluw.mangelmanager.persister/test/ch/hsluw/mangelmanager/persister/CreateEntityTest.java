@@ -45,6 +45,7 @@ import ch.hsluw.mangelmanager.persister.util.JpaUtil;
 
 public class CreateEntityTest {
 
+	
 	/**
 	 * Create empty Lists
 	 */

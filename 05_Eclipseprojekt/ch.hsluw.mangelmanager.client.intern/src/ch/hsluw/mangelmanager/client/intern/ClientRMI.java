@@ -102,6 +102,7 @@ public class ClientRMI {
 	Login loginnr;
 	Person personnr;
 	List<Rolle> rollen;
+	String url;
 	
 	
 	
@@ -149,7 +150,11 @@ public class ClientRMI {
 
 
 		// init rmi connection
-		String url = "rmi://localhost:1099/";
+		if(Main.ip == null | Main.port == null){
+			url = "rmi://localhost:1099/";
+		}else{
+			url = "rmi://"+Main.ip+":"+Main.port+"/";
+		}
 		String personROName = "personRO";
 		String projektROName = "projektRO";
 		String subunternehmenROName = "subunternehmenRO";
