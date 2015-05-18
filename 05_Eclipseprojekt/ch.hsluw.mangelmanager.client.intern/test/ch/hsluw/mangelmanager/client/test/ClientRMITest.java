@@ -1,7 +1,7 @@
 package ch.hsluw.mangelmanager.client.test;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -153,7 +153,7 @@ public class ClientRMITest {
 		try {
 			ClientRMI client = new ClientRMI();
 			anzProjekte = client.getProjektproSubunternehmen(80);
-			System.out.println(anzProjekte);
+			assertTrue(anzProjekte == client.getProjektproSubunternehmen(80));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Projekte pro Subunternehmen");
@@ -339,7 +339,8 @@ public class ClientRMITest {
 		try {
 			ClientRMI client = new ClientRMI();
 			plznr = client.getPlzById(client.getAllProjekt().get(0).getId());
-			System.out.println(plznr);
+			
+			assertEquals(plznr,client.getAllProjekt().get(0).getFkAdresse().getPlz());
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find Plz by Id");
@@ -503,7 +504,7 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			mangelnr = client.getMangelById(client.getAllMangel().get(0)
 					.getId());
-			System.out.println(mangelnr);
+			assertEquals(mangelnr, client.getAllMangel().get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail("Couldn't find  MangelOfProjekt");
@@ -851,7 +852,7 @@ public class ClientRMITest {
 			ClientRMI client = new ClientRMI();
 			personnr = client.getPersonById(client.getAllProjekt().get(1)
 					.getFkBauherr().get(0).getId());
-			assertTrue(personnr == client.getAllProjekt().get(1).getFkBauherr()
+			assertEquals(personnr, client.getAllProjekt().get(1).getFkBauherr()
 					.get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
