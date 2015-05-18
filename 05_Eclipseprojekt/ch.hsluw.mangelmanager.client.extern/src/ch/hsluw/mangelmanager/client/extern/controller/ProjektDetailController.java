@@ -370,6 +370,7 @@ public class ProjektDetailController implements Initializable {
 		if(dateProjektEnddatum.getValue() != null){
 			projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
 		}
+		projekt.setFkProjektstatus(cbProjektStatus.getSelectionModel().getSelectedItem());
 		client.proxy.updateProjekt(projekt);		
 		try {
 			// Load Projekt overview.

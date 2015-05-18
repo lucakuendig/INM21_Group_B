@@ -170,7 +170,7 @@ public class ClientRMI {
 		String projektstatusROName = "projektstatusRO";
 		String rolleROName = "rolleRO";
 		
-		this.personRO = (PersonRO) Naming.lookup(personROName);
+		this.personRO = (PersonRO) Naming.lookup(url + personROName);
 		this.projektRO = (ProjektRO) Naming.lookup(url + projektROName);
 		this.mangelRO = (MangelRO) Naming.lookup(url + mangelROName);
 		this.meldungRO = (MeldungRO) Naming.lookup(url + meldungROName);

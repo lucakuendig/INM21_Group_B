@@ -62,7 +62,7 @@ public class RMIServer {
 		Properties props = new Properties();
 
 		InputStream is = RMIServer.class.getClassLoader()
-				.getResourceAsStream("ws.properties");
+				.getResourceAsStream("rmi.properties");
 
 		try {
 			props.load(is);
@@ -130,7 +130,7 @@ public class RMIServer {
 				registry.rebind("guMitarbeiterRO", guMitarbeiterRO);
 				registry.rebind("projektstatusRO", projektstatusRO);
 				registry.rebind("suMitarbeiterRO", suMitarbeiterRO);
-				registry.bind("rolleRO", rolleRO);
+				registry.rebind("rolleRO", rolleRO);
 
 				
 				String msg = "RMI-Server ist bereit für Client-Anfragen.\n\n"
