@@ -281,13 +281,12 @@ public class ProjektDetailController implements Initializable {
 			cbProjektObjekttyp.setPromptText(projekt.getFkObjekttyp().getBezeichnung());
 			
 			lblProjektStartdatum.setText(formatDatum.format(projekt.getStartDatum().getTime()));
-			if(dateProjektEnddatum.getValue() != null){
+			if(projekt.getEndDatum() != null){
 				dateProjektEnddatum.setValue(LocalDate.parse(formatDatum.format(projekt.getEndDatum().getTime()), dateFormatter));
 
 			}
 			lblProjektFaellig.setText(formatDatum.format(projekt.getFaelligkeitsDatum().getTime()));
 			cbProjektStatus.getSelectionModel().select(projekt.getFkProjektstatus());
-			//cbProjektStatus.setPromptText(projekt.getFkProjektstatus().getBezeichnung());
 			
 			mangelData = FXCollections.observableArrayList(client.getAllMangelProjekt(projekt.getId()));
 			subunternehmenData = FXCollections.observableArrayList(client.getUnternehmenByProjekt(projekt.getId()));
@@ -371,6 +370,7 @@ public class ProjektDetailController implements Initializable {
 		if(dateProjektEnddatum.getValue() != null){
 			projekt.setEndDatum(new GregorianCalendar(dateProjektEnddatum.getValue().getYear(), dateProjektEnddatum.getValue().getMonthValue() -1, dateProjektEnddatum.getValue().getDayOfMonth()));
 		}
+		projekt.setFkProjektstatus(cbProjektStatus.getSelectionModel().getSelectedItem());
 		client.updateProjekt(projekt);		
 		try {
 			// Load Projekt overview.

@@ -7,10 +7,13 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Menu;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import ch.hsluw.mangelmanager.client.intern.ClientRMI;
 import ch.hsluw.mangelmanager.client.intern.Main;
+import ch.hsluw.mangelmanager.model.Login;
 
 /**
  * The RootController is used to load different content 
@@ -26,6 +29,9 @@ public class RootController implements Initializable {
 	
 	@FXML
 	public BorderPane rootLayout;
+	
+	@FXML
+	private Menu menuBenutzer;
 
 	@FXML 
 	private void logout() {
@@ -33,6 +39,8 @@ public class RootController implements Initializable {
 		Main.initRootLayout();
 		Stage stageToClose = (Stage) rootLayout.getScene().getWindow();
 		stageToClose.close();
+		menuBenutzer.setText("");
+		
 	}
 	@FXML
 	private void showPersonen() {
@@ -133,6 +141,13 @@ public class RootController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		showPersonen();
+	}
+	public void init() {
+		// TODO Auto-generated method stub
+		ClientRMI client = ClientRMI.getInstance();
+		Login login = client.getLoginById(Main.loginId);
+		menuBenutzer.setText("Benutzer: " +login.getBenutzername());
+		
 	}
 
 }

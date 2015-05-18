@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import ch.hsluw.mangelmanager.client.intern.controller.MeldungController;
+import ch.hsluw.mangelmanager.client.intern.controller.RootController;
 import ch.hsluw.mangelmanager.model.Login;
 
 public class Main extends Application {
@@ -82,9 +84,14 @@ public class Main extends Application {
 				lblLoginError.setText("Login erfolgreich!");
 				loginId = data.getId();
 				Stage stage = new Stage();
+				
+				
 				Parent root = FXMLLoader.load(getClass().getResource(
 						"view/root/Root.fxml"));
+				
+				
 	
+				
 				Scene scene = new Scene(root);
 				stage.setScene(scene);
 				stage.setTitle("Mängelmanager");

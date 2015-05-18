@@ -67,6 +67,10 @@ public class Projektstatus implements Serializable {
 		this.bezeichnung = bezeichnung;
 	}
 	
+	@Override
+    public String toString() {
+        return bezeichnung;
+    }
 	
 
 	

@@ -57,4 +57,9 @@ public class Mangelstatus implements Serializable {
 		this.bezeichnung = bezeichnung;
 	}
 	
+	@Override
+    public String toString() {
+        return bezeichnung;
+    }
+	
 }
